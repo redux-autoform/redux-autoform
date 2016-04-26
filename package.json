@@ -1,0 +1,19 @@
+{
+  "name": "redux-autoform",
+  "version": "0.0.1",
+  "description": "Generate Redux-Forms dynamically out of metadata",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gearz-lab/redux-autoform.git"
+  },
+  "author": "Andre Pena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gearz-lab/redux-autoform/issues"
+  },
+  "homepage": "https://github.com/gearz-lab/redux-autoform#readme"
+}
