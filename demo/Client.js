@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {browserHistory} from 'react-router'
 import {render} from 'react-dom';
-import Styles from './less/styles.less';
+import './less/styles.less';
 import {loadPresets} from './actions/presets.js';
 
 const store = configureStore();

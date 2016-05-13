@@ -30,7 +30,7 @@ rimraf(demoBuilt)
     .then(() => {
         console.log('writing static page files...');
 
-        let wrap = require('../demo/pages/BasePage.txt')
+        let wrap = require('../demo/pages/BasePage.html')
             .replace(/\$\{cssBundlePath\}/g, 'assets/main.css')
             .replace(/\$\{jsBundlePath\}/g, 'assets/bundle.js');
 
