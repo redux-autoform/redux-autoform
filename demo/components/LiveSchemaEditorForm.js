@@ -8,8 +8,12 @@ class LiveSchemaEditorForm extends Component {
     render() {
 
         const {
-            fields: { preset, entityName, layoutName, formTitle, schema }
+            fields: {preset, entityName, layoutName, formTitle, schema}
         } = this.props;
+
+        preset.onChange = function(event) {
+            console.log(event.target.value);
+        };
 
         return <div className='row'>
             <div className="col-md-12">
@@ -26,9 +30,13 @@ class LiveSchemaEditorForm extends Component {
                             </span>
                         <FormGroup controlId="formControlsSelect">
                             <ControlLabel>Select</ControlLabel>
-                            <FormControl componentClass="select" placeholder="select">
-                                <option value="select">select</option>
-                                <option value="other">...</option>
+                            <FormControl
+                                componentClass="select"
+                                placeholder="select"
+                                { ...preset}>
+                                <option value="preset1">preset 1</option>
+                                <option value="preset2">preset 2</option>
+                                <option value="preset3">preset 3</option>
                             </FormControl>
                         </FormGroup>
                     </div>
@@ -65,7 +73,7 @@ class LiveSchemaEditorForm extends Component {
                     <div className="col-md-12">
                         <FormGroup controlId="formBasicText3">
                             <ControlLabel>Schema</ControlLabel>
-                            <CodeEditor />
+                            <CodeEditor { ...schema} />
                             <FormControl.Feedback />
                             <HelpBlock>Validation is based on string length.</HelpBlock>
                         </FormGroup>

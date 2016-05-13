@@ -5,7 +5,21 @@ if (process.env.APP_ENV !== 'browser') {
     };
 }
 
+import _ from 'underscore';
 import base from './presets/default.txt';
+export const DEFAULT_PRESET_NAME = 'default';
+export const PRESETS = [
+    {
+        name: 'default',
+        displayName: 'Default',
+        formTitle: 'Edit contact',
+        entityName: 'contact',
+        layoutName: 'edit',
+        schema: base
+    }
+];
+
+// action names
 export const LOAD_PRESETS = 'LOAD_PRESETS';
 export const SET_PRESET = 'SET_PRESET';
 
@@ -16,16 +30,7 @@ export const SET_PRESET = 'SET_PRESET';
 export function loadPresets() {
     return {
         type: LOAD_PRESETS,
-        presets: [
-            {
-                value: 'default',
-                text: 'Default',
-                title: 'Edit contact',
-                entityName: 'contact',
-                layoutName: 'edit',
-                code: base
-            }
-        ]
+        presets: PRESETS
     }
 }
 
@@ -34,9 +39,9 @@ export function loadPresets() {
  * @param preset
  * @returns {{type: string, preset: *}}
  */
-export function setPreset(preset) {
+export function setPreset(presetName) {
     return {
         type: SET_PRESET,
-        preset: preset
+        preset: _.find(PRESETS, p => p.name == presetName)
     }
 }
