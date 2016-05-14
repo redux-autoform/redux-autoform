@@ -5,7 +5,7 @@ import path from 'path';
 import webpackConfig from '../webpack/webpack.config.demo.prod.js';
 import colors from 'colors';
 
-require.extensions['.txt'] = function (module, filename) {
+require.extensions['.html'] = function (module, filename) {
     module.exports = fs.readFileSync(filename, 'utf8');
 };
 
