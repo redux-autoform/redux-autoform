@@ -4,9 +4,8 @@ import LiveSchemaEditorContainer from '../containers/LiveSchemaEditorContainer';
 const LiveSchemaEditorPage = React.createClass({
 
     render: function () {
-
         return <div>
-            <LiveSchemaEditorContainer />
+            <LiveSchemaEditorContainer preset={this.props.location.query.preset} />
         </div>;
     }
 });

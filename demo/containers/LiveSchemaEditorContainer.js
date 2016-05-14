@@ -1,7 +1,9 @@
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import LiveSchemaEditor from '../components/LiveSchemaEditor';
-import * as presetActions from '../actions/presets';
+import { change, initialize } from 'redux-form';
+
+const reduxFormActions = { change, initialize };
 
 function mapStateToProps(state) {
     return {
@@ -11,7 +13,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        presetActions: bindActionCreators(presetActions, dispatch)
+        reduxFormActions: bindActionCreators(reduxFormActions, dispatch)
     }
 }
 
