@@ -14,29 +14,37 @@ class AutoForm extends Component {
             componentFactory,
             onSubmit,
             onSubmitFail,
-            onSubmitSuccess
+            onSubmitSuccess,
+            errorRenderer
         } = this.props;
 
-        let {entity, layout} = metadataProvider.getEntityAndLayout(schema, entityName, layoutName);
-        let fieldMetadata = metadataProvider.getFields(schema, entity, layout, f => {
-            f.componentFactory = componentFactory;
-        });
-        let fields = metadataProvider.getReduxFormFields(fieldMetadata);
-        let validate = (values) => {
-            return metadataValidator.validate(fieldMetadata, values) || {};
+        try {
+
+            let {entity, layout} = metadataProvider.getEntityAndLayout(schema, entityName, layoutName);
+            let fieldMetadata = metadataProvider.getFields(schema, entity, layout, f => {
+                f.componentFactory = componentFactory;
+            });
+            let fields = metadataProvider.getReduxFormFields(fieldMetadata);
+            let validate = (values) => {
+                return metadataValidator.validate(fieldMetadata, values) || {};
+            };
+
+            return <AutoFormInternal
+                fields={fields}
+                fieldMetadata={fieldMetadata}
+                entity={entity}
+                layout={layout}
+                validate={validate}
+                componentFactory={componentFactory}
+                onSubmit={onSubmit}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+            />
+        }
+        catch(ex) {
+            return errorRenderer ? errorRenderer(ex) : <div> {ex.message} </div>;
         }
 
-        return <AutoFormInternal
-            fields={fields}
-            fieldMetadata={fieldMetadata}
-            entity={entity}
-            layout={layout}
-            validate={validate}
-            componentFactory={componentFactory}
-            onSubmit={onSubmit}
-            onSubmitSuccess={onSubmitSuccess}
-            onSubmitFail={onSubmitFail}
-            />
     }
 
 }
@@ -46,6 +54,7 @@ AutoForm.propTypes = {
     schema: PropTypes.object.isRequired,
     entityName: PropTypes.string.isRequired,
     layoutName: PropTypes.string.isRequired,
+    errorRenderer: PropTypes.func,
     onSubmit: PropTypes.func.isRequired,
     onSubmitSuccess: PropTypes.func,
     onSubmitFail: PropTypes.func

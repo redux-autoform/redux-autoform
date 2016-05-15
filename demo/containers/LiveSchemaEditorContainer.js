@@ -7,7 +7,8 @@ const reduxFormActions = { change, initialize };
 
 function mapStateToProps(state) {
     return {
-        presets: state.presets
+        presets: state.presets,
+        metaForm: state.form.meta
     };
 }
 

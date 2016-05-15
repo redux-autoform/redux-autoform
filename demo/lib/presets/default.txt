@@ -1,44 +1,44 @@
 {
-    entities: [
+    "entities": [
         {
-            name: 'contact',
-            fields: [
+            "name": "contact",
+            "fields": [
                 {
-                    name: 'name',
-                    type: 'string',
-                    help: 'Fuck this 2',
-                    required: true,
-                    addonAfter: 'fuck'
+                    "name": "name",
+                    "type": "string",
+                    "help": "Fuck this 2",
+                    "required": true,
+                    "addonAfter": "fuck"
                 },
                 {
-                    name: 'email',
-                    type: 'string'
+                    "name": "email",
+                    "type": "string"
                 },
                 {
-                    name: 'phones',
-                    type: 'array',
-                    arrayType: 'entity',
-                    entityType: 'phone',
-                    layoutName: 'edit'
+                    "name": "phones",
+                    "type": "array",
+                    "arrayType": "entity",
+                    "entityType": "phone",
+                    "layoutName": "edit"
                 }
             ],
-            layouts: [
+            "layouts": [
                 {
-                    name: 'edit',
-                    groups: [
+                    "name": "edit",
+                    "groups": [
                         {
-                            orientation: 'vertical',
-                            fields: [
+                            "orientation": "vertical",
+                            "fields": [
                                 {
-                                    displayName: 'Name',
-                                    name: 'name'
+                                    "displayName": "Name",
+                                    "name": "name"
                                 },
                                 {
-                                    displayName: 'E-mail',
-                                    name: 'email'
+                                    "displayName": "E-mail",
+                                    "name": "email"
                                 },
                                 {
-                                    name: 'phones'
+                                    "name": "phones"
                                 }
                             ]
                         }
@@ -47,34 +47,34 @@
             ]
         },
         {
-            name: 'phone',
-            fields: [
+            "name": "phone",
+            "fields": [
                 {
-                    name: 'number',
-                    type: 'string'
+                    "name": "number",
+                    "type": "string"
                 },
                 {
-                    name: 'longDistanceCode',
-                    type: 'string'
+                    "name": "longDistanceCode",
+                    "type": "string"
                 }
             ],
-            layouts: [
+            "layouts": [
                 {
-                    name: 'edit',
-                    fields: [
+                    "name": "edit",
+                    "fields": [
                         {
-                            displayName: function (m) {
+                            "displayName": function (m) {
                                 var now = new Date().getTime();
                                 while (new Date().getTime() < now + 50)
                                 { /* do nothing */ }
 
                                 return m.number;
                             },
-                            name: 'number'
+                            "name": "number"
                         },
                         {
-                            displayName: 'Long distance code',
-                            name: 'longDistanceCode'
+                            "displayName": "Long distance code",
+                            "name": "longDistanceCode"
                         }
                     ]
                 }
