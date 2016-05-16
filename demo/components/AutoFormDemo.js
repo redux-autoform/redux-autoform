@@ -11,7 +11,7 @@ var AutoFormDemo = React.createClass({
                         {
                             name: 'name',
                             type: 'string',
-                            help: 'Fuck this 2',
+                            help: 'help',
                             required: true,
                             addonAfter: 'fuck'
                         },

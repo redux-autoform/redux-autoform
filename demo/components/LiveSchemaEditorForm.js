@@ -16,7 +16,7 @@ class LiveSchemaEditorForm extends Component {
 
         preset.onChange = function (event) {
             //reduxFormActions.initialize('meta', { entityName: 'bola', layoutName: 'outra bola'}, ['preset', 'entityName', 'layoutName', 'formTitle', 'schema']);
-            browserHistory.push('?preset=bola');
+            browserHistory.push(`?preset=${event.target.value}`);
         };
 
         return <div>

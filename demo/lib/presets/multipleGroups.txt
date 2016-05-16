@@ -6,7 +6,7 @@
                 {
                     "name": "name",
                     "type": "string",
-                    "help": "help",
+                    "help": "Fuck this 2",
                     "required": true,
                     "addonAfter": "fuck"
                 },
@@ -27,7 +27,7 @@
                     "name": "edit",
                     "groups": [
                         {
-                            "orientation": "vertical",
+                            "orientation": "horizontal",
                             "fields": [
                                 {
                                     "displayName": "Name",
@@ -36,7 +36,11 @@
                                 {
                                     "displayName": "E-mail",
                                     "name": "email"
-                                },
+                                }
+                            ]
+                        },
+                        {
+                            "fields": [
                                 {
                                     "name": "phones"
                                 }

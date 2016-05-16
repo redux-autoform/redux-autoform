@@ -13,5 +13,13 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/default.txt')
+    },
+    {
+        name: 'multipleGroups',
+        displayName: 'Multiple Groups',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/multipleGroups.txt')
     }
 ]
