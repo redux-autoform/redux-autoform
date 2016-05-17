@@ -70,7 +70,8 @@
 
                                 return m.number;
                             },
-                            "name": "number"
+                            "name": "number",
+                            "required": true
                         },
                         {
                             "displayName": "Long distance code",

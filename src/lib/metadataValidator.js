@@ -36,7 +36,7 @@ var validator = {
 
 validator.validators.push(requiredValidator);
 validator.validators.push(arrayValidator);
-validator.validators.push(entityValidator)
+validator.validators.push(entityValidator);
 validator.validators.push(defaultValidator);
 
 export default validator;
