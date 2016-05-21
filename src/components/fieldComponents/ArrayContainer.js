@@ -6,22 +6,21 @@ const ArrayContainerItem = React.createClass({
 
     propTypes: {
         index: React.PropTypes.number.isRequired,
-        onAction: React.PropTypes.func
+        onAction: React.PropTypes.func.isRequired,
+        itemWidth: React.PropTypes.number.isRequired
     },
 
     handleAction: function (eventKey) {
-        if (this.props.onAction) {
-            this.props.onAction(this.props.index, eventKey)
-        }
+        this.props.onAction(this.props.index, eventKey);
     },
 
     render: function () {
 
-        let {index} = this.props;
+        let {index, itemWidth} = this.props;
 
         return <div className="array-container-item">
             <div className="row">
-                <div className="col-xs-11">
+                <div className={`col-xs-${itemWidth}`}>
                     <div className="array-container-item-content">
                         {this.props.children}
                     </div>
@@ -62,6 +61,12 @@ const ArrayContainer = React.createClass({
         itemWidth: React.PropTypes.number
     },
 
+    getDefaultProps: function () {
+        return {
+            itemWidth: 11
+        }
+    },
+
     handleAdd: function () {
         this.props.reduxFormProps.addField();
     },
@@ -96,20 +101,22 @@ const ArrayContainer = React.createClass({
 
     render: function () {
 
-        var header = this.props.displayName ?
+        let { itemWidth, displayName, fields, componentFactory, layout, addText } = this.props;
+
+        var header = displayName ?
             <header className="metaform-group-header no-lateral-margin">
-                <span>{this.props.displayName}</span>
+                <span>{displayName}</span>
             </header>
             : null;
 
-        let components = this.props.fields.map((fields, index) => {
-            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index}>
+        let components = fields.map((fields, index) => {
+            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index} itemWidth={itemWidth} >
                 {
-                    this.props.componentFactory.buildGroupComponent({
-                        component: this.props.layout.component,
-                        layout: this.props.layout,
+                    componentFactory.buildGroupComponent({
+                        component: layout.component,
+                        layout: layout,
                         fields: fields,
-                        componentFactory: this.props.componentFactory
+                        componentFactory: componentFactory
                     })
                 }
             </ArrayContainerItem>;
@@ -118,7 +125,7 @@ const ArrayContainer = React.createClass({
         let addBar = components.length ?
             <div className="add-bar">
                     <span>
-                        <GlyphButton glyph="plus" text={this.props.addText ? this.props.addText : "Add" }
+                        <GlyphButton glyph="plus" text={addText ? addText : "Add" }
                                      onClick={this.handleAdd}/>
                     </span>
             </div>

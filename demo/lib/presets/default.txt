@@ -18,7 +18,9 @@
                     "type": "array",
                     "arrayType": "entity",
                     "entityType": "phone",
-                    "layoutName": "edit"
+                    "layoutName": "edit",
+                    "addText": "Add phone",
+                    "itemWidth": 8
                 }
             ],
             "layouts": [
@@ -64,16 +66,17 @@
                     "orientation": "horizontal",
                     "fields": [
                         {
-                            "displayName": "Number",
-                            "name": "number",
-                            "required": true,
+                            displayName: "Long distance code",
+                            name: "longDistanceCode",
                             colSpan: 4
                         },
                         {
-                            "displayName": "Long distance code",
-                            "name": "longDistanceCode",
+                            displayName: "Number",
+                            name: "number",
+                            required: true,
                             colSpan: 8
                         }
+
                     ]
                 }
             ]
