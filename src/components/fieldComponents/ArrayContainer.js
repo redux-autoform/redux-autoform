@@ -1,7 +1,6 @@
 import React from 'react';
 import GlyphButton from '../GlyphButton.js';
-import arrayHelper from'../../lib/helpers/arrayHelper.js';
-import {Alert, Glyphicon, DropdownButton, MenuItem, Dropdown} from 'react-bootstrap';
+import {Alert, Glyphicon, MenuItem, Dropdown} from 'react-bootstrap';
 
 const ArrayContainerItem = React.createClass({
 
@@ -10,7 +9,8 @@ const ArrayContainerItem = React.createClass({
         onAction: React.PropTypes.func
     },
 
-    handleAction: function (e, eventKey) {
+    handleAction: function (eventKey) {
+        console.log(arguments);
         if (this.props.onAction) {
             this.props.onAction(this.props.index, eventKey)
         }
@@ -18,6 +18,7 @@ const ArrayContainerItem = React.createClass({
 
     render: function () {
 
+        let {index} = this.props;
 
         return <div className="array-container-item">
             <div className="row">
@@ -28,7 +29,7 @@ const ArrayContainerItem = React.createClass({
                 </div>
                 <div className="col-xs-1">
                     <div className="array-container-item-options">
-                        <Dropdown pullRight onSelect={this.handleAction}>
+                        <Dropdown id={index + '-dropdown'} pullRight onSelect={this.handleAction}>
                             <Dropdown.Toggle noCaret bsStyle="link" bsSize="small">
                                 <Glyphicon glyph="menu-hamburger"/>
                             </Dropdown.Toggle>
@@ -36,7 +37,8 @@ const ArrayContainerItem = React.createClass({
                                 <MenuItem eventKey="remove"><Glyphicon glyph="remove" className="text-danger"/><span
                                     className="glyphicon-text text-danger">Remove</span></MenuItem>
                                 <MenuItem divider/>
-                                <MenuItem eventKey="moveUp"><Glyphicon glyph="chevron-up"/><span className="glyphicon-text">Move up</span></MenuItem>
+                                <MenuItem eventKey="moveUp"><Glyphicon glyph="chevron-up"/><span
+                                    className="glyphicon-text">Move up</span></MenuItem>
                                 <MenuItem eventKey="moveDown"><Glyphicon glyph="chevron-down"/><span
                                     className="glyphicon-text">Move down</span></MenuItem>
                                 <MenuItem divider/>
@@ -66,22 +68,27 @@ const ArrayContainer = React.createClass({
     },
 
     handleItemAction: function (index, eventKey) {
-        let value = this.props.value;
+
+        let {value, fields} = this.props;
+        let {swapFields, removeField} = this.props.reduxFormProps;
+
         switch (eventKey) {
             case "remove":
-                value.splice(index, 1);
+                removeField(index);
                 break;
             case 'moveUp':
-                arrayHelper.move(value, index, index - 1);
+                if (index > 0)
+                    swapFields(index, index - 1);
                 break;
             case 'moveDown':
-                arrayHelper.move(value, index, index + 1);
+                if (index < fields.length - 1)
+                    swapFields(index, index + 1);
                 break;
             case 'moveFirst':
-                arrayHelper.move(value, index, 0);
+                swapFields(index, 0);
                 break;
             case 'moveLast':
-                arrayHelper.move(value, index, value.length - 1);
+                swapFields(index, fields.length - 1);
                 break;
         }
         if (this.props.onChange) {

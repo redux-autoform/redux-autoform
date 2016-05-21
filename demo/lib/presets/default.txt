@@ -65,13 +65,7 @@
                     "orientation": "horizontal",
                     "fields": [
                         {
-                            "displayName": function (m) {
-                                var now = new Date().getTime();
-                                while (new Date().getTime() < now + 50)
-                                { /* do nothing */ }
-
-                                return m.number;
-                            },
+                            "displayName": "Number",
                             "name": "number",
                             "required": true,
                             colSpan: 4
