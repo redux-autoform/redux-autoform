@@ -38,6 +38,7 @@
                                     "name": "email"
                                 },
                                 {
+                                    "displayName": "Phones",
                                     "name": "phones"
                                 }
                             ]
@@ -61,6 +62,7 @@
             "layouts": [
                 {
                     "name": "edit",
+                    "orientation": "horizontal",
                     "fields": [
                         {
                             "displayName": function (m) {
@@ -71,11 +73,13 @@
                                 return m.number;
                             },
                             "name": "number",
-                            "required": true
+                            "required": true,
+                            colSpan: 4
                         },
                         {
                             "displayName": "Long distance code",
-                            "name": "longDistanceCode"
+                            "name": "longDistanceCode",
+                            colSpan: 8
                         }
                     ]
                 }

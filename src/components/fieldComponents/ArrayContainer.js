@@ -1,10 +1,7 @@
 import React from 'react';
-import metadataProvider from '../../lib/metadataProvider.js';
-import MetaFormGroup from '../groupComponents/Group.js';
 import GlyphButton from '../GlyphButton.js';
 import arrayHelper from'../../lib/helpers/arrayHelper.js';
-import _ from 'underscore';
-import { Alert, Glyphicon, DropdownButton, MenuItem, Dropdown } from 'react-bootstrap';
+import {Alert, Glyphicon, DropdownButton, MenuItem, Dropdown} from 'react-bootstrap';
 
 const ArrayContainerItem = React.createClass({
 
@@ -21,33 +18,35 @@ const ArrayContainerItem = React.createClass({
 
     render: function () {
 
-        
+
         return <div className="array-container-item">
             <div className="row">
-                <div className="col-md-11">
+                <div className="col-xs-11">
                     <div className="array-container-item-content">
                         {this.props.children}
                     </div>
                 </div>
-                <div className="col-md-1">
-                    <Dropdown pullRight onSelect={this.handleAction} id={`dd-${this.props.index}`}>
-                        <Dropdown.Toggle noCaret bsSize="small">
-                            <Glyphicon glyph="cog"/>
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu >
-                            <MenuItem eventKey="remove"><Glyphicon glyph="remove" className="text-danger"/><span
-                                className="glyphicon-text text-danger">Remove</span></MenuItem>
-                            <MenuItem divider/>
-                            <MenuItem eventKey="moveUp"><Glyphicon glyph="chevron-up"/><span className="glyphicon-text">Move up</span></MenuItem>
-                            <MenuItem eventKey="moveDown"><Glyphicon glyph="chevron-down"/><span
-                                className="glyphicon-text">Move down</span></MenuItem>
-                            <MenuItem divider/>
-                            <MenuItem eventKey="moveFirst"><Glyphicon glyph="chevron-up"/><span
-                                className="glyphicon-text">Move first</span></MenuItem>
-                            <MenuItem eventKey="moveLast"><Glyphicon glyph="chevron-down"/><span
-                                className="glyphicon-text">Move last</span></MenuItem>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                <div className="col-xs-1">
+                    <div className="array-container-item-options">
+                        <Dropdown pullRight onSelect={this.handleAction}>
+                            <Dropdown.Toggle noCaret bsStyle="link" bsSize="small">
+                                <Glyphicon glyph="menu-hamburger"/>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu >
+                                <MenuItem eventKey="remove"><Glyphicon glyph="remove" className="text-danger"/><span
+                                    className="glyphicon-text text-danger">Remove</span></MenuItem>
+                                <MenuItem divider/>
+                                <MenuItem eventKey="moveUp"><Glyphicon glyph="chevron-up"/><span className="glyphicon-text">Move up</span></MenuItem>
+                                <MenuItem eventKey="moveDown"><Glyphicon glyph="chevron-down"/><span
+                                    className="glyphicon-text">Move down</span></MenuItem>
+                                <MenuItem divider/>
+                                <MenuItem eventKey="moveFirst"><Glyphicon glyph="chevron-up"/><span
+                                    className="glyphicon-text">Move first</span></MenuItem>
+                                <MenuItem eventKey="moveLast"><Glyphicon glyph="chevron-down"/><span
+                                    className="glyphicon-text">Move last</span></MenuItem>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
                 </div>
             </div>
         </div>;
@@ -58,7 +57,8 @@ const ArrayContainer = React.createClass({
 
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        addText: React.PropTypes.string
+        addText: React.PropTypes.string,
+        itemWidth: React.PropTypes.number
     },
 
     handleAdd: function () {
@@ -110,6 +110,16 @@ const ArrayContainer = React.createClass({
             </ArrayContainerItem>;
         });
 
+        let addBar = components.length ?
+            <div className="add-bar">
+                    <span>
+                        <GlyphButton glyph="plus" text={this.props.addText ? this.props.addText : "Add" }
+                                     onClick={this.handleAdd}/>
+                    </span>
+            </div>
+            :
+            null;
+
         return (
             <div className="array-container">
                 {header}
@@ -117,15 +127,10 @@ const ArrayContainer = React.createClass({
                     {components.length
                         ? components
                         : <Alert bsStyle="warning">
-                            This array is empty. Consider <a href="#" onClick={this.handleAdd}>adding a new item</a>.
-                        </Alert>}
+                        This array is empty. Consider <a href="#" onClick={this.handleAdd}>adding a new item</a>.
+                    </Alert>}
                 </div>
-                <div className="">
-                    <span className="pull-right">
-                        <GlyphButton glyph="plus" text={this.props.addText ? this.props.addText : "Add" }
-                                     onClick={this.handleAdd}/>
-                    </span>
-                </div>
+                {addBar}
             </div>
         );
     }
