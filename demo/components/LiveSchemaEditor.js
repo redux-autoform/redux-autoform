@@ -18,7 +18,10 @@ class LiveSchemaEditor extends Component {
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
             componentFactory: DefaultComponentFactory,
-            errorRenderer: this.errorRenderer
+            errorRenderer: this.errorRenderer,
+            onSubmit: (...args) => {
+                console.log(args);
+            }
         };
     }
 
