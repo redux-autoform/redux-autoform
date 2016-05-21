@@ -48,7 +48,8 @@ var Group = React.createClass({
             }
 
 
-            let content = components.map(component => {
+
+            let content = components.map((component, i) => {
 
                 let colClass;
                 if (layout.orientation != 'horizontal') {
@@ -58,7 +59,7 @@ var Group = React.createClass({
                     colClass = `col-md-${colSpan}`;
                 }
 
-                return <div className={colClass} key={component.data.key + '-wrapper'}>
+                return <div className={colClass} key={`component-${i}-wrapper`}>
                     { component.component }
                 </div>;
             });

@@ -10,7 +10,6 @@ const ArrayContainerItem = React.createClass({
     },
 
     handleAction: function (eventKey) {
-        console.log(arguments);
         if (this.props.onAction) {
             this.props.onAction(this.props.index, eventKey)
         }
@@ -69,8 +68,7 @@ const ArrayContainer = React.createClass({
 
     handleItemAction: function (index, eventKey) {
 
-        let {value, fields} = this.props;
-        let {swapFields, removeField} = this.props.reduxFormProps;
+        let {value, fields, reduxFormProps: {swapFields, removeField}} = this.props;
 
         switch (eventKey) {
             case "remove":
