@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, FormControl, HelpBlock, Input, ControlLabel, InputGroup } from 'react-bootstrap';
+import { FormGroup, FormControl, HelpBlock, ControlLabel, InputGroup } from 'react-bootstrap';
 
 const TextBox = React.createClass({
 

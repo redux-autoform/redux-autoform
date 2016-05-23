@@ -21,5 +21,13 @@ export default [
         layoutName: 'edit',
         formTitle: 'Edit contact',
         schema: require('./presets/multipleGroups.txt')
+    },
+    {
+        name: 'componentsDateTimePicker',
+        displayName: 'Components - DateTimePicker',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsDateTimePicker.txt')
     }
 ]

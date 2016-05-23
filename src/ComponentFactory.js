@@ -16,7 +16,7 @@ class ComponentFactory {
 
         // defaultFieldComponents is expected to contain a property for each supported type
         // and this property's value is expected to be the component definition id
-        this.defaultFieldComponents = { }
+        this.defaultFieldComponents = { };
 
         // this is expected to contain a property for each component definition
         // and the value is expected to be the component definition itself

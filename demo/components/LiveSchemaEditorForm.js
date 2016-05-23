@@ -8,7 +8,7 @@ import presets from '../lib/presets';
 
 class LiveSchemaEditorForm extends Component {
     render() {
-
+        
         const {
             fields: {preset, entityName, layoutName, formTitle, schema},
             reduxFormActions
