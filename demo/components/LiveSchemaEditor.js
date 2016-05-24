@@ -7,8 +7,9 @@ import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import DefaultComponentFactory from '../../src/DefaultComponentFactory';
 import { Alert } from 'react-bootstrap';
-import Moment from 'moment';
-import momentLocalizer from 'react-widgets/lib/localizers/moment';
+import moment from 'moment';
+import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
+import momentLocalizer from '../../src/lib/localization/momentDateLocalizer';
 
 class LiveSchemaEditor extends Component {
 
@@ -43,7 +44,8 @@ class LiveSchemaEditor extends Component {
 
     render() {
 
-        momentLocalizer(Moment);
+        reactWidgetsMomentLocalizer(moment);
+        momentLocalizer(moment);
 
         let { reduxFormActions, preset } = this.props;
         let presetObject = preset ? _.find(presets, p => p.name == preset) : presets[0];

@@ -26,7 +26,7 @@ export default [
         name: 'componentsDateTimePicker',
         displayName: 'Components - DateTimePicker',
         entityName: 'contact',
-        layoutName: 'edit',
+        layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsDateTimePicker.txt')
     }

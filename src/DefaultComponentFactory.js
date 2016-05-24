@@ -7,7 +7,7 @@ import DateTimePicker from './components/fieldComponents/DateTimePicker';
 
 componentFactory.registerFieldComponent('TextBox', ['string', 'int', 'float'], TextBox);
 componentFactory.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);
-componentFactory.registerFieldComponent('DateTimePicker', ['datetime'], DateTimePicker);
+componentFactory.registerFieldComponent('DateTimePicker', ['datetime', 'date', 'time'], DateTimePicker);
 
 componentFactory.registerGroupComponent('Group', Group);
 
@@ -15,7 +15,9 @@ componentFactory.registerGroupComponent('Group', Group);
 componentFactory.setDefaultFieldComponents({
     'string': 'TextBox',
     'array': 'ArrayContainer',
-    'datetime': 'DateTimePicker'
+    'datetime': 'DateTimePicker',
+    'time': 'DateTimePicker',
+    'date': 'DateTimePicker'
 });
 componentFactory.setDefaultGroupComponent('Group');
 

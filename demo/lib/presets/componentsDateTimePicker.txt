@@ -4,19 +4,19 @@
             name: "contact",
             fields: [
                 {
-                    name: "dateOfBirth",
-                    type: "datetime"
-                }
-            ],
-            layouts: [
+                    name: "timeOnly",
+                    displayName: "Time only",
+                    type: "time"
+                },
                 {
-                    name: "edit",
-                    fields: [
-                        {
-                            name: "dateOfBirth",
-                            format: "L"
-                        }
-                    ]
+                    name: "dateOnly",
+                    displayName: "Date only",
+                    type: "date"
+                },
+                {
+                    name: "dateAndTime",
+                    displayName: "Date and time",
+                    type: "datetime"
                 }
             ]
         }
