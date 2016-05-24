@@ -1,4 +1,6 @@
-import expressionHelper from './helpers/expressionHelper.js';
+import getExpressionHelper from './helpers/expressionHelper.js';
+
+var _expressionHelper;
 
 /**
  * Evaluates expressions
@@ -14,7 +16,8 @@ export default {
         switch (typeof expression) {
             case 'function':
                 try {
-                    return expression(data, expressionHelper);
+                    if(!_expressionHelper) _expressionHelper = getExpressionHelper();
+                    return expression(data, _expressionHelper);
                 } catch (ex) {
                     // expressions shouldn't trigger an error
                     return undefined;

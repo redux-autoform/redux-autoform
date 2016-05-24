@@ -1,16 +1,11 @@
-import formato from 'formato';
+import { getLocalizer } from '../localization/dateLocalizer';
+
 
 /**
  * Utility class for expressions
  */
-class ExpressionHelper {
-    format() {
-        return formato.format(...arguments);
-    }
-
-    unformat() {
-        return formato.unformat(...arguments);
+export default function() {
+    return {
+        dateLocalizer: getLocalizer()
     }
 }
-
-export default new ExpressionHelper();

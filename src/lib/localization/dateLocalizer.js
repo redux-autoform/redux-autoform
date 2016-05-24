@@ -14,6 +14,8 @@ export function setLocalizer(localizer) {
  * @returns {*}
  */
 export function getLocalizer() {
+    if(!_dateLocalizer)
+        throw Error('Localizer has not yet been set');
     return _dateLocalizer;
 }
 

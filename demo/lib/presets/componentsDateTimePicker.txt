@@ -17,6 +17,12 @@
                     name: "dateAndTime",
                     displayName: "Date and time",
                     type: "datetime"
+                },
+                {
+                    name: "dateCustomFormat",
+                    displayName: "Date with custom format",
+                    type: "date",
+                    format: "DD/MM/YYYY"
                 }
             ]
         }

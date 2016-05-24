@@ -5,7 +5,7 @@ export default {
         if(!model) {
             throw new Error('model is required');
         }
-        if (typeof(propertyValue) === "function" && propertyName.indexOf('_') != 0) {
+        if (typeof(propertyValue) === "function" && propertyName.indexOf('$') != 0) {
             // do something
             return expressionEvaluator.evaluate(propertyValue, model);
         }
