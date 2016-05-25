@@ -1,5 +1,6 @@
 import dateTimeParser from './modelParsers/dateTimeParser';
 import entityParser from './modelParsers/entityParser';
+import arrayParser from './modelParsers/arrayParser';
 
 class ModelParser {
 
@@ -45,5 +46,6 @@ class ModelParser {
 var modelParser = new ModelParser();
 modelParser.addParser(dateTimeParser, 'datetime');
 modelParser.addParser(entityParser, 'entity');
+modelParser.addParser(arrayParser, 'array');
 
 export default modelParser;
