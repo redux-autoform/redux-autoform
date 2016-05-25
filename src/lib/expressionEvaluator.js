@@ -20,6 +20,7 @@ export default {
                     return expression(data, _expressionHelper);
                 } catch (ex) {
                     // expressions shouldn't trigger an error
+                    console.error('expression evaluation failed. Details: ' + ex.message);
                     return undefined;
                 }
             default:

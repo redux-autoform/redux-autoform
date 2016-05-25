@@ -1,4 +1,6 @@
 import 'es5-shim';
+import moment from 'moment';
+import momentLocalizer from '../src/lib/localization/momentDateLocalizer';
 
 beforeEach(function() {
     sinon.stub(console, 'warn');
@@ -20,4 +22,8 @@ describe('Process environment for tests', function () {
 });
 
 const testsContext = require.context('.', true, /Spec$/);
+
+// set localization
+momentLocalizer(moment);
+
 testsContext.keys().forEach(testsContext);

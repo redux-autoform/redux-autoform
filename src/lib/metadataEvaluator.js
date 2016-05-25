@@ -23,19 +23,21 @@ class MetadataEvaluator {
      * @param propertyMetadata - Can be either an object or an array of objects
      * @param model
      * @param keyPrefix
-     * @param reduxProps
+     * @param reduxFieldProps
      * @param onChange
      * @returns {{}}
      */
-    evaluate(propertyMetadata, model, keyPrefix, reduxProps, onChange) {
+    evaluate(propertyMetadata, model, keyPrefix, reduxFieldProps, onChange) {
         if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if (!model) throw Error('\'model\' should be truthy');
-        if (propertyMetadata.constructor === Array) return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxProps, onChange));
+        if (propertyMetadata.constructor === Array) return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxFieldProps, onChange));
 
         let result = {};
-        _.each(_.keys(propertyMetadata), (fieldName) => { result[fieldName] = this.filterPropertyField(fieldName, propertyMetadata[fieldName], model); });
+        _.each(_.keys(propertyMetadata), (fieldName) => {
+            result[fieldName] = this.filterPropertyField(fieldName, propertyMetadata[fieldName], model);
+        });
         let newPrefix = keyPrefix ? `${keyPrefix}.${propertyMetadata.name}` : propertyMetadata.name;
-        return this.filterProperty(result, model, newPrefix, reduxProps, onChange);
+        return this.filterProperty(result, model, newPrefix, reduxFieldProps, onChange);
     }
 
     /**

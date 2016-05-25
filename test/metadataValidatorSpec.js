@@ -1,7 +1,6 @@
 import chai from 'chai';
 import metadataValidator from '../src/lib/metadataValidator.js';
 const assert = chai.assert;
-import log from './utils/log';
 
 describe('metadataValidator', function() {
    it('validate - Required', function() {
