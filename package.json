@@ -35,6 +35,7 @@
   "dependencies": {
     "bootstrap": "^3.3.5",
     "brace": "^0.8.0",
+    "clone": "^1.0.2",
     "font-awesome": "^4.4.0",
     "formato": "^1.0.5",
     "moment": "^2.13.0",

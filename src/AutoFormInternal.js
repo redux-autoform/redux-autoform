@@ -1,8 +1,9 @@
 import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form';
 import metadataEvaluator from './lib/metadataEvaluator';
-import perf from 'react-addons-perf';
+import modelParser from './lib/modelParser';
 import { ButtonToolbar, Button } from 'react-bootstrap';
+import clone from 'clone';
 
 
 class AutoFormInternal extends Component {
@@ -19,7 +20,9 @@ class AutoFormInternal extends Component {
         } = this.props;
 
         let model = this.props.values;
-        let fieldMetadataEvaluated = metadataEvaluator.evaluate(fieldMetadata, model, '', fields);
+        let modelCloned = clone(model); // I need to clone the model because I'm altering it
+        modelParser.parse(fieldMetadata, modelCloned);
+        let fieldMetadataEvaluated = metadataEvaluator.evaluate(fieldMetadata, modelCloned, '', fields);
 
         let groupComponent = componentFactory.buildGroupComponent({
             component: layout.component,
