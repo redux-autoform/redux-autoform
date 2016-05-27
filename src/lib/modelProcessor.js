@@ -32,9 +32,14 @@ class ModelProcessor {
     /**
      * Adds the given filter
      */
-    addProcessor(parser, type) {
+    addProcessor(parser, types) {
         if (!parser) throw Error('\'filter\' should be truthy');
-        this.parsers[type] = parser;
+        if (!types) throw Error('\'type\' should be truthy');
+        if (!(types instanceof Array)) throw Error('type should be an array');
+
+        _.each(types, type => {
+            this.parsers[type] = parser;
+        });
     }
 
     /**
@@ -52,8 +57,8 @@ class ModelProcessor {
 }
 
 var modelParser = new ModelProcessor();
-modelParser.addProcessor(dateTimeParser, 'datetime');
-modelParser.addProcessor(entityParser, 'entity');
-modelParser.addProcessor(arrayParser, 'array');
+modelParser.addProcessor(dateTimeParser, ['datetime', 'date', 'time']);
+modelParser.addProcessor(entityParser, ['entity']);
+modelParser.addProcessor(arrayParser, ['array']);
 
 export default modelParser;

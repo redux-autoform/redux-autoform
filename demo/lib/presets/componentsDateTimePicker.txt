@@ -29,6 +29,14 @@
                     displayName: "Required",
                     type: "date",
                     required: true
+                },
+                {
+                    name: "invalidIfBefore2016",
+                    displayName: "Invalid if before 2016",
+                    type: "date",
+                    error: function(m) {
+                         return m.invalidIfBefore2016 && m.invalidIfBefore2016.getFullYear() < 2016 ? 'This date should be 2016 or after' : undefined;
+                    }
                 }
             ]
         }
