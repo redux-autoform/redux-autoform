@@ -1,8 +1,8 @@
 import chai from 'chai';
-import modelParser from '../src/lib/modelParser';
+import modelParser from '../src/lib/modelProcessor';
 const assert = chai.assert;
 
-describe('ModelParser', function () {
+describe('ModelProcessor', function () {
     it('Should work with datetimes', function () {
         let metadata = [{
             name: 'dateOfBirth',
@@ -11,11 +11,11 @@ describe('ModelParser', function () {
             type: 'datetime'
         }];
         let model = { dateOfBirth: '12-08-1984'};
-        modelParser.parse(metadata, model);
-        assert.ok(model.dateOfBirth instanceof Date);
+        let modelParsed = modelParser.process(model, metadata);
+        assert.instanceOf(modelParsed.dateOfBirth, Date);
     });
     it('Should work with entities', function () {
-        let metadata = {
+        let metadata = [{
             name: 'phone',
             type: 'entity',
             fields: [
@@ -39,7 +39,7 @@ describe('ModelParser', function () {
                     ]
                 }
             ]
-        };
+        }];
         let model = {
             phone: {
                 number: '99168204',
@@ -49,12 +49,12 @@ describe('ModelParser', function () {
                 }
             }
         };
-        modelParser.parse(metadata, model);
-        assert.ok(model.phone.carrier.date instanceof Date);
+        let modelParsed = modelParser.process(model, metadata);
+        assert.instanceOf(modelParsed.phone.carrier.date, Date);
     });
 
     it('Should work with arrays', function () {
-        let metadata = {
+        let metadata = [{
             name: 'contacts',
             type: 'array',
             arrayType: 'entity',
@@ -82,7 +82,7 @@ describe('ModelParser', function () {
                     ]
                 }
             ]
-        };
+        }];
         let model = {
             contacts: [{
                 name: 'Andre',
@@ -98,8 +98,8 @@ describe('ModelParser', function () {
                 ]
             }]
         };
-        modelParser.parse(metadata, model);
-        assert.ok(model.contacts[0].phones[0].date instanceof Date);
-        assert.ok(model.contacts[0].phones[1].date instanceof Date);
+        let modelParsed = modelParser.process(model, metadata);
+        assert.instanceOf(modelParsed.contacts[0].phones[0].date, Date);
+        assert.instanceOf(modelParsed.contacts[0].phones[1].date, Date);
     });
 });
