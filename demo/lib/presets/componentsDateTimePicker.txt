@@ -23,6 +23,12 @@
                     displayName: "Date with custom format",
                     type: "date",
                     format: "DD/MM/YYYY"
+                },
+                {
+                    name: "required",
+                    displayName: "Required",
+                    type: "date",
+                    required: true
                 }
             ]
         }
