@@ -17,7 +17,12 @@ export default {
             case 'function':
                 try {
                     if(!_expressionHelper) _expressionHelper = getExpressionHelper();
-                    return expression(data, _expressionHelper);
+                    let evaluation = expression(data, _expressionHelper);
+                    if(typeof evaluation === 'object' && evaluation != null) {
+                        // React cannot render objects. Because of that, objects are converted to strings
+                        return evaluation.toString();
+                    }
+                    return evaluation;
                 } catch (ex) {
                     // expressions shouldn't trigger an error
                     console.error('expression evaluation failed. Details: ' + ex.message);

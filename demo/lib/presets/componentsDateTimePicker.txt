@@ -34,7 +34,7 @@
                     name: "invalidIfBefore2016",
                     displayName: "Invalid if before 2016",
                     type: "date",
-                    help: "This value should be 2016 or after",
+                    help: "This year must be 2016 or after",
                     error: function(m) {
                          return m.invalidIfBefore2016 && m.invalidIfBefore2016.getFullYear() < 2016 ? 'This date should be 2016 or after' : undefined;
                     }
@@ -44,10 +44,7 @@
                     displayName: "Using a TextBox",
                     type: "date",
                     component: "TextBox",
-                    help: "This value should be 2016 or after",
-                    error: function(m) {
-                         return m.textbox && m.textbox.getFullYear() < 2016 ? 'This date should be 2016 or after' : undefined;
-                    }
+                    help: function(m) { return m.textbox }
                 }
             ]
         }
