@@ -3,6 +3,7 @@ import defaultValidator from './metadataValidators/defaultMetadataValidator';
 import arrayValidator from './metadataValidators/arrayValidator';
 import entityValidator from './metadataValidators/entityValidator';
 import requiredValidator from './metadataValidators/requiredValidator';
+import dateTimeValidator from './metadataValidators/dateTimeValidator';
 
 var validator = {
     validators: [],
@@ -38,5 +39,6 @@ validator.validators.push(requiredValidator);
 validator.validators.push(arrayValidator);
 validator.validators.push(entityValidator);
 validator.validators.push(defaultValidator);
+validator.validators.push(dateTimeValidator);
 
 export default validator;
