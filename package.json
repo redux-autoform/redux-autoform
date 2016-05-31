@@ -39,6 +39,7 @@
     "font-awesome": "^4.4.0",
     "formato": "^1.0.5",
     "moment": "^2.13.0",
+    "numbro": "^1.7.1",
     "react": "^0.14.8",
     "react-ace": "^3.4.1",
     "react-addons-perf": "^15.0.1",

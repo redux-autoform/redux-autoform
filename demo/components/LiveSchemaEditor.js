@@ -8,8 +8,10 @@ import AutoForm from '../../src/AutoForm';
 import DefaultComponentFactory from '../../src/DefaultComponentFactory';
 import { Alert } from 'react-bootstrap';
 import moment from 'moment';
+import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
 import momentLocalizer from '../../src/lib/localization/momentDateLocalizer';
+import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
 
 class LiveSchemaEditor extends Component {
 
@@ -44,8 +46,12 @@ class LiveSchemaEditor extends Component {
 
     render() {
 
+        // setting date localizer
         reactWidgetsMomentLocalizer(moment);
         momentLocalizer(moment);
+        
+        // setting number localizer
+        numbroLocalizer(numbro);
 
         let { reduxFormActions, preset } = this.props;
         let presetObject = preset ? _.find(presets, p => p.name == preset) : presets[0];

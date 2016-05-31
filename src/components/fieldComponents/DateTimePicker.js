@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormGroup, HelpBlock, ControlLabel} from 'react-bootstrap';
 import {DateTimePicker as ReactWidgetsDateTimePicker} from 'react-widgets';
-import { getLocalizer } from '../../lib/localization/dateLocalizer';
+import { getDateLocalizer } from '../../lib/localization/dateLocalizer';
 
 const DateTimePicker = React.createClass({
 
@@ -77,7 +77,7 @@ const DateTimePicker = React.createClass({
             type
         } = this.props;
 
-        let localizer = getLocalizer();
+        let localizer = getDateLocalizer();
 
         if (typeof value == 'string') {
             if(value == '') value = undefined;

@@ -4,7 +4,7 @@ var _dateLocalizer;
  * Sets the date localizer
  * @param localizer
  */
-export function setLocalizer(localizer) {
+export function setDateLocalizer(localizer) {
     if (!localizer) throw Error('\'localizer\' should be truthy');
     _dateLocalizer = localizer;
 }
@@ -13,7 +13,7 @@ export function setLocalizer(localizer) {
  * Gets the date localizer
  * @returns {*}
  */
-export function getLocalizer() {
+export function getDateLocalizer() {
     if(!_dateLocalizer)
         throw Error('Localizer has not yet been set');
     return _dateLocalizer;

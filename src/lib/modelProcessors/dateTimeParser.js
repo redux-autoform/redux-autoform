@@ -1,10 +1,10 @@
 import { getFormat } from '../helpers/dateTimeHelpers';
-import { getLocalizer } from '../localization/dateLocalizer';
+import { getDateLocalizer } from '../localization/dateLocalizer';
 var localizer;
 
 export default function parse(metadata, value) {
     if(typeof value == 'string') {
-        if(!localizer) localizer = getLocalizer();
+        if(!localizer) localizer = getDateLocalizer();
         let format = getFormat(metadata, localizer);
         return localizer.parse(value, format);
     }
