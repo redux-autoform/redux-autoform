@@ -17,7 +17,9 @@ componentFactory.setDefaultFieldComponents({
     'array': 'ArrayContainer',
     'datetime': 'DateTimePicker',
     'time': 'DateTimePicker',
-    'date': 'DateTimePicker'
+    'date': 'DateTimePicker',
+    'int' : 'TextBox',
+    'float': 'TextBox'
 });
 componentFactory.setDefaultGroupComponent('Group');
 

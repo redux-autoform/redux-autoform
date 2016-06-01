@@ -4,6 +4,8 @@ import arrayValidator from './metadataValidators/arrayValidator';
 import entityValidator from './metadataValidators/entityValidator';
 import requiredValidator from './metadataValidators/requiredValidator';
 import dateTimeValidator from './metadataValidators/dateTimeValidator';
+import intValidator from './metadataValidators/intValidator';
+import floatValidator from './metadataValidators/floatValidator';
 
 var validator = {
     validators: [],
@@ -11,9 +13,6 @@ var validator = {
      * Evaluates the given metadata against the model
      * @param propertyMetadata - Can be either an object or an array of objects
      * @param model
-     * @param keyPrefix
-     * @param reduxProps
-     * @param onChange
      * @returns {{}}
      */
     validate(propertyMetadata, model) {
@@ -40,5 +39,7 @@ validator.validators.push(arrayValidator);
 validator.validators.push(entityValidator);
 validator.validators.push(defaultValidator);
 validator.validators.push(dateTimeValidator);
+validator.validators.push(intValidator);
+validator.validators.push(floatValidator);
 
 export default validator;
