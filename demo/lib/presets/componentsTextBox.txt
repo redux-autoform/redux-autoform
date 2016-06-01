@@ -1,0 +1,27 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "addonBefore",
+                    displayName: "Addon before",
+                    type: "string",
+                    addonBefore: "This is something before"
+                },
+                {
+                    name: "addonAfter",
+                    displayName: "Addon after",
+                    type: "string",
+                    addonAfter: "This is something before"
+                },
+                {
+                    name: "help",
+                    displayName: "Help",
+                    type: "string",
+                    help: "This is some help"
+                }
+            ]
+        }
+    ]
+}
