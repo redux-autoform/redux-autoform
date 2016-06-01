@@ -8,5 +8,5 @@ export default function(propertyMetadata, modelValue, model, validator) {
     if (!localizer) localizer = getNumberLocalizer();
     let parsedValue = localizer.parse(modelValue);
 
-    return parsedValue == null ? 'Invalid integer' : undefined;
+    return parsedValue == null ? 'Invalid decimal' : undefined;
 }

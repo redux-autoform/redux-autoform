@@ -29,5 +29,21 @@ export default [
         layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsDateTimePicker.txt')
+    },
+    {
+        name: 'dataTypeInteger',
+        displayName: 'Data types - Integer',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/dataTypesInt.txt')
+    },
+    {
+        name: 'dataTypeFloat',
+        displayName: 'Data types - Float',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/dataTypesFloat.txt')
     }
 ]

@@ -1,0 +1,14 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "int",
+                    displayName: "Integer",
+                    type: "int"
+                }
+            ]
+        }
+    ]
+}
