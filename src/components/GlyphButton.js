@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 
-let GlyphButton = React.createClass({
+var GlyphButton = React.createClass({
     propTypes: {
         bsStyle: React.PropTypes.string,
         bsSize: React.PropTypes.string,
