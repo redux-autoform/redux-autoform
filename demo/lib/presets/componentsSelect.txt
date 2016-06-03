@@ -1,0 +1,20 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "gender",
+                    displayName: "Gender",
+                    type: "string",
+                    component: "Select",
+                    addonAfter: "Something",
+                    options: [
+                        { value: 'male', text: 'Male' },
+                        { value: 'female', text: 'Female' }
+                    ]
+                }
+            ]
+        }
+    ]
+}

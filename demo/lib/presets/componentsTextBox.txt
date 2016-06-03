@@ -13,7 +13,7 @@
                     name: "addonAfter",
                     displayName: "Addon after",
                     type: "string",
-                    addonAfter: "This is something before"
+                    addonAfter: "This is something after"
                 },
                 {
                     name: "help",

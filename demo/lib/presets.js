@@ -53,5 +53,13 @@ export default [
         layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsTextBoxFloat.txt')
+    },
+    {
+        name: 'componentsSelect',
+        displayName: 'Components - Select',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsSelect.txt')
     }
 ]
