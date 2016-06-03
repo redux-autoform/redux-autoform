@@ -1,6 +1,7 @@
 import _ from 'underscore';
 
 import dateTimeParser from './modelProcessors/dateTimeParser';
+import numberParser from './modelProcessors/numberParser';
 import entityParser from './modelProcessors/entityProcessor';
 import arrayParser from './modelProcessors/arrayProcessor';
 
@@ -58,6 +59,7 @@ class ModelProcessor {
 
 var modelParser = new ModelProcessor();
 modelParser.addProcessor(dateTimeParser, ['datetime', 'date', 'time']);
+modelParser.addProcessor(numberParser, ['int', 'float']);
 modelParser.addProcessor(entityParser, ['entity']);
 modelParser.addProcessor(arrayParser, ['array']);
 
