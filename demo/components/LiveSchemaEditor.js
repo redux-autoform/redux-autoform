@@ -6,7 +6,7 @@ import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import DefaultComponentFactory from '../../src/DefaultComponentFactory';
-import { Alert } from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -16,7 +16,8 @@ import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
 class LiveSchemaEditor extends Component {
 
     getAutoFormProps(metaForm, formName) {
-        if(!metaForm)
+        if (!formName) throw Error('Form name cannot be empty');
+        if (!metaForm)
             return undefined;
         return {
             form: formName,
@@ -50,18 +51,20 @@ class LiveSchemaEditor extends Component {
         // setting date localizer
         reactWidgetsMomentLocalizer(moment);
         momentLocalizer(moment);
-        
+
         // setting number localizer
         numbroLocalizer(numbro);
 
-        let { reduxFormActions, preset } = this.props;
-        let presetObject = preset ? _.find(presets, p => p.name == preset) : presets[0];
+        let {reduxFormActions, preset} = this.props;
+        preset = preset || 'default';
+        let presetObject = _.find(presets, p => p.name == preset);
+        if (!presetObject) throw Error(`Could not find preset. Preset name: ${preset}`);
         let autoFormProps;
         let autoForm;
         try {
             autoFormProps = this.getAutoFormProps(this.props.metaForm, preset);
-            autoForm = autoFormProps ?  <AutoForm {...autoFormProps} /> : null;
-        }catch(ex) {
+            autoForm = autoFormProps ? <AutoForm {...autoFormProps} /> : null;
+        } catch (ex) {
             autoForm = this.errorRenderer(ex);
         }
 
@@ -77,7 +80,8 @@ class LiveSchemaEditor extends Component {
                     <h2>Redux-autoform demo {psjon.version}</h2>
                 </div>
                 <div className="col-md-5">
-                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject} />
+                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset}
+                                          initialValues={presetObject}/>
                 </div>
                 <div className="col-md-7">
                     <div className="row">
@@ -87,7 +91,7 @@ class LiveSchemaEditor extends Component {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     }
 }
