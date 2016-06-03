@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form';
 import metadataEvaluator from './lib/metadataEvaluator';
 import modelProcessor from './lib/modelProcessor';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { ButtonToolbar, Button, Form } from 'react-bootstrap';
 
 class AutoFormInternal extends Component {
 
@@ -34,13 +34,13 @@ class AutoFormInternal extends Component {
 
         return (
             <div className="meta-form">
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     { groupComponent }
                     <ButtonToolbar>
                         <Button type="submit" bsStyle="primary" disabled={submitting}>Submit</Button>
                         <Button disabled={submitting}>Cancel</Button>
                     </ButtonToolbar>
-                </form>
+                </Form>
             </div>
         )
     }

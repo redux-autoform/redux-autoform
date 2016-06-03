@@ -1,7 +1,7 @@
 import React from 'react';
-import {FormGroup, HelpBlock, ControlLabel} from 'react-bootstrap';
 import {DateTimePicker as ReactWidgetsDateTimePicker} from 'react-widgets';
 import { getDateLocalizer } from '../../lib/localization/dateLocalizer';
+import FormGroup from '../FormGroup';
 
 const DateTimePicker = React.createClass({
 
@@ -97,16 +97,17 @@ const DateTimePicker = React.createClass({
         this.setReactWidgetsProps(reactWidgetsProps, type);
 
 
-        let formGroupConditionalProps = {};
-        if (error && touched) {
-            formGroupConditionalProps.validationState = 'error';
-        }
+        let formGroupProps = {
+            error,
+            touched,
+            displayName,
+            name,
+            help
+        };
 
         return (
-            <FormGroup {...formGroupConditionalProps}>
-                <ControlLabel>{ displayName || name }</ControlLabel>
+            <FormGroup {...formGroupProps}>
                 <ReactWidgetsDateTimePicker {...reactWidgetsProps} />
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
             </FormGroup>
         );
     }

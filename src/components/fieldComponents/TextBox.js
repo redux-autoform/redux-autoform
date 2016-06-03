@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormGroup, FormControl, HelpBlock, ControlLabel, InputGroup } from 'react-bootstrap';
+import {  FormControl, InputGroup } from 'react-bootstrap';
+import FormGroup from '../FormGroup';
 
 const TextBox = React.createClass({
 
@@ -40,7 +41,7 @@ const TextBox = React.createClass({
             ref="input"
             onChange={(event) => onChange(event.target.value)}
             onBlur={(event) => onBlur()} />;
-            
+
         let content;
         if(addonBefore || addonAfter) {
             content = <InputGroup>
@@ -52,17 +53,18 @@ const TextBox = React.createClass({
         else {
             content = input;
         }
-        
-        let formGroupConditionalProps = {};
-        if(error && touched) {
-            formGroupConditionalProps.validationState = 'error';
-        }
-                
+
+        let formGroupProps = {
+            error,
+            touched,
+            displayName,
+            name,
+            help
+        };
+
         return (
-            <FormGroup {...formGroupConditionalProps}>
-                <ControlLabel>{ displayName || name }</ControlLabel>
+            <FormGroup {...formGroupProps}>
                 { content }
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
             </FormGroup>
         );
     }

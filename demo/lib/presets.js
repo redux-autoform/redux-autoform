@@ -31,19 +31,27 @@ export default [
         schema: require('./presets/componentsDateTimePicker.txt')
     },
     {
-        name: 'dataTypeInteger',
-        displayName: 'Data types - Integer',
+        name: 'componentsTextBox',
+        displayName: 'Components - TextBox',
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./presets/dataTypesInt.txt')
+        schema: require('./presets/componentsTextBox.txt')
     },
     {
-        name: 'dataTypeFloat',
-        displayName: 'Data types - Float',
+        name: 'componentsTextBoxInt',
+        displayName: 'Components - TextBox (int)',
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./presets/dataTypesFloat.txt')
+        schema: require('./presets/componentsTextBoxInt.txt')
+    },
+    {
+        name: 'componentsTextBoxFloat',
+        displayName: 'Components - TextBox (float)',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsTextBoxFloat.txt')
     }
 ]
