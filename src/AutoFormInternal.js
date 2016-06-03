@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {reduxForm} from 'redux-form';
 import metadataEvaluator from './lib/metadataEvaluator';
-import modelProcessor from './lib/modelProcessor';
+import modelParser from './lib/modelParser';
 import { ButtonToolbar, Button, Form } from 'react-bootstrap';
 
 class AutoFormInternal extends Component {
@@ -18,7 +18,7 @@ class AutoFormInternal extends Component {
         } = this.props;
 
         let model = this.props.values;
-        let modelProcessed = modelProcessor.process(model, fieldMetadata);
+        let modelProcessed = modelParser.process(model, fieldMetadata);
         let fieldMetadataEvaluated = metadataEvaluator.evaluate(fieldMetadata, modelProcessed, '', fields);
 
         let groupComponent = componentFactory.buildGroupComponent({

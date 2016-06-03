@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import AutoFormInternal from './AutoFormInternal';
 import metadataProvider from './lib/metadataProvider';
 import metadataValidator from './lib/metadataValidator';
-import modelProcessor from './lib/modelProcessor';
+import modelProcessor from './lib/modelParser';
 
 class AutoForm extends Component {
 
@@ -27,8 +27,8 @@ class AutoForm extends Component {
             });
             let fields = metadataProvider.getReduxFormFields(fieldMetadata);
             let validate = (values) => {
-                let modelProcessed = modelProcessor.process(values, fieldMetadata);
-                return metadataValidator.validate(fieldMetadata, modelProcessed) || {};
+                let modelParsed = modelProcessor.process(values, fieldMetadata);
+                return metadataValidator.validate(fieldMetadata, modelParsed) || {};
             };
 
             return <AutoFormInternal

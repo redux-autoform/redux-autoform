@@ -1,9 +1,9 @@
 import _ from 'underscore';
 
-import dateTimeParser from './modelProcessors/dateTimeParser';
-import numberParser from './modelProcessors/numberParser';
-import entityParser from './modelProcessors/entityProcessor';
-import arrayParser from './modelProcessors/arrayProcessor';
+import dateTimeParser from './modelParsers/dateTimeParser';
+import numberParser from './modelParsers/numberParser';
+import entityParser from './modelParsers/entityParser';
+import arrayParser from './modelParsers/arrayParser';
 
 class ModelProcessor {
 

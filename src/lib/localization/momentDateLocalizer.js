@@ -45,10 +45,10 @@ export default function(moment) {
         },
 
         parse(value, format, culture) {
-            if (!value) return null;
+            if (!value) return undefined; // localizers should return undefined for empty inputs
             const m = getMoment(culture, value, format);
             if (m.isValid()) return m.toDate();
-            return null;
+            return null; // localizers should return nul for invalid inputs
         },
 
         format(value, format, culture) {

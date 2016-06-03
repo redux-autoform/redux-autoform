@@ -15,13 +15,14 @@ export default function(numbro) {
             if(format) throw Error('numbro localizer\'s parse method does not support passing the format');
             if(culture) throw Error('numbro localizer\'s parse method does not support passing the culture');
 
-            if (value == null || value == undefined || value == '') return null;
+            if (value == null || value == undefined || value == '') return undefined; // localizers should return undefined for empty inputs and null for invalid inputs
 
             // numbro's unformat is very permissive, so we need to check for a valid number
             if(/^[+-]?[0-9,\.]+$/.test(value)) { // ToDo: improve this regular expression
-                return numbro().unformat(value);
+                let result = numbro().unformat(value);
+                return isNaN(result) ? null : result; // numbro returns NaN sometimes. We need to make sure that the localizers always return null for invalid inputs
             }
-            return null;
+            return null; // localizers should return null for invalid inputs
         },
 
         format(value, format, culture) {
