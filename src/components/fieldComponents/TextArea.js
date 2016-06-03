@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '../Input';
+import Input from  '../Input';
 
-const Select = React.createClass({
+const TextArea = React.createClass({
 
     propTypes: {
         value: React.PropTypes.any,
@@ -11,17 +11,19 @@ const Select = React.createClass({
         name: React.PropTypes.string.isRequired,
         error: React.PropTypes.string,
         addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string
+        addonAfter: React.PropTypes.string,
+        rows: React.PropTypes.number
     },
 
     render() {
 
+        let { rows } = this.props;
+
         return (
-            <Input {...this.props} componentClass="select">
-                { this.props.options.map(o => <option key={o.value} value={o.value}> {o.text} </option> ) }
-            </Input>
+            <Input {...this.props} componentClass="textarea" rows={rows}  />
         );
+
     }
 });
 
-export default Select;
+export default TextArea;
