@@ -7,17 +7,17 @@ import {browserHistory} from 'react-router';
 import presets from '../lib/presets';
 
 class LiveSchemaEditorForm extends Component {
-    render() {
-        
-        const {
-            fields: {preset, entityName, layoutName, formTitle, schema},
-            reduxFormActions
-        } = this.props;
 
-        preset.onChange = function (event) {
-            //reduxFormActions.initialize('meta', { entityName: 'bola', layoutName: 'outra bola'}, ['preset', 'entityName', 'layoutName', 'formTitle', 'schema']);
-            browserHistory.push(`?preset=${event.target.value}`);
-        };
+    onPresetChange(event) {
+        browserHistory.push(`?preset=${event.target.value}`);
+    }
+
+    render() {
+
+        const {
+            fields: { entityName, layoutName, schema},
+            selectedPreset
+        } = this.props;
 
         return <div>
             <div className='row'>
@@ -30,13 +30,14 @@ class LiveSchemaEditorForm extends Component {
                             </span>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Select</ControlLabel>
-                        <FormControl
-                            componentClass="select"
-                            placeholder="select"
-                            { ...preset}>
+                        <FormControl componentClass="select" placeholder="select" onChange={this.onPresetChange} value={selectedPreset}>
                             {
                                 presets.map(p => {
-                                    return <option key={p.name} value={p.name}>{p.displayName}</option>
+                                    let optionProps = {
+                                        key: p.name,
+                                        value: p.name
+                                    };
+                                    return <option {...optionProps} >{p.displayName}</option>
                                 })
                             }
                         </FormControl>
@@ -86,10 +87,9 @@ class LiveSchemaEditorForm extends Component {
 }
 
 LiveSchemaEditorForm.propTypes = {
-    reduxFormActions: PropTypes.object.isRequired
 };
 
 export default reduxForm({
     form: 'meta',
-    fields: ['preset', 'entityName', 'layoutName', 'formTitle', 'schema']
+    fields: ['entityName', 'layoutName', 'schema']
 })(LiveSchemaEditorForm);

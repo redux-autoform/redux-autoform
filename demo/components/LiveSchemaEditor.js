@@ -15,10 +15,11 @@ import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
 
 class LiveSchemaEditor extends Component {
 
-    getAutoFormProps(metaForm) {
+    getAutoFormProps(metaForm, formName) {
         if(!metaForm)
             return undefined;
         return {
+            form: formName,
             schema: eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
@@ -58,7 +59,7 @@ class LiveSchemaEditor extends Component {
         let autoFormProps;
         let autoForm;
         try {
-            autoFormProps = this.getAutoFormProps(this.props.metaForm);
+            autoFormProps = this.getAutoFormProps(this.props.metaForm, preset);
             autoForm = autoFormProps ?  <AutoForm {...autoFormProps} /> : null;
         }catch(ex) {
             autoForm = this.errorRenderer(ex);
@@ -76,7 +77,7 @@ class LiveSchemaEditor extends Component {
                     <h2>Redux-autoform demo {psjon.version}</h2>
                 </div>
                 <div className="col-md-5">
-                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} initialValues={presetObject} />
+                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject} />
                 </div>
                 <div className="col-md-7">
                     <div className="row">

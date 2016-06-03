@@ -56,6 +56,4 @@ AutoFormInternal.propTypes = {
     layout: PropTypes.object
 };
 
-export default reduxForm({
-    form: 'simple'
-})(AutoFormInternal);
+export default reduxForm()(AutoFormInternal);
