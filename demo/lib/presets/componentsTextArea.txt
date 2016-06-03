@@ -17,6 +17,13 @@
                     required: true
                 },
                 {
+                    name: "placeholder",
+                    displayName: "Placeholder",
+                    type: "string",
+                    component: "TextArea",
+                    placeholder: "This is a place holder"
+                },
+                {
                     name: "addonBefore",
                     displayName: "Addon before",
                     type: "string",

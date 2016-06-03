@@ -15,6 +15,12 @@
                     required: true
                 },
                 {
+                    name: "placeholder",
+                    displayName: "Placeholder",
+                    type: "string",
+                    placeholder: "This is a place holder"
+                },
+                {
                     name: "addonBefore",
                     displayName: "Addon before",
                     type: "string",
