@@ -6,7 +6,7 @@ import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import DefaultComponentFactory from '../../src/DefaultComponentFactory';
-import {Alert} from 'react-bootstrap';
+import {Alert, Button, Checkbox, Glyphicon} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -84,9 +84,22 @@ class LiveSchemaEditor extends Component {
                                           initialValues={presetObject}/>
                 </div>
                 <div className="col-md-7">
+                    <div className="row" style={{ marginBottom: '10px'}}>
+                        <div className="col-md-12">
+                            <Button>
+                                <Glyphicon glyph="refresh"/>
+                                <span style={ { marginLeft: '6px' } }>Update form</span>
+                            </Button>
+                            <Checkbox inline style={{ marginLeft: '10px'}}>
+                                Auto update form
+                            </Checkbox>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {autoForm}
+                            <div className="live-schema-editor-mount-node">
+                                {autoForm}
+                            </div>
                         </div>
                     </div>
                 </div>
