@@ -69,5 +69,13 @@ export default [
         layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsSelect.txt')
+    },
+    {
+        name: 'componentsLookup',
+        displayName: 'Components - Lookup',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsLookup.txt')
     }
 ]

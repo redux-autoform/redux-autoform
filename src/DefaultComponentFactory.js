@@ -6,9 +6,11 @@ import TextArea from './components/fieldComponents/TextArea';
 import Group from './components/groupComponents/Group';
 import ArrayContainer from './components/fieldComponents/ArrayContainer';
 import DateTimePicker from './components/fieldComponents/DateTimePicker';
+import Lookup from './components/fieldComponents/Lookup';
 
 componentFactory.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
 componentFactory.registerFieldComponent('Select', ['string'], Select);
+componentFactory.registerFieldComponent('Lookup', ['string'], Lookup);
 componentFactory.registerFieldComponent('TextArea', ['string'], TextArea);
 componentFactory.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);
 componentFactory.registerFieldComponent('DateTimePicker', ['datetime', 'date', 'time'], DateTimePicker);
