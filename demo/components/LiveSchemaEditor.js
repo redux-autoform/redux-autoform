@@ -86,13 +86,7 @@ class LiveSchemaEditor extends Component {
                 <div className="col-md-7">
                     <div className="row" style={{ marginBottom: '10px'}}>
                         <div className="col-md-12">
-                            <Button>
-                                <Glyphicon glyph="refresh"/>
-                                <span style={ { marginLeft: '6px' } }>Update form</span>
-                            </Button>
-                            <Checkbox inline style={{ marginLeft: '10px'}}>
-                                Auto update form
-                            </Checkbox>
+                            
                         </div>
                     </div>
                     <div className="row">

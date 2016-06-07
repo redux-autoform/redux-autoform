@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import CodeEditor from './CodeEditor';
-import {FormGroup, FormControl, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {FormGroup, FormControl, ControlLabel,  Button, Checkbox, Glyphicon} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import {browserHistory} from 'react-router';
 import presets from '../lib/presets';
@@ -15,7 +15,7 @@ class LiveSchemaEditorForm extends Component {
     render() {
 
         const {
-            fields: { entityName, layoutName, schema},
+            fields: {entityName, layoutName, schema},
             selectedPreset
         } = this.props;
 
@@ -30,7 +30,8 @@ class LiveSchemaEditorForm extends Component {
                             </span>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>Select</ControlLabel>
-                        <FormControl componentClass="select" placeholder="select" onChange={this.onPresetChange} value={selectedPreset}>
+                        <FormControl componentClass="select" placeholder="select" onChange={this.onPresetChange}
+                                     value={selectedPreset}>
                             {
                                 presets.map(p => {
                                     let optionProps = {
@@ -55,7 +56,6 @@ class LiveSchemaEditorForm extends Component {
                             { ... entityName }
                         />
                         <FormControl.Feedback />
-                        <HelpBlock>Validation is based on string length.</HelpBlock>
                     </FormGroup>
                 </div>
                 <div className="col-md-6">
@@ -68,7 +68,6 @@ class LiveSchemaEditorForm extends Component {
                             { ...layoutName }
                         />
                         <FormControl.Feedback />
-                        <HelpBlock>Validation is based on string length.</HelpBlock>
                     </FormGroup>
                 </div>
             </div>
@@ -78,16 +77,25 @@ class LiveSchemaEditorForm extends Component {
                         <ControlLabel>Schema</ControlLabel>
                         <CodeEditor { ...schema} />
                         <FormControl.Feedback />
-                        <HelpBlock>Validation is based on string length.</HelpBlock>
                     </FormGroup>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12">
+                    <Button>
+                        <Glyphicon glyph="refresh"/>
+                        <span style={ { marginLeft: '6px' } }>Update form</span>
+                    </Button>
+                    <Checkbox inline style={{ marginLeft: '10px'}}>
+                        Auto update form
+                    </Checkbox>
                 </div>
             </div>
         </div>;
     }
 }
 
-LiveSchemaEditorForm.propTypes = {
-};
+LiveSchemaEditorForm.propTypes = {};
 
 export default reduxForm({
     form: 'meta',
