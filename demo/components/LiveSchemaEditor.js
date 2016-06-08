@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import GitHubForkRibbon from 'react-github-fork-ribbon';
 import LiveSchemaEditorForm from './LiveSchemaEditorForm';
-import presets from '../lib/presets';
+import presets from '../presets';
 import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';

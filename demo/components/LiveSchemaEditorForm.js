@@ -4,7 +4,7 @@ import CodeEditor from './CodeEditor';
 import {FormGroup, FormControl, ControlLabel,  Button, Checkbox, Glyphicon} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import {browserHistory} from 'react-router';
-import presets from '../lib/presets';
+import presets from '../presets';
 
 class LiveSchemaEditorForm extends Component {
 
