@@ -15,6 +15,13 @@ export default [
         schema: require('./presets/default.txt')
     },
     {
+        name: 'layouts',
+        displayName: 'Layouts',
+        entityName: 'contact',
+        layoutName: 'edit',
+        schema: require('./presets/layouts.txt')
+    },
+    {
         name: 'multipleGroups',
         displayName: 'Multiple Groups',
         entityName: 'contact',
