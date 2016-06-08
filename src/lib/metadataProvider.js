@@ -99,13 +99,8 @@ export default {
 
                 if (field.type == 'entity') {
 
-
-
                     if (!field.entityName) {
                         throw Error('when a field is of type \'entity\', it needs to specify an \'entityName\'')
-                    }
-                    if (!field.layoutName) {
-                        throw Error('when a field is of type \'entity\', it needs to specify a \'layoutName\'');
                     }
 
                     let entityAndLayout = this.getEntityAndLayout(schema, field.entityName, field.layoutName);
@@ -124,10 +119,6 @@ export default {
 
                     if (!field.entityType) {
                         throw Error('when a field is of type \'array\' and arrayType is \'entity\', it needs to specify an \'entityType\'');
-                    }
-
-                    if (!field.layoutName) {
-                        throw Error('when a field is of type \'entity\', it needs to specify a \'layoutName\'');
                     }
 
                     let entityAndLayout = this.getEntityAndLayout(schema, field.entityType, field.layoutName);

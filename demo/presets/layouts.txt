@@ -18,7 +18,7 @@
                             title: 'Vertical layout (default)',
                             fields: [
                                 { name: 'f1' },
-                                { name: 'f2' }
+                                { name: 'f2', size: 8 }
                             ]
                         },
                         {

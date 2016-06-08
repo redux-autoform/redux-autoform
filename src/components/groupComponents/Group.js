@@ -52,19 +52,20 @@ var Group = React.createClass({
 
                 let componentContent;
                 let colClass;
+                let size;
 
                 // invisible components should be hidden
                 if (component.data.visible === false) componentContent = null;
                 else {
                     if (layout.orientation != 'horizontal') {
-                        colClass = 'col-md-12';
+                        size = component.data.size ? component.data.size : 12;
                     } else {
-                        let size = component.data.size ? component.data.size : Math.floor(12 / component.length);
-                        colClass = `col-md-${size}`;
+                        size = component.data.size ? component.data.size : Math.floor(12 / component.length);
                     }
                     componentContent = component.component;
                 }
 
+                colClass = `col-md-${size}`;
                 return <div className={colClass} key={`component-${i}-wrapper`}>
                     { componentContent }
                 </div>;

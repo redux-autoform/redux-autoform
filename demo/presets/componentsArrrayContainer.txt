@@ -1,0 +1,31 @@
+{
+    "entities": [
+        {
+            "name": "contact",
+            "fields": [
+                {
+                    "name": "phones",
+                    "type": "array",
+                    "arrayType": "entity",
+                    "entityType": "phone",
+                    "addText": "Add phone",
+                    "itemWidth": 8,
+                    "displayName": "Phones"
+                }
+            ]
+        },
+        {
+            "name": "phone",
+            "fields": [
+                {
+                    "name": "number",
+                    "type": "string"
+                },
+                {
+                    "name": "longDistanceCode",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

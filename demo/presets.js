@@ -22,14 +22,6 @@ export default [
         schema: require('./presets/layouts.txt')
     },
     {
-        name: 'multipleGroups',
-        displayName: 'Multiple Groups',
-        entityName: 'contact',
-        layoutName: 'edit',
-        formTitle: 'Edit contact',
-        schema: require('./presets/multipleGroups.txt')
-    },
-    {
         name: 'componentsToggle',
         displayName: 'Components - Toggle',
         entityName: 'contact',
@@ -92,5 +84,13 @@ export default [
         layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsLookup.txt')
+    },
+    {
+        name: 'componentsArrayContainer',
+        displayName: 'Components - ArrayContainer',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsArrrayContainer.txt')
     }
 ]
