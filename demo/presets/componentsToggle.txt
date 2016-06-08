@@ -1,0 +1,20 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "shouldDoSomething",
+                    displayName: "Default",
+                    type: "bool",
+                },
+                {
+                    name: "help",
+                    displayName: "Help",
+                    type: "bool",
+                    help: "This is some help"
+                }
+            ]
+        }
+    ]
+}

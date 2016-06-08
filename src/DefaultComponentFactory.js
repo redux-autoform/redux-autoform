@@ -7,6 +7,7 @@ import Group from './components/groupComponents/Group';
 import ArrayContainer from './components/fieldComponents/ArrayContainer';
 import DateTimePicker from './components/fieldComponents/DateTimePicker';
 import Lookup from './components/fieldComponents/Lookup';
+import Toggle from './components/fieldComponents/Toggle';
 
 componentFactory.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
 componentFactory.registerFieldComponent('Select', ['string'], Select);
@@ -14,6 +15,7 @@ componentFactory.registerFieldComponent('Lookup', ['string'], Lookup);
 componentFactory.registerFieldComponent('TextArea', ['string'], TextArea);
 componentFactory.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);
 componentFactory.registerFieldComponent('DateTimePicker', ['datetime', 'date', 'time'], DateTimePicker);
+componentFactory.registerFieldComponent('Toggle', ['bool'], Toggle);
 
 componentFactory.registerGroupComponent('Group', Group);
 
@@ -25,7 +27,8 @@ componentFactory.setDefaultFieldComponents({
     'time': 'DateTimePicker',
     'date': 'DateTimePicker',
     'int' : 'TextBox',
-    'float': 'TextBox'
+    'float': 'TextBox',
+    'bool': 'Toggle'
 });
 componentFactory.setDefaultGroupComponent('Group');
 

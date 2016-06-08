@@ -50,6 +50,7 @@
     "react-redux": "^4.4.2",
     "react-router-redux": "^4.0.2",
     "react-select": "^0.9.1",
+    "react-toggle": "^2.1.0",
     "react-widgets": "^3.2.4",
     "redux": "^3.4.0",
     "redux-form": "^5.2.3",

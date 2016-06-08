@@ -14,6 +14,10 @@
                     "type": "string"
                 },
                 {
+                    "name": "enableEmailNotification",
+                    "type": "bool"
+                },
+                {
                     "name": "phones",
                     "type": "array",
                     "arrayType": "entity",
@@ -35,9 +39,15 @@
                                     "name": "name"
                                 },
                                 {
-                                    "displayName": "E-mail",
-                                    "name": "email"
+                                    "displayName": "Enable e-mail notification",
+                                    "name": "enableEmailNotification"
                                 },
+                                {
+                                    "displayName": "E-mail",
+                                    "name": "email",
+                                    visible: false
+                                },
+
                                 {
                                     "displayName": "Phones",
                                     "name": "phones"

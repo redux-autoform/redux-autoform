@@ -30,6 +30,14 @@ export default [
         schema: require('./presets/multipleGroups.txt')
     },
     {
+        name: 'componentsToggle',
+        displayName: 'Components - Toggle',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsToggle.txt')
+    },
+    {
         name: 'componentsDateTimePicker',
         displayName: 'Components - DateTimePicker',
         entityName: 'contact',
