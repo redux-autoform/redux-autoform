@@ -12,7 +12,7 @@ var Group = React.createClass({
 
     render: function () {
 
-        let { layout, fields, componentFactory } = this.props;
+        let {layout, fields, componentFactory} = this.props;
 
         // the passed in layout can contain either fields or groups.
         // in case it contains 'fields', we're gonna render each of the fields.
@@ -48,19 +48,25 @@ var Group = React.createClass({
             }
 
 
-
             let content = components.map((component, i) => {
 
+                let componentContent;
                 let colClass;
-                if (layout.orientation != 'horizontal') {
-                    colClass = 'col-md-12';
-                } else {
-                    let size = component.data.size ? component.data.size : Math.floor(12 / component.length);
-                    colClass = `col-md-${size}`;
+
+                // invisible components should be hidden
+                if (component.data.visible === false) componentContent = null;
+                else {
+                    if (layout.orientation != 'horizontal') {
+                        colClass = 'col-md-12';
+                    } else {
+                        let size = component.data.size ? component.data.size : Math.floor(12 / component.length);
+                        colClass = `col-md-${size}`;
+                    }
+                    componentContent = component.component;
                 }
 
                 return <div className={colClass} key={`component-${i}-wrapper`}>
-                    { component.component }
+                    { componentContent }
                 </div>;
             });
 

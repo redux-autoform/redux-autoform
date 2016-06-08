@@ -45,7 +45,7 @@
                                 {
                                     "displayName": "E-mail",
                                     "name": "email",
-                                    visible: false
+                                    "visible": function(m) { return m.enableEmailNotification == true }
                                 },
 
                                 {

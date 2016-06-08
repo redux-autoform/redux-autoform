@@ -37,7 +37,7 @@ const Toggle = React.createClass({
         };
 
         let toggleProps = {
-            defaultChecked: value,
+            defaultChecked: typeof value === 'boolean' ? value : false,
             onChange
         };
 
