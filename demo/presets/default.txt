@@ -68,13 +68,13 @@
                         {
                             displayName: "Long distance code",
                             name: "longDistanceCode",
-                            colSpan: 4
+                            size: 4
                         },
                         {
                             displayName: "Number",
                             name: "number",
                             required: true,
-                            colSpan: 8
+                            size: 8
                         }
 
                     ]

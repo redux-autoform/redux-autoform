@@ -55,8 +55,8 @@ var Group = React.createClass({
                 if (layout.orientation != 'horizontal') {
                     colClass = 'col-md-12';
                 } else {
-                    let colSpan = component.data.colSpan ? component.data.colSpan : Math.floor(12 / component.length);
-                    colClass = `col-md-${colSpan}`;
+                    let size = component.data.size ? component.data.size : Math.floor(12 / component.length);
+                    colClass = `col-md-${size}`;
                 }
 
                 return <div className={colClass} key={`component-${i}-wrapper`}>
