@@ -1,31 +1,47 @@
 {
-    "entities": [
+    entities: [
         {
-            "name": "contact",
-            "fields": [
+            name: "contact",
+            fields: [
                 {
-                    "name": "phones",
-                    "type": "array",
-                    "arrayType": "entity",
-                    "entityType": "phone",
-                    "addText": "Add phone",
-                    "itemWidth": 8,
-                    "displayName": "Phones"
+                    name: "phones",
+                    type: "array",
+                    arrayType: "entity",
+                    entityType: "phone",
+                    displayName: "Phones"
+                },
+                {
+                    name: "phones2",
+                    type: "array",
+                    arrayType: "entity",
+                    entityType: "phone",
+                    displayName: "Custom size",
+                    size: 6
+                },
+                {
+                    name: "phones3",
+                    type: "array",
+                    arrayType: "entity",
+                    entityType: "phone",
+                    displayName: "Custom add text",
+                    addText: 'Add new phone'
                 }
             ]
         },
         {
-            "name": "phone",
-            "fields": [
+            name: "phone",
+            fields: [
                 {
                     displayName: 'Area code',
-                    "name": "areaCode",
-                    "type": "string"
+                    name: "areaCode",
+                    type: "string",
+                    size: 3
                 },
                 {
                     displayName: 'Number',
-                    "name": "number",
-                    "type": "string"
+                    name: "number",
+                    type: "string",
+                    size: 9
                 }
             ]
         }

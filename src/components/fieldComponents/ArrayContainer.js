@@ -125,8 +125,7 @@ const ArrayContainer = React.createClass({
         let addBar = components.length ?
             <div className="add-bar">
                     <span>
-                        <GlyphButton glyph="plus" text={addText ? addText : "Add" }
-                                     onClick={this.handleAdd}/>
+                        <GlyphButton glyph="plus" text={addText ? addText : "Add" } bsSize="small" onClick={this.handleAdd}/>
                     </span>
             </div>
             :
