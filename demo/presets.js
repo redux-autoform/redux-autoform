@@ -89,7 +89,7 @@ export default [
         name: 'componentsArrayContainer',
         displayName: 'Components - ArrayContainer',
         entityName: 'contact',
-        layoutName: 'edit',
+        layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsArrrayContainer.txt')
     }

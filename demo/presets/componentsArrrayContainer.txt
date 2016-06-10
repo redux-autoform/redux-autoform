@@ -18,11 +18,13 @@
             "name": "phone",
             "fields": [
                 {
-                    "name": "number",
+                    displayName: 'Area code',
+                    "name": "areaCode",
                     "type": "string"
                 },
                 {
-                    "name": "longDistanceCode",
+                    displayName: 'Number',
+                    "name": "number",
                     "type": "string"
                 }
             ]
