@@ -17,7 +17,8 @@ class AutoForm extends Component {
             onSubmitFail,
             onSubmitSuccess,
             errorRenderer,
-            form
+            form,
+            buttonBar
         } = this.props;
 
         try {
@@ -43,6 +44,7 @@ class AutoForm extends Component {
                 onSubmit={onSubmit}
                 onSubmitSuccess={onSubmitSuccess}
                 onSubmitFail={onSubmitFail}
+                buttonBar={buttonBar}
             />
         }
         catch(ex) {
@@ -62,7 +64,8 @@ AutoForm.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     onSubmitSuccess: PropTypes.func,
     onSubmitFail: PropTypes.func,
-    form: PropTypes.string.isRequired
+    form: PropTypes.string.isRequired,
+    buttonBar: PropTypes.object.isRequired
 };
 
 export default AutoForm;

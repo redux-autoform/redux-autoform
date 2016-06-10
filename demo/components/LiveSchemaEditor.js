@@ -12,6 +12,7 @@ import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
 import momentLocalizer from '../../src/lib/localization/momentDateLocalizer';
 import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
+import ButtonToolbar from './ButtonToolbar';
 
 class LiveSchemaEditor extends Component {
 
@@ -21,6 +22,7 @@ class LiveSchemaEditor extends Component {
             return undefined;
         return {
             form: formName,
+            buttonBar: ButtonToolbar,
             schema: eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
