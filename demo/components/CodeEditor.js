@@ -23,7 +23,7 @@ const CodeEditor = React.createClass({
             editorProps: {$blockScrolling: true}
         };
 
-        return <AceEditor {...props} />;
+        return <AceEditor {...props} className="code-editor" />;
 }
 });
 

@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import GitHubForkRibbon from 'react-github-fork-ribbon';
 import LiveSchemaEditorForm from './LiveSchemaEditorForm';
 import presets from '../presets';
 import _ from 'underscore';
@@ -71,15 +70,13 @@ class LiveSchemaEditor extends Component {
         }
 
         return <div className="live-schema-editor">
-            <GitHubForkRibbon href="https://github.com/gearz-lab/react-metaform"
-                              target="_blank"
-                              position="right"
-                              color="black">
-                Fork me on GitHub
-            </GitHubForkRibbon>
             <div className='row'>
                 <div className="col-md-12">
-                    <h2>Redux-autoform demo {psjon.version}</h2>
+                    <h2>Redux-autoform demo {psjon.version}
+                        <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform" style={{color: 'black'}}>
+                            <i className="fa fa-github" aria-hidden="true" />
+                        </a>
+                    </h2>
                 </div>
                 <div className="col-md-5">
                     <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset}
@@ -88,7 +85,7 @@ class LiveSchemaEditor extends Component {
                 <div className="col-md-7">
                     <div className="row" style={{ marginBottom: '10px'}}>
                         <div className="col-md-12">
-                            
+
                         </div>
                     </div>
                     <div className="row">

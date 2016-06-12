@@ -1,7 +1,7 @@
 @schema-background-color: #eee;
 
 body {
-  background-color: whitesmoke;
+  background-color: #f7f7f7;
 }
 
 .live-schema-editor .tab-wrapper {
@@ -10,10 +10,10 @@ body {
 
 .live-schema-editor-mount-node {
   padding: 1em;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: @border-radius-base;
   background-color: white;
   margin-bottom: 20px;
+  border: 1px solid @input-border;
 }
 
 .live-schema-editor-mount-node .meta-form-title {
@@ -26,4 +26,8 @@ body {
 
 .color-red {
   color: red;
+}
+
+.code-editor {
+  border: 1px solid @input-border;
 }
