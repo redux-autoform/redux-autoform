@@ -52,7 +52,7 @@
     "react-toggle": "^2.1.0",
     "react-widgets": "^3.2.4",
     "redux": "^3.4.0",
-    "redux-form": "^5.2.3",
+    "redux-form": "^5.2.5",
     "redux-thunk": "^2.0.1",
     "underscore": "^1.8.3"
   },

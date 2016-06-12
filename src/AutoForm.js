@@ -65,7 +65,7 @@ AutoForm.propTypes = {
     onSubmitSuccess: PropTypes.func,
     onSubmitFail: PropTypes.func,
     form: PropTypes.string.isRequired,
-    buttonBar: PropTypes.object.isRequired
+    buttonBar: PropTypes.func.isRequired
 };
 
 export default AutoForm;

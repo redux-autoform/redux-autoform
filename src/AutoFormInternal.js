@@ -48,7 +48,7 @@ AutoFormInternal.propTypes = {
     componentFactory: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired,
     layout: PropTypes.object,
-    buttonBar: PropTypes.object.isRequired
+    buttonBar: PropTypes.func.isRequired
 };
 
 export default reduxForm()(AutoFormInternal);
