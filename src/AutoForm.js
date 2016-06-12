@@ -18,7 +18,8 @@ class AutoForm extends Component {
             onSubmitSuccess,
             errorRenderer,
             form,
-            buttonBar
+            buttonBar,
+            fieldLayout,
         } = this.props;
 
         try {
@@ -26,6 +27,7 @@ class AutoForm extends Component {
             let {entity, layout} = metadataProvider.getEntityAndLayout(schema, entityName, layoutName);
             let fieldMetadata = metadataProvider.getFields(schema, entity, layout, f => {
                 f.componentFactory = componentFactory;
+                f.fieldLayout = fieldLayout;
             });
             let fields = metadataProvider.getReduxFormFields(fieldMetadata);
             let validate = (values) => {
@@ -65,7 +67,8 @@ AutoForm.propTypes = {
     onSubmitSuccess: PropTypes.func,
     onSubmitFail: PropTypes.func,
     form: PropTypes.string.isRequired,
-    buttonBar: PropTypes.func.isRequired
+    buttonBar: PropTypes.func.isRequired,
+    fieldLayout: PropTypes.string
 };
 
 export default AutoForm;

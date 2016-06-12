@@ -5,22 +5,24 @@ import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import DefaultComponentFactory from '../../src/DefaultComponentFactory';
-import {Alert, Button, Checkbox, Glyphicon} from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
 import momentLocalizer from '../../src/lib/localization/momentDateLocalizer';
 import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
 import ButtonToolbar from './ButtonToolbar';
+import FormOptions from './FormOptions';
 
 class LiveSchemaEditor extends Component {
 
-    getAutoFormProps(metaForm, formName) {
+    getAutoFormProps(metaForm, formOptions, formName) {
         if (!formName) throw Error('Form name cannot be empty');
         if (!metaForm)
             return undefined;
         return {
             form: formName,
+            fieldLayout: formOptions.fieldLayout,
             buttonBar: ButtonToolbar,
             schema: eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
@@ -56,14 +58,21 @@ class LiveSchemaEditor extends Component {
         // setting number localizer
         numbroLocalizer(numbro);
 
-        let {reduxFormActions, preset} = this.props;
+        let {
+            reduxFormActions,
+            preset,
+            metaForm,
+            formOptions,
+            formOptionsActions
+        } = this.props;
+
         preset = preset || 'default';
         let presetObject = _.find(presets, p => p.name == preset);
         if (!presetObject) throw Error(`Could not find preset. Preset name: ${preset}`);
         let autoFormProps;
         let autoForm;
         try {
-            autoFormProps = this.getAutoFormProps(this.props.metaForm, preset);
+            autoFormProps = this.getAutoFormProps(metaForm, formOptions, preset);
             autoForm = autoFormProps ? <AutoForm {...autoFormProps} /> : null;
         } catch (ex) {
             autoForm = this.errorRenderer(ex);
@@ -73,8 +82,9 @@ class LiveSchemaEditor extends Component {
             <div className='row'>
                 <div className="col-md-12">
                     <h2>Redux-autoform demo {psjon.version}
-                        <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform" style={{color: 'black'}}>
-                            <i className="fa fa-github" aria-hidden="true" />
+                        <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
+                           style={{color: 'black'}}>
+                            <i className="fa fa-github" aria-hidden="true"/>
                         </a>
                     </h2>
                 </div>
@@ -83,9 +93,10 @@ class LiveSchemaEditor extends Component {
                                           initialValues={presetObject}/>
                 </div>
                 <div className="col-md-7">
-                    <div className="row" style={{ marginBottom: '10px'}}>
-                        <div className="col-md-12">
 
+                    <div className="row">
+                        <div className="col-md-12">
+                            <FormOptions {...formOptions} {...formOptionsActions} />
                         </div>
                     </div>
                     <div className="row">
@@ -103,7 +114,9 @@ class LiveSchemaEditor extends Component {
 }
 
 LiveSchemaEditor.propTypes = {
-    preset: PropTypes.string
+    preset: PropTypes.string,
+    formOptions: PropTypes.object.isRequired,
+    formOptionsActions: PropTypes.object.isRequired
 };
 
 export default LiveSchemaEditor;
