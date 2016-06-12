@@ -8,9 +8,8 @@ var Layout = React.createClass({
         let { submitting } = this.props;
 
         return (
-            <ButtonToolbar>
-                <Button type="submit" bsStyle="primary" disabled={submitting}>Submit</Button>
-                <Button disabled={submitting}>Cancel</Button>
+            <ButtonToolbar className="button-toolbar">
+                <Button className="pull-right" bsStyle="success" bsSize="large" type="submit"  disabled={submitting}>Submit</Button>
             </ButtonToolbar>
         );
     }
