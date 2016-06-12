@@ -74,7 +74,8 @@ const DateTimePicker = React.createClass({
             touched,
             onBlur,
             format,
-            type
+            type,
+            fieldLayout
         } = this.props;
 
         let localizer = getDateLocalizer();
@@ -102,7 +103,8 @@ const DateTimePicker = React.createClass({
             touched,
             displayName,
             name,
-            help
+            help,
+            fieldLayout
         };
 
         return (

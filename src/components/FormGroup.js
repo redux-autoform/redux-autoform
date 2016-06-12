@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup as BootstrapFormGroup, HelpBlock, ControlLabel} from 'react-bootstrap';
+import { FormGroup as BootstrapFormGroup, HelpBlock, ControlLabel, Col} from 'react-bootstrap';
 
 const FormGroup = React.createClass({
 
@@ -19,7 +19,8 @@ const FormGroup = React.createClass({
             displayName,
             name,
             children,
-            help
+            help,
+            fieldLayout
         } = this.props;
 
         let formGroupProps = {};
@@ -27,10 +28,23 @@ const FormGroup = React.createClass({
             formGroupProps.validationState = 'error';
         }
 
+        let label = fieldLayout == 'stacked'
+            ? <ControlLabel>{ displayName || name }</ControlLabel>
+            : <Col componentClass={ControlLabel} sm={2}> { displayName || name } </Col>;
+
+        let content = fieldLayout == 'stacked'
+            ? <div>
+                { children }
+                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
+            </div>
+            : <Col sm={10}>
+                { children }
+                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
+            </Col>;
+
         return <BootstrapFormGroup {...formGroupProps}>
-            <ControlLabel>{ displayName || name }</ControlLabel>
-            { children }
-            <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
+            { label }
+            { content }
         </BootstrapFormGroup>
     }
 });

@@ -15,7 +15,8 @@ class AutoFormInternal extends Component {
             layout,
             handleSubmit,
             submitting,
-            buttonBar
+            buttonBar,
+            fieldLayout
         } = this.props;
 
         let model = this.props.values;
@@ -31,7 +32,7 @@ class AutoFormInternal extends Component {
 
         return (
             <div className="meta-form">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} horizontal={fieldLayout == 'inline'}>
                     { groupComponent }
                     { React.createElement(buttonBar, { submitting: submitting }) }
                 </Form>
@@ -48,7 +49,8 @@ AutoFormInternal.propTypes = {
     componentFactory: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired,
     layout: PropTypes.object,
-    buttonBar: PropTypes.func.isRequired
+    buttonBar: PropTypes.func.isRequired,
+    fieldLayout: PropTypes.string
 };
 
 export default reduxForm()(AutoFormInternal);

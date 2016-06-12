@@ -11,7 +11,8 @@ const TextBox = React.createClass({
         name: React.PropTypes.string.isRequired,
         error: React.PropTypes.string,
         addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string
+        addonAfter: React.PropTypes.string,
+        fieldLayout: React.PropTypes.string
     },
 
     render() {

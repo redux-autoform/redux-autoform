@@ -15,7 +15,8 @@ const Lookup = React.createClass({
             touched,
             onChange,
             onBlur,
-            options
+            options,
+            fieldLayout
         } = this.props;
 
         let selectProps = {
@@ -31,7 +32,8 @@ const Lookup = React.createClass({
             touched,
             displayName,
             name,
-            help
+            help,
+            fieldLayout
         };
 
         return <FormGroup {...formGroupProps}>

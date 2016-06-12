@@ -47,6 +47,7 @@ class AutoForm extends Component {
                 onSubmitSuccess={onSubmitSuccess}
                 onSubmitFail={onSubmitFail}
                 buttonBar={buttonBar}
+                fieldLayout={fieldLayout}
             />
         }
         catch(ex) {

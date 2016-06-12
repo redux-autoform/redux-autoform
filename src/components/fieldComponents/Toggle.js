@@ -25,6 +25,7 @@ const Toggle = React.createClass({
             error,
             touched,
             onChange,
+            fieldLayout
         } = this.props;
 
 
@@ -33,7 +34,8 @@ const Toggle = React.createClass({
             touched,
             displayName,
             name,
-            help
+            help,
+            fieldLayout
         };
 
         let toggleProps = {

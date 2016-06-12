@@ -12,7 +12,8 @@ const Input = React.createClass({
         name: React.PropTypes.string.isRequired,
         error: React.PropTypes.string,
         addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string
+        addonAfter: React.PropTypes.string,
+        fieldLayout: React.PropTypes.string
     },
 
     render() {
@@ -31,7 +32,8 @@ const Input = React.createClass({
             onBlur,
             componentClass,
             children,
-            rows // textarea only
+            rows, // textarea only,
+            fieldLayout 
         } = this.props;
 
 
@@ -40,7 +42,8 @@ const Input = React.createClass({
             touched,
             displayName,
             name,
-            help
+            help,
+            fieldLayout
         };
 
         let formControlProps = {
