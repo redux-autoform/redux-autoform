@@ -1,6 +1,8 @@
 import 'es5-shim';
 import moment from 'moment';
 import momentLocalizer from '../src/lib/localization/momentDateLocalizer';
+import numbro from 'numbro';
+import numbroLocalizer from '../src/lib/localization/numbroNumberLocalizer';
 
 beforeEach(function() {
     sinon.stub(console, 'warn');
@@ -25,5 +27,6 @@ const testsContext = require.context('.', true, /Spec$/);
 
 // set localization
 momentLocalizer(moment);
+numbroLocalizer(numbro);
 
 testsContext.keys().forEach(testsContext);
