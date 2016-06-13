@@ -2,14 +2,14 @@ import componentFactory from './DefaultComponentFactoryBase';
 
 // set defaults
 componentFactory.setDefaultFieldComponents({
-    'string': 'TextBox',
+    'string': 'Static',
     'array': 'ArrayContainer',
-    'datetime': 'DateTimePicker',
-    'time': 'DateTimePicker',
-    'date': 'DateTimePicker',
-    'int' : 'TextBox',
-    'float': 'TextBox',
-    'bool': 'Toggle'
+    'datetime': 'Static',
+    'time': 'Static',
+    'date': 'Static',
+    'int' : 'Static',
+    'float': 'Static',
+    'bool': 'Static'
 });
 componentFactory.setDefaultGroupComponent('Group');
 

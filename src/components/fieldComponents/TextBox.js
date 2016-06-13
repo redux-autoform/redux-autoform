@@ -18,7 +18,7 @@ const TextBox = React.createClass({
     render() {
 
         return (
-            <Input {...this.props}  />
+            <Input {...this.props} componentClass="input" />
         );
 
     }
