@@ -4,7 +4,7 @@ import presets from '../presets';
 import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
-import DefaultComponentFactory from '../../src/DefaultComponentFactory';
+import DefaultComponentFactory from '../../src/DefaultEditComponentFactory';
 import {Alert} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';

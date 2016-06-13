@@ -1,6 +1,6 @@
 import AutoForm from './AutoForm.js';
 import ComponentFactory from './ComponentFactory.js';
-import DefaultComponentFactory from './DefaultComponentFactory.js';
+import DefaultComponentFactory from './DefaultEditComponentFactory';
 import './less/styles.less';
 
 export default {

@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import Alert from 'react-bootstrap/lib/Alert.js';
+import { Alert } from 'react-bootstrap';
 
 var Group = React.createClass({
     propTypes: {
