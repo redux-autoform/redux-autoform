@@ -7,17 +7,25 @@ var FormOptions = React.createClass({
 
         let {
             fieldLayout,
+            componentFactory,
             setStackedFieldLayout,
-            setInlineFieldLayout
+            setInlineFieldLayout,
+            setEditComponentFactory,
+            setDetailsComponentFactory
         } = this.props;
 
         return (
             <div className="form-options">
                 <ButtonGroup>
-                    <Button active={fieldLayout == 'stacked'} onClick={ () => setStackedFieldLayout() }>Stacked
-                        labels</Button>
-                    <Button active={fieldLayout == 'inline'} onClick={ () => setInlineFieldLayout() }>Inline
-                        labels</Button>
+                    <Button active={fieldLayout == 'stacked'}
+                            onClick={ () => setStackedFieldLayout() }>Stacked</Button>
+                    <Button active={fieldLayout == 'inline'}
+                            onClick={ () => setInlineFieldLayout() }>Inline</Button>
+                </ButtonGroup>
+                <ButtonGroup>
+                    <Button active={componentFactory == 'edit'}
+                            onClick={ () => setEditComponentFactory() }>Edit</Button>
+                    <Button active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() }>Details</Button>
                 </ButtonGroup>
             </div>
         );

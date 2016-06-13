@@ -1,5 +1,7 @@
 export const SET_STACKED_FIELD_LAYOUT = 'SET_STACKED_FIELD_LAYOUT';
 export const SET_INLINE_FIELD_LAYOUT = 'SET_INLINE_FIELD_LAYOUT';
+export const SET_EDIT_COMPONENT_FACTORY = 'SET_EDIT_COMPONENT_FACTORY';
+export const SET_DETAILS_COMPONENT_FACTORY = 'SET_DETAILS_COMPONENT_FACTORY';
 
 /**
  * Sets the field layout as stacked
@@ -18,5 +20,17 @@ export function setStackedFieldLayout() {
 export function setInlineFieldLayout() {
     return {
         type: SET_INLINE_FIELD_LAYOUT
+    }
+}
+
+export function setEditComponentFactory() {
+    return {
+        type: SET_EDIT_COMPONENT_FACTORY
+    }
+}
+
+export function  setDetailsComponentFactory() {
+    return {
+        type: SET_DETAILS_COMPONENT_FACTORY
     }
 }

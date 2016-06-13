@@ -4,7 +4,8 @@ import presets from '../presets';
 import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
-import DefaultComponentFactory from '../../src/DefaultEditComponentFactory';
+import editComponentFactory from '../../src/defaultEditComponentFactory';
+import detailsComponentFactory from '../../src/defaultDetailsComponentFactory';
 import {Alert} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
@@ -20,6 +21,7 @@ class LiveSchemaEditor extends Component {
         if (!formName) throw Error('Form name cannot be empty');
         if (!metaForm)
             return undefined;
+
         return {
             form: formName,
             fieldLayout: formOptions.fieldLayout,
@@ -27,7 +29,7 @@ class LiveSchemaEditor extends Component {
             schema: eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
-            componentFactory: DefaultComponentFactory,
+            componentFactory: formOptions.componentFactory == 'edit' ? editComponentFactory : detailsComponentFactory,
             errorRenderer: this.errorRenderer,
             onSubmit: (...args) => {
                 console.log(args);

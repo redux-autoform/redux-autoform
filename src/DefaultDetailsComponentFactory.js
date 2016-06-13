@@ -1,4 +1,9 @@
-import componentFactory from './DefaultComponentFactoryBase';
+import ComponentFactory from './ComponentFactory';
+import { registerBaseComponents } from './defaultComponentFactoryHelper';
+
+var componentFactory = new ComponentFactory();
+
+registerBaseComponents(componentFactory);
 
 // set defaults
 componentFactory.setDefaultFieldComponents({

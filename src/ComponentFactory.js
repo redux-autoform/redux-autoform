@@ -3,7 +3,7 @@ import _ from 'underscore';
 
 // component definitions
 
-class ComponentFactory {
+export default class ComponentFactory {
 
     constructor() {
         // this is expected to contain a property for each supported type
@@ -193,5 +193,3 @@ class ComponentFactory {
         return React.createElement(componentType, props);
     }
 }
-
-export default new ComponentFactory();
