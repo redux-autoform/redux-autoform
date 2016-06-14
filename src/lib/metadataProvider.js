@@ -64,15 +64,15 @@ export default {
      * @param schema
      * @param entity
      * @param layout
-     * @param prefix
      * @param partialResult
+     * @param callback
      * @return {Number}
      */
     getFieldsInternal: function(schema, entity, layout, partialResult, callback) {
 
         if (!schema) throw Error('\'schema\' should be truthy');
         if (!entity) throw Error('\'entity\' should be truthy');
-        if (!layout.fields && !layout.groups) throw Error('A layout can either have fields or groups. Never both or none.');
+        if (!layout.fields && !layout.groups) throw Error('A layout should have fields or groups');
 
         partialResult = partialResult || [];
         let thisGroupFields = [];
@@ -81,18 +81,14 @@ export default {
             _.each(layout.groups, g => { thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback)) });
         }
 
-        else if (layout.fields) {
+        if (layout.fields) {
 
             for (let i = 0; i < layout.fields.length; i++) {
 
                 let groupField = layout.fields[i];
                 let existingEntityProperty = _.find(entity.fields, field => field.name == groupField.name);
 
-                if (!existingEntityProperty) {
-                    throw Error(`cannot find entity field. Field: ${groupField.name}. Group: ${layout}`);
-                }
-
-                let field = _.extend({}, existingEntityProperty, groupField);
+                let field = _.extend({}, existingEntityProperty || {}, groupField);
                 this.validateFieldMetadata(field);
 
                 thisGroupFields.push(field);
@@ -131,9 +127,7 @@ export default {
                 }
             }
         }
-        else {
-            throw Error('a layout must have either fields or groups.');
-        }
+
         return _.union(partialResult, thisGroupFields);
 
     },

@@ -13,6 +13,47 @@ describe('MetadataProvider', function () {
             assert.throws(() => metadataProvider.getFields(schema, 'contact', 'contact-edit'), /Could not find entity/);
         });
 
+        it('Should work with layout only properties', function () {
+            let schema = {
+                entities: [
+                    {
+                        name: 'contact',
+                        fields: [
+                            {
+                                name: 'name',
+                                type: 'string'
+                            }
+                        ],
+                        layouts: [{
+                            name: 'contact-edit',
+                            fields: [
+                                {
+                                    name: 'layoutOnly',
+                                    type: 'string'
+                                }
+                            ],
+                            groups: [
+                                {
+                                    fields: [
+                                        {
+                                            name: 'groupOnly',
+                                            type: 'string'
+                                        },
+                                        {
+                                            name: 'name'
+                                        }
+                                    ]
+                                }
+                            ]
+                        }]
+                    }
+                ]
+            };
+
+            let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
+            assert.equal(fields.length, 3);
+        });
+
         it('Text expressions', function () {
             let schema = {
                 entities: [
@@ -88,6 +129,8 @@ describe('MetadataProvider', function () {
             };
 
             let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit', f => f.fruit = 'banana');
+
+
             assert.strictEqual(fields.length, 2);
             assert.strictEqual(fields[0].layoutOnlyProp, true);
             assert.strictEqual(fields[0].type, 'string');
@@ -98,7 +141,6 @@ describe('MetadataProvider', function () {
             let schema = require('./assets/metadataProviderTestData/completeWithNestedEntity');
 
             let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
-            
 
             assert.strictEqual(fields.length, 3);
 
