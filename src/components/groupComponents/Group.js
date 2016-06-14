@@ -49,19 +49,20 @@ var Group = React.createClass({
 
 
             let content = components.map((component, i) => {
-
                 let componentContent;
                 let colClass;
                 let size;
 
+                const GRID_LENGTH = 12;
+                
                 // invisible components should be hidden
-                if (component.data.visible === false) componentContent = null;
+                if (component.data.visible === false) {
+                    size = GRID_LENGTH;
+                    componentContent = null;
+                }
                 else {
-                    if (layout.orientation != 'horizontal') {
-                        size = component.data.size ? component.data.size : 12;
-                    } else {
-                        size = component.data.size ? component.data.size : Math.floor(12 / component.length);
-                    }
+                    let defaultSize = layout.orientation == 'horizontal' ? Math.floor(GRID_LENGTH / component.length) : GRID_LENGTH;
+                    size = component.data.size || defaultSize;
                     componentContent = component.component;
                 }
 

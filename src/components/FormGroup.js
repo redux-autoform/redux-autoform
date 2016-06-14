@@ -1,5 +1,6 @@
 import React from 'react';
-import { FormGroup as BootstrapFormGroup, HelpBlock, ControlLabel, Col} from 'react-bootstrap';
+import FormGroupInline from './FormGroupInline';
+import FormGroupStacked from './FormGroupStacked';
 
 const FormGroup = React.createClass({
 
@@ -12,40 +13,9 @@ const FormGroup = React.createClass({
     },
 
     render: function () {
-
-        let {
-            error,
-            touched,
-            displayName,
-            name,
-            children,
-            help,
-            fieldLayout
-        } = this.props;
-
-        let formGroupProps = {};
-        if (error && touched) {
-            formGroupProps.validationState = 'error';
-        }
-
-        let label = fieldLayout == 'stacked'
-            ? <ControlLabel>{ displayName || name }</ControlLabel>
-            : <Col componentClass={ControlLabel} sm={2}> { displayName || name } </Col>;
-
-        let content = fieldLayout == 'stacked'
-            ? <div>
-                { children }
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
-            </div>
-            : <Col sm={10}>
-                { children }
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
-            </Col>;
-
-        return <BootstrapFormGroup {...formGroupProps}>
-            { label }
-            { content }
-        </BootstrapFormGroup>
+        let { fieldLayout } = this.props;
+        let InnerFormGroup = fieldLayout == 'stacked' ? FormGroupStacked : FormGroupInline;
+        return <InnerFormGroup {...this.props} />;
     }
 });
 
