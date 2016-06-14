@@ -7,8 +7,10 @@
                 { name: "f2", displayName: "Field 2", type: "string" },
                 { name: "f3", displayName: "Field 3", type: "string" },
                 { name: "f4", displayName: "Field 4", type: "string" },
-                { name: "f5", displayName: "Field 4", type: "string" },
-                { name: "f6", displayName: "Field 4", type: "string" },
+                { name: "f5", displayName: "Field 5", type: "string" },
+                { name: "f6", displayName: "Field 6", type: "string" },
+                { name: "f7", displayName: "Field 7", type: "string" },
+                { name: "f8", displayName: "Field 8", type: "string" },
             ],
             layouts: [
                 {
@@ -30,11 +32,19 @@
                             ]
                         },
                         {
-                            title: 'Horizontal layout with custom widths',
+                            title: 'Horizontal layout with custom sizes',
                             orientation: 'horizontal',
                             fields: [
                                 { name: 'f5', size: 4 },
                                 { name: 'f6', size: 8 }
+                            ]
+                        },
+                        {
+                            title: 'Horizontal layout with custom inner sizes',
+                            orientation: 'horizontal',
+                            fields: [
+                                { name: 'f7', innerSize: 3 },
+                                { name: 'f8', innerSize: 3 }
                             ]
                         }
                     ]

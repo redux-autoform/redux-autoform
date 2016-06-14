@@ -13,8 +13,8 @@ const FormGroup = React.createClass({
     },
 
     render: function () {
-        let { fieldLayout } = this.props;
-        let InnerFormGroup = fieldLayout == 'stacked' ? FormGroupStacked : FormGroupInline;
+        let {fieldLayout} = this.props;
+        let InnerFormGroup = fieldLayout == 'inline' ? FormGroupInline : FormGroupStacked;
         return <InnerFormGroup {...this.props} />;
     }
 });

@@ -33,7 +33,8 @@ const Input = React.createClass({
             componentClass,
             children,
             rows, // textarea only,
-            fieldLayout 
+            fieldLayout,
+            innerSize
         } = this.props;
 
 
@@ -43,7 +44,8 @@ const Input = React.createClass({
             displayName,
             name,
             help,
-            fieldLayout
+            fieldLayout,
+            innerSize
         };
 
         let formControlProps = {
