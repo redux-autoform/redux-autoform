@@ -28,7 +28,7 @@ const FormGroupInline = React.createClass({
         }
 
         return <BootstrapFormGroup {...formGroupProps}>
-            <Col componentClass={ControlLabel} sm={2}>
+            <Col componentClass={ControlLabel} sm={2} className="no-padding-right-col">
                 { displayName || name }
             </Col>
             <Col sm={10}>
