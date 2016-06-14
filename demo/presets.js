@@ -92,5 +92,13 @@ export default [
         layoutName: '',
         formTitle: 'Edit contact',
         schema: require('./presets/componentsArrrayContainer.txt')
+    },
+    {
+        name: 'componentsFieldGroup',
+        displayName: 'Components - FieldGroup',
+        entityName: 'contact',
+        layoutName: 'edit',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsFieldGroup.txt')
     }
 ]

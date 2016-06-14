@@ -22,6 +22,7 @@ var Group = React.createClass({
             if (layout.fields) {
                 components = layout.fields.map(field => {
                     let fieldMetadata = _.find(fields, cp => cp.name === field.name);
+                    if(!fieldMetadata) throw Error(`Could not find field. Field: ${field.name}`);
                     return {
                         data: fieldMetadata,
                         length: layout.fields.length,
@@ -43,10 +44,6 @@ var Group = React.createClass({
                     }
                 });
             }
-            else {
-                throw Error('A layout must either have fields or groups');
-            }
-
 
             let content = components.map((component, i) => {
                 let componentContent;

@@ -1,0 +1,41 @@
+{
+    entities: [
+        {
+            name: "contact",
+            fields: [
+                {
+                    name: "f1",
+                    displayName: "f1",
+                    type: "string",
+                },
+                {
+                    name: "f2",
+                    displayName: "f2",
+                    type: "string",
+                }
+            ],
+            layouts: [
+                {
+                    name: "edit",
+                    fields: [
+                        {
+                            name: "f3",
+                            displayName: "f3",
+                            type: "group",
+                            group: "g1"
+                        }
+                    ],
+                    groups: [
+                        {
+                            name: "g1",
+                            fields: [
+                                { name: "f1" },
+                                { name: "f2" },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
