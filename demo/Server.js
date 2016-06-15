@@ -2,8 +2,13 @@ import fs from 'fs';
 import React from 'react';
 import express from 'express';
 import path from 'path';
-import webpackConfig from '../webpack/webpack.config.demo.prod.js';
+import webpackConfig from '../webpack/webpack.config.demo.dev';
 import colors from 'colors';
+import webpackMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpack from 'webpack';
+
+const webpackCompiler = webpack(webpackConfig);
 
 require.extensions['.html'] = function (module, filename) {
     module.exports = fs.readFileSync(filename, 'utf8');
@@ -13,22 +18,18 @@ const development = process.env.NODE_ENV !== 'production';
 let app = express();
 
 if (development) {
-
-    webpackConfig.output.path = '/';
-    webpackConfig.output.publicPath = undefined;
-
-    app = app
-        .use(function renderApp(req, res) {
+    app.use(webpackMiddleware(webpackCompiler));
+    app.use(webpackHotMiddleware(webpackCompiler));
+    app.use(function renderApp(req, res) {
 
             let wrap = require('./pages/BasePage.html')
                 .replace(/\$\{cssBundlePath\}/g, '')
-                .replace(/\$\{jsBundlePath\}/g, 'http://localhost:8082/assets/bundle.js');
+                .replace(/\$\{jsBundlePath\}/g, '/bundle.js');
             res.status(200).send(wrap);
 
         });
 } else {
-    app = app
-        .use(express.static(path.join(__dirname, '../demo-built')));
+    app.use(express.static(path.join(__dirname, '../demo-built')));
 }
 
 app

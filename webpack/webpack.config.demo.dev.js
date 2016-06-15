@@ -1,16 +1,16 @@
 import webpack from 'webpack';
 
 export default {
+
     entry: [
-        'webpack-dev-server/client?http://localhost:8082',
-        'webpack/hot/only-dev-server',
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
         './demo/Client.js'
     ],
 
     output: {
         filename: 'bundle.js',
-        path: './demo-built/assets',
-        publicPath: 'http://localhost:8082/assets/'
+        path: '/',
+        publicPath: '/'
     },
 
     externals: undefined,
@@ -45,13 +45,7 @@ export default {
         })
     ],
 
-    // the configuration above does not apply to the webpack-dev-server...
-    // webpack-dev-server is configured below
-    devServer: {
-        contentBase: "./demo-built",
-        hot: true,
-        noInfo: false,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        port: 8082
+    stats: {
+        colors: true
     }
 };
