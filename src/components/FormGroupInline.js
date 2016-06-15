@@ -1,5 +1,8 @@
 import React from 'react';
-import {FormGroup as BootstrapFormGroup, HelpBlock, ControlLabel, Col} from 'react-bootstrap';
+import {FormGroup as BootstrapFormGroup } from 'react-bootstrap';
+import FormGroupInlineControlLabel from './FormGroupInlineControlLabel';
+import FormGroupInlineContent from './FormGroupInlineContent'
+import {getDisplayName} from '../lib/helpers/metadataHelper';
 
 const FormGroupInline = React.createClass({
 
@@ -23,28 +26,34 @@ const FormGroupInline = React.createClass({
             className
         } = this.props;
 
-        let formGroupProps = { className };
+        displayName = getDisplayName(displayName, name);
+
+        // form group props
+        let formGroupProps = {className};
         if (error && touched) {
             formGroupProps.validationState = 'error';
         }
 
-        let controlLabel = displayName != undefined
-            ? <Col componentClass={ControlLabel} sm={2} className="no-padding-right-col">{ displayName || name }</Col>
-            : null;
+        // control label props
+        let controlLabelProps = {
+            displayName
+        };
 
-        let helpText = (touched ? error : '') || help;
-        let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
-
-        let content = <Col sm={controlLabel == null ? 12 : 10}>
-            { children }
-            { helpBlock }
-        </Col>;
-
+        // content props
+        let contentProps = {
+            error,
+            touched,
+            children,
+            help,
+            hasControlLabel: displayName != null
+        };
 
         return <BootstrapFormGroup {...formGroupProps}>
-            { controlLabel }
-            { content }
-        </BootstrapFormGroup>
+            <FormGroupInlineControlLabel {...controlLabelProps} />
+            <FormGroupInlineContent {...contentProps}>
+                { children }
+            </FormGroupInlineContent>
+        </BootstrapFormGroup>;
     }
 });
 

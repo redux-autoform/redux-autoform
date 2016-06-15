@@ -40,7 +40,7 @@ const FormGroupStacked = React.createClass({
                 { children }
                 { helpBlock }
             </Col>
-            <div className="clearfix" />
+            <div className="clearfix"></div>
         </BootstrapFormGroup>
     }
 });
