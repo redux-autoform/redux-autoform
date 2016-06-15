@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import { Alert } from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 
 var Group = React.createClass({
     propTypes: {
@@ -22,7 +22,12 @@ var Group = React.createClass({
             if (layout.fields) {
                 components = layout.fields.map(field => {
                     let fieldMetadata = _.find(fields, cp => cp.name === field.name);
-                    if(!fieldMetadata) throw Error(`Could not find field. Field: ${field.name}`);
+                    if (!fieldMetadata) throw Error(`Could not find field. Field: ${field.name}`);
+
+                    // in case the field is going to render layouts internally, it's going to need information about the
+                    // layout and fields. I'm not sure if this is the best way to do it, probably not. TODO: Review it.
+                    fieldMetadata._extra = {layout, fields};
+
                     return {
                         data: fieldMetadata,
                         length: layout.fields.length,
@@ -51,7 +56,7 @@ var Group = React.createClass({
                 let size;
 
                 const GRID_LENGTH = 12;
-                
+
                 // invisible components should be hidden
                 if (component.data.visible === false) {
                     size = GRID_LENGTH;

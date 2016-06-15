@@ -4,14 +4,16 @@
             name: "contact",
             fields: [
                 {
-                    name: "f1",
-                    displayName: "f1",
-                    type: "string",
+                    name: "property1",
+                    type: "string"
                 },
                 {
-                    name: "f2",
-                    displayName: "f2",
-                    type: "string",
+                    name: "propertyGrouped1",
+                    type: "string"
+                },
+                {
+                    name: "propertyGrouped2",
+                    type: "string"
                 }
             ],
             layouts: [
@@ -19,18 +21,22 @@
                     name: "edit",
                     fields: [
                         {
-                            name: "f3",
-                            displayName: "f3",
+                            name: "groupProperty",
+                            displayName: "Group property",
                             type: "group",
                             group: "g1"
+                        },
+                        {
+                            name: "property1",
+                            displayName: "Another property"
                         }
                     ],
                     groups: [
                         {
                             name: "g1",
                             fields: [
-                                { name: "f1" },
-                                { name: "f2" },
+                                { name: "propertyGrouped1", size: 3, displayName: null },
+                                { name: "propertyGrouped2", size: 9, displayName: null },
                             ]
                         }
                     ]

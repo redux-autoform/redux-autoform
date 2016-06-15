@@ -1,6 +1,6 @@
 import React from 'react';
-import FormGroup from './FormGroup';
-import FormControl from './FormControl';
+import FormGroup from '../FormGroup';
+import _ from 'underscore';
 
 const FieldGroup = React.createClass({
 
@@ -34,9 +34,14 @@ const FieldGroup = React.createClass({
             children,
             rows, // textarea only,
             fieldLayout,
-            innerSize
+            innerSize,
+            componentFactory,
+            _extra: { layout, fields },
+            group: groupName
         } = this.props;
 
+        let group = _.find(layout.groups, g => g.name == groupName);
+        if(!group) throw Error(`Could not find group. Group: ${groupName}`);
 
         let formGroupProps = {
             error,
@@ -48,9 +53,16 @@ const FieldGroup = React.createClass({
             innerSize
         };
 
+        let groupContent = componentFactory.buildGroupComponent({
+            component: group.component,
+            layout: group,
+            fields: fields,
+            componentFactory: componentFactory
+        });
+
         return (
-            <FormGroup {...formGroupProps}>
-                Something
+            <FormGroup {...formGroupProps} className="field-group">
+                { groupContent }
             </FormGroup>
         );
     }

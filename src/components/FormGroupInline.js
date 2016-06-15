@@ -20,21 +20,30 @@ const FormGroupInline = React.createClass({
             name,
             children,
             help,
+            className
         } = this.props;
 
-        let formGroupProps = {};
+        let formGroupProps = { className };
         if (error && touched) {
             formGroupProps.validationState = 'error';
         }
 
+        let controlLabel = displayName != undefined
+            ? <Col componentClass={ControlLabel} sm={2} className="no-padding-right-col">{ displayName || name }</Col>
+            : null;
+
+        let helpText = (touched ? error : '') || help;
+        let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
+
+        let content = <Col sm={controlLabel == null ? 12 : 10}>
+            { children }
+            { helpBlock }
+        </Col>;
+
+
         return <BootstrapFormGroup {...formGroupProps}>
-            <Col componentClass={ControlLabel} sm={2} className="no-padding-right-col">
-                { displayName || name }
-            </Col>
-            <Col sm={10}>
-                { children }
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
-            </Col>
+            { controlLabel }
+            { content }
         </BootstrapFormGroup>
     }
 });

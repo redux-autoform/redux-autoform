@@ -14,7 +14,8 @@ componentFactory.setDefaultFieldComponents({
     'date': 'Static',
     'int' : 'Static',
     'float': 'Static',
-    'bool': 'Static'
+    'bool': 'Static',
+    'group': 'FieldGroup'
 });
 componentFactory.setDefaultGroupComponent('Group');
 

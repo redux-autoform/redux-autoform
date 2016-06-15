@@ -106,30 +106,30 @@ export default class ComponentFactory {
 
     /**
      * Gets the appropriate component based on the given metadata
-     * @param props
+     * @param fieldComponentProps
      * @returns {*}
      */
-    buildFieldComponent(props) {
-        if(!props) throw Error('Argument \'props\' should be truthy');
+    buildFieldComponent(fieldComponentProps) {
+        if(!fieldComponentProps) throw Error('Argument \'props\' should be truthy');
         
-        this._validateMetadata(props);
+        this._validateMetadata(fieldComponentProps);
         let componentType;
-        if(props.component) {
+        if(fieldComponentProps.component) {
             // if the metadata explicitly specify a component, let's use it
-            componentType = this.getFieldComponent(props.component);
+            componentType = this.getFieldComponent(fieldComponentProps.component);
         }
         else
         {
             // If the metadata doesn't explicitly specify a component, let's return
             // the default component for type. If there's no default, let's take the first
             // that matches the type
-            componentType = this.getDefaultFieldComponent(props.type);
+            componentType = this.getDefaultFieldComponent(fieldComponentProps.type);
         }
         if(!componentType)
-            throw new Error(`Could not resolve the component for the type. Type: ${props.type}`);
+            throw new Error(`Could not resolve the component for the type. Type: ${fieldComponentProps.type}`);
 
         // if there's a 'reduxFormProps' metadata, it should be merged with the 
-        return React.createElement(componentType, Object.assign({}, props, props.reduxFormProps));
+        return React.createElement(componentType, Object.assign({}, fieldComponentProps, fieldComponentProps.reduxFormProps));
     }
 
     /**
@@ -167,18 +167,18 @@ export default class ComponentFactory {
 
     /**
      * Gets the appropriate component based on the given metadata
-     * @param props
+     * @param groupComponentProps
      * @returns {*}
      */
-    buildGroupComponent(props) {
-        if(!props) {
+    buildGroupComponent(groupComponentProps) {
+        if(!groupComponentProps) {
             throw Error('The props parameter is required');
         }
 
         let componentType;
-        if(props.component) {
+        if(groupComponentProps.component) {
             // if the metadata explicitly specify a component, let's use it
-            componentType = this.getGroupComponent(props.component);
+            componentType = this.getGroupComponent(groupComponentProps.component);
         }
         else
         {
@@ -190,6 +190,6 @@ export default class ComponentFactory {
         if(!componentType)
             throw new Error(`Could not resolve the component for the group`);
 
-        return React.createElement(componentType, props);
+        return React.createElement(componentType, groupComponentProps);
     }
 }

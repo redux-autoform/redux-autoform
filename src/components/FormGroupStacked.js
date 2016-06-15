@@ -20,22 +20,27 @@ const FormGroupStacked = React.createClass({
             name,
             children,
             help,
-            innerSize
+            innerSize,
+            className
         } = this.props;
 
-        let formGroupProps = {};
+        let formGroupProps = { className };
         if (error && touched) {
             formGroupProps.validationState = 'error';
         }
 
         innerSize = innerSize || 12;
+        let controlLabel = displayName != undefined ? <ControlLabel>{ displayName || name }</ControlLabel> : null;
+        let helpText = (touched ? error : '') || help;
+        let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
 
         return <BootstrapFormGroup {...formGroupProps}>
             <Col md={innerSize} className="no-padding-col">
-                <ControlLabel>{ displayName || name }</ControlLabel>
+                { controlLabel }
                 { children }
-                <HelpBlock>{(touched ? error : '') || help}</HelpBlock>
+                { helpBlock }
             </Col>
+            <div className="clearfix" />
         </BootstrapFormGroup>
     }
 });
