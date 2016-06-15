@@ -8,6 +8,7 @@ import Lookup from './components/fieldComponents/Lookup';
 import Toggle from './components/fieldComponents/Toggle';
 import Static from './components/fieldComponents/Static';
 import FieldGroup from './components/fieldComponents/FieldGroup';
+import Checkbox from './components/fieldComponents/Checkbox';
 
 export function registerBaseComponents(componentFactory) {
     if (!componentFactory) throw Error('\'componentFactory\' should be truthy');
@@ -19,6 +20,7 @@ export function registerBaseComponents(componentFactory) {
     componentFactory.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);
     componentFactory.registerFieldComponent('DateTimePicker', ['datetime', 'date', 'time'], DateTimePicker);
     componentFactory.registerFieldComponent('Toggle', ['bool'], Toggle);
+    componentFactory.registerFieldComponent('Checkbox', ['bool'], Checkbox);
     componentFactory.registerFieldComponent('Static', ['string', 'int', 'float', 'datetime', 'date', 'time', 'bool'], Static);
     componentFactory.registerFieldComponent('FieldGroup', ['group'], FieldGroup);
 

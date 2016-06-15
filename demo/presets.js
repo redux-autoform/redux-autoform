@@ -30,6 +30,14 @@ export default [
         schema: require('./presets/componentsToggle.txt')
     },
     {
+        name: 'componentsCheckbox',
+        displayName: 'Components - Checkbox',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsCheckbox.txt')
+    },
+    {
         name: 'componentsDateTimePicker',
         displayName: 'Components - DateTimePicker',
         entityName: 'contact',

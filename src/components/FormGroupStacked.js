@@ -24,10 +24,10 @@ const FormGroupStacked = React.createClass({
             className
         } = this.props;
 
-        let formGroupProps = { className };
-        if (error && touched) {
-            formGroupProps.validationState = 'error';
-        }
+        let formGroupProps = {
+            className,
+            validationState: error && touched ? 'error' : null
+        };
 
         innerSize = innerSize || 12;
         let controlLabel = displayName != undefined ? <ControlLabel>{ displayName || name }</ControlLabel> : null;
