@@ -35,7 +35,17 @@
                         {
                             name: "g1",
                             fields: [
-                                { name: "propertyGrouped1", size: 3, displayName: null },
+                                {
+                                    name: "propertyGrouped1",
+                                    size: 3,
+                                    displayName: null,
+                                    type: "string",
+                                    component: "Select",
+                                    options: [
+                                        { value: 'option1', text: 'Option 1' },
+                                        { value: 'option2', text: 'Option 2' }
+                                    ]
+                                },
                                 { name: "propertyGrouped2", size: 9, displayName: null },
                             ]
                         }
