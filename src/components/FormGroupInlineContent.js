@@ -24,7 +24,7 @@ const FormGroupInlineContent = React.createClass({
         let helpText = (touched ? error : '') || help;
         let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
 
-        return <Col sm={12} className={ hasControlLabel ? "col-offset-240" : null}>
+        return <Col sm={12} className={ hasControlLabel ? "col-offset-140" : null}>
             { children }
             { helpBlock }
         </Col>;

@@ -16,7 +16,7 @@ const FormGroupInlineControlLabel = React.createClass({
         if(displayName == null)
             return null;
 
-        return <div className="col-fixed-240">
+        return <div className="col-fixed-140">
             <ControlLabel>
                 { displayName }
             </ControlLabel>
