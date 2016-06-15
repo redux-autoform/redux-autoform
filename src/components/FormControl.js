@@ -25,7 +25,7 @@ const FormControl = React.createClass({
             onBlur,
             componentClass,
             children,
-            rows // for textarea only
+            rows // for textarea only,
         } = this.props;
 
         let input = <BootstrapFormControl

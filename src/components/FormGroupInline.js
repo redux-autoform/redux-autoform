@@ -23,7 +23,8 @@ const FormGroupInline = React.createClass({
             name,
             children,
             help,
-            className
+            className,
+            innerSize
         } = this.props;
 
         displayName = getDisplayName(displayName, name);
@@ -45,7 +46,8 @@ const FormGroupInline = React.createClass({
             touched,
             children,
             help,
-            hasControlLabel: displayName != null
+            hasControlLabel: displayName != null,
+            innerSize
         };
 
         return <BootstrapFormGroup {...formGroupProps}>
