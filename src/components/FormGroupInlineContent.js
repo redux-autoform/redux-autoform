@@ -18,15 +18,20 @@ const FormGroupInlineContent = React.createClass({
             touched,
             children,
             help,
-            hasControlLabel
+            hasControlLabel,
+            innerSize
         } = this.props;
 
         let helpText = (touched ? error : '') || help;
         let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
 
-        return <Col sm={12} className={ hasControlLabel ? "col-offset-140" : null}>
-            { children }
-            { helpBlock }
+        innerSize = innerSize || 12;
+
+        return <Col md={12} className={ hasControlLabel ? "col-offset-140" : null}>
+            <Col md={innerSize} className="no-padding-col">
+                { children }
+                { helpBlock }
+            </Col>
         </Col>;
     }
 });
