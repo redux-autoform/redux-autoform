@@ -1,5 +1,5 @@
 import React from 'react';
-import {Checkbox as BootstrapCheckbox} from 'react-bootstrap';
+import {Checkbox as BootstrapCheckbox, Col} from 'react-bootstrap';
 import {getDisplayName} from '../../lib/helpers/metadataHelper';
 
 const Checkbox = React.createClass({
@@ -14,6 +14,7 @@ const Checkbox = React.createClass({
             touched,
             onChange,
             onBlur,
+            fieldLayout
         } = this.props;
 
         let checkboxProps = {
@@ -25,12 +26,24 @@ const Checkbox = React.createClass({
 
         displayName = getDisplayName(displayName, name);
 
-        return (
-            <BootstrapCheckbox { ... checkboxProps }>
-                { displayName }
-            </BootstrapCheckbox>
-        );
+        let content = <BootstrapCheckbox { ... checkboxProps }>
+            { displayName }
+        </BootstrapCheckbox>;
 
+        if (fieldLayout == 'inline') {
+            return (
+                <div>
+                    <div className="col-fixed-140">
+                        <label></label>
+                    </div>
+                    <Col md={12} className="col-offset-140 no-padding-col">
+                        { content }
+                    </Col>
+                </div>);
+        }
+        else {
+            return content;
+        }
     }
 });
 

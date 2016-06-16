@@ -14,7 +14,7 @@ componentFactory.setDefaultFieldComponents({
     'date': 'DateTimePicker',
     'int' : 'TextBox',
     'float': 'TextBox',
-    'bool': 'Toggle',
+    'bool': 'Checkbox',
     'group': 'FieldGroup'
 });
 componentFactory.setDefaultGroupComponent('Group');

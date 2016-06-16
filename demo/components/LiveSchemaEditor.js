@@ -67,7 +67,7 @@ class LiveSchemaEditor extends Component {
             formOptions,
             formOptionsActions
         } = this.props;
-
+        
         preset = preset || 'default';
         let presetObject = _.find(presets, p => p.name == preset);
         if (!presetObject) throw Error(`Could not find preset. Preset name: ${preset}`);
