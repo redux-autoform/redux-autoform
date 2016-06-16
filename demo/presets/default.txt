@@ -6,7 +6,6 @@
                 {
                     "name": "name",
                     "type": "string",
-                    "help": "help",
                     "required": true,
                 },
                 {

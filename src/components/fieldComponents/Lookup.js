@@ -24,7 +24,7 @@ const Lookup = React.createClass({
             value,
             name,
             onChange,
-            onBlur: (value) => onBlur(value)
+            onBlur: (event) => onBlur()
         };
 
         let formGroupProps = {
