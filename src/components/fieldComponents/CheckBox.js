@@ -21,7 +21,8 @@ const Checkbox = React.createClass({
             checked: value,
             onChange,
             onBlur,
-            validationState: error && touched ? 'error' : null
+            validationState: error && touched ? 'error' : null,
+            className: 'cb-fix'
         };
 
         displayName = getDisplayName(displayName, name);

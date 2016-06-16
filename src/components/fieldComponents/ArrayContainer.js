@@ -1,6 +1,7 @@
 import React from 'react';
 import GlyphButton from '../GlyphButton.js';
 import {Alert, Glyphicon, MenuItem, Dropdown} from 'react-bootstrap';
+import FormGroup from '../FormGroup';
 
 const ArrayContainerItem = React.createClass({
 
@@ -101,16 +102,19 @@ const ArrayContainer = React.createClass({
 
     render: function () {
 
-        let { itemWidth, displayName, fields, componentFactory, layout, addText } = this.props;
-
-        var header = displayName ?
-            <header className="metaform-group-header no-lateral-margin">
-                <span>{displayName}</span>
-            </header>
-            : null;
+        let {
+            itemWidth,
+            displayName,
+            fields,
+            componentFactory,
+            layout,
+            addText,
+            fieldLayout,
+            innerSize
+        } = this.props;
 
         let components = fields.map((fields, index) => {
-            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index} itemWidth={itemWidth} >
+            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index} itemWidth={itemWidth}>
                 {
                     componentFactory.buildGroupComponent({
                         component: layout.component,
@@ -125,15 +129,22 @@ const ArrayContainer = React.createClass({
         let addBar = components.length ?
             <div className="add-bar">
                     <span>
-                        <GlyphButton glyph="plus" text={addText ? addText : "Add" } bsSize="small" onClick={this.handleAdd}/>
+                        <GlyphButton glyph="plus" text={addText ? addText : "Add" } bsSize="small"
+                                     onClick={this.handleAdd}/>
                     </span>
             </div>
             :
             null;
 
+        let formGroupProps = {
+            displayName,
+            name,
+            fieldLayout,
+            innerSize
+        };
+
         return (
-            <div className="array-container">
-                {header}
+            <FormGroup {...formGroupProps}>
                 <div className="array-container-content">
                     {components.length
                         ? components
@@ -142,7 +153,7 @@ const ArrayContainer = React.createClass({
                     </Alert>}
                 </div>
                 {addBar}
-            </div>
+            </FormGroup>
         );
     }
 });
