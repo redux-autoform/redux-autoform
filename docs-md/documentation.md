@@ -1,28 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [redux-autoform](#redux-autoform)
-  - [Metadata](#metadata)
-    - [Schema](#schema)
-    - [Entity](#entity)
-    - [Layout](#layout)
-    - [Group](#group)
-    - [Field](#field)
-      - [Common](#common)
-      - [Input](#input)
-      - [CheckBox](#checkbox)
-      - [Select and Lookup](#select-and-lookup)
-  - [Lib](#lib)
-    - [Component factories](#component-factories)
-      - [ComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/ComponentFactory.js))](#componentfactory-sourcehttpsgithubcomgearz-labredux-autoformblobmastersrccomponentfactoryjs)
-      - [DefaultComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultComponentFactory.js))](#defaultcomponentfactory-sourcehttpsgithubcomgearz-labredux-autoformblobmastersrcdefaultcomponentfactoryjs)
-  - [Components](#components)
-    - [AutoForm](#autoform)
-    - [Third party](#third-party)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 #redux-autoform#
 
 > Be patient. This documentation is still under construction. Pull-requests are welcome.
