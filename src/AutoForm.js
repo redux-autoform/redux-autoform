@@ -20,6 +20,7 @@ class AutoForm extends Component {
             form,
             buttonBar,
             fieldLayout,
+            initialValues
         } = this.props;
 
         try {
@@ -48,6 +49,7 @@ class AutoForm extends Component {
                 onSubmitFail={onSubmitFail}
                 buttonBar={buttonBar}
                 fieldLayout={fieldLayout}
+                initialValues={initialValues}
             />
         }
         catch(ex) {

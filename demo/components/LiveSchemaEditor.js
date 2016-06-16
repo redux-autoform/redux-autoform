@@ -17,7 +17,7 @@ import FormOptions from './FormOptions';
 
 class LiveSchemaEditor extends Component {
 
-    getAutoFormProps(metaForm, formOptions, formName) {
+    getAutoFormProps(metaForm, formOptions, formName, initialValues) {
         if (!formName) throw Error('Form name cannot be empty');
         if (!metaForm)
             return undefined;
@@ -31,6 +31,7 @@ class LiveSchemaEditor extends Component {
             layoutName: metaForm.layoutName.value,
             componentFactory: formOptions.componentFactory == 'edit' ? editComponentFactory : detailsComponentFactory,
             errorRenderer: this.errorRenderer,
+            initialValues: initialValues,
             onSubmit: (...args) => {
                 console.log(args);
             }
@@ -74,7 +75,7 @@ class LiveSchemaEditor extends Component {
         let autoFormProps;
         let autoForm;
         try {
-            autoFormProps = this.getAutoFormProps(metaForm, formOptions, preset);
+            autoFormProps = this.getAutoFormProps(metaForm, formOptions, preset, presetObject.initialValues);
             autoForm = autoFormProps ? <AutoForm {...autoFormProps} /> : null;
         } catch (ex) {
             autoForm = this.errorRenderer(ex);
