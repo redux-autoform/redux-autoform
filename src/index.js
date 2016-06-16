@@ -1,10 +1,4 @@
-import AutoForm from './AutoForm.js';
-import ComponentFactory from './ComponentFactory.js';
-import DefaultComponentFactory from './DefaultEditComponentFactory';
-import './less/styles.less';
-
-export default {
-    AutoForm,
-    ComponentFactory,
-    DefaultComponentFactory
-}
+export AutoForm from './AutoForm.js';
+export ComponentFactory from './ComponentFactory.js';
+export DefaultEditComponentFactory from './DefaultEditComponentFactory';
+export DefaultDetailsComponentFactory from './DefaultDetailsComponentFactory';
