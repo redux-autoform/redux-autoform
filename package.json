@@ -1,7 +1,7 @@
 {
   "name": "redux-autoform",
   "version": "0.0.2",
-  "description": "A library for dynamically creating Redux forms out of metadata",
+  "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
     "build-demo": "babel-node ./tools/build-demo.js",

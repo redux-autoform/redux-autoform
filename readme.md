@@ -1,7 +1,7 @@
 redux-autoform
 ===
 
-`Redux-autoform` is a [React](https://facebook.github.io/react/) library for dynamically generating forms based on metadata.
+`Redux-autoform` is a wrapper around [redux-form](https://github.com/erikras/redux-form) for dynamically generating forms based on metadata.
  
 This project is similar to [Meteor Autoform](https://github.com/aldeed/meteor-autoform).
 
