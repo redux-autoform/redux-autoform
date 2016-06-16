@@ -7,8 +7,7 @@ const ArrayContainerItem = React.createClass({
 
     propTypes: {
         index: React.PropTypes.number.isRequired,
-        onAction: React.PropTypes.func.isRequired,
-        itemWidth: React.PropTypes.number.isRequired
+        onAction: React.PropTypes.func.isRequired
     },
 
     handleAction: function (eventKey) {
@@ -17,11 +16,11 @@ const ArrayContainerItem = React.createClass({
 
     render: function () {
 
-        let {index, itemWidth} = this.props;
+        let {index} = this.props;
 
         return <div className="array-container-item">
             <div className="row">
-                <div className={`col-xs-${itemWidth}`}>
+                <div className={`col-xs-11`}>
                     <div className="array-container-item-content">
                         {this.props.children}
                     </div>
@@ -58,14 +57,7 @@ const ArrayContainer = React.createClass({
 
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        addText: React.PropTypes.string,
-        itemWidth: React.PropTypes.number
-    },
-
-    getDefaultProps: function () {
-        return {
-            itemWidth: 11
-        }
+        addText: React.PropTypes.string
     },
 
     handleAdd: function () {
@@ -103,18 +95,18 @@ const ArrayContainer = React.createClass({
     render: function () {
 
         let {
-            itemWidth,
             displayName,
             fields,
             componentFactory,
             layout,
             addText,
             fieldLayout,
-            innerSize
+            innerSize,
+            name
         } = this.props;
 
         let components = fields.map((fields, index) => {
-            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index} itemWidth={itemWidth}>
+            return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index}>
                 {
                     componentFactory.buildGroupComponent({
                         component: layout.component,
