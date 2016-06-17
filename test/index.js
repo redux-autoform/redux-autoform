@@ -1,8 +1,8 @@
 import 'es5-shim';
 import moment from 'moment';
-import momentLocalizer from '../src/lib/localization/momentDateLocalizer';
+import momentLocalizer from '../src/lib/localization/momentLocalizer';
 import numbro from 'numbro';
-import numbroLocalizer from '../src/lib/localization/numbroNumberLocalizer';
+import numbroLocalizer from '../src/lib/localization/numbroLocalizer';
 
 beforeEach(function() {
     sinon.stub(console, 'warn');

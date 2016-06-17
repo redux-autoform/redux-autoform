@@ -10,8 +10,8 @@ import {Alert} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-import momentLocalizer from '../../src/lib/localization/momentDateLocalizer';
-import numbroLocalizer from '../../src/lib/localization/numbroNumberLocalizer';
+import momentLocalizer from '../../src/lib/localization/momentLocalizer';
+import numbroLocalizer from '../../src/lib/localization/numbroLocalizer';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
 
