@@ -2,13 +2,26 @@ redux-autoform
 ===
 
 `Redux-autoform` is a wrapper around [redux-form](https://github.com/erikras/redux-form) for dynamically generating forms based on metadata.
- 
-This project is similar to [Meteor Autoform](https://github.com/aldeed/meteor-autoform).
 
 **Beta version disclaimer**
 
 `redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
   any issue, please [report it](https://github.com/gearz-lab/redux-autoform/issues). I'll do my best to fix it.
+  
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Demo](#demo)
+- [Docs](#docs)
+- [Installing](#installing)
+- [Using](#using)
+- [Building and running the demo locally](#building-and-running-the-demo-locally)
+- [Change log](#change-log)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 Demo
 ---
