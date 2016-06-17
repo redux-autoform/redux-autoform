@@ -103,7 +103,7 @@ Building and running the demo locally
     
 In order to run the demo, run:
 
-    npm run start-dev
+    npm run start
     
 Now the demo should be available here: [http://localhost:4000/demo.html](http://localhost:4000/redux-autoform/demo.html).
     
