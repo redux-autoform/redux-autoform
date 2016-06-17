@@ -22,8 +22,7 @@ class LiveSchemaEditorForm extends Component {
         return <div>
             <div className='row'>
                 <div className="col-md-12">
-                            <span className="pull-right">Check the
-                                <a target="blank"
+                            <span className="pull-right">Check the <a target="blank"
                                    href="https://github.com/gearz-lab/react-metaform/blob/master/docs-md/Documentation.md#metadata">
                                     metadata
                                 documentation</a>

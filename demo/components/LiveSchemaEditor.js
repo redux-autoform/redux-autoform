@@ -68,7 +68,7 @@ class LiveSchemaEditor extends Component {
             formOptions,
             formOptionsActions
         } = this.props;
-        
+
         preset = preset || 'default';
         let presetObject = _.find(presets, p => p.name == preset);
         if (!presetObject) throw Error(`Could not find preset. Preset name: ${preset}`);
@@ -80,6 +80,16 @@ class LiveSchemaEditor extends Component {
         } catch (ex) {
             autoForm = this.errorRenderer(ex);
         }
+
+        let underDevelopmentAlert = formOptions.componentFactory == 'details' ?
+            <Alert bsStyle="danger">
+                <p><b>Experimental feature</b></p>
+                <p>Details forms are still under development. For now, it's just a lot of Static components instead of
+                    editing components. Also,
+                    it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
+                for instance, are still not supported.</p>
+            </Alert>
+            : null;
 
         return <div className="live-schema-editor">
             <div className='row'>
@@ -100,6 +110,7 @@ class LiveSchemaEditor extends Component {
                     <div className="row">
                         <div className="col-md-12">
                             <FormOptions {...formOptions} {...formOptionsActions} />
+                            { underDevelopmentAlert }
                         </div>
                     </div>
                     <div className="row">
