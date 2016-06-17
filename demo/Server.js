@@ -34,5 +34,5 @@ if (development) {
 
 app
     .listen(4000, function () {
-        console.log(colors.green(`React-metaform started at http://localhost:4000/react-metaform/demo.html. NODE_ENV: ${process.env.NODE_ENV}`));
+        console.log(colors.green(`React-metaform started at http://localhost:4000/redux-autoform/demo.html. NODE_ENV: ${process.env.NODE_ENV}`));
     });

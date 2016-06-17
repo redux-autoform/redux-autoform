@@ -6,6 +6,6 @@ import {Route, IndexRoute} from 'react-router';
 
 export default (
     <Route path='/' component={App}>
-        <IndexRoute component={Demo}/>
+        <Route path="/redux-autoform/demo.html" component={Demo}/>
     </Route>
 );

@@ -9,7 +9,7 @@ import presets from '../presets';
 class LiveSchemaEditorForm extends Component {
 
     onPresetChange(event) {
-        browserHistory.push(`?preset=${event.target.value}`);
+        browserHistory.push(`/redux-autoform/demo.html?preset=${event.target.value}`);
     }
 
     render() {
