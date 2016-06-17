@@ -16,6 +16,7 @@ redux-autoform
 - [Docs](#docs)
 - [Installing](#installing)
 - [Using](#using)
+- [Localization](#localization)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
 - [Change log](#change-log)
 - [Contributing](#contributing)

@@ -20,6 +20,7 @@
   - [ComponentFactory (source)](#componentfactory-source)
   - [DefaultEditComponentFactory (source)](#defaulteditcomponentfactory-source)
   - [DefaultDetailsComponentFactory (source)](#defaultdetailscomponentfactory-source)
+  - [Localization](#localization)
 - [Components](#components)
   - [AutoForm](#autoform)
 - [Third party](#third-party)
