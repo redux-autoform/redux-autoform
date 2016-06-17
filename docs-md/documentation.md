@@ -248,6 +248,7 @@ Third party
 
 The `DefaultComponentFactory` relies on third-party components. Here's the list:
 
+ - [redux-form](https://github.com/erikras/redux-form/).
  - [react-bootstrap](http://react-bootstrap.github.io/).
  - [react-select](https://github.com/JedWatson/react-select).
  - [react-widgets](https://github.com/jquense/react-widgets).
