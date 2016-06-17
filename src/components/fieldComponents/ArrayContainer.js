@@ -12,7 +12,7 @@ const ArrayContainer = React.createClass({
     },
 
     handleAdd: function () {
-        this.props.reduxFormProps.addField();
+        this.props.reduxFormProps.addField({});
     },
 
     handleItemAction: function (index, eventKey) {
@@ -63,6 +63,8 @@ const ArrayContainer = React.createClass({
             innerSize,
             name
         } = this.props;
+
+        console.log(fields);
 
         let components = fields.map((fields, index) => {
             return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index}>
