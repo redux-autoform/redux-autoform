@@ -64,8 +64,6 @@ const ArrayContainer = React.createClass({
             name
         } = this.props;
 
-        console.log(fields);
-
         let components = fields.map((fields, index) => {
             return <ArrayContainerItem index={index} onAction={this.handleItemAction} key={index}>
                 {

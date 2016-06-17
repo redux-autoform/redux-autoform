@@ -23,7 +23,7 @@
                     "entityType": "phone",
                     "layoutName": "edit",
                     "addText": "Add phone",
-                    "itemWidth": 8
+                    "innerSize": 8
                 }
             ],
             "layouts": [

@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Sat Jun 20 2015 11:42:43 GMT-0300 (E. South America Standard Time)
-require('./register-babel');
+require('babel-register');
 
 var webpackConfig = require('./webpack/webpack.config.test.js');
 webpackConfig.devtool = 'inline-source-map';

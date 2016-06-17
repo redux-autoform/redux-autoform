@@ -3,6 +3,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
     entry: [
+        'babel-polyfill',
         './src/index.js'
     ],
 
