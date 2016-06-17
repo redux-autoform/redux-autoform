@@ -66,6 +66,11 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
 
     import { DefaultEditComponentFactory } from 'redux-autoform';
     
+Localization
+---
+
+The `DefaultEditComponentFactory` relies on components that rely on localization. 
+
 Building and running the demo locally
 ---
 
