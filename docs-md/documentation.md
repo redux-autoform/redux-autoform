@@ -1,10 +1,37 @@
-#redux-autoform#
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Metadata](#metadata)
+  - [Schema](#schema)
+  - [Entity](#entity)
+  - [Layout](#layout)
+  - [Group](#group)
+  - [Field](#field)
+  - [Common](#common)
+  - [TextBox](#textbox)
+  - [TextArea](#textarea)
+  - [CheckBox](#checkbox)
+  - [Select](#select)
+  - [Lookup](#lookup)
+  - [DateTimePicker](#datetimepicker)
+- [Lib](#lib)
+  - [Component factories](#component-factories)
+  - [ComponentFactory (source)](#componentfactory-source)
+  - [DefaultEditComponentFactory (source)](#defaulteditcomponentfactory-source)
+  - [DefaultDetailsComponentFactory (source)](#defaultdetailscomponentfactory-source)
+- [Components](#components)
+  - [AutoForm](#autoform)
+- [Third party](#third-party)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 > Be patient. This documentation is still under construction. Pull-requests are welcome.
 
 For an introduction to the library, as well as instructions on how to install, build and run it, please refer to the [README.md](https://github.com/gearz-lab/redux-autoform/blob/master/readme.md).
 
-##Metadata##
+Metadata
+===
 
 Metadata is the single most important thing to understand in order to work with `redux-autoform`. Basically, you pass a
 `schema` to the `AutoForm` component and it renders itself. You can find examples of valid schema [here](https://github.com/gearz-lab/redux-autoform/tree/master/demo/presets).
@@ -19,7 +46,8 @@ These are the most important things you should know about Metadata:
  - Each `Field` metadata can be either a literal or a function. When it's a function, it's evaluated automatically every time the
  form changes.
 
-###Schema###
+Schema
+---
 
 The root of all metadata. It may represent your entire application schema or just a subset of it. If you choose to pass only
 a subset to the `AutoForm`, make sure it contains all the referenced `entities`.
@@ -28,7 +56,8 @@ Metadata | Description
 --- | ---
 entities | An array of `entity`.
 
-###Entity###
+Entity
+---
 
 Represents an `entity`. 
 
@@ -38,7 +67,8 @@ name | The `entity` name
 fields | An array or `field`.
 layouts | An array or `layout`.
 
-###Layout###
+Layout
+---
 
 Represents a visualization of an `entity`. Examples of layouts would be `edit` and `details`.  Every `entity` field that
  should be displayed in a `layout`  should be declared both in the `entity.fields` and in the `layout.fields` or `layout.someGroup.fields`.
@@ -52,7 +82,8 @@ fields | An array of `field`. These `fields` are merged with the fields from the
 merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-###Group###
+Group
+---
 
 Represents a group in the `layout`. Groups exist just so the `layouts` are flexible and customizable.
 
@@ -64,7 +95,8 @@ fields | An array of `field`. These `fields` are merged with the fields from the
 merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-###Field###
+Field
+---
 
 Represents a `field`. `Fields` can exist in `entities`, `layouts` or `groups`. `Field` metadata are passed to the component as `props`.
  
@@ -91,7 +123,8 @@ component | Which component to use. If no component is set, the default one will
 
 Other `field` metadata will depend on the component.
  
-####Common####
+Common
+---
 
 Metadata that is common to most of the components.
 
@@ -102,7 +135,8 @@ component | Which component to use.
 readOnly | Whether or not the component should be in read-only state.
 help | Additional help so the end-user knows what the field is about.
 
-####TextBox####
+TextBox
+---
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
 
@@ -112,7 +146,8 @@ placeholder | The text that should be displayed as a hint when there's no value.
 addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 
-####TextArea####
+TextArea
+---
 
 Specific metadata for the `TextBox` component. Common metadata is not listed.
 
@@ -123,11 +158,13 @@ addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 rows | The number of rows.
 
-####CheckBox####
+CheckBox
+---
 
 Specific metadata for the `CheckBox` component. Common metadata is not listed.
 
-####Select####
+Select
+---
 
 Specific metadata for the `Select` component. Common metadata is not listed.
 
@@ -135,7 +172,8 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-####Lookup####
+Lookup
+---
 
 Specific metadata for the `Lookup` component. Common metadata is not listed.
 
@@ -143,7 +181,8 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-####DateTimePicker####
+DateTimePicker
+---
 
 Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
 
@@ -151,20 +190,24 @@ Metadata | Description
 --- | ---
 format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/string-format/). Defaults to your locale configuration. Make sure you have it properly configured.  
 
-##Lib##
+Lib
+===
 
-###Component factories###
+Component factories
+---
 
 Component factories are how `redux-autoform` knows which component to render for a particular field or group metadata.
 
-####ComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/ComponentFactory.js))####
+ComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/ComponentFactory.js))
+---
 
 This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
 prop of the `AutoForm`.
 
     import { ComponentFactory } from 'redux-autoform';
 
-####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
+DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+----
 
 This is a pre-populated factory for editing, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
 In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
@@ -173,7 +216,8 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
     
 The `DefaultEditComponentFactory` relies on [these third-party components](#third-party).
 
-####DefaultDetailsComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
+DefaultDetailsComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+----
 
 This is a pre-populated factory for details. In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
 
@@ -181,9 +225,11 @@ This is a pre-populated factory for details. In order to use it, `import` it and
     
 > This feature is still under development.
     
-##Components##
+Components
+===
 
-###AutoForm###
+AutoForm
+---
 
 A form component that renders itself based on metadata
 
@@ -197,7 +243,8 @@ bottomBar | A component for rendering the bottom bar. This component should incl
 errorRenderer | Function that should render an error component in case something goes wrong. The function should receive an `exception` and return a component.
 onSubmit | Function called when the form is successfully submitted. 
 
-###Third party###
+Third party
+===
 
 The `DefaultComponentFactory` relies on third-party components. Here's the list:
 
