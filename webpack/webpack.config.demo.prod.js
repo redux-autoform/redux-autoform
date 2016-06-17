@@ -8,7 +8,7 @@ export default {
 
     output: {
         filename: 'bundle.js',
-        path: './demo-built/assets',
+        path: './demo-built/redux-autoform/assets',
         publicPath: '/redux-autoform/assets/'
     },
 

@@ -3,8 +3,8 @@ import React from 'react';
 import path from 'path';
 import rimraf from 'rimraf-promise';
 import fsep from 'fs-extra-promise';
-import { exec } from 'child-process-promise';
-import { renderToString } from 'react-dom/server';
+import {exec} from 'child-process-promise';
+import {renderToString} from 'react-dom/server';
 import 'colors';
 
 require.extensions['.html'] = function (module, filename) {
@@ -12,19 +12,21 @@ require.extensions['.html'] = function (module, filename) {
 };
 
 const repoRoot = path.resolve(__dirname, '../');
-const demoBuilt = path.join(repoRoot, 'demo-built');
+const demoBuiltRoot = path.join(repoRoot, 'demo-built');
+const demoBuilt = path.join(demoBuiltRoot, 'redux-autoform');
 
 const licenseSrc = path.join(repoRoot, 'LICENSE');
 const licenseDest = path.join(demoBuilt, 'LICENSE');
 
 console.log('building demo'.green);
 
-if(process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
     console.log(`build-docs can only run in production. Current NODE_ENV: ${process.env.NODE_ENV}`.red);
     process.exit();
 }
 
-rimraf(demoBuilt)
+rimraf(demoBuiltRoot)
+    .then(() => fsep.mkdir(demoBuiltRoot))
     .then(() => fsep.mkdir(demoBuilt))
     .then(() => {
         console.log('writing static page files...');
