@@ -7,12 +7,14 @@
                     name: "shouldDoSomething",
                     displayName: "Default",
                     type: "bool",
+                    component: "Toggle"
                 },
                 {
                     name: "help",
                     displayName: "Help",
                     type: "bool",
-                    help: "This is some help"
+                    help: "This is some help",
+                    component: "Toggle"
                 }
             ]
         }

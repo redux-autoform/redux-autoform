@@ -27,7 +27,8 @@ redux-autoform
 Demo
 ---
 
-You can check the [online demo here](http://gearz-lab.github.io/redux-autoform/demo.html).
+You can check the [online demo here](http://gearz-lab.github.io/redux-autoform/demo.html). Don't forget to check out all the **presets**.
+
 
 Docs
 ---

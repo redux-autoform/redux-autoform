@@ -79,9 +79,10 @@ Metadata | Description
 --- | ---
 name | The `layout` name
 orientation | How the fields to should be laid out. Valid values are "vertical" and "horizontal". It defaults to "vertical". When a layout/group is "vertical", the default size for the component is 12. When it's "horizontal", the default size is 12/[number of components]. 
-fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are
-merged based on the `name` metadata.
+fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
+
+[Layout demo](http://localhost:4000/redux-autoform/demo.html?preset=layouts)
 
 Group
 ---
@@ -92,9 +93,10 @@ Metadata | Description
 --- | ---
 name | The name of the group. Only useful when you want to render a group inside a layout field.
 orientation | How the fields to should be laid out. Valid values are "vertical" and "horizontal". It defaults to "vertical". When a layout/group is "vertical", the default size for the component is 12. When it's "horizontal", the default size is 12/[number of components].
-fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are
-merged based on the `name` metadata.
+fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
+
+[Group demo](http://localhost:4000/redux-autoform/demo.html?preset=layouts)
 
 Field
 ---
@@ -147,6 +149,8 @@ placeholder | The text that should be displayed as a hint when there's no value.
 addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 
+[TextBox demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsTextBox)
+
 TextArea
 ---
 
@@ -159,10 +163,17 @@ addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 rows | The number of rows.
 
+[TextArea demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsTextArea)
+
 CheckBox
 ---
 
-Specific metadata for the `CheckBox` component. Common metadata is not listed.
+[Checkbox demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsCheckbox).
+
+Toogle
+---
+
+[Toggle demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsToggle).
 
 Select
 ---
@@ -173,6 +184,8 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
+[Select demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsSelect).
+
 Lookup
 ---
 
@@ -182,6 +195,8 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
+[Lookup demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsLookup).
+
 DateTimePicker
 ---
 
@@ -190,6 +205,9 @@ Specific metadata for the `DateTimePicker` component. Common metadata is not lis
 Metadata | Description
 --- | ---
 format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/string-format/). Defaults to your locale configuration. Make sure you have it properly configured.  
+
+
+[DateTimePicker demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsDateTimePicker).
 
 Lib
 ===
