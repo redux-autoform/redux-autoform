@@ -48,7 +48,7 @@ The main React component.
 
     import { AutoForm } from 'redux-autoform';
     
-The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/Documentation.md).
+The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
     
 Additionally, you need a `ComponentFactory`. The `ComponentFactory` is responsible for determining which React
 component to use for a given field metadata. `redux-autoform` comes with 3 `ComponentFactory`:
