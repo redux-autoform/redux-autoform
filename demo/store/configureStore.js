@@ -1,5 +1,2 @@
-if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./configureStore.production');
-} else {
-  module.exports = require('./configureStore.development');
-}
+// configure store is ALWAYS in development mode because the DevTools should work on the demo
+export default from './configureStore.development';

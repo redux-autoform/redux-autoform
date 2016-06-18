@@ -6,7 +6,7 @@ import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import editComponentFactory from '../../src/defaultEditComponentFactory';
 import detailsComponentFactory from '../../src/defaultDetailsComponentFactory';
-import {Alert} from 'react-bootstrap';
+import {Alert, Badge} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -94,7 +94,7 @@ class LiveSchemaEditor extends Component {
         return <div className="live-schema-editor">
             <div className='row'>
                 <div className="col-md-12">
-                    <h2>Redux-autoform demo {psjon.version}
+                    <h2>Redux-autoform demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
                         <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
                            style={{color: 'black'}}>
                             <i className="fa fa-github" aria-hidden="true"/>
