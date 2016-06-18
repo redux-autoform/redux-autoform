@@ -82,7 +82,7 @@ orientation | How the fields to should be laid out. Valid values are "vertical" 
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-[Layout demo](http://localhost:4000/redux-autoform/demo.html?preset=layouts)
+[Layout demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=layouts)
 
 Group
 ---
@@ -96,7 +96,7 @@ orientation | How the fields to should be laid out. Valid values are "vertical" 
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-[Group demo](http://localhost:4000/redux-autoform/demo.html?preset=layouts)
+[Group demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=layouts)
 
 Field
 ---
@@ -149,7 +149,7 @@ placeholder | The text that should be displayed as a hint when there's no value.
 addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 
-[TextBox demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsTextBox)
+[TextBox demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsTextBox)
 
 TextArea
 ---
@@ -163,17 +163,17 @@ addonBefore | The text that should be added-on before the component.
 addonAfter | The text that should be added-on after the component.
 rows | The number of rows.
 
-[TextArea demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsTextArea)
+[TextArea demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsTextArea)
 
 CheckBox
 ---
 
-[Checkbox demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsCheckbox).
+[Checkbox demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsCheckbox).
 
 Toogle
 ---
 
-[Toggle demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsToggle).
+[Toggle demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsToggle).
 
 Select
 ---
@@ -184,7 +184,7 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-[Select demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsSelect).
+[Select demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsSelect).
 
 Lookup
 ---
@@ -195,7 +195,7 @@ Metadata | Description
 --- | ---
 options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
 
-[Lookup demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsLookup).
+[Lookup demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsLookup).
 
 DateTimePicker
 ---
@@ -207,7 +207,7 @@ Metadata | Description
 format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/string-format/). Defaults to your locale configuration. Make sure you have it properly configured.  
 
 
-[DateTimePicker demo](http://localhost:4000/redux-autoform/demo.html?preset=componentsDateTimePicker).
+[DateTimePicker demo](http://github.com/gearz-lab/redux-autoform/demo.html?preset=componentsDateTimePicker).
 
 Lib
 ===
