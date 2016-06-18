@@ -28,7 +28,7 @@ class LiveSchemaEditorForm extends Component {
                                 documentation</a>
                             </span>
                     <FormGroup controlId="formControlsSelect">
-                        <ControlLabel>Select</ControlLabel>
+                        <ControlLabel>Select a <span style={{color: 'red'}}>preset</span> <i className="fa fa-level-down" aria-hidden="true"></i></ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={this.onPresetChange}
                                      value={selectedPreset}>
                             {

@@ -1,4 +1,5 @@
 import React from 'react';
+import DevTools from './DevTools';
 
 var Layout = React.createClass({
 
@@ -8,14 +9,7 @@ var Layout = React.createClass({
                 <div className="container-fluid">
                     {this.props.children}
                 </div>
-                {
-                    (() => {
-                        if (process.env.NODE_ENV !== 'production') {
-                            const DevTools = require('./DevTools');
-                            return <DevTools />;
-                        }
-                    })()
-                }
+                <DevTools />;
             </div>
         );
     }
