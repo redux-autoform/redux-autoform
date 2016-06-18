@@ -1,55 +1,66 @@
 {
-    "entities": [
+    entities: [
         {
-            "name": "contact",
-            "fields": [
+            name: "contact",
+            fields: [
                 {
-                    "name": "name",
-                    "type": "string",
-                    "required": true,
+                    name: "name",
+                    type: "string",
+                    required: true,
                 },
                 {
-                    "name": "email",
-                    "type": "string"
+                    name: "gender",
+                    type: "string",
+                    required: true,
                 },
                 {
-                    "name": "enableEmailNotification",
-                    "type": "bool"
+                    name: "emails",
+                    type: "array",
+                    arrayType: "entity",
+                    entityType: "email",
+                    layoutName: "edit",
+                    addText: "Add e-mail address",
+                    innerSize: 8
                 },
                 {
-                    "name": "phones",
-                    "type": "array",
-                    "arrayType": "entity",
-                    "entityType": "phone",
-                    "layoutName": "edit",
-                    "addText": "Add phone",
-                    "innerSize": 8
+                    name: "phones",
+                    type: "array",
+                    arrayType: "entity",
+                    entityType: "phone",
+                    layoutName: "edit",
+                    addText: "Add phone",
+                    innerSize: 8
                 }
             ],
-            "layouts": [
+            layouts: [
                 {
-                    "name": "edit",
-                    "groups": [
+                    name: "edit",
+                    groups: [
                         {
-                            "orientation": "vertical",
-                            "fields": [
+                            fields: [
                                 {
-                                    "displayName": "Name",
-                                    "name": "name"
+                                    displayName: "Full name",
+                                    name: "name"
                                 },
                                 {
-                                    "displayName": "Enable e-mail notification",
-                                    "name": "enableEmailNotification"
+                                    displayName: "Gender",
+                                    name: "gender",
+                                    component: "Select",
+                                    innerSize: 6,
+                                    options: [
+                                        { value: '', text: '' },
+                                        { value: 'male', text: 'Male' },
+                                        { value: 'female', text: 'Female' },
+                                    ]
                                 },
                                 {
-                                    "displayName": "E-mail",
-                                    "name": "email",
-                                    "visible": function(m) { return m.enableEmailNotification == true }
+                                    displayName: "E-mails",
+                                    name: "emails"
                                 },
 
                                 {
-                                    "displayName": "Phones",
-                                    "name": "phones"
+                                    displayName: "Phones",
+                                    name: "phones"
                                 }
                             ]
                         }
@@ -58,32 +69,75 @@
             ]
         },
         {
-            "name": "phone",
-            "fields": [
+            name: "email",
+            fields: [
                 {
-                    "name": "number",
-                    "type": "string"
+                    name: "emailType",
+                    type: "string"
                 },
                 {
-                    "name": "longDistanceCode",
-                    "type": "string"
+                    name: "address",
+                    type: "string"
                 }
             ],
-            "layouts": [
+            layouts: [
                 {
-                    "name": "edit",
-                    "orientation": "horizontal",
-                    "fields": [
+                    name: "edit",
+                    orientation: "horizontal",
+                    fields: [
                         {
-                            displayName: "Long distance code",
-                            name: "longDistanceCode",
-                            size: 4
+                            displayName: null,
+                            name: "emailType",
+                            size: 4,
+                            component: 'Select',
+                            options: [
+                                { value: 'work', text: 'Work' },
+                                { value: 'home', text: 'Home' },
+                                { value: 'personal', text: 'Personal' },
+                                { value: 'other', text: 'Other' }
+                            ]
                         },
                         {
-                            displayName: "Number",
+                            displayName: null,
+                            name: "address",
+                            required: true,
+                            placeholder: 'E-mail adress',
+                            size: 8
+                        }
+
+                    ]
+                }
+            ]
+        },
+        {
+            name: "phone",
+            fields: [
+                {
+                    name: "number",
+                    type: "string"
+                },
+                {
+                    name: "longDistanceCode",
+                    type: "string"
+                }
+            ],
+            layouts: [
+                {
+                    name: "edit",
+                    orientation: "horizontal",
+                    fields: [
+                        {
+                            displayName: null,
+                            name: "longDistanceCode",
+                            size: 4,
+                            placeholder: 'Region code'
+                        },
+                        {
+                            displayName: null,
                             name: "number",
                             required: true,
-                            size: 8
+                            size: 8,
+                            placeholder: 'Phone number'
                         }
 
                     ]
