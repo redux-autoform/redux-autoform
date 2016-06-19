@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import CodeEditor from './CodeEditor';
-import {FormGroup, FormControl, ControlLabel,  Button, Checkbox, Glyphicon} from 'react-bootstrap';
+import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
 import {reduxForm} from 'redux-form';
 import {browserHistory} from 'react-router';
 import presets from '../presets';
@@ -16,20 +16,23 @@ class LiveSchemaEditorForm extends Component {
 
         const {
             fields: {entityName, layoutName, schema},
-            selectedPreset
+            selectedPreset,
+            formOptionActions
         } = this.props;
 
         return <div>
             <div className='row'>
                 <div className="col-md-12">
                             <span className="pull-right">Check the <a target="blank"
-                                   href="https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md">
+                                                                      href="https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md">
                                     metadata
                                 documentation</a>
                             </span>
                     <FormGroup controlId="formControlsSelect">
-                        <ControlLabel>Select a <span style={{color: 'red'}}>preset</span> <i className="fa fa-level-down" aria-hidden="true"></i></ControlLabel>
-                        <FormControl componentClass="select" placeholder="select" onChange={this.onPresetChange}
+                        <ControlLabel>Select a <span style={{color: 'red'}}>preset</span> <i
+                            className="fa fa-level-down" aria-hidden="true"></i></ControlLabel>
+                        <FormControl componentClass="select" placeholder="select"
+                                     onChange={this.onPresetChange}
                                      value={selectedPreset}>
                             {
                                 presets.map(p => {

@@ -26,7 +26,7 @@ class LiveSchemaEditor extends Component {
             form: formName,
             fieldLayout: formOptions.fieldLayout,
             buttonBar: ButtonToolbar,
-            schema: eval('(' + metaForm.schema.value + ')'),
+            schema:  eval('(' + formOptions.schema + ')') , // eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
             componentFactory: formOptions.componentFactory == 'edit' ? editComponentFactory : detailsComponentFactory,
@@ -102,14 +102,13 @@ class LiveSchemaEditor extends Component {
                     </h2>
                 </div>
                 <div className="col-md-5">
-                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset}
-                                          initialValues={presetObject}/>
+                    <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject}/>
                 </div>
                 <div className="col-md-7">
 
                     <div className="row">
                         <div className="col-md-12">
-                            <FormOptions {...formOptions} {...formOptionsActions} />
+                            <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions} />
                             { underDevelopmentAlert }
                         </div>
                     </div>
