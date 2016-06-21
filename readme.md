@@ -63,7 +63,7 @@ prop of the `AutoForm`.
 
 ```js
 import { ComponentFactory } from 'redux-autoform';
-```js
+```
 
 ####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
 
@@ -72,7 +72,7 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
 
 ```js
 import { DefaultEditComponentFactory } from 'redux-autoform';
-```js
+```
     
 Localization
 ---
