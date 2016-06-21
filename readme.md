@@ -47,7 +47,9 @@ Using
 
 The main React component.
 
-    import { AutoForm } from 'redux-autoform';
+```js
+import { AutoForm } from 'redux-autoform';
+```
     
 The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
     
@@ -59,14 +61,18 @@ component to use for a given field metadata. `redux-autoform` comes with 3 `Comp
 This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
 prop of the `AutoForm`.
 
-    import { ComponentFactory } from 'redux-autoform';
-    
+```js
+import { ComponentFactory } from 'redux-autoform';
+```js
+
 ####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
 
 This is a pre-populated factory, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
 In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
 
-    import { DefaultEditComponentFactory } from 'redux-autoform';
+```js
+import { DefaultEditComponentFactory } from 'redux-autoform';
+```js
     
 Localization
 ---
