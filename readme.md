@@ -73,21 +73,22 @@ Localization
 
 AutoForm doesn't directly depend on localization, but the default component factories do. So, if you're using the default component factories, this is what you should do:
 
- - Install [numbro](http://numbrojs.com/). This is the library used for number localization.
- - Install [moment](http://momentjs.com/). This is the library used for datetime localization.
- - Then...
+- Install [numbro](http://numbrojs.com/). This is the library used for number localization.
+- Install [moment](http://momentjs.com/). This is the library used for datetime localization.
  
-    // import moment and numbro
-    import moment from 'moment';
-    import numbro from 'numbro';
-    // import the localizers
-    import { momentLocalizer, numbroLocalizer } from '../../src/lib/localization/momentDateLocalizer';
-    // if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
-    import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-    // set up the localizers
-    momentLocalizer(moment);
-    numbroLocalizer(numbro);
-    reactWidgetsMomentLocalizer(moment);
+```js
+// import moment and numbro
+import moment from 'moment';
+import numbro from 'numbro';
+ // import the localizers
+ import { momentLocalizer, numbroLocalizer } from '../../src/lib/localization/momentDateLocalizer';
+// if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
+import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
+// set up the localizers
+momentLocalizer(moment);
+numbroLocalizer(numbro);
+reactWidgetsMomentLocalizer(moment);
+```
 
     
 The `DefaultEditComponentFactory` relies on components that rely on localization. 
