@@ -1,5 +1,4 @@
-redux-autoform
-===
+#redux-autoform [![Build Status](https://travis-ci.org/gearz-lab/redux-autoform.svg?branch=master)](https://travis-ci.org/gearz-lab/redux-autoform) [![npm version](https://badge.fury.io/js/redux-autoform.svg)](https://badge.fury.io/js/redux-autoform)
 
 `Redux-autoform` is a wrapper around [redux-form](https://github.com/erikras/redux-form) for dynamically generating forms based on metadata.
 
