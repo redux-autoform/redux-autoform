@@ -12,6 +12,7 @@
   - [TextBox](#textbox)
   - [TextArea](#textarea)
   - [CheckBox](#checkbox)
+  - [Toogle](#toogle)
   - [Select](#select)
   - [Lookup](#lookup)
   - [DateTimePicker](#datetimepicker)

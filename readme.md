@@ -16,6 +16,8 @@ redux-autoform
 - [Docs](#docs)
 - [Installing](#installing)
 - [Using](#using)
+- [Third-party components](#third-party-components)
+- [Styles](#styles)
 - [Localization](#localization)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
 - [Change log](#change-log)
@@ -74,6 +76,22 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
 import { DefaultEditComponentFactory } from 'redux-autoform';
 ```
     
+Third-party components
+----------------------
+
+If you are using the default factories, you need to manually install the third-party components.
+
+Components that are installed automatically:
+
+- [redux-form](https://github.com/erikras/redux-form/).
+- [react-bootstrap](http://react-bootstrap.github.io/).
+
+Components that are need to be installed manually, if you are using the default factories:
+
+- [react-select](https://github.com/JedWatson/react-select).
+- [react-widgets](https://github.com/jquense/react-widgets).
+
+    
 Styles
 ------
 
@@ -91,6 +109,7 @@ Styles
     @import './node_modules/redux-autoform/lib/less/styles-defaultfactories';
 
 Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
+    
     
 Localization
 ---
