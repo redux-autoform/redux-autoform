@@ -22,6 +22,12 @@ However, before the 1.0.0 release, I'm *not changing* the major version, even if
 History
 ==
 
+0.5.3 (Jun 21, 2016)
+---
+
+ - Update to React 15.1.0
+
+
 0.5.1 (Jun 17, 2016)
 ---
 

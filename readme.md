@@ -27,7 +27,8 @@ redux-autoform
 Demo
 ---
 
-You can check the [online demo here](http://gearz-lab.github.io/redux-autoform/demo.html).
+You can check the [online demo here](http://gearz-lab.github.io/redux-autoform/demo.html). Don't forget to check out all the **presets**.
+
 
 Docs
 ---
@@ -46,9 +47,11 @@ Using
 
 The main React component.
 
-    import { AutoForm } from 'redux-autoform';
+```js
+import { AutoForm } from 'redux-autoform';
+```
     
-The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/Documentation.md).
+The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
     
 Additionally, you need a `ComponentFactory`. The `ComponentFactory` is responsible for determining which React
 component to use for a given field metadata. `redux-autoform` comes with 3 `ComponentFactory`:
@@ -58,35 +61,40 @@ component to use for a given field metadata. `redux-autoform` comes with 3 `Comp
 This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
 prop of the `AutoForm`.
 
-    import { ComponentFactory } from 'redux-autoform';
-    
+```js
+import { ComponentFactory } from 'redux-autoform';
+```
+
 ####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
 
 This is a pre-populated factory, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
 In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
 
-    import { DefaultEditComponentFactory } from 'redux-autoform';
+```js
+import { DefaultEditComponentFactory } from 'redux-autoform';
+```
     
 Localization
 ---
 
 AutoForm doesn't directly depend on localization, but the default component factories do. So, if you're using the default component factories, this is what you should do:
 
- - Install [numbro](http://numbrojs.com/). This is the library used for number localization.
- - Install [moment](http://momentjs.com/). This is the library used for datetime localization.
- - Then...
+- Install [numbro](http://numbrojs.com/). This is the library used for number localization.
+- Install [moment](http://momentjs.com/). This is the library used for datetime localization.
  
-    // import moment and numbro
-    import moment from 'moment';
-    import numbro from 'numbro';
-    // import the localizers
-    import { momentLocalizer, numbroLocalizer } from '../../src/lib/localization/momentDateLocalizer';
-    // if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
-    import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-    // set up the localizers
-    momentLocalizer(moment);
-    numbroLocalizer(numbro);
-    reactWidgetsMomentLocalizer(moment);
+```js
+// import moment and numbro
+import moment from 'moment';
+import numbro from 'numbro';
+ // import the localizers
+ import { momentLocalizer, numbroLocalizer } from '../../src/lib/localization/momentDateLocalizer';
+// if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
+import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
+// set up the localizers
+momentLocalizer(moment);
+numbroLocalizer(numbro);
+reactWidgetsMomentLocalizer(moment);
+```
 
     
 The `DefaultEditComponentFactory` relies on components that rely on localization. 
@@ -103,7 +111,7 @@ Building and running the demo locally
     
 In order to run the demo, run:
 
-    npm run start-dev
+    npm run start
     
 Now the demo should be available here: [http://localhost:4000/demo.html](http://localhost:4000/redux-autoform/demo.html).
     

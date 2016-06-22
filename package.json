@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
@@ -38,12 +38,12 @@
     "formato": "^1.0.5",
     "moment": "^2.13.0",
     "numbro": "^1.7.1",
-    "react": "^0.14.8",
+    "react": "^15.1.0",
     "react-ace": "^3.4.1",
     "react-addons-perf": "^15.0.1",
     "react-addons-update": "^0.14.7",
     "react-bootstrap": "0.29.2",
-    "react-dom": "^0.14.2",
+    "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "react-router-redux": "^4.0.2",
     "react-select": "^0.9.1",

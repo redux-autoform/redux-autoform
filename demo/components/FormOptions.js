@@ -1,5 +1,5 @@
 import React from 'react';
-import {ButtonGroup, Button}from 'react-bootstrap'
+import {ButtonGroup, Button, ButtonToolbar}from 'react-bootstrap'
 
 var FormOptions = React.createClass({
 
@@ -11,23 +11,34 @@ var FormOptions = React.createClass({
             setStackedFieldLayout,
             setInlineFieldLayout,
             setEditComponentFactory,
-            setDetailsComponentFactory
+            setDetailsComponentFactory,
+            updateForm,
+            editorSchema, // the schema in the editor
+            schema // the actual schema
         } = this.props;
-
+        
         return (
-            <div className="form-options">
+            <ButtonToolbar className="form-options">
                 <ButtonGroup>
-                    <Button active={fieldLayout == 'stacked'}
-                            onClick={ () => setStackedFieldLayout() }>Stacked</Button>
-                    <Button active={fieldLayout == 'inline'}
-                            onClick={ () => setInlineFieldLayout() }>Inline</Button>
+                    <Button bsStyle="success" onClick={ () => updateForm(editorSchema) }><i className="fa fa-refresh" aria-hidden="true"></i> Update</Button>
                 </ButtonGroup>
                 <ButtonGroup>
-                    <Button active={componentFactory == 'edit'}
-                            onClick={ () => setEditComponentFactory() }>Edit</Button>
-                    <Button active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() }>Details</Button>
+                    <Button active={fieldLayout == 'stacked'} onClick={ () => setStackedFieldLayout() }>
+                        <i className="fa fa-ellipsis-v" aria-hidden="true"></i> Stacked
+                    </Button>
+                    <Button active={fieldLayout == 'inline'} onClick={ () => setInlineFieldLayout() }>
+                        <i className="fa fa-ellipsis-h" aria-hidden="true"></i> Inline
+                    </Button>
                 </ButtonGroup>
-            </div>
+                <ButtonGroup>
+                    <Button active={componentFactory == 'edit'} onClick={ () => setEditComponentFactory() }>
+                        <i className="fa fa-pencil" aria-hidden="true"></i> Edit
+                    </Button>
+                    <Button active={componentFactory == 'details'} onClick={ () => setDetailsComponentFactory() }>
+                        <i className="fa fa-eye" aria-hidden="true"></i>Details
+                    </Button>
+                </ButtonGroup>
+            </ButtonToolbar>
         );
     },
 

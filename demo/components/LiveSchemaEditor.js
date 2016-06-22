@@ -6,7 +6,7 @@ import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
 import editComponentFactory from '../../src/defaultEditComponentFactory';
 import detailsComponentFactory from '../../src/defaultDetailsComponentFactory';
-import {Alert} from 'react-bootstrap';
+import {Alert, Badge} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
@@ -26,7 +26,7 @@ class LiveSchemaEditor extends Component {
             form: formName,
             fieldLayout: formOptions.fieldLayout,
             buttonBar: ButtonToolbar,
-            schema: eval('(' + metaForm.schema.value + ')'),
+            schema:  eval('(' + formOptions.schema + ')') , // eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
             componentFactory: formOptions.componentFactory == 'edit' ? editComponentFactory : detailsComponentFactory,
@@ -94,7 +94,7 @@ class LiveSchemaEditor extends Component {
         return <div className="live-schema-editor">
             <div className='row'>
                 <div className="col-md-12">
-                    <h2>Redux-autoform demo {psjon.version}
+                    <h2>Redux-autoform demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
                         <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
                            style={{color: 'black'}}>
                             <i className="fa fa-github" aria-hidden="true"/>
@@ -102,14 +102,13 @@ class LiveSchemaEditor extends Component {
                     </h2>
                 </div>
                 <div className="col-md-5">
-                    <LiveSchemaEditorForm reduxFormActions={reduxFormActions} selectedPreset={preset}
-                                          initialValues={presetObject}/>
+                    <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject}/>
                 </div>
                 <div className="col-md-7">
 
                     <div className="row">
                         <div className="col-md-12">
-                            <FormOptions {...formOptions} {...formOptionsActions} />
+                            <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions} />
                             { underDevelopmentAlert }
                         </div>
                     </div>
