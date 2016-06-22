@@ -7,7 +7,7 @@ import DateTimePicker from './components/fieldComponents/DateTimePicker';
 import Lookup from './components/fieldComponents/Lookup';
 import Static from './components/fieldComponents/Static';
 import FieldGroup from './components/fieldComponents/FieldGroup';
-import Checkbox from './components/fieldComponents/Checkbox';
+import Checkbox from './components/fieldComponents/CheckBox';
 
 export function registerBaseComponents(componentFactory) {
     if (!componentFactory) throw Error('\'componentFactory\' should be truthy');

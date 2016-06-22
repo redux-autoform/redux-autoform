@@ -27,7 +27,7 @@ export default [
         entityName: 'contact',
         layoutName: '',
         formTitle: 'Edit contact',
-        schema: require('./presets/componentsCheckbox.txt')
+        schema: require('./presets/ComponentsCheckbox.txt')
     },
     {
         name: 'componentsDateTimePicker',
