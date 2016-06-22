@@ -100,11 +100,12 @@ Styles
 - If you are using the default factories, import the thid-party styles for the components used in the default factories. The example below lists what have to be imported:
 
 
+`yourstyles.less`:
+
     @import './node_modules/bootstrap/less/bootstrap.less';
     @import './node_modules/font-awesome/less/font-awesome.less';
     @import './node_modules/react-widgets/dist/css/react-widgets.css';
     @import './node_modules/react-select/dist/react-select.css';
-    
     @import './node_modules/redux-autoform/lib/less/styles';
     @import './node_modules/redux-autoform/lib/less/styles-defaultfactories';
 
