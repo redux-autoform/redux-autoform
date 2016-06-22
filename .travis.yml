@@ -1,4 +1,12 @@
+sudo: false
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
+  - stable
+cache:
+  directories:
+    - node_modules
+before_install:
+branches:
+  only:
+    - master
+    - next
