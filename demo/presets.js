@@ -22,14 +22,6 @@ export default [
         schema: require('./presets/layouts.txt')
     },
     {
-        name: 'componentsToggle',
-        displayName: 'Components - Toggle',
-        entityName: 'contact',
-        layoutName: '',
-        formTitle: 'Edit contact',
-        schema: require('./presets/componentsToggle.txt')
-    },
-    {
         name: 'componentsCheckbox',
         displayName: 'Components - Checkbox',
         entityName: 'contact',
