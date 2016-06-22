@@ -29,13 +29,13 @@
 
 > Be patient. This documentation is still under construction. Pull-requests are welcome.
 
-For an introduction to the library, as well as instructions on how to install, build and run it, please refer to the [README.md](https://http://gearz-lab.github.io/redux-autoform/blob/master/readme.md).
+For an introduction to the library, as well as instructions on how to install, build and run it, please refer to the [README.md](https://gearz-lab.github.io/redux-autoform/blob/master/readme.md).
 
 Metadata
 ===
 
 Metadata is the single most important thing to understand in order to work with `redux-autoform`. Basically, you pass a
-`schema` to the `AutoForm` component and it renders itself. You can find examples of valid schema [here](https://http://gearz-lab.github.io/redux-autoform/tree/master/demo/presets).
+`schema` to the `AutoForm` component and it renders itself. You can find examples of valid schema [here](https://gearz-lab.github.io/redux-autoform/tree/master/demo/presets).
 
 These are the most important things you should know about Metadata:
 
@@ -120,7 +120,7 @@ name | The `field` name. This is how a field is identified and merged.
 type | The `field` type. This is the default way to determine which component should render this `field`.
  The list of possible values for `type` depends on which component is registered in the `ComponentFactory`. That is,
  `foo` is a valid value for `type`, as long as the `ComponentFactory` registered a component for `foo`.
- The list of valid types for the `DefaultEditComponentFactory` can be found [here](https://http://gearz-lab.github.io/redux-autoform/blob/master/src/defaultComponentFactoryHelper.js).
+ The list of valid types for the `DefaultEditComponentFactory` can be found [here](https://gearz-lab.github.io/redux-autoform/blob/master/src/defaultComponentFactoryHelper.js).
 size | The size of the component, in grid units. Values can range from 1 to 12.
 component | Which component to use. If no component is set, the default one will be used.
 
@@ -217,7 +217,7 @@ Component factories
 
 Component factories are how `redux-autoform` knows which component to render for a particular field or group metadata.
 
-ComponentFactory ([source](https://http://gearz-lab.github.io/redux-autoform/blob/master/src/ComponentFactory.js))
+ComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/ComponentFactory.js))
 ---
 
 This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
@@ -225,7 +225,7 @@ prop of the `AutoForm`.
 
     import { ComponentFactory } from 'redux-autoform';
 
-DefaultEditComponentFactory ([source](https://http://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+DefaultEditComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
 ----
 
 This is a pre-populated factory for editing, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
@@ -235,7 +235,7 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
     
 The `DefaultEditComponentFactory` relies on [these third-party components](#third-party).
 
-DefaultDetailsComponentFactory ([source](https://http://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+DefaultDetailsComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
 ----
 
 This is a pre-populated factory for details. In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
@@ -277,7 +277,7 @@ A form component that renders itself based on metadata
 Prop | Description
 --- | ---
 componentFactory | The `ComponentFactory` that should be used
-schema | The application schema. See [Metadata](https://http://gearz-lab.github.io/redux-autoform/blob/master/docs-md/Documentation.md#metadata)
+schema | The application schema. See [Metadata](https://gearz-lab.github.io/redux-autoform/blob/master/docs-md/Documentation.md#metadata)
 entityName | The name of the `entity` in the `schema`
 layoutName | The name of the `layout` in the `entity`
 bottomBar | A component for rendering the bottom bar. This component should include a submit input.
