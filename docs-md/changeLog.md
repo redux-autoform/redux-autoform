@@ -14,6 +14,7 @@ However, before the 1.0.0 release, I'm *not changing* the major version, even if
  
 
 - [History](#history)
+  - [0.6.1 (Jun 22, 2016)](#061-jun-22-2016)
   - [0.6.0 (Jun 22, 2016)](#060-jun-22-2016)
   - [0.5.3 (Jun 21, 2016)](#053-jun-21-2016)
   - [0.5.1 (Jun 17, 2016)](#051-jun-17-2016)
@@ -23,6 +24,11 @@ However, before the 1.0.0 release, I'm *not changing* the major version, even if
  
 History
 =======
+
+0.6.1 (Jun 22, 2016)
+--------------------
+
+ - Fixing several case sensitiveness problems
 
 0.6.0 (Jun 22, 2016)
 --------------------
