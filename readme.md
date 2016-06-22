@@ -74,6 +74,24 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
 import { DefaultEditComponentFactory } from 'redux-autoform';
 ```
     
+Styles
+------
+
+- Import `styles.less` file. This file contains infrastructural styling.
+- If you are using the default factories, import `styles-defaultfactories.less`. This file contains styles related to the components used in the default factories.
+- If you are using the default factories, import the thid-party styles for the components used in the default factories. The example below lists what have to be imported:
+
+
+    @import './node_modules/bootstrap/less/bootstrap.less';
+    @import './node_modules/font-awesome/less/font-awesome.less';
+    @import './node_modules/react-widgets/dist/css/react-widgets.css';
+    @import './node_modules/react-select/dist/react-select.css';
+    
+    @import './node_modules/redux-autoform/lib/less/styles';
+    @import './node_modules/redux-autoform/lib/less/styles-defaultfactories';
+
+Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
+    
 Localization
 ---
 
