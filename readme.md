@@ -100,7 +100,7 @@ Styles
 - If you are using the default factories, import the thid-party styles for the components used in the default factories. The example below lists what have to be imported:
 
 
-`yourstyles.less`:
+**yourstyles.less**:
 
     @import './node_modules/bootstrap/less/bootstrap.less';
     @import './node_modules/font-awesome/less/font-awesome.less';
@@ -125,7 +125,7 @@ AutoForm doesn't directly depend on localization, but the default component fact
 import moment from 'moment';
 import numbro from 'numbro';
  // import the localizers
- import { momentLocalizer, numbroLocalizer } from '../../src/lib/localization/momentDateLocalizer';
+ import { momentLocalizer, numbroLocalizer } from 'redux-autoform';
 // if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
 // set up the localizers
