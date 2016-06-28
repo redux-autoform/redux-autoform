@@ -8,12 +8,14 @@ import Lookup from './components/fieldComponents/Lookup';
 import Static from './components/fieldComponents/Static';
 import FieldGroup from './components/fieldComponents/FieldGroup';
 import Checkbox from './components/fieldComponents/CheckBox';
+import Radio from './components/fieldComponents/Radio';
 
 export function registerBaseComponents(componentFactory) {
     if (!componentFactory) throw Error('\'componentFactory\' should be truthy');
 
     componentFactory.registerFieldComponent('TextBox', ['string', 'int', 'float', 'datetime', 'date', 'time'], TextBox);
     componentFactory.registerFieldComponent('Select', ['string'], Select);
+    componentFactory.registerFieldComponent('Radio', ['string'], Radio);
     componentFactory.registerFieldComponent('Lookup', ['string'], Lookup);
     componentFactory.registerFieldComponent('TextArea', ['string'], TextArea);
     componentFactory.registerFieldComponent('ArrayContainer', ['array'], ArrayContainer);

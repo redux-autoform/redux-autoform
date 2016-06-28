@@ -78,6 +78,14 @@ export default [
         schema: require('./presets/componentsSelect.txt')
     },
     {
+        name: 'componentsRadio',
+        displayName: 'Components - Radio',
+        entityName: 'contact',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/componentsRadio.txt')
+    },
+    {
         name: 'componentsLookup',
         displayName: 'Components - Lookup',
         entityName: 'contact',
