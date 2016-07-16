@@ -2,7 +2,6 @@ import React from 'react';
 import _ from 'underscore';
 
 // component definitions
-
 export default class ComponentFactory {
 
     constructor() {
