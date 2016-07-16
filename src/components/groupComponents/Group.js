@@ -3,7 +3,7 @@ import { Alert } from 'react-bootstrap';
 import _ from 'underscore';
 
 class Group extends Component {
-    static propTypes: {
+    static propTypes = {
         component: PropTypes.string,
         fields: PropTypes.array.isRequired,
         layout: PropTypes.object.isRequired,
