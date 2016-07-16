@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import { HelpBlock, Col } from 'react-bootstrap';
+import HelpBlock from 'react-bootstrap/lib/HelpBlock';
+import Col from 'react-bootstrap/lib/Col';
 
 class FormGroupInlineContent extends Component {
     static propTypes = {
@@ -28,10 +29,11 @@ class FormGroupInlineContent extends Component {
 
     render() {
         let { children, hasControlLabel, innerSize } = this.props;
+        let className = hasControlLabel ? "col-offset-140" : null;
         innerSize = innerSize || 12;
 
-        return <Col md={12} className={ hasControlLabel ? "col-offset-140" : null}>
-            <Col md={innerSize} className="no-padding-col">
+        return <Col className={className} md={12}>
+            <Col className="no-padding-col" md={innerSize}>
                 { children }
                 { this.getHelpBlock() }
             </Col>
