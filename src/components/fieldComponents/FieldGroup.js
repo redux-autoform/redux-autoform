@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
 import _ from 'underscore';
 
-const FieldGroup = React.createClass({
-
-    propTypes: {
+class FieldGroup extends Component {
+    static propTypes = {
         value: React.PropTypes.any,
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
@@ -14,58 +13,36 @@ const FieldGroup = React.createClass({
         addonBefore: React.PropTypes.string,
         addonAfter: React.PropTypes.string,
         fieldLayout: React.PropTypes.string
-    },
+    };
 
-    render() {
-
-        let {
-            value,
-            name,
-            placeholder,
-            displayName,
-            help,
-            error,
-            addonBefore,
-            addonAfter,
-            touched,
-            onChange,
-            onBlur,
-            componentClass,
-            children,
-            rows, // textarea only,
-            fieldLayout,
-            innerSize,
-            componentFactory,
-            _extra: { layout, fields },
-            group: groupName
-        } = this.props;
-
+    getGroupContent = () => {
+        let { componentFactory, _extra: { layout, fields }, group: groupName } = this.props;
         let group = _.find(layout.groups, g => g.name == groupName);
-        if(!group) throw Error(`Could not find group. Group: ${groupName}`);
-
-        let formGroupProps = {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout,
-            innerSize
-        };
-
-        let groupContent = componentFactory.buildGroupComponent({
+        let groupProps = {
             component: group.component,
             layout: group,
-            fields: fields,
-            componentFactory: componentFactory
-        });
+            fields,
+            componentFactory
+        };
+
+        if (!group) {
+            throw Error(`Could not find group. Group: ${groupName}`);
+        }
+
+        return componentFactory.buildGroupComponent(groupProps);
+    };
+
+    render() {
+        // let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, children, rows, // textarea only,};
+        let { name, displayName, help, error, touched, fieldLayout, innerSize } = this.props;
+        let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
 
         return (
-            <FormGroup {...formGroupProps} className="field-group">
-                { groupContent }
+            <FormGroup className="field-group" {...formGroupProps}>
+                { this.getGroupContent() }
             </FormGroup>
         );
     }
-});
+}
 
 export default FieldGroup;
