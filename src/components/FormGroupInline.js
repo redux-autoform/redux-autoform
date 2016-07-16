@@ -1,62 +1,39 @@
-import React from 'react';
-import {FormGroup as BootstrapFormGroup } from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { FormGroup as BootstrapFormGroup } from 'react-bootstrap';
 import FormGroupInlineControlLabel from './FormGroupInlineControlLabel';
 import FormGroupInlineContent from './FormGroupInlineContent'
-import {getDisplayName} from '../lib/helpers/metadataHelper';
+import { getDisplayName } from '../lib/helpers/metadataHelper';
 
-const FormGroupInline = React.createClass({
+class FormGroupInline extends Component {
+    static propTypes = {
+        error: PropTypes.string,
+        touched: PropTypes.bool,
+        displayName: PropTypes.string,
+        name: PropTypes.string,
+        help: PropTypes.string
+    };
 
-    propTypes: {
-        error: React.PropTypes.string,
-        touched: React.PropTypes.bool,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string,
-        help: React.PropTypes.string
-    },
-
-    render: function () {
-
-        let {
-            error,
-            touched,
-            displayName,
-            name,
-            children,
-            help,
-            className,
-            innerSize
-        } = this.props;
-
+    render() {
+        let { error, touched, displayName, name, children, help, className, innerSize } = this.props;
         displayName = getDisplayName(displayName, name);
 
-        // form group props
-        let formGroupProps = {className};
+        let controlLabelProps = { displayName };
+        let contentProps = { error, touched, children, help, hasControlLabel: displayName != null, innerSize };
+        let formGroupProps = { className };
+
         if (error && touched) {
             formGroupProps.validationState = 'error';
         }
 
-        // control label props
-        let controlLabelProps = {
-            displayName
-        };
-
-        // content props
-        let contentProps = {
-            error,
-            touched,
-            children,
-            help,
-            hasControlLabel: displayName != null,
-            innerSize
-        };
-
-        return <BootstrapFormGroup {...formGroupProps}>
-            <FormGroupInlineControlLabel {...controlLabelProps} />
-            <FormGroupInlineContent {...contentProps}>
-                { children }
-            </FormGroupInlineContent>
-        </BootstrapFormGroup>;
+        return (
+            <BootstrapFormGroup {...formGroupProps}>
+                <FormGroupInlineControlLabel {...controlLabelProps}/>
+                <FormGroupInlineContent {...contentProps}>
+                    { children }
+                </FormGroupInlineContent>
+            </BootstrapFormGroup>
+        )
     }
-});
+}
 
 export default FormGroupInline;
