@@ -45,7 +45,7 @@ class FormGroupStacked extends Component {
     render() {
         let { error, touched, children, innerSize, className } = this.props;
         let validationState =  error && touched ? 'error' : null;
-        let formGroupProps = { className, validationState};
+        let formGroupProps = { className, validationState };
         let controlLabel = this.getControlLabel();
         let helpBlock = this.getHelpBlock();
 

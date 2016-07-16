@@ -50,18 +50,23 @@ class ArrayContainer extends Component {
         }
     };
     
-    getComponents = () => {
-        let { fields, componentFactory, layout } = this.props;
-        let groupComponentProps = {
+    buildGroupComponent = (field) => {
+        let { componentFactory, layout } = this.props;
+        
+        return componentFactory.buildGroupComponent({
             component: layout.component,
             layout: layout,
-            fields: fields,
+            fields: field,
             componentFactory: componentFactory
-        };
+        });
+    };
+    
+    getComponents = () => {
+        let { fields } = this.props;
         
-        return fields.map((fields, index) => (
+        return fields.map((field, index) => (
             <ArrayContainerItem key={index} index={index} onAction={this.handleItemAction}>
-                { componentFactory.buildGroupComponent(groupComponentProps) }
+                { this.buildGroupComponent(field) }
             </ArrayContainerItem>
         ));
     };
