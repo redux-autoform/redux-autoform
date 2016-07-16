@@ -1,29 +1,24 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Input from  '../Input';
 
-const TextArea = React.createClass({
-
-    propTypes: {
-        value: React.PropTypes.any,
-        onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string,
-        addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string,
-        rows: React.PropTypes.number
-    },
+class TextArea extends Component {
+    static propTypes = {
+        value: PropTypes.any,
+        onChange: PropTypes.func.isRequired,
+        placeholder: PropTypes.string,
+        displayName: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        error: PropTypes.string,
+        addonBefore: PropTypes.string,
+        addonAfter: PropTypes.string,
+        rows: PropTypes.number
+    };
 
     render() {
-
         let { rows } = this.props;
 
-        return (
-            <Input {...this.props} componentClass="textarea" rows={rows}  />
-        );
-
+        return <Input componentClass="textarea" rows={rows} {...this.props}/>;
     }
-});
+}
 
 export default TextArea;
