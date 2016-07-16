@@ -1,75 +1,35 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FormGroup from './FormGroup';
 import FormControl from './FormControl';
 
-const Input = React.createClass({
-
-    propTypes: {
-        value: React.PropTypes.any,
-        onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string,
-        addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string,
-        fieldLayout: React.PropTypes.string
-    },
+class Input extends Component {
+    static propTypes = {
+        value: PropTypes.any,
+        onChange: PropTypes.func.isRequired,
+        placeholder: PropTypes.string,
+        displayName: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        error: PropTypes.string,
+        addonBefore: PropTypes.string,
+        addonAfter: PropTypes.string,
+        fieldLayout: PropTypes.string
+    };
 
     render() {
+        let { error, touched, displayName, name, help, fieldLayout, innerSize } = this.props;
+        let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows } = this.props;
 
-        let {
-            value,
-            name,
-            placeholder,
-            displayName,
-            help,
-            error,
-            addonBefore,
-            addonAfter,
-            touched,
-            onChange,
-            onBlur,
-            componentClass,
-            children,
-            rows, // textarea only,
-            fieldLayout,
-            innerSize
-        } = this.props;
-
-
-        let formGroupProps = {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout,
-            innerSize
-        };
-
-        let formControlProps = {
-            value,
-            name,
-            placeholder,
-            displayName,
-            help,
-            addonBefore,
-            addonAfter,
-            onChange,
-            onBlur,
-            componentClass,
-            rows
-        };
+        let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
+        let formControlProps = { value, name, placeholder, displayName, help, addonBefore, addonAfter, onChange, onBlur, componentClass, rows };
 
         return (
             <FormGroup {...formGroupProps}>
                 <FormControl {...formControlProps}>
-                    {children}
+                    { children }
                 </FormControl>
             </FormGroup>
         );
     }
-});
+}
 
 export default Input;
