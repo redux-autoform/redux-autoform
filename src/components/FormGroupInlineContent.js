@@ -30,12 +30,13 @@ class FormGroupInlineContent extends Component {
     render() {
         let { children, hasControlLabel, innerSize } = this.props;
         let className = hasControlLabel ? "col-offset-140" : null;
-        innerSize = innerSize || 12;
+        let helpBlock = this.getHelpBlock();
 
+        
         return <Col className={className} md={12}>
-            <Col className="no-padding-col" md={innerSize}>
+            <Col className="no-padding-col" md={innerSize || 12}>
                 { children }
-                { this.getHelpBlock() }
+                { helpBlock }
             </Col>
         </Col>;
     }

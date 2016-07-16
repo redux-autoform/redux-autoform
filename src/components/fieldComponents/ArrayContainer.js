@@ -5,14 +5,6 @@ import FormGroup from '../FormGroup';
 import ArrayContainerItem from '../ArrayContainerItem';
 
 class ArrayContainer extends Component {
-    static events = {
-        REMOVE: "remove",
-        MOVE_UP: "moveUp",
-        MOVE_DOWN: "moveDown",
-        MOVE_FIST: "moveFirst",
-        MOVE_LAST: "moveLast"
-    };
-
     static propTypes = {
         name: PropTypes.string.isRequired,
         addText: PropTypes.string
@@ -28,23 +20,23 @@ class ArrayContainer extends Component {
         let { events } = this;
 
         switch (eventKey) {
-            case events.REMOVE:
+            case "remove":
                 removeField(index);
                 break;
-            case events.MOVE_UP:
+            case "moveUp":
                 if (index > 0) {
                     swapFields(index, index - 1);
                 }
                 break;
-            case events.MOVE_DOWN:
+            case "moveDown":
                 if (index < fields.length - 1) {
                     swapFields(index, index + 1);
                 }
                 break;
-            case events.MOVE_FIST:
+            case "moveFirst":
                 swapFields(index, 0);
                 break;
-            case events.MOVE_LAST:
+            case "moveLast":
                 swapFields(index, fields.length - 1);
                 break;
         }
@@ -68,13 +60,11 @@ class ArrayContainer extends Component {
             componentFactory: componentFactory
         };
         
-        return fields.map((fields, index) => {
-            return (
-                <ArrayContainerItem key={index} index={index} onAction={this.handleItemAction}>
-                    { componentFactory.buildGroupComponent(groupComponentProps) }
-                </ArrayContainerItem>
-            );
-        });
+        return fields.map((fields, index) => (
+            <ArrayContainerItem key={index} index={index} onAction={this.handleItemAction}>
+                { componentFactory.buildGroupComponent(groupComponentProps) }
+            </ArrayContainerItem>
+        ));
     };
     
     getAddBar = () => {
@@ -115,13 +105,15 @@ class ArrayContainer extends Component {
     render() {
         let { displayName, fieldLayout, innerSize, name } = this.props;
         let formGroupProps = { displayName, name, fieldLayout, innerSize };
+        let components = this.getAllComponents();
+        let addBar = this.getAddBar();
 
         return (
             <FormGroup {...formGroupProps}>
                 <div className="array-container-content">
-                    { this.getAllComponents() }
+                    { components }
                 </div>
-                { this.getAddBar() }
+                { addBar }
             </FormGroup>
         );
     }

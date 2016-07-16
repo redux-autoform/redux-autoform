@@ -10,7 +10,7 @@ class Static extends Component {
         return (
             <FormGroup {...formGroupProps}>
                 <FormControl.Static>
-                    {value}
+                    { value }
                 </FormControl.Static>
             </FormGroup>
         )

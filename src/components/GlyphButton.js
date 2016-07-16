@@ -36,11 +36,12 @@ class GlyphButton extends Component {
 
     render() {
         let { bsSize, bsStyle,glyph } = this.props;
+        let text = this.getText();
 
         return (
             <Button bsStyle={bsStyle} bsSize={bsSize} onClick={this.handleSave}>
                 <Glyphicon glyph={glyph}/>
-                { this.getText() }
+                { text }
             </Button>
         )
     }

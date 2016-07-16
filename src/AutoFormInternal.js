@@ -25,9 +25,9 @@ class AutoFormInternal extends Component {
 
         let groupComponent = componentFactory.buildGroupComponent({
             component: layout.component,
-            layout,
+            layout: layout,
             fields: fieldMetadataEvaluated,
-            componentFactory
+            componentFactory: componentFactory
         });
 
         return (

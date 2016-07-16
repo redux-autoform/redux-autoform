@@ -66,18 +66,21 @@ class FormControl extends Component {
 
     render() {
         let { addonBefore, addonAfter } = this.props;
+        let before = this.getAddonBefore();
+        let input = this.getInput();
+        let after = this.getAddonAfter();
 
         if (addonBefore || addonAfter) {
             return (
                 <InputGroup>
-                    { this.getAddonBefore() }
-                    { this.getInput() }
-                    { this.getAddonAfter() }
+                    { before }
+                    { input }
+                    { after }
                 </InputGroup>
             );
             
         } else {
-            return this.getInput();
+            return input;
         }
     }
 }

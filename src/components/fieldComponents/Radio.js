@@ -22,10 +22,11 @@ class Radio extends Component {
     render() {
         let { error, touched, displayName, name, help, fieldLayout, innerSize } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
+        let options = this.getOptions();
 
         return (
             <FormGroup {...formGroupProps} >
-                { this.getOptions() }
+                { options }
             </FormGroup>
         )
     }

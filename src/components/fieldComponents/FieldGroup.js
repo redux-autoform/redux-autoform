@@ -36,10 +36,11 @@ class FieldGroup extends Component {
         // let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, children, rows, // textarea only,};
         let { name, displayName, help, error, touched, fieldLayout, innerSize } = this.props;
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
+        let groupContent = this.getGroupContent();
 
         return (
             <FormGroup className="field-group" {...formGroupProps}>
-                { this.getGroupContent() }
+                { groupContent }
             </FormGroup>
         );
     }

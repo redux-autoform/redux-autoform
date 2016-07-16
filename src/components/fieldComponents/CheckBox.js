@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/lib/Col';
 class Checkbox extends Component {
     getContent = () => {
         let { value, name, displayName, error, touched, onChange, onBlur } = this.props;
-        let checkboxProps = { checked: value, onChange, onBlur, validationState: error && touched ? 'error' : null };
+        let validationState = error && touched ? 'error' : null;
+        let checkboxProps = { checked: value, onChange, onBlur, validationState };
 
         return (
             <BootstrapCheckbox className="cb-fix" {...checkboxProps}>

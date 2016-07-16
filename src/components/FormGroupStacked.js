@@ -46,12 +46,14 @@ class FormGroupStacked extends Component {
         let { error, touched, children, innerSize, className } = this.props;
         let validationState =  error && touched ? 'error' : null;
         let formGroupProps = { className, validationState};
+        let controlLabel = this.getControlLabel();
+        let helpBlock = this.getHelpBlock();
 
         return <BootstrapFormGroup {...formGroupProps}>
             <Col className="no-padding-col" md={innerSize || 12}>
-                { this.getControlLabel() }
+                { controlLabel }
                 { children }
-                { this.getHelpBlock() }
+                { helpBlock }
             </Col>
             <div className="clearfix">
             </div>

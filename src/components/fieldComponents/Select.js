@@ -24,9 +24,11 @@ class Select extends Component {
     };
 
     render() {
+        let options = this.getOptions();
+        
         return (
             <Input componentClass="select" {...this.props}>
-                { this.getOptions() }
+                { options }
             </Input>
         );
     }
