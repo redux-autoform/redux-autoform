@@ -9,7 +9,7 @@ class Checkbox extends Component {
         let checkboxProps = { checked: value, onChange, onBlur, validationState: error && touched ? 'error' : null };
 
         return (
-            <BootstrapCheckbox className: 'cb-fix' {...checkboxProps}>
+            <BootstrapCheckbox className="cb-fix" {...checkboxProps}>
                 { getDisplayName(displayName, name) }
             </BootstrapCheckbox>
         )
