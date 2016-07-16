@@ -81,7 +81,7 @@ class ArrayContainer extends Component {
             return (
                 <div className="add-bar">
                     <span>
-                        <GlyphButton glyph="plus" text={text} bsSize="small" onClick={ this.handleAdd }/>
+                        <GlyphButton glyph="plus" text={text} bsSize="small" onClick={this.handleAdd}/>
                     </span>
                 </div>
             ); 
