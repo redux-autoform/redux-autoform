@@ -1,39 +1,42 @@
-import React from 'react';
-import {HelpBlock, Col} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import { HelpBlock, Col } from 'react-bootstrap';
 
-const FormGroupInlineContent = React.createClass({
+class FormGroupInlineContent extends Component {
+    static propTypes = {
+        error: PropTypes.string,
+        touched: PropTypes.bool,
+        displayName: PropTypes.string,
+        name: PropTypes.string,
+        help: PropTypes.string
+    };
 
-    propTypes: {
-        error: React.PropTypes.string,
-        touched: React.PropTypes.bool,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string,
-        help: React.PropTypes.string
-    },
-
-    render: function () {
-
-        let {
-            error,
-            touched,
-            children,
-            help,
-            hasControlLabel,
-            innerSize
-        } = this.props;
-
+    getHelpBlock = () => {
+        let { error, touched, help } = this.props;
         let helpText = (touched ? error : '') || help;
-        let helpBlock = helpText ? <HelpBlock>{helpText}</HelpBlock> : null;
 
+        if (helpText) {
+            return (
+                <HelpBlock>
+                    { helpText }
+                </HelpBlock>
+            )
+        } else {
+            return null;
+        }
+
+    };
+
+    render() {
+        let { children, hasControlLabel, innerSize } = this.props;
         innerSize = innerSize || 12;
 
         return <Col md={12} className={ hasControlLabel ? "col-offset-140" : null}>
             <Col md={innerSize} className="no-padding-col">
                 { children }
-                { helpBlock }
+                { this.getHelpBlock() }
             </Col>
         </Col>;
     }
-});
+}
 
 export default FormGroupInlineContent;
