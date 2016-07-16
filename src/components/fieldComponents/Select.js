@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Input from '../Input';
 
-const Select = React.createClass({
+class Select extends Component {
+    static propTypes = {
+        value: PropTypes.any,
+        onChange: PropTypes.func.isRequired,
+        placeholder: PropTypes.string,
+        displayName: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        error: PropTypes.string,
+        addonBefore: PropTypes.string,
+        addonAfter: PropTypes.string
+    };
 
-    propTypes: {
-        value: React.PropTypes.any,
-        onChange: React.PropTypes.func.isRequired,
-        placeholder: React.PropTypes.string,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string,
-        addonBefore: React.PropTypes.string,
-        addonAfter: React.PropTypes.string
-    },
+    getOptions = () => {
+        let { options } = this.props;
+
+        return options.map((item, index) => (
+            <option key={index} value={item.value}>
+                {item.text}
+            </option>
+        ));
+    };
 
     render() {
-
         return (
-            <Input {...this.props} componentClass="select">
-                { this.props.options.map(o => <option key={o.value} value={o.value}> {o.text} </option> ) }
+            <Input componentClass="select" {...this.props}>
+                { this.getOptions() }
             </Input>
         );
     }
-});
+}
 
 export default Select;
