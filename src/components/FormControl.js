@@ -1,60 +1,85 @@
-import React from 'react';
-import {FormControl as BootstrapFormControl, InputGroup} from 'react-bootstrap';
+import React, { Component, PropTypes } from 'react';
+import InputGroup from 'react-bootstrap/lib/InputGroup';
+import { FormControl as BootstrapFormControl } from 'react-bootstrap';
 
-const FormControl = React.createClass({
+class FormControl extends Component {
+    static propTypes = {
+        error: PropTypes.string,
+        touched: PropTypes.bool,
+        displayName: PropTypes.string,
+        name: PropTypes.string,
+        help: PropTypes.string
+    };
+    
+    handleChange = (event) => {
+        let { onChange } = this.props;
+        
+        onChange(event.target.value);
+    };
+    
+    handleBlur = (event) => {
+        let { onBlur } = this.props;
+        
+        onBlur();
+    };
+    
+    getInput = () => {
+        let { value, name, placeholder, displayName, help, componentClass, children, rows } = this.props;
+        let label = displayName || name;
+        
+        let formControlProps = { label, value, placeholder, help, componentClass, rows };
+        
+        return (
+            <BootstrapFormControl type="text" ref="input" onChange={this.handleChange} onBlur={this.handleBlur} {...formControlProps} hasFeedback>
+                { children }
+            </BootstrapFormControl>
+        )
+    }; 
+    
+    getAddonBefore = () => {
+        let { addonBefore } = this.props;
+        
+        if (addonBefore) {
+            return (
+                <InputGroup.Addon>
+                    {addonBefore}
+                </InputGroup.Addon>
+            );
+        } else {
+            return null;
+        }
+    };
+    
+    getAddonAfter = () => {
+        let { addonAfter } = this.props;
+        
+        if (addonAfter) {
+            return (
+                <InputGroup.Addon>
+                    {addonAfter}
+                </InputGroup.Addon>
+            );
+        } else {
+            return null;
+        }
+    };
 
-    propTypes: {
-        error: React.PropTypes.string,
-        touched: React.PropTypes.bool,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string,
-        help: React.PropTypes.string
-    },
-
-    render: function () {
-
-        let {
-            value,
-            name,
-            placeholder,
-            displayName,
-            help,
-            addonBefore,
-            addonAfter,
-            onChange,
-            onBlur,
-            componentClass,
-            children,
-            rows // for textarea only,
-        } = this.props;
-
-        let input = <BootstrapFormControl
-            type="text"
-            value={value}
-            placeholder={placeholder}
-            label={displayName || name}
-            help={help}
-            hasFeedback
-            ref="input"
-            onChange={(event) => onChange(event.target.value)}
-            onBlur={(event) => onBlur()}
-            componentClass={componentClass}
-            rows={rows}>
-            { children }
-        </BootstrapFormControl>;
-
+    render() {
+        let { addonBefore, addonAfter } = this.props;
 
         if (addonBefore || addonAfter) {
-            return <InputGroup>
-                { addonBefore ? <InputGroup.Addon>{addonBefore}</InputGroup.Addon> : null }
-                { input }
-                { addonAfter ? <InputGroup.Addon>{addonAfter}</InputGroup.Addon> : null }
-            </InputGroup>
-        }
-        else {
-            return input;
+            return (
+                <InputGroup>
+                    { this.getAddonBefore() }
+                    { this.getInput() }
+                    { this.getAddonAfter() }
+                </InputGroup>
+            );
+            
+        } else {
+            return this.getInput();
         }
     }
-});
+}
 
 export default FormControl;
