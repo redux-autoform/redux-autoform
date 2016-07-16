@@ -16,7 +16,7 @@ class Input extends Component {
     };
 
     render() {
-        let { error, touched, displayName, name, help, fieldLayout, innerSize } = this.props;
+        let { error, touched, displayName, name, help, fieldLayout, innerSize, children } = this.props;
         let { value, placeholder, addonBefore, addonAfter, onChange, onBlur, componentClass, rows } = this.props;
 
         let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
