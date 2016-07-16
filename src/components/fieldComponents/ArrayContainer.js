@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import GlyphButton from '../GlyphButton.js';
-import { Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/lib/Alert';
 import FormGroup from '../FormGroup';
 import ArrayContainerItem from '../ArrayContainerItem';
 
@@ -17,7 +17,6 @@ class ArrayContainer extends Component {
 
     handleItemAction = (index, eventKey) => {
         let { id, value, fields, onChange, reduxFormProps: { swapFields, removeField } } = this.props;
-        let { events } = this;
 
         switch (eventKey) {
             case "remove":
@@ -53,7 +52,7 @@ class ArrayContainer extends Component {
     
     getComponents = () => {
         let { fields, componentFactory, layout } = this.props;
-        const groupComponentProps = {
+        let groupComponentProps = {
             component: layout.component,
             layout: layout,
             fields: fields,
@@ -95,8 +94,7 @@ class ArrayContainer extends Component {
         } else {
             return (
                 <Alert bsStyle="warning">
-                    This array is empty. Consider 
-                    <a href="#" onClick={ this.handleAdd }>adding a new item</a>.
+                    This array is empty. Consider <a href="#" onClick={ this.handleAdd }>adding a new item</a>.
                 </Alert>
             );
         }
