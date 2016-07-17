@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FormGroup as BootstrapFormGroup } from 'react-bootstrap';
 import FormGroupInlineControlLabel from './FormGroupInlineControlLabel';
 import FormGroupInlineContent from './FormGroupInlineContent'
-import { getDisplayName } from '../lib/helpers/metadataHelper';
+import { getDisplayName } from '../../lib/helpers/metadataHelper';
 
 class FormGroupInline extends Component {
     static propTypes = {

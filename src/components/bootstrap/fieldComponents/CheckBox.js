@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getDisplayName } from '../../lib/helpers/metadataHelper';
+import { getDisplayName } from '../../../lib/helpers/metadataHelper';
 import { Checkbox as BootstrapCheckbox } from 'react-bootstrap';
 import Col from 'react-bootstrap/lib/Col';
 
