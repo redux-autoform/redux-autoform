@@ -1,46 +1,19 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FormGroup from '../FormGroup';
-import Select2 from 'react-select';
+import Select from 'react-select';
 
-const Lookup = React.createClass({
+class Lookup extends Component {
+    render() {
+        let { value, name, displayName, help, error, touched, onChange, onBlur, options, fieldLayout} = this.props;
+        let selectProps = { options, value, name, onChange, onBlur: (event) => onBlur() };
+        let formGroupProps = { error, touched, displayName, name, help, fieldLayout};
 
-    render: function () {
-
-        let {
-            value,
-            name,
-            displayName,
-            help,
-            error,
-            touched,
-            onChange,
-            onBlur,
-            options,
-            fieldLayout
-        } = this.props;
-
-        let selectProps = {
-            options,
-            value,
-            name,
-            onChange,
-            onBlur: (event) => onBlur()
-        };
-
-        let formGroupProps = {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout
-        };
-
-        return <FormGroup {...formGroupProps}>
-            <Select2 {...selectProps} />
-        </FormGroup>
+        return (
+            <FormGroup {...formGroupProps}>
+                <Select {...selectProps}/>
+            </FormGroup>
+        )
     }
-
-});
+}
 
 export default Lookup;

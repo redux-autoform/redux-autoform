@@ -1,49 +1,35 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Radio as BootstrapRadio } from 'react-bootstrap';
 import FormGroup from '../FormGroup';
 
-
-const Radio = React.createClass({
-
-    handleChange(event) {
+class Radio extends Component {
+    handleChange = (event) => {
         let { onChange } = this.props;
         onChange(event.target.value);
-    },
+    };
 
-    render: function () {
+    getOptions = () => {
+        let { options, name, fieldLayout } = this.props;
+        let radioProps = { inline: fieldLayout == 'inline', name };
 
-        let {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout,
-            innerSize,
-            options,
-            onChange
-        } = this.props;
+        return options.map((item, index) => (
+            <BootstrapRadio key={index} value={item.value} onChange={this.handleChange} {...radioProps}>
+                {item.text}
+            </BootstrapRadio>
+        ))
+    };
 
-        let formGroupProps = {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout,
-            innerSize
-        };
+    render() {
+        let { error, touched, displayName, name, help, fieldLayout, innerSize } = this.props;
+        let formGroupProps = { error, touched, displayName, name, help, fieldLayout, innerSize };
+        let options = this.getOptions();
 
-        let radioProps = {
-            inline: fieldLayout == 'inline',
-            name
-        }
-
-        return <FormGroup {...formGroupProps} >
-            { options.map(i => { return <BootstrapRadio {...radioProps} value={i.value} onChange={this.handleChange}> {i.text} </BootstrapRadio> }) }
-        </FormGroup>
-
+        return (
+            <FormGroup {...formGroupProps} >
+                { options }
+            </FormGroup>
+        )
     }
-});
+}
 
 export default Radio;

@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FormGroupInline from './FormGroupInline';
 import FormGroupStacked from './FormGroupStacked';
 
-const FormGroup = React.createClass({
+class FormGroup extends Component {
+    static propTypes = {
+        error: PropTypes.string,
+        touched: PropTypes.bool,
+        displayName: PropTypes.string,
+        name: PropTypes.string,
+        help: PropTypes.string
+    };
 
-    propTypes: {
-        error: React.PropTypes.string,
-        touched: React.PropTypes.bool,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string,
-        help: React.PropTypes.string
-    },
-
-    render: function () {
-        let {fieldLayout} = this.props;
+    render() {
+        let { fieldLayout } = this.props;
         let InnerFormGroup = fieldLayout == 'inline' ? FormGroupInline : FormGroupStacked;
-        return <InnerFormGroup {...this.props} />;
+        
+        return <InnerFormGroup {...this.props}/>;
     }
-});
+}
 
 export default FormGroup;

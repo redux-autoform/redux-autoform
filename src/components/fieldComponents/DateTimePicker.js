@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import {DateTimePicker as ReactWidgetsDateTimePicker} from 'react-widgets';
 import { getDateLocalizer } from '../../lib/localization/dateLocalizer';
 import FormGroup from '../FormGroup';
 
-const DateTimePicker = React.createClass({
-
-    propTypes: {
-        value: React.PropTypes.any,
-        onChange: React.PropTypes.func.isRequired,
-        displayName: React.PropTypes.string,
-        name: React.PropTypes.string.isRequired,
-        error: React.PropTypes.string,
-        format: React.PropTypes.string
-    },
+class DateTimePicker extends Component {
+    static propTypes = {
+        value: PropTypes.any,
+        onChange: PropTypes.func.isRequired,
+        displayName: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        error: PropTypes.string,
+        format: PropTypes.string
+    };
 
     /**
      * Returns the format prop for the given DateTimePicker props
@@ -21,11 +20,18 @@ const DateTimePicker = React.createClass({
      * @param formats
      * @returns {*}
      */
-    getFormat: function (format, type, formats) {
-        if (!type) throw Error('\'type\' should be truthy');
-        if (!formats) throw Error('\'localizer\' should be truthy');
+    getFormat = (format, type, formats) => {
+        if (!type) {
+            throw Error('\'type\' should be truthy');
+        }
 
-        if(format) return format;
+        if (!formats) {
+            throw Error('\'localizer\' should be truthy');
+        }
+
+        if (format) {
+            return format;
+        }
 
         switch(type) {
             case 'datetime':
@@ -37,16 +43,21 @@ const DateTimePicker = React.createClass({
             default:
                 throw Error(`Invalid type. Type: ${type}`);
         }
-    },
+    };
 
     /**
      * Sets ReactWidgetsDateTimePicker props depending on the the type metadata
      * @param props
      * @param type
      */
-    setReactWidgetsProps: function(props, type) {
-        if (!props) throw Error('\'props\' should be truthy');
-        if (!type) throw Error('\'type\' should be truthy');
+    setReactWidgetsProps = (props, type) => {
+        if (!props) {
+            throw Error('\'props\' should be truthy');
+        }
+
+        if (!type) {
+            throw Error('\'type\' should be truthy');
+        }
 
         switch(type) {
             case 'time':
@@ -56,63 +67,37 @@ const DateTimePicker = React.createClass({
                 props.time = false;
                 break;
         }
-    },
+    };
 
-    onChange: function (date, dateAsString) {
-        let {onChange} = this.props;
+    onChange = (date, dateAsString) => {
+        let { onChange } = this.props;
         onChange(dateAsString);
-    },
+    };
 
     render() {
-
-        let {
-            value,
-            name,
-            displayName,
-            help,
-            error,
-            touched,
-            onBlur,
-            format,
-            type,
-            fieldLayout
-        } = this.props;
-
+        let { value, name, displayName, help, error, touched, onBlur, format, type, fieldLayout } = this.props;
         let localizer = getDateLocalizer();
 
         if (typeof value == 'string') {
-            if(value == '') value = undefined;
-            else {
+            if(value == '') {
+                value = undefined;
+            } else {
                 format = this.getFormat(format, type, localizer.formats);
                 value = localizer.parse(value, format);
             }
         }
 
-        let reactWidgetsProps = {
-            value: value,
-            displayName: displayName,
-            onChange: this.onChange,
-            onBlur: onBlur,
-            format: format
-        };
+        let reactWidgetsProps = { value, displayName, onChange: this.onChange, onBlur, format };
+        let formGroupProps = { error, touched, displayName, name, help, fieldLayout };
+
         this.setReactWidgetsProps(reactWidgetsProps, type);
-
-
-        let formGroupProps = {
-            error,
-            touched,
-            displayName,
-            name,
-            help,
-            fieldLayout
-        };
 
         return (
             <FormGroup {...formGroupProps}>
-                <ReactWidgetsDateTimePicker {...reactWidgetsProps} />
+                <ReactWidgetsDateTimePicker {...reactWidgetsProps}/>
             </FormGroup>
         );
     }
-});
+}
 
 export default DateTimePicker;
