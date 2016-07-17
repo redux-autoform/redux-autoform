@@ -1,14 +1,14 @@
-import TextBox from 'components/bootstrap/fieldComponents/TextBox';
-import Select from 'components/bootstrap/fieldComponents/Select';
-import TextArea from 'components/bootstrap/fieldComponents/TextArea';
-import Group from 'components/bootstrap/groupComponents/Group';
-import ArrayContainer from 'components/bootstrap/fieldComponents/ArrayContainer';
-import DateTimePicker from 'components/bootstrap/fieldComponents/DateTimePicker';
-import Lookup from 'components/bootstrap/fieldComponents/Lookup';
-import Static from 'components/bootstrap/fieldComponents/Static';
-import FieldGroup from 'components/bootstrap/fieldComponents/FieldGroup';
-import Checkbox from 'components/bootstrap/fieldComponents/CheckBox';
-import Radio from 'components/bootstrap/fieldComponents/Radio';
+import TextBox from './components/bootstrap/fieldComponents/TextBox';
+import Select from './components/bootstrap/fieldComponents/Select';
+import TextArea from './components/bootstrap/fieldComponents/TextArea';
+import Group from './components/bootstrap/groupComponents/Group';
+import ArrayContainer from './components/bootstrap/fieldComponents/ArrayContainer';
+import DateTimePicker from './components/bootstrap/fieldComponents/DateTimePicker';
+import Lookup from './components/bootstrap/fieldComponents/Lookup';
+import Static from './components/bootstrap/fieldComponents/Static';
+import FieldGroup from './components/bootstrap/fieldComponents/FieldGroup';
+import Checkbox from './components/bootstrap/fieldComponents/CheckBox';
+import Radio from './components/bootstrap/fieldComponents/Radio';
 
 export function registerBaseComponents(componentFactory) {
     if (!componentFactory) throw Error('\'componentFactory\' should be truthy');
