@@ -1,13 +1,16 @@
-import React from 'react';
-import Router from 'react-router';
+import React, { Component } from 'react';
 
-const Root = React.createClass({
+class Root extends Component {
     render() {
-        return <div className="container-fluid">
-                {this.props.children}
-            </div>;
+        let { children } = this.props;
+        
+        return (
+            <div className="container-fluid">
+                { children }
+            </div>
+        )
     }
-});
+}
 
 
 export default Root;

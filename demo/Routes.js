@@ -2,7 +2,7 @@ import React from 'react';
 import App from './containers/App';
 import Demo from './pages/Demo.js';
 
-import {Route} from 'react-router';
+import { Route } from 'react-router';
 
 export default (
     <Route path='/' component={App}>
