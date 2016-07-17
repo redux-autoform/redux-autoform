@@ -17,6 +17,7 @@ componentFactory.setDefaultFieldComponents({
     'bool': 'Static',
     'group': 'FieldGroup'
 });
+
 componentFactory.setDefaultGroupComponent('Group');
 
 export default componentFactory;

@@ -6,6 +6,6 @@ export ComponentFactory from './ComponentFactory.js';
 export DefaultEditComponentFactory from './DefaultEditComponentFactory';
 export DefaultDetailsComponentFactory from './DefaultDetailsComponentFactory';
 
-// localizers
+//localizers
 export momentLocalizer from './lib/localization/momentLocalizer';
 export numbroLocalizer from './lib/localization/numbroLocalizer';
