@@ -1,30 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AceEditor from 'react-ace';
 
 import 'brace/mode/jsx';
 import 'brace/theme/github.js';
 
-const CodeEditor = React.createClass({
-
-    render: function() {
-
+class CodeEditor extends Component {
+    render() {
+        let { value, name, readOnly, onChange, mode, width, height } = this.props;
+        mode = mode || 'jsx';
+        width =  width || '100%';
+        
         // metadata
-        let props = {
-            value: this.props.value,
-            name: this.props.name,
-            ref: 'input',
-            readOnly: this.props.readOnly,
-            onChange:this.props.onChange,
-            mode: this.props.mode || 'jsx',
-            width: this.props.width || '100%',
-            theme: 'github',
-            height: this.props.height,
-            fontSize: 14,
-            editorProps: {$blockScrolling: true}
-        };
+        let props = { value, name, ref: 'input', readOnly, onChange, mode, width, theme: 'github', height, fontSize: 14,  editorProps: {$blockScrolling: true} };
 
-        return <AceEditor {...props} className="code-editor" />;
+        return <AceEditor className="code-editor" {...props}/>;
+    }
 }
-});
 
 export default CodeEditor;
