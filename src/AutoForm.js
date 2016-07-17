@@ -6,6 +6,7 @@ import modelProcessor from './lib/modelParser';
 
 class AutoForm extends Component {
     static propTypes = {
+        uiType: PropTypes.string,
         componentFactory: PropTypes.object.isRequired,
         schema: PropTypes.object.isRequired,
         entityName: PropTypes.string.isRequired,
@@ -20,6 +21,7 @@ class AutoForm extends Component {
     };
 
     render() {
+        //TODO JS: capture uiType property
         let { schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
         
         try {
