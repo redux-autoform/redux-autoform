@@ -1,5 +1,5 @@
 import chai from 'chai';
-import metadataProvider from '../src/lib/metadataProvider.js';
+import metadataProvider from '../src/lib/MetadataProvider.js';
 const assert = chai.assert;
 
 describe('MetadataProvider', function () {

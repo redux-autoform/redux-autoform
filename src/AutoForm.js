@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import AutoFormInternal from './AutoFormInternal';
-import metadataProvider from './lib/metadataProvider';
+import MetadataProvider from './lib/MetadataProvider';
 import metadataValidator from './lib/metadataValidator';
 import modelProcessor from './lib/modelParser';
 
@@ -24,12 +24,12 @@ class AutoForm extends Component {
         let { uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
         
         try {
-            let { entity, layout } = metadataProvider.getEntityAndLayout(schema, entityName, layoutName);
-            let fieldMetadata = metadataProvider.getFields(schema, entity, layout, f => {
+            let { entity, layout } = MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
+            let fieldMetadata = MetadataProvider.getFields(schema, entity, layout, f => {
                 f.componentFactory = componentFactory;
                 f.fieldLayout = fieldLayout;
             });
-            let fields = metadataProvider.getReduxFormFields(fieldMetadata);
+            let fields = MetadataProvider.getReduxFormFields(fieldMetadata);
             let validate = (values) => {
                 let modelParsed = modelProcessor.process(values, fieldMetadata);
                 return metadataValidator.validate(fieldMetadata, modelParsed) || {};

@@ -57,7 +57,7 @@ class ModelProcessor {
     }
 }
 
-var modelParser = new ModelProcessor();
+let modelParser = new ModelProcessor();
 modelParser.addProcessor(dateTimeParser, ['datetime', 'date', 'time']);
 modelParser.addProcessor(numberParser, ['int', 'float']);
 modelParser.addProcessor(entityParser, ['entity']);

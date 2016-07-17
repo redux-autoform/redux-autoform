@@ -1,17 +1,17 @@
 import _ from 'underscore';
 
-export default {
+export default class MetadataProvider {
 
     /**
      * Validates a field metadata
      * @param metadata
      * @private
      */
-    validateFieldMetadata: function(metadata) {
+    static validateFieldMetadata(metadata) {
         if (!metadata) throw Error('metadata should not be null or undefined');
         if (!metadata.name) throw Error('metadata\'s "name" property is required');
         if (!metadata.type) throw Error('metadata\'s "type" property is required');
-    },
+    }
 
     /**
      * Gets a raw entity from the given schema. No processing.
@@ -19,7 +19,7 @@ export default {
      * @param entityName
      * @returns {*}
      */
-    getEntity: function(schema, entityName) {
+    static getEntity(schema, entityName) {
         if (!schema) throw Error('\'schema\' should be truthy');
         if (!entityName) throw Error('\'entityName\' should be truthy');
         if (schema.entities === undefined || schema.entities === null) throw Error('schema should have entities');
@@ -27,7 +27,7 @@ export default {
         let entity = _.find(schema.entities, e => e.name === entityName);
         if (!entity) throw Error(`Could not find entity. Entity name: ${entityName}`);
         return entity;
-    },
+    }
 
     /**
      * Gets a raw layout from the given entity. No processing.
@@ -35,12 +35,12 @@ export default {
      * @param layoutName
      * @returns {*}
      */
-    getLayout: function(entity, layoutName) {
+    static getLayout(entity, layoutName) {
         if (!entity) throw Error('\'entity\' should be truthy');
         let layout = _.find(entity.layouts, l => l.name === layoutName);
         if (!layout) throw Error(`Could not find layout. Layout name: ${layoutName}`);
         return layout;
-    },
+    }
 
     /**
      * Gets a raw entity and a raw layout from the given schema.
@@ -49,7 +49,7 @@ export default {
      * @param layoutName
      * @returns {{entity: *, layout: *}}
      */
-    getEntityAndLayout: function(schema, entityName, layoutName) {
+    static getEntityAndLayout(schema, entityName, layoutName) {
         let entity = this.getEntity(schema, entityName);
         let layout = layoutName ? this.getLayout(entity, layoutName) : this.generateDefaultLayout(schema, entity);
 
@@ -57,7 +57,7 @@ export default {
             entity: entity,
             layout: layout
         }
-    },
+    }
 
     /**
      * Internal method for merging entity and layout fields
@@ -68,7 +68,7 @@ export default {
      * @param callback
      * @return {Number}
      */
-    getFieldsInternal: function(schema, entity, layout, partialResult, callback) {
+    static getFieldsInternal(schema, entity, layout, partialResult, callback) {
 
         if (!schema) throw Error('\'schema\' should be truthy');
         if (!entity) throw Error('\'entity\' should be truthy');
@@ -129,26 +129,25 @@ export default {
         }
 
         return _.union(partialResult, thisGroupFields);
-
-    },
+    }
 
     /**
      * Merges the given field collection
      * @param schema
      * @param entity
      * @param layout
+     * @param callback
      * @external https://github.com/gearz-lab/react-metaform/blob/master/docs-md/MetadataProvider.md
      */
-    getFields: function(schema, entity, layout, callback) {
+    static getFields(schema, entity, layout, callback) {
         entity = typeof entity === 'string' ? this.getEntity(schema, entity) : entity;
         if (!layout) {
             layout = this.generateDefaultLayout(schema, entity);
-        }
-        else {
+        } else {
             layout = typeof layout === 'string' ? this.getLayout(entity, layout) : layout;
         }
         return this.getFieldsInternal(schema, entity, layout, undefined, callback);
-    },
+    }
 
     /**
      * Creates a clone of the given layout-group that maintains only the hierarchy and the 'name' property
@@ -156,7 +155,7 @@ export default {
      * @param layoutGroup
      * @returns {Object}
      */
-    processLayoutGroup: function(layoutGroup) {
+    static processLayoutGroup(layoutGroup) {
         if (!layoutGroup) throw Error('\'layoutGroup\' should be truthy');
 
         let layoutGroupClone = {};
@@ -165,8 +164,7 @@ export default {
             for (let i = 0; i < layoutGroup.fields.length; i++) {
                 layoutGroupClone.fields.push({ name: layoutGroup.fields[i].name });
             }
-        }
-        else if (layoutGroup.groups) {
+        } else if (layoutGroup.groups) {
             layoutGroupClone.groups = [];
             for (let i = 0; i < layoutGroup.groups.length; i++) {
                 layoutGroupClone.groups.push(this.processLayoutGroup(layoutGroup.groups[i]));
@@ -179,21 +177,21 @@ export default {
         layoutGroupClone.title = layoutGroup.title;
 
         return layoutGroupClone;
-    },
+    }
 
-    processLayout: function(schema, entity, layout) {
+    static processLayout(schema, entity, layout) {
         entity = typeof entity === 'string' ? this.getEntity(schema, entity) : entity;
         layout = typeof layout === 'string' ? this.getLayout(entity, layout) : layout;
 
         return this.processLayoutGroup(layout);
-    },
+    }
 
     /**
      * Generates a default layout for the given entity. Useful so it's not obligatory to implement layouts.
      * @param schema application schema
      * @param entity
      */
-    generateDefaultLayout: function(schema, entity) {
+    static generateDefaultLayout(schema, entity) {
         entity = typeof entity === 'string' ? this.getEntity(schema, entity) : entity;
         return {
             name: `${entity.name}-default`,
@@ -203,25 +201,24 @@ export default {
                 };
             })
         };
-    },
+    }
 
     /**
      * Gets the field-list for Redux-Form
      * @param fieldMetadata
      * @param prefix
      */
-    getReduxFormFields: function(fieldMetadata, prefix) {
+    static getReduxFormFields(fieldMetadata, prefix) {
         if (!fieldMetadata) throw Error('fieldMetadata should be truthy');
         let result = [];
 
         _.each(fieldMetadata, f => {
-            if (f.fields){
+            if (f.fields) {
                 // if a field has fields, it's either an array or a complex object
                 let fieldPrefix = f.type == 'array' ? `${f.name}[]` : f.name;
                 let totalPrefix = prefix ? `${prefix}.${fieldPrefix}` : fieldPrefix;
                 this.getReduxFormFields(f.fields, totalPrefix).map(f2 => result.push(f2));
-            }
-            else {
+            } else {
                 result.push(prefix ? `${prefix}.${f.name}` : f.name)
             }
         });
