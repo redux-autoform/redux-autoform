@@ -7,18 +7,14 @@ import { setInlineFieldLayout, setStackedFieldLayout, setEditComponentFactory, s
 const reduxFormActions = { change, initialize };
 const formOptionsActions = { setInlineFieldLayout, setStackedFieldLayout, setEditComponentFactory, setDetailsComponentFactory, updateForm };
 
-function mapStateToProps(state) {
-    return {
-        metaForm: state.form.meta,
-        formOptions: state.formOptions
-    };
-}
+const mapStateToProps = (state) => ({     
+    metaForm: state.form.meta,
+    formOptions: state.formOptions
+});
 
-function mapDispatchToProps(dispatch) {
-    return {
-        reduxFormActions: bindActionCreators(reduxFormActions, dispatch),
-        formOptionsActions: bindActionCreators(formOptionsActions, dispatch)
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+    reduxFormActions: bindActionCreators(reduxFormActions, dispatch), 
+    formOptionsActions: bindActionCreators(formOptionsActions, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LiveSchemaEditor);
