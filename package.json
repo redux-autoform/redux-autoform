@@ -55,7 +55,6 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "brace": "^0.8.0",
-    "carte-blanche": "^0.3.1",
     "chai": "^3.2.0",
     "child-process-promise": "^2.0.3",
     "colors": "^1.1.2",

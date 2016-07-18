@@ -37,9 +37,6 @@ export default {
     },
 
     plugins: [
-        // new CarteBlanche({
-        //     componentRoot: '../src/components'
-        // }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
