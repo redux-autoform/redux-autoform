@@ -1,4 +1,5 @@
-import { getNumberLocalizer } from '../localization/numberLocalizer';
+import { getNumberLocalizer } from '../../../localization/numberLocalizer';
+
 var localizer;
 
 export default function parse(metadata, value) {

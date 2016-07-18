@@ -1,4 +1,4 @@
-import { getNumberLocalizer } from '../localization/numberLocalizer';
+import { getNumberLocalizer } from '../../../localization/numberLocalizer';
 var localizer;
 
 export default function(propertyMetadata, modelValue, model, validator) {

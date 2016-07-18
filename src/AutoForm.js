@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import AutoFormInternal from './AutoFormInternal';
-import MetadataProvider from './lib/MetadataProvider';
-import metadataValidator from './lib/metadataValidator';
-import modelProcessor from './lib/modelParser';
+import MetadataProvider from './metadata/MetadataProvider';
+import metadataValidator from './metadata/validator/metadataValidator';
+import modelProcessor from './metadata/model/modelParser';
 
 class AutoForm extends Component {
     static propTypes = {

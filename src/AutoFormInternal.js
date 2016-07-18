@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form';
-import metadataEvaluator from './lib/metadataEvaluator';
-import modelParser from './lib/modelParser';
+import metadataEvaluator from './metadata/evaluator/metadataEvaluator';
+import modelParser from './metadata/model/modelParser';
 import { Form } from 'react-bootstrap';
 
 class AutoFormInternal extends Component {

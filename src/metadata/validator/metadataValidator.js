@@ -1,11 +1,11 @@
 import _ from 'underscore';
-import defaultValidator from './metadataValidators/defaultMetadataValidator';
-import arrayValidator from './metadataValidators/arrayValidator';
-import entityValidator from './metadataValidators/entityValidator';
-import requiredValidator from './metadataValidators/requiredValidator';
-import dateTimeValidator from './metadataValidators/dateTimeValidator';
-import intValidator from './metadataValidators/intValidator';
-import floatValidator from './metadataValidators/floatValidator';
+import defaultValidator from './validators/defaultMetadataValidator';
+import arrayValidator from './validators/arrayValidator';
+import entityValidator from './validators/entityValidator';
+import requiredValidator from './validators/requiredValidator';
+import dateTimeValidator from './validators/dateTimeValidator';
+import intValidator from './validators/intValidator';
+import floatValidator from './validators/floatValidator';
 
 var validator = {
     validators: [],
