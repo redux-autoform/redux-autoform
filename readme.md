@@ -66,7 +66,7 @@ prop of the `AutoForm`.
 import { ComponentFactory } from 'redux-autoform';
 ```
 
-####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))####
+####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))####
 
 This is a pre-populated factory, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
 In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.

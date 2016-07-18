@@ -25,8 +25,10 @@ class AutoFormInternal extends Component {
         if (!componentFactory) {
             switch (uiType) {
                 case "bootstrap":
+                    // return BootstrapComponentFactory;
                     return componentFactory;
                 case "material-ui":
+                    // return MaterialUiComponentFactory;
                     return componentFactory;
                 default:
                     return componentFactory;

@@ -1,5 +1,5 @@
-import ComponentFactory from './ComponentFactory';
-import { registerBaseComponents } from './defaultComponentFactoryHelper';
+import ComponentFactory from './../ComponentFactory';
+import { registerBaseComponents } from './helper/BootstrapComponentFactoryHelper';
 
 var componentFactory = new ComponentFactory();
 

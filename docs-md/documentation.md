@@ -121,7 +121,7 @@ name | The `field` name. This is how a field is identified and merged.
 type | The `field` type. This is the default way to determine which component should render this `field`.
  The list of possible values for `type` depends on which component is registered in the `ComponentFactory`. That is,
  `foo` is a valid value for `type`, as long as the `ComponentFactory` registered a component for `foo`.
- The list of valid types for the `DefaultEditComponentFactory` can be found [here](https://gearz-lab.github.io/redux-autoform/blob/master/src/defaultComponentFactoryHelper.js).
+ The list of valid types for the `DefaultEditComponentFactory` can be found [here](https://gearz-lab.github.io/redux-autoform/blob/master/src/MaterialUiComponentFactoryHelper.js).
 size | The size of the component, in grid units. Values can range from 1 to 12.
 component | Which component to use. If no component is set, the default one will be used.
 
@@ -226,7 +226,7 @@ prop of the `AutoForm`.
 
     import { ComponentFactory } from 'redux-autoform';
 
-DefaultEditComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+DefaultEditComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))
 ----
 
 This is a pre-populated factory for editing, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
@@ -236,7 +236,7 @@ In order to use it, `import` it and just pass it to the `componentFactory` prop 
     
 The `DefaultEditComponentFactory` relies on [these third-party components](#third-party).
 
-DefaultDetailsComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/DefaultEditComponentFactory.js))
+DefaultDetailsComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))
 ----
 
 This is a pre-populated factory for details. In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
