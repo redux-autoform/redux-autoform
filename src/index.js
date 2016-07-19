@@ -7,5 +7,5 @@ export DefaultEditComponentFactory from './factory/bootstrap/BootstrapEditCompon
 export DefaultDetailsComponentFactory from './factory/bootstrap/BootstrapDetailsComponentFactory';
 
 //localizers
-export momentLocalizer from 'localization/momentLocalizer';
-export numbroLocalizer from 'localization/numbroLocalizer';
+export momentLocalizer from './localization/momentLocalizer';
+export numbroLocalizer from './localization/numbroLocalizer';
