@@ -1,10 +1,10 @@
 // metadata filters
-import defaultMetadataFilter from './metadataEvaluatorFilters/defaultMetadataFilter.js';
-import entityMetadataFilter from './metadataEvaluatorFilters/entityMetadataFilter.js';
-import arrayMetadataFilter from './metadataEvaluatorFilters/arrayMetadataFilter.js';
+import defaultMetadataFilter from './filter/defaultMetadataFilter.js';
+import entityMetadataFilter from './filter/entityMetadataFilter.js';
+import arrayMetadataFilter from './filter/arrayMetadataFilter.js';
 
 // property filters
-import defaultPropertyMetadataFilter from './metadataEvaluatorPropertyFilters/defaultMetadataPropertyFilter.js';
+import defaultPropertyMetadataFilter from './property-filter/defaultMetadataPropertyFilter.js';
 import _ from 'underscore';
 
 class MetadataEvaluator {

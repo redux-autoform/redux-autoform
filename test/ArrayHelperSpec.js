@@ -1,5 +1,5 @@
 import chai from 'chai';
-import arrayHelper from '../src/lib/helpers/arrayHelper.js';
+import arrayHelper from '../src/metadata/helper/arrayHelper.js';
 const assert = chai.assert;
 
 describe('ArrayHelper', function () {

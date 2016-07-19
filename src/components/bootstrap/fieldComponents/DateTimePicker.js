@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {DateTimePicker as ReactWidgetsDateTimePicker} from 'react-widgets';
-import { getDateLocalizer } from '../../lib/localization/dateLocalizer';
+import { getDateLocalizer } from '../../../localization/dateLocalizer';
 import FormGroup from '../FormGroup';
 
 class DateTimePicker extends Component {

@@ -1,9 +1,9 @@
 import _ from 'underscore';
 
-import dateTimeParser from './modelParsers/dateTimeParser';
-import numberParser from './modelParsers/numberParser';
-import entityParser from './modelParsers/entityParser';
-import arrayParser from './modelParsers/arrayParser';
+import dateTimeParser from './parsers/dateTimeParser';
+import numberParser from './parsers/numberParser';
+import entityParser from './parsers/entityParser';
+import arrayParser from './parsers/arrayParser';
 
 class ModelProcessor {
 
@@ -57,7 +57,7 @@ class ModelProcessor {
     }
 }
 
-var modelParser = new ModelProcessor();
+let modelParser = new ModelProcessor();
 modelParser.addProcessor(dateTimeParser, ['datetime', 'date', 'time']);
 modelParser.addProcessor(numberParser, ['int', 'float']);
 modelParser.addProcessor(entityParser, ['entity']);

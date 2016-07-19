@@ -1,5 +1,5 @@
 import chai from 'chai';
-import modelParser from '../src/lib/modelParser';
+import modelParser from '../src/metadata/model/modelParser';
 const assert = chai.assert;
 
 describe('ModelProcessor', function () {

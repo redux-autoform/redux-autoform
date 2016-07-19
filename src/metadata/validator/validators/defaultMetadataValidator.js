@@ -1,4 +1,4 @@
-import expressionEvaluator from '../expressionEvaluator';
+import expressionEvaluator from '../../evaluator/expressionEvaluator';
 
 /**
  * Default validator

@@ -4,14 +4,14 @@ import presets from '../presets';
 import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
-import editComponentFactory from '../../src/DefaultEditComponentFactory';
-import detailsComponentFactory from '../../src/DefaultDetailsComponentFactory';
+import editComponentFactory from '../../src/factory/bootstrap/BootstrapEditComponentFactory';
+import detailsComponentFactory from '../../src/factory/bootstrap/BootstrapDetailsComponentFactory';
 import {Alert, Badge} from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-import momentLocalizer from '../../src/lib/localization/momentLocalizer';
-import numbroLocalizer from '../../src/lib/localization/numbroLocalizer';
+import momentLocalizer from '../../src/localization/momentLocalizer';
+import numbroLocalizer from '../../src/localization/numbroLocalizer';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
 
