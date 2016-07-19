@@ -1,4 +1,4 @@
-import getExpressionHelper from './../helper/expressionHelper.js';
+import getExpressionHelper from '../../helpers/expressionHelper.js';
 
 var _expressionHelper;
 
