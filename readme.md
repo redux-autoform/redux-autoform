@@ -31,7 +31,7 @@
 Demo
 ---
 
-You can check the [online demo here](http://gearz-lab.github.io/redux-autoform/demo.html). Don't forget to check out all the **presets**.
+You can check the [online demo here](http://redux-autoform.github.io/redux-autoform/demo.html). Don't forget to check out all the **presets**.
 
 
 Docs
