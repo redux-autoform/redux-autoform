@@ -153,7 +153,7 @@ In order to run the demo, run:
 
     npm run start
     
-Now the demo should be available here: [http://localhost:4000/demo.html](http://localhost:4000/redux-autoform/demo.html).
+Now the demo should be available here: [http://localhost:4000/](http://localhost:4000/).
     
 In order to run the `karma` tests:
 
