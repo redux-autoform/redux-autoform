@@ -21,31 +21,8 @@
                     required: true,
                     options: [
                         { value: 'option1', text: 'Option 1' },
-                        { value: 'option2', text: 'Option 2' },
-                        { value: 'option3', text: 'Option 3' }
+                        { value: 'option2', text: 'Option 2' }
                     ]
-                },
-                {
-                    name: "addonBefore",
-                    displayName: "Addon before",
-                    type: "string",
-                    component: "Radio",
-                    options: [
-                        { value: 'option1', text: 'Option 1' },
-                        { value: 'option2', text: 'Option 2' }
-                    ],
-                    addonBefore: 'This is something before'
-                },
-                {
-                    name: "addonAfter",
-                    displayName: "Addon after",
-                    type: "string",
-                    component: "Radio",
-                    options: [
-                        { value: 'option1', text: 'Option 1' },
-                        { value: 'option2', text: 'Option 2' }
-                    ],
-                    addonAfter: 'This is something after'
                 },
                 {
                     name: "help",
