@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-import CarteBlanche from 'carte-blanche';
 
 export default {
 
