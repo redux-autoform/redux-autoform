@@ -39,6 +39,7 @@
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
+    "redux-autoform-utils": "^1.0.3",
     "redux-form": "^5.2.5",
     "underscore": "^1.8.3"
   },

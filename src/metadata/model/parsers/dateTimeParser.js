@@ -1,6 +1,5 @@
-//TODO JS: add redux-autoform-utils import
-import { getFormat } from '../../../helpers/dateTimeHelpers';
-import { getDateLocalizer } from '../../../localization/dateLocalizer';
+import { getFormat } from 'redux-autoform-utils/lib/helpers/dateTimeHelpers';
+import { getDateLocalizer } from 'redux-autoform-utils/lib/localization/dateLocalizer';
 
 var localizer;
 
