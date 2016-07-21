@@ -6,7 +6,8 @@ import modelProcessor from './metadata/model/modelParser';
 
 class AutoForm extends Component {
     static propTypes = {
-        componentFactory: PropTypes.object.isRequired,
+        uiType: PropTypes.string,
+        componentFactory: PropTypes.object,
         schema: PropTypes.object.isRequired,
         entityName: PropTypes.string.isRequired,
         layoutName: PropTypes.string.isRequired,
@@ -20,7 +21,7 @@ class AutoForm extends Component {
     };
 
     render() {
-        let { schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
+        let { uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
         
         try {
             let { entity, layout } = MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
@@ -34,7 +35,7 @@ class AutoForm extends Component {
                 return metadataValidator.validate(fieldMetadata, modelParsed) || {};
             };
             
-            let autoFormProps = { form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues };
+            let autoFormProps = { uiType, form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues };
 
             return <AutoFormInternal {...autoFormProps}/>
         } catch(ex) {
