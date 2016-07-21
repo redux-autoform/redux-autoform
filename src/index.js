@@ -1,6 +1,8 @@
 // main component
 export AutoForm from './AutoForm.js';
 
+
+//TODO JS: add redux-autoform-utils import
 // component factories
 export ComponentFactory from './factory/ComponentFactory.js';
 export DefaultEditComponentFactory from './factory/bootstrap/BootstrapEditComponentFactory';
