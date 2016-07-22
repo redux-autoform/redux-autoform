@@ -12,6 +12,32 @@ export default class MetadataProvider {
     static canonizeSchema(schema) {
         if (!schema) throw Error('\'schema\' should be truthy');
 
+        if(!schema.entities) {
+            // when no entities are specified in the schema, the schema is considered to be in the SIMPLEST form, example:
+            // {
+            //     name: {
+            //         type: 'string'
+            //     },
+            //     dateOfBirth: {
+            //         type: 'string'
+            //     }
+            // }
+            // OR...
+            // [
+            //     { name: 'name', type: 'string' },
+            //     { name: 'dateOfBirth', type: 'date' },
+            // ]
+            // In this case, I'm just creating a 'default' entity
+            return MetadataProvider.canonizeSchema({
+                entities: [
+                    {
+                        name: 'default',
+                        fields: schema
+                    }
+                ]
+            });
+        }
+
         schema = clone(schema);
         schema.entities = MetadataProvider.canonizeArray(schema.entities);
         _.each(schema.entities, entity => {

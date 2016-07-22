@@ -22,6 +22,14 @@ export default [
         schema: require('./presets/layouts.txt')
     },
     {
+        name: 'schemaTypeSimple',
+        displayName: 'Schema types - Simple',
+        entityName: '',
+        layoutName: '',
+        formTitle: 'Edit contact',
+        schema: require('./presets/schemaTypesSimple.txt')
+    },
+    {
         name: 'componentsCheckbox',
         displayName: 'Components - Checkbox',
         entityName: 'contact',

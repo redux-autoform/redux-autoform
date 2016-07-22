@@ -25,7 +25,7 @@ class LiveSchemaEditorForm extends Component {
             <div className='row'>
                 <div className="col-md-12">
                     <span className="pull-right">
-                        Check the <a target="blank" href="https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md">metadatadocumentation</a>
+                        <a target="blank" href="https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md">metadata documentation</a>
                     </span>
                     <FormGroup controlId="formControlsSelect">
                         <ControlLabel>
