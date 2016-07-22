@@ -51,8 +51,8 @@ describe('MetadataProvider', function () {
                                     {
                                         name: "g1",
                                         fields: [
-                                            { name: "propertyGrouped1", size: 3, displayName: null },
-                                            { name: "propertyGrouped2", size: 9, displayName: null },
+                                            {name: "propertyGrouped1", size: 3, displayName: null},
+                                            {name: "propertyGrouped2", size: 9, displayName: null},
                                         ]
                                     }
                                 ]
@@ -96,7 +96,7 @@ describe('MetadataProvider', function () {
             let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
             assert.isFunction(fields[0].displayName);
             assert.isFunction(fields[0].addonBefore);
-            assert.equal(fields[0].addonBefore({ name: 'Andre' }), 'Andre');
+            assert.equal(fields[0].addonBefore({name: 'Andre'}), 'Andre');
         });
 
         it('Should merge fields', function () {
@@ -177,9 +177,9 @@ describe('MetadataProvider', function () {
             assert.strictEqual(fields[2].fields[1].layoutName, 'carrier-edit');
             assert.strictEqual(fields[2].fields[1].fields.length, 1);
         });
-        
+
         it('Should work with nested props 2', function () {
-            
+
             let schema = {
                 entities: [
                     {
@@ -281,9 +281,9 @@ describe('MetadataProvider', function () {
                     }
                 ]
             };
-            
-            let { layout } = metadataProvider.getEntityAndLayout(schema, 'contact', 'contact-edit');
-            let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit'); 
+
+            let {layout} = metadataProvider.getEntityAndLayout(schema, 'contact', 'contact-edit');
+            let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
         });
 
         it('Should merge fields with nested layouts', function () {
@@ -436,7 +436,7 @@ describe('MetadataProvider', function () {
 
     describe('getReduxFormFields', function () {
         it('default behavior', function () {
-            
+
             let schema = {
                 entities: [
                     {
@@ -476,20 +476,103 @@ describe('MetadataProvider', function () {
                     }
                 ]
             }
-            
+
             let fields = metadataProvider.getFields(schema, 'contact');
             let reduxFields = metadataProvider.getReduxFormFields(fields);
             assert.strictEqual(reduxFields[0], 'name');
             assert.strictEqual(reduxFields[1], 'phones[].number');
-            
+
         })
     });
 
-    describe('ensureCanonicalArray', function() {
+    describe('canonizeSchema', function () {
+        it('should return an exact same schema is nothing needs to be canonized', function () {
 
-        it('should return an array when it\'s already an array', function() {
-            let input = [{ name: 'name', type: 'string' }, { name: 'dateOfBirth', type: 'date' }];
-            let result = metadataProvider.ensureCanonicalArray(input);
+            let schema = {
+                entities: [
+                    {
+                        name: 'contact',
+                        fields: [
+                            {name: 'name', type: 'string'},
+                            {name: 'dateOfBirth', type: 'date'}
+                        ],
+                        layouts: [
+                            {
+                                name: 'edit',
+                                fields: [
+                                    {name: 'name'},
+                                    {name: 'dateOfBirth'}
+                                ],
+                                groups: [
+                                    {
+                                        name: 'g1',
+                                        fields: [
+                                            {name: 'name'}
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            let newSchema = metadataProvider.canonizeSchema(schema);
+            assert.isArray(newSchema.entities);
+            assert.isArray(newSchema.entities[0].fields);
+            assert.isArray(newSchema.entities[0].layouts);
+            assert.isArray(newSchema.entities[0].layouts[0].fields);
+            assert.isArray(newSchema.entities[0].layouts[0].groups);
+            assert.isArray(newSchema.entities[0].layouts[0].groups[0].fields);
+        });
+
+        it('should return a canonical schema when the passed in schema has objects instead of arrays', function () {
+
+            let schema = {
+                entities: {
+                    contact: {
+                        fields: {
+                            name: {type: 'string'},
+                            dateOfBirth: {type: 'date'}
+                        },
+                        layouts: {
+                            edit: {
+                                fields: {
+                                    name: {},
+                                    dateOfBirth: {}
+                                },
+                                groups: {
+                                    g1: {
+                                        fields: {
+                                            name: {}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            let newSchema = metadataProvider.canonizeSchema(schema);
+            assert.isArray(newSchema.entities);
+            assert.equal('contact', newSchema.entities[0].name);
+            assert.isArray(newSchema.entities[0].fields);
+            assert.equal('name', newSchema.entities[0].fields[0].name);
+            assert.equal('string', newSchema.entities[0].fields[0].type);
+            assert.isArray(newSchema.entities[0].layouts);
+            assert.isArray(newSchema.entities[0].layouts[0].fields);
+            assert.isArray(newSchema.entities[0].layouts[0].groups);
+            assert.isArray(newSchema.entities[0].layouts[0].groups[0].fields);
+
+        });
+    });
+
+    describe('canonizeArray', function () {
+
+        it('should return an array when it\'s already an array', function () {
+            let input = [{name: 'name', type: 'string'}, {name: 'dateOfBirth', type: 'date'}];
+            let result = metadataProvider.canonizeArray(input);
             assert.isArray(result);
             assert.equal(result[0].name, "name");
             assert.equal(result[0].type, "string");
@@ -497,9 +580,9 @@ describe('MetadataProvider', function () {
             assert.equal(result[1].type, "date");
         });
 
-        it('should return an array when it\'s an object', function() {
-            let input = { name: { type: 'string'}, dateOfBirth: { type:'date' } };
-            let result = metadataProvider.ensureCanonicalArray(input);
+        it('should return an array when it\'s an object', function () {
+            let input = {name: {type: 'string'}, dateOfBirth: {type: 'date'}};
+            let result = metadataProvider.canonizeArray(input);
             assert.isArray(result);
             assert.equal(result[0].name, "name");
             assert.equal(result[0].type, "string");
@@ -507,9 +590,9 @@ describe('MetadataProvider', function () {
             assert.equal(result[1].type, "date");
         });
 
-        it('should trigger an exception when the passed object contains a property that is no an object', function() {
-            let input = { name: { type: 'string'}, dateOfBirth: 2 };
-            assert.throws( () => metadataProvider.ensureCanonicalArray(input), /cannot generate canonical array/g);
+        it('should trigger an exception when the passed object contains a property that is no an object', function () {
+            let input = {name: {type: 'string'}, dateOfBirth: 2};
+            assert.throws(() => metadataProvider.canonizeArray(input), /cannot generate canonical array/g);
         });
     });
 });
