@@ -10,7 +10,7 @@ describe('MetadataProvider', function () {
             let schema = {
                 entities: []
             };
-            assert.throws(() => metadataProvider.getFields(schema, 'contact', 'contact-edit'), /Could not find entity/);
+            assert.throws(() => metadataProvider.getFields(schema, 'contact', 'contact-edit'), /schema should have entities/);
         });
 
         it('Should work with layout only properties', function () {

@@ -71,10 +71,17 @@ export default class MetadataProvider {
      */
     static getEntity(schema, entityName) {
         if (!schema) throw Error('\'schema\' should be truthy');
-        if (!entityName) throw Error('\'entityName\' should be truthy');
-        if (schema.entities === undefined || schema.entities === null) throw Error('schema should have entities');
+        if (schema.entities === undefined || schema.entities === null || !schema.entities.length) throw Error('schema should have entities');
 
-        let entity = _.find(schema.entities, e => e.name === entityName);
+        let entity;
+        if(entityName)
+            entity = _.find(schema.entities, e => e.name === entityName);
+        else {
+            if(schema.entities.length != 1)
+                throw Error('When an entityName is not specified, there must be one and only one entity');
+            entity = schema.entities[0];
+        }
+
         if (!entity) throw Error(`Could not find entity. Entity name: ${entityName}`);
         return entity;
     }
@@ -87,7 +94,16 @@ export default class MetadataProvider {
      */
     static getLayout(entity, layoutName) {
         if (!entity) throw Error('\'entity\' should be truthy');
-        let layout = _.find(entity.layouts, l => l.name === layoutName);
+        let layout;
+
+        if(layoutName)
+            layout = _.find(entity.layouts, l => l.name === layoutName);
+        else {
+            if(entity.layouts.length != 1)
+                throw Error('When the layoutName is not specified, there must be one and only one layout');
+            layout = entity.layouts[0];
+        }
+
         if (!layout) throw Error(`Could not find layout. Layout name: ${layoutName}`);
         return layout;
     }

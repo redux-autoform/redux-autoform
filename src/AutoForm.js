@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 import AutoFormInternal from './AutoFormInternal';
 import MetadataProvider from './metadata/MetadataProvider';
 import metadataValidator from './metadata/validator/metadataValidator';
@@ -8,8 +8,8 @@ class AutoForm extends Component {
     static propTypes = {
         componentFactory: PropTypes.object.isRequired,
         schema: PropTypes.object.isRequired,
-        entityName: PropTypes.string.isRequired,
-        layoutName: PropTypes.string.isRequired,
+        entityName: PropTypes.string,
+        layoutName: PropTypes.string,
         errorRenderer: PropTypes.func,
         onSubmit: PropTypes.func.isRequired,
         onSubmitSuccess: PropTypes.func,
@@ -20,12 +20,12 @@ class AutoForm extends Component {
     };
 
     render() {
-        let { schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
-        
-        try {
-            schema = MetadataProvider.canonizeSchema(schema) // This will allow for flexible schema definition (arrays vs. objects)
+        let {schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues} = this.props;
 
-            let { entity, layout } =    MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
+        try {
+            schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
+
+            let {entity, layout} =    MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
             let fieldMetadata = MetadataProvider.getFields(schema, entity, layout, f => {
                 f.componentFactory = componentFactory;
                 f.fieldLayout = fieldLayout;
@@ -35,11 +35,25 @@ class AutoForm extends Component {
                 let modelParsed = modelProcessor.process(values, fieldMetadata);
                 return metadataValidator.validate(fieldMetadata, modelParsed) || {};
             };
-            
-            let autoFormProps = { form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues };
+
+            let autoFormProps = {
+                form,
+                fields,
+                fieldMetadata,
+                entity,
+                layout,
+                validate,
+                componentFactory,
+                onSubmit,
+                onSubmitSuccess,
+                onSubmitFail,
+                buttonBar,
+                fieldLayout,
+                initialValues
+            };
 
             return <AutoFormInternal {...autoFormProps}/>
-        } catch(ex) {
+        } catch (ex) {
             return errorRenderer ? errorRenderer(ex) : <div> {ex.message} </div>;
         }
     }
