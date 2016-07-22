@@ -11,4 +11,5 @@ branches:
     - master
     - /^greenkeeper-.*$/
 after_success:
+  - istanbul cover ./node_modules/mocha/bin/_mocha
   - bash <(curl -s https://codecov.io/bash)
