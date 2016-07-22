@@ -1,6 +1,6 @@
 #redux-autoform [![Build Status](https://travis-ci.org/redux-autoform/redux-autoform.svg?branch=master)](https://travis-ci.org/redux-autoform/redux-autoform) [![npm version](https://badge.fury.io/js/redux-autoform.svg)](https://badge.fury.io/js/redux-autoform) [![Coverage Status](https://coveralls.io/repos/github/gearz-lab/redux-autoform/badge.svg?branch=master)](https://coveralls.io/github/gearz-lab/redux-autoform?branch=master) [![codecov](https://codecov.io/gh/gearz-lab/redux-autoform/branch/master/graph/badge.svg)](https://codecov.io/gh/gearz-lab/redux-autoform)
 
-
+[![NPM](https://nodei.co/npm/redux-autoform.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redux-autoform/)
 
 
 `Redux-autoform` is a wrapper around [redux-form](https://github.com/erikras/redux-form) for dynamically generating forms based on metadata.
