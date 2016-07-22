@@ -566,6 +566,27 @@ describe('MetadataProvider', function () {
             assert.isArray(newSchema.entities[0].layouts[0].groups[0].fields);
 
         });
+
+        it('should return a canonical schema when passing in a simple form schema', function ()
+        {
+            let schema = {
+                name: {
+                    type: 'string'
+                },
+                dateOfBirth: {
+                    type: 'date'
+                }
+            };
+
+            let newSchema = metadataProvider.canonizeSchema(schema);
+            assert.isArray(newSchema.entities);
+            assert.equal('default', newSchema.entities[0].name);
+            assert.isArray(newSchema.entities[0].fields);
+            assert.equal('name', newSchema.entities[0].fields[0].name);
+            assert.equal('string', newSchema.entities[0].fields[0].type);
+            assert.equal('dateOfBirth', newSchema.entities[0].fields[1].name);
+            assert.equal('date', newSchema.entities[0].fields[1].type);
+        });
     });
 
     describe('canonizeArray', function () {
