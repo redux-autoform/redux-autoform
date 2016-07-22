@@ -1,22 +1,20 @@
 {
-    entities: [
-        {
-            name: "contact",
-            fields: [
-                {
-                    name: "shouldDoSomething",
+    entities: {
+        contact: {
+            fields: {
+                shouldDoSomething: {
                     displayName: "Default",
                     type: "bool",
                     component: "Checkbox"
                 },
+                help:
                 {
-                    name: "help",
                     displayName: "Help",
                     type: "bool",
                     help: "This is some help",
                     component: "Checkbox"
                 }
-            ]
+            }
         }
-    ]
+    }
 }
