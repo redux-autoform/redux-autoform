@@ -1,0 +1,10 @@
+{
+    name: {
+        displayName: 'Name',
+        type: 'string'
+    },
+    dateOfBirth: {
+        displayName: 'Date of birth',
+        type: 'date'
+    }
+}
