@@ -8,7 +8,8 @@
   - [Layout](#layout)
   - [Group](#group)
   - [Field](#field)
-  - [Common](#common)
+  - [Schema format](#schema-format)
+  - [Common metadata](#common-metadata)
   - [TextBox](#textbox)
   - [TextArea](#textarea)
   - [CheckBox](#checkbox)
@@ -126,9 +127,97 @@ size | The size of the component, in grid units. Values can range from 1 to 12.
 component | Which component to use. If no component is set, the default one will be used.
 
 Other `field` metadata will depend on the component.
+
+
+Schema format
+-------------
+
+Redux-Autoform supports a canonical schema definition form, but variations are also supported.
+
+**Canonical form**
+
+Entities, fields, layouts and groups are arrays.
+
+Example:
+
+    {
+        entities: [
+            {
+                name: "contact",
+                fields: [
+                    {
+                        name: "name",
+                        type: "string"
+                    },
+                    {
+                        name: "dateOfBirth",
+                        type: "date"
+                    }
+                ],
+                layouts: [
+                    {
+                        name: "edit",
+                        fields: [
+                            {  name: "name", displayName: "Name" },
+                            {  name: "name", displayName: "Date of Birth" },
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+**Alternative form**
+
+Entities, fields, layouts and groups can optionally be objects.
+
+Example:
+
+    {
+        entities: [
+            {
+               contact: {
+               fields: {
+                       name: {
+                           type: "string"
+                       },
+                       dateOfBirth: {
+                           type: "date"
+                       }
+               }
+                layouts: {
+                    edit: {
+                        fields: {
+                            name: { displayName: "Name" },
+                            dateOfBirth: { displayName: "Date of Birth" }
+                        }
+                    }
+                }
+            }
+        ]
+    }
  
-Common
----
+**Simple form**
+
+On the simple form, you only specify the fields, and Redux-Autoform will automatically generate an entity called 'default'. When using the simple form, 
+the `AutoForm` props for `entityName` and `layoutName` should be null or undefined or ''. If the schema is in simple form, layouts are not supported.
+
+Example: 
+
+    {
+        name: {
+            displayName: 'Name',
+            type: 'string'
+        },
+        dateOfBirth: {
+            displayName: 'Date of birth',
+            type: 'date'
+        }
+    }
+
+ 
+Common metadata
+---------------
 
 Metadata that is common to most of the components.
 
