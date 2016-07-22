@@ -4,18 +4,22 @@ import presets from '../presets';
 import _ from 'underscore';
 import psjon from '../../package.json';
 import AutoForm from '../../src/AutoForm';
-import editComponentFactory from '../../src/factory/bootstrap/BootstrapEditComponentFactory';
-import detailsComponentFactory from '../../src/factory/bootstrap/BootstrapDetailsComponentFactory';
-import {Alert, Badge} from 'react-bootstrap';
+import { EditComponentFactory, DetailsComponentFactory } from 'redux-autoform-bootstrap-ui';
+import { Alert, Badge } from 'react-bootstrap';
 import moment from 'moment';
 import numbro from 'numbro';
 import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-import momentLocalizer from '../../src/localization/momentLocalizer';
-import numbroLocalizer from '../../src/localization/numbroLocalizer';
+import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
+import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
 import ButtonToolbar from './ButtonToolbar';
 import FormOptions from './FormOptions';
 
 class LiveSchemaEditor extends Component {
+    static propTypes = {
+        preset: PropTypes.string,
+        formOptions: PropTypes.object.isRequired,
+        formOptionsActions: PropTypes.object.isRequired
+    };
 
     getAutoFormProps(metaForm, formOptions, formName, initialValues) {
         if (!formName) throw Error('Form name cannot be empty');
@@ -29,12 +33,10 @@ class LiveSchemaEditor extends Component {
             schema:  eval('(' + formOptions.schema + ')') , // eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
-            componentFactory: formOptions.componentFactory == 'edit' ? editComponentFactory : detailsComponentFactory,
+            componentFactory: formOptions.componentFactory == 'edit' ? EditComponentFactory : DetailsComponentFactory,
             errorRenderer: this.errorRenderer,
             initialValues: initialValues,
-            onSubmit: (...args) => {
-                console.log(args);
-            }
+            onSubmit: (...args) => console.log(args)
         };
     }
 
@@ -61,13 +63,7 @@ class LiveSchemaEditor extends Component {
         // setting number localizer
         numbroLocalizer(numbro);
 
-        let {
-            reduxFormActions,
-            preset,
-            metaForm,
-            formOptions,
-            formOptionsActions
-        } = this.props;
+        let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
 
         preset = preset || 'default';
         let presetObject = _.find(presets, p => p.name == preset);
@@ -91,45 +87,39 @@ class LiveSchemaEditor extends Component {
             </Alert>
             : null;
 
-        return <div className="live-schema-editor">
-            <div className='row'>
-                <div className="col-md-12">
-                    <h2>Redux-autoform demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
-                        <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
-                           style={{color: 'black'}}>
-                            <i className="fa fa-github" aria-hidden="true"/>
-                        </a>
-                    </h2>
-                </div>
-                <div className="col-md-5">
-                    <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject}/>
-                </div>
-                <div className="col-md-7">
-
-                    <div className="row">
-                        <div className="col-md-12">
-                            <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions} />
-                            { underDevelopmentAlert }
-                        </div>
+        return (
+            <div className="live-schema-editor">
+                <div className='row'>
+                    <div className="col-md-12">
+                        <h2>Redux-autoform demo {psjon.version} <Badge>Ctrl + H = Redux DevTools</Badge>
+                            <a className="pull-right" target="_blank" href="https://github.com/gearz-lab/redux-autoform"
+                                style={{color: 'black'}}>
+                                <i className="fa fa-github" aria-hidden="true"/>
+                            </a>
+                        </h2>
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="live-schema-editor-mount-node">
-                                {autoForm}
+                    <div className="col-md-5">
+                        <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject}/>
+                    </div>
+                    <div className="col-md-7">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions} />
+                                { underDevelopmentAlert }
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="live-schema-editor-mount-node">
+                                    {autoForm}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </div>
+        )
     }
 }
-
-LiveSchemaEditor.propTypes = {
-    preset: PropTypes.string,
-    formOptions: PropTypes.object.isRequired,
-    formOptionsActions: PropTypes.object.isRequired
-};
 
 export default LiveSchemaEditor;
