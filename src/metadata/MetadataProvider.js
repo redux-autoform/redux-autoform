@@ -3,6 +3,30 @@ import _ from 'underscore';
 export default class MetadataProvider {
 
     /**
+     *
+     * Ensures the object passed in is an array. If it is, it returns it as is, otherwise, this function
+     * converts the target object to an array.
+     * This is important to convert this:
+     *     { fields: { dateOfBirth: { type: 'string' } } // this should be acceptable as a fields definition
+     * into this:
+     *     { fields: [{ name: 'dateOfBirth', type: 'string' }] } // this is the canonical field definition
+     * @param obj
+     */
+    static ensureCanonicalArray(obj) {
+        if (!obj) throw Error('\'obj\' should be truthy');
+
+        if (_.isArray(obj))
+            return obj;
+        
+        // let's create an array
+        return _.map(_.keys(obj), (property) => {
+            if (!_.isObject(obj[property]))
+                throw Error('cannot generate canonical array. Every field should be an object');
+            return _.extend({name: property}, obj[property]);
+        });
+    }
+
+    /**
      * Validates a field metadata
      * @param metadata
      * @private

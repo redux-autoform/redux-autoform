@@ -1,8 +1,8 @@
 import 'es5-shim';
 import moment from 'moment';
-import momentLocalizer from '../src/localization/momentLocalizer';
+import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
 import numbro from 'numbro';
-import numbroLocalizer from '../src/localization/numbroLocalizer';
+import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
 
 beforeEach(function() {
     sinon.stub(console, 'warn');

@@ -63,10 +63,6 @@ describe('MetadataProvider', function () {
             };
 
             let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
-
-            console.log(JSON.stringify(fields, null, 4));
-
-            //assert.equal(fields.length, 3);
         });
 
         it('Text expressions', function () {
@@ -479,7 +475,7 @@ describe('MetadataProvider', function () {
                         ]
                     }
                 ]
-            }
+            };
             
             let fields = metadataProvider.getFields(schema, 'contact');
             let reduxFields = metadataProvider.getReduxFormFields(fields);
@@ -487,5 +483,33 @@ describe('MetadataProvider', function () {
             assert.strictEqual(reduxFields[1], 'phones[].number');
             
         })
+    });
+
+    describe('ensureCanonicalArray', function() {
+
+        it('should return an array when it\'s already an array', function() {
+            let input = [{ name: 'name', type: 'string' }, { name: 'dateOfBirth', type: 'date' }];
+            let result = metadataProvider.ensureCanonicalArray(input);
+            assert.isArray(result);
+            assert.equal(result[0].name, "name");
+            assert.equal(result[0].type, "string");
+            assert.equal(result[1].name, "dateOfBirth");
+            assert.equal(result[1].type, "date");
+        });
+
+        it('should return an array when it\'s an object', function() {
+            let input = { name: { type: 'string'}, dateOfBirth: { type:'date' } };
+            let result = metadataProvider.ensureCanonicalArray(input);
+            assert.isArray(result);
+            assert.equal(result[0].name, "name");
+            assert.equal(result[0].type, "string");
+            assert.equal(result[1].name, "dateOfBirth");
+            assert.equal(result[1].type, "date");
+        });
+
+        it('should trigger an exception when the passed object contains a property that is no an object', function() {
+            let input = { name: { type: 'string'}, dateOfBirth: 2 };
+            assert.throws( () => metadataProvider.ensureCanonicalArray(input), /cannot generate canonical array/g);
+        });
     });
 });
