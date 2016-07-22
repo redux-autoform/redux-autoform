@@ -11,4 +11,5 @@ branches:
     - master
     - /^greenkeeper-.*$/
 after_success:
+  - npm run codecov
   - bash <(curl -s https://codecov.io/bash)
