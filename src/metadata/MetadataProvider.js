@@ -1,23 +1,75 @@
 import _ from 'underscore';
+import clone from 'clone';
 
 export default class MetadataProvider {
 
     /**
-     *
-     * Ensures the object passed in is an array. If it is, it returns it as is, otherwise, this function
-     * converts the target object to an array.
+     * Returns a cloned schema which is canonical, meaning that every 'entities', 'fields', 'layouts' and 'groups' are
+     * arrays and not objects.
+     * @param schema
+     * @returns {*}
+     */
+    static canonizeSchema(schema) {
+        if (!schema) throw Error('\'schema\' should be truthy');
+
+        if(!schema.entities) {
+            // when no entities are specified in the schema, the schema is considered to be in the SIMPLEST form, example:
+            // {
+            //     name: {
+            //         type: 'string'
+            //     },
+            //     dateOfBirth: {
+            //         type: 'string'
+            //     }
+            // }
+            // OR...
+            // [
+            //     { name: 'name', type: 'string' },
+            //     { name: 'dateOfBirth', type: 'date' },
+            // ]
+            // In this case, I'm just creating a 'default' entity
+            return MetadataProvider.canonizeSchema({
+                entities: [
+                    {
+                        name: 'default',
+                        fields: schema
+                    }
+                ]
+            });
+        }
+
+        schema = clone(schema);
+        schema.entities = MetadataProvider.canonizeArray(schema.entities);
+        _.each(schema.entities, entity => {
+            entity.fields = MetadataProvider.canonizeArray(entity.fields);
+            entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
+            _.each(entity.layouts, layout => {
+                layout.fields = MetadataProvider.canonizeArray(layout.fields);
+                layout.groups = MetadataProvider.canonizeArray(layout.groups);
+                _.each(layout.groups, group => {
+                    group.fields = MetadataProvider.canonizeArray(group.fields);
+                })
+            });
+        });
+
+        return schema;
+    }
+
+    /**
+     * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
+     * converts the target object into an array.
      * This is important to convert this:
      *     { fields: { dateOfBirth: { type: 'string' } } // this should be acceptable as a fields definition
      * into this:
      *     { fields: [{ name: 'dateOfBirth', type: 'string' }] } // this is the canonical field definition
      * @param obj
      */
-    static ensureCanonicalArray(obj) {
-        if (!obj) throw Error('\'obj\' should be truthy');
+    static canonizeArray(obj) {
+        if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
 
         if (_.isArray(obj))
             return obj;
-        
+
         // let's create an array
         return _.map(_.keys(obj), (property) => {
             if (!_.isObject(obj[property]))
@@ -45,10 +97,17 @@ export default class MetadataProvider {
      */
     static getEntity(schema, entityName) {
         if (!schema) throw Error('\'schema\' should be truthy');
-        if (!entityName) throw Error('\'entityName\' should be truthy');
-        if (schema.entities === undefined || schema.entities === null) throw Error('schema should have entities');
+        if (schema.entities === undefined || schema.entities === null || !schema.entities.length) throw Error('schema should have entities');
 
-        let entity = _.find(schema.entities, e => e.name === entityName);
+        let entity;
+        if(entityName)
+            entity = _.find(schema.entities, e => e.name === entityName);
+        else {
+            if(schema.entities.length != 1)
+                throw Error('When an entityName is not specified, there must be one and only one entity');
+            entity = schema.entities[0];
+        }
+
         if (!entity) throw Error(`Could not find entity. Entity name: ${entityName}`);
         return entity;
     }
@@ -61,7 +120,16 @@ export default class MetadataProvider {
      */
     static getLayout(entity, layoutName) {
         if (!entity) throw Error('\'entity\' should be truthy');
-        let layout = _.find(entity.layouts, l => l.name === layoutName);
+        let layout;
+
+        if(layoutName)
+            layout = _.find(entity.layouts, l => l.name === layoutName);
+        else {
+            if(entity.layouts.length != 1)
+                throw Error('When the layoutName is not specified, there must be one and only one layout');
+            layout = entity.layouts[0];
+        }
+
         if (!layout) throw Error(`Could not find layout. Layout name: ${layoutName}`);
         return layout;
     }
@@ -102,7 +170,9 @@ export default class MetadataProvider {
         let thisGroupFields = [];
 
         if (layout.groups) {
-            _.each(layout.groups, g => { thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback)) });
+            _.each(layout.groups, g => {
+                thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback))
+            });
         }
 
         if (layout.fields) {
@@ -186,7 +256,7 @@ export default class MetadataProvider {
         if (layoutGroup.fields) {
             layoutGroupClone.fields = [];
             for (let i = 0; i < layoutGroup.fields.length; i++) {
-                layoutGroupClone.fields.push({ name: layoutGroup.fields[i].name });
+                layoutGroupClone.fields.push({name: layoutGroup.fields[i].name});
             }
         } else if (layoutGroup.groups) {
             layoutGroupClone.groups = [];
@@ -246,7 +316,7 @@ export default class MetadataProvider {
                 result.push(prefix ? `${prefix}.${f.name}` : f.name)
             }
         });
-        
+
         return result;
     }
 };
