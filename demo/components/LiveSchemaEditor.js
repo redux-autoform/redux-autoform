@@ -21,10 +21,20 @@ class LiveSchemaEditor extends Component {
         formOptionsActions: PropTypes.object.isRequired
     };
 
-    getAutoFormProps(metaForm, formOptions, formName, initialValues) {
+    getAutoFormProps(formName, initialValues) {
+        let { metaForm, formOptions } = this.props;
+
         if (!formName) throw Error('Form name cannot be empty');
         if (!metaForm)
             return undefined;
+
+        let factory;
+
+        if(formOptions.componentFactory == 'edit') {
+            factory = EditComponentFactory;
+        } else {
+            factory = DetailsComponentFactory;
+        }
 
         return {
             form: formName,
@@ -33,7 +43,7 @@ class LiveSchemaEditor extends Component {
             schema:  eval('(' + formOptions.schema + ')') , // eval('(' + metaForm.schema.value + ')'),
             entityName: metaForm.entityName.value,
             layoutName: metaForm.layoutName.value,
-            componentFactory: formOptions.componentFactory == 'edit' ? EditComponentFactory : DetailsComponentFactory,
+            componentFactory: factory,
             errorRenderer: this.errorRenderer,
             initialValues: initialValues,
             onSubmit: (...args) => console.log(args)
@@ -45,47 +55,79 @@ class LiveSchemaEditor extends Component {
      * @param ex
      * @returns {XML}
      */
-    errorRenderer(ex) {
-        return <Alert bsStyle='danger'>
-            <h4>Oh snap! The configuration is not valid.</h4>
-            <p>Detailed information:
-                <b>{ex.message}</b>
-            </p>
-        </Alert>;
-    }
+    getErrorRenderer = (ex) => {
+        return (
+            <Alert bsStyle='danger'>
+                <h4>Oh snap! The configuration is not valid.</h4>
+                <p>Detailed information:
+                    <b>{ex.message}</b>
+                </p>
+            </Alert>
+        );
+    };
 
-    render() {
 
+    getUnderDevelopmentAlert = () => {
+        let { formOptions } = this.props;
+
+        if (formOptions.componentFactory == 'details') {
+            return (
+                <Alert bsStyle="danger">
+                    <p><b>Experimental feature</b></p>
+                    <p>Details forms are still under development. For now, it's just a lot of Static components instead of
+                        editing components. Also,
+                        it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
+                        for instance, are still not supported.</p>
+                </Alert>
+            );
+        }
+
+        return null;
+    };
+
+    getAutoform = () => {
+        let { preset } = this.props;
+
+        preset = preset || 'default';
+
+        let presetObject = _.find(presets, p => p.name == preset);
+        let autoFormProps;
+        let autoForm;
+
+        if (!presetObject) {
+            throw Error(`Could not find preset. Preset name: ${preset}`);
+        }
+
+
+        try {
+            autoFormProps = this.getAutoFormProps(preset, presetObject.initialValues);
+            autoForm = autoFormProps ? <AutoForm {...autoFormProps}/> : null;
+        } catch (ex) {
+            autoForm = this.getErrorRenderer(ex);
+        }
+
+        return autoForm;
+    };
+
+    getPresetObject = () => {
+        let { preset } = this.props;
+
+        preset = preset || 'default';
+        return _.find(presets, p => p.name == preset);
+    };
+
+    setLocalizers = () => {
         // setting date localizer
         reactWidgetsMomentLocalizer(moment);
         momentLocalizer(moment);
 
         // setting number localizer
         numbroLocalizer(numbro);
+    };
 
+    render() {
         let { reduxFormActions, preset, metaForm, formOptions, formOptionsActions } = this.props;
-
-        preset = preset || 'default';
-        let presetObject = _.find(presets, p => p.name == preset);
-        if (!presetObject) throw Error(`Could not find preset. Preset name: ${preset}`);
-        let autoFormProps;
-        let autoForm;
-        try {
-            autoFormProps = this.getAutoFormProps(metaForm, formOptions, preset, presetObject.initialValues);
-            autoForm = autoFormProps ? <AutoForm {...autoFormProps} /> : null;
-        } catch (ex) {
-            autoForm = this.errorRenderer(ex);
-        }
-
-        let underDevelopmentAlert = formOptions.componentFactory == 'details' ?
-            <Alert bsStyle="danger">
-                <p><b>Experimental feature</b></p>
-                <p>Details forms are still under development. For now, it's just a lot of Static components instead of
-                    editing components. Also,
-                    it only works when the field doesn't explicitly specify the component, and it does'nt work for all types. Arrays,
-                for instance, are still not supported.</p>
-            </Alert>
-            : null;
+        this.setLocalizers();
 
         return (
             <div className="live-schema-editor">
@@ -99,19 +141,19 @@ class LiveSchemaEditor extends Component {
                         </h2>
                     </div>
                     <div className="col-md-5">
-                        <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={presetObject}/>
+                        <LiveSchemaEditorForm formOptionActions={formOptionsActions} reduxFormActions={reduxFormActions} selectedPreset={preset} initialValues={this.getPresetObject()}/>
                     </div>
                     <div className="col-md-7">
                         <div className="row">
                             <div className="col-md-12">
-                                <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions} />
-                                { underDevelopmentAlert }
+                                <FormOptions editorSchema={metaForm ? metaForm.schema.value : ''} {...formOptions} {...formOptionsActions}/>
+                                {this.getUnderDevelopmentAlert()}
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="live-schema-editor-mount-node">
-                                    {autoForm}
+                                    {this.getAutoform()}
                                 </div>
                             </div>
                         </div>
