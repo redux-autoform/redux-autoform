@@ -1,6 +1,56 @@
 import _ from 'underscore';
+import clone from 'clone';
 
 export default class MetadataProvider {
+
+    /**
+     * Returns a cloned schema which is canonical, meaning that every 'entities', 'fields', 'layouts' and 'groups' are
+     * arrays and not objects.
+     * @param schema
+     * @returns {*}
+     */
+    static canonizeSchema(schema) {
+        if (!schema) throw Error('\'schema\' should be truthy');
+
+        schema = clone(schema);
+        schema.entities = MetadataProvider.canonizeArray(schema.entities);
+        _.each(schema.entities, entity => {
+            entity.fields = MetadataProvider.canonizeArray(entity.fields);
+            entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
+            _.each(entity.layouts, layout => {
+                layout.fields = MetadataProvider.canonizeArray(layout.fields);
+                layout.groups = MetadataProvider.canonizeArray(layout.groups);
+                _.each(layout.groups, group => {
+                    group.fields = MetadataProvider.canonizeArray(group.fields);
+                })
+            });
+        });
+
+        return schema;
+    }
+
+    /**
+     * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
+     * converts the target object into an array.
+     * This is important to convert this:
+     *     { fields: { dateOfBirth: { type: 'string' } } // this should be acceptable as a fields definition
+     * into this:
+     *     { fields: [{ name: 'dateOfBirth', type: 'string' }] } // this is the canonical field definition
+     * @param obj
+     */
+    static canonizeArray(obj) {
+        if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
+
+        if (_.isArray(obj))
+            return obj;
+
+        // let's create an array
+        return _.map(_.keys(obj), (property) => {
+            if (!_.isObject(obj[property]))
+                throw Error('cannot generate canonical array. Every field should be an object');
+            return _.extend({name: property}, obj[property]);
+        });
+    }
 
     /**
      * Validates a field metadata
@@ -78,7 +128,9 @@ export default class MetadataProvider {
         let thisGroupFields = [];
 
         if (layout.groups) {
-            _.each(layout.groups, g => { thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback)) });
+            _.each(layout.groups, g => {
+                thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback))
+            });
         }
 
         if (layout.fields) {
@@ -162,7 +214,7 @@ export default class MetadataProvider {
         if (layoutGroup.fields) {
             layoutGroupClone.fields = [];
             for (let i = 0; i < layoutGroup.fields.length; i++) {
-                layoutGroupClone.fields.push({ name: layoutGroup.fields[i].name });
+                layoutGroupClone.fields.push({name: layoutGroup.fields[i].name});
             }
         } else if (layoutGroup.groups) {
             layoutGroupClone.groups = [];
@@ -222,7 +274,7 @@ export default class MetadataProvider {
                 result.push(prefix ? `${prefix}.${f.name}` : f.name)
             }
         });
-        
+
         return result;
     }
 };
