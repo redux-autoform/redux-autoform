@@ -1,5 +1,5 @@
-import chai from 'chai';
-import metadataValidator from '../src/metadata/validator/metadataValidator.js';
+const chai = require('chai');
+const metadataValidator = require('../src/metadata/validator/metadataValidator.js');
 const assert = chai.assert;
 
 describe('metadataValidator', function() {

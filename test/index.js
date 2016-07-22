@@ -1,8 +1,8 @@
-import 'es5-shim';
-import moment from 'moment';
-import momentLocalizer from '../src/localization/momentLocalizer';
-import numbro from 'numbro';
-import numbroLocalizer from '../src/localization/numbroLocalizer';
+require('es5-shim');
+const moment = require('moment');
+const momentLocalizer = require('../src/localization/momentLocalizer');
+const numbro = require('numbro');
+const numbroLocalizer = require('../src/localization/numbroLocalizer');
 
 beforeEach(function() {
     sinon.stub(console, 'warn');

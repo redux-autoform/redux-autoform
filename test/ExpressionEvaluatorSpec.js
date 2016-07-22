@@ -1,4 +1,4 @@
-import expressionEvaluator from '../src/metadata/evaluator/expressionEvaluator.js';
+const expressionEvaluator = require('../src/metadata/evaluator/expressionEvaluator.js');
 
 describe('Expression evaluator', function () {
         it('Literals', function () {
