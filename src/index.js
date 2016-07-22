@@ -2,10 +2,8 @@
 export AutoForm from './AutoForm.js';
 
 // component factories
-export ComponentFactory from './factory/ComponentFactory.js';
-export DefaultEditComponentFactory from './factory/bootstrap/BootstrapEditComponentFactory';
-export DefaultDetailsComponentFactory from './factory/bootstrap/BootstrapDetailsComponentFactory';
+export ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 
 //localizers
-export momentLocalizer from './localization/momentLocalizer';
-export numbroLocalizer from './localization/numbroLocalizer';
+export momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
+export numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';

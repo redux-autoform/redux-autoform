@@ -1,4 +1,5 @@
-import { getNumberLocalizer } from '../../../localization/numberLocalizer';
+//TODO JS: add redux-autoform-utils import
+import { getNumberLocalizer } from 'redux-autoform-utils/lib/localization/numberLocalizer';
 var localizer;
 
 export default function(propertyMetadata, modelValue, model, validator) {
