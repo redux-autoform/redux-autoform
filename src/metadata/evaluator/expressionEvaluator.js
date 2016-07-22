@@ -1,4 +1,4 @@
-import getExpressionHelper from '../../helpers/expressionHelper.js';
+import getExpressionHelper from 'redux-autoform-utils/lib/helpers/expressionHelper';
 
 var _expressionHelper;
 

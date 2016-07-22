@@ -1,4 +1,4 @@
-import { getNumberLocalizer } from '../../../localization/numberLocalizer';
+import { getNumberLocalizer } from 'redux-autoform-utils/lib/localization/numberLocalizer';
 var localizer;
 
 export default function parse(metadata, value) {
