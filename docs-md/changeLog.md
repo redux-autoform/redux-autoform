@@ -14,6 +14,7 @@ However, before the 1.0.0 release, I'm *not changing* the major version, even if
  
 
 - [History](#history)
+  - [0.8.0 (July 22, 2016)](#080-july-22-2016)
   - [0.7.0 (July 19, 2016)](#070-july-19-2016)
   - [0.6.1 (Jun 22, 2016)](#061-jun-22-2016)
   - [0.6.0 (Jun 22, 2016)](#060-jun-22-2016)
@@ -25,6 +26,11 @@ However, before the 1.0.0 release, I'm *not changing* the major version, even if
  
 History
 =======
+
+0.8.0 (July 22, 2016)
+---------------------
+
+ - Support for a simpler syntax for the schema, as well as objects instead of arrays
 
 0.7.0 (July 19, 2016)
 ---------------------

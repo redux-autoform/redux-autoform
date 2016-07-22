@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
@@ -68,12 +68,14 @@
     "fs-extra-promise": "^0.4.0",
     "history": "^3.0.0",
     "install": "^0.8.1",
+    "istanbul": "^0.4.4",
     "js-beautify": "^1.5.10",
     "json-loader": "^0.5.3",
     "karma": "^1.1.1",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.1.0",
     "karma-mocha": "^1.1.1",
     "karma-phantomjs-launcher": "~1.0.1",
     "karma-sinon": "^1.0.4",

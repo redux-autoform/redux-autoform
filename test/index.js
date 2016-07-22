@@ -1,8 +1,8 @@
-import 'es5-shim';
-import moment from 'moment';
-import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
-import numbro from 'numbro';
-import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
+require('es5-shim');
+const moment = require('moment');
+const momentLocalizer = require('redux-autoform-utils/lib/localization/momentLocalizer');
+const numbro = require('numbro');
+const numbroLocalizer = require('redux-autoform-utils/lib/localization/numbroLocalizer');
 
 beforeEach(function() {
     sinon.stub(console, 'warn');

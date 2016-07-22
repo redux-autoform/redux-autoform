@@ -1,11 +1,10 @@
-import chai from 'chai';
-import metadataEvaluator from '../src/metadata/evaluator/metadataEvaluator.js';
-import log from './utils/log';
+const chai = require('chai');
+const metadataEvaluator = require('../src/metadata/evaluator/metadataEvaluator.js');
+const log = require('./utils/log');
 const assert = chai.assert;
 
 describe('MetadataEvaluator', function () {
-
-
+    
     describe('evaluate', function () {
         it('DefaultMetadataFilter with literals', function () {
             let metadata = {
