@@ -9,7 +9,6 @@
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "start-prod": "cross-env NODE_ENV=production babel-node ./demo/Server.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
-    "codecov": "cat coverage/*/lcov.info | codecov",
     "test": "./node_modules/.bin/karma start --browsers PhantomJS",
     "test-chrome": "./node_modules/.bin/karma start --browsers Chrome"
   },
@@ -58,7 +57,6 @@
     "brace": "^0.8.0",
     "chai": "^3.2.0",
     "child-process-promise": "^2.0.3",
-    "codecov.io": "^0.1.6",
     "colors": "^1.1.2",
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
