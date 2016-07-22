@@ -24,7 +24,9 @@ class AutoForm extends Component {
         let { uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
         
         try {
-            let { entity, layout } = MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
+            schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
+
+            let { entity, layout } =    MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
             let fieldMetadata = MetadataProvider.getFields(schema, entity, layout, f => {
                 f.componentFactory = componentFactory;
                 f.fieldLayout = fieldLayout;
