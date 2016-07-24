@@ -8,7 +8,6 @@ webpackConfig.watch = true;
 
 module.exports = function(config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -24,11 +23,25 @@ module.exports = function(config) {
     files: [
       'test/index.js'
     ],
+    
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/',
+      instrumenters: { isparta : require('isparta') },
+      instrumenter: {
+        'test/index.js': 'isparta'
+      }
+    },
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/index.js': ['webpack', 'sourcemap']
+      'test/index.js': ['webpack', 'sourcemap', 'coverage']
     },
 
     webpack: webpackConfig,
@@ -37,12 +50,7 @@ module.exports = function(config) {
     webpackMiddleware: {
       noInfo: true
     },
-
-    // test results reporter to use
-    // possible values: 'dots', 'progress'
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    
     // web server port
     port: 9876,
 
