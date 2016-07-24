@@ -9,9 +9,9 @@
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "start-prod": "cross-env NODE_ENV=production babel-node ./demo/Server.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
-    "test-karma-phantom": "./node_modules/.bin/karma start --browsers PhantomJS",
+    "test": "./node_modules/.bin/karma start --browsers PhantomJS",
     "test-karma-chrome": "./node_modules/.bin/karma start --browsers Chrome",
-    "coverage": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/karma start --browsers Chrome"
+    "coverage": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/karma start --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
