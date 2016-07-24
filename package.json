@@ -10,7 +10,8 @@
     "start-prod": "cross-env NODE_ENV=production babel-node ./demo/Server.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
     "test": "./node_modules/.bin/karma start --browsers PhantomJS",
-    "test-chrome": "./node_modules/.bin/karma start --browsers Chrome"
+    "test-chrome": "./node_modules/.bin/karma start --browsers Chrome",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,7 @@
     "chai": "^3.2.0",
     "child-process-promise": "^2.0.3",
     "colors": "^1.1.2",
+    "coveralls": "^2.11.11",
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "es5-shim": "^4.1.11",
@@ -68,6 +70,7 @@
     "fs-extra-promise": "^0.4.0",
     "history": "^3.0.0",
     "install": "^0.8.1",
+    "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
     "js-beautify": "^1.5.10",
     "json-loader": "^0.5.3",
