@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import clone from 'clone';
 
 export default class MetadataProvider {
 
@@ -38,7 +37,7 @@ export default class MetadataProvider {
             });
         }
 
-        schema = clone(schema);
+        schema = {...schema};
         schema.entities = MetadataProvider.canonizeArray(schema.entities);
         _.each(schema.entities, entity => {
             entity.fields = MetadataProvider.canonizeArray(entity.fields);
@@ -71,10 +70,10 @@ export default class MetadataProvider {
             return obj;
 
         // let's create an array
-        return _.map(_.keys(obj), (property) => {
+        return Object.keys(obj).map((property) => {
             if (!_.isObject(obj[property]))
                 throw Error('cannot generate canonical array. Every field should be an object');
-            return _.extend({name: property}, obj[property]);
+            return {name: property, ...obj[property]};
         });
     }
 
@@ -101,7 +100,7 @@ export default class MetadataProvider {
 
         let entity;
         if(entityName)
-            entity = _.find(schema.entities, e => e.name === entityName);
+            entity = schema.entities.find(e => e.name === entityName);
         else {
             if(schema.entities.length != 1)
                 throw Error('When an entityName is not specified, there must be one and only one entity');
@@ -123,7 +122,7 @@ export default class MetadataProvider {
         let layout;
 
         if(layoutName)
-            layout = _.find(entity.layouts, l => l.name === layoutName);
+            layout = entity.layouts.find(l => l.name === layoutName);
         else {
             if(entity.layouts.length != 1)
                 throw Error('When the layoutName is not specified, there must be one and only one layout');
@@ -170,8 +169,8 @@ export default class MetadataProvider {
         let thisGroupFields = [];
 
         if (layout.groups) {
-            _.each(layout.groups, g => {
-                thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback))
+            layout.groups.forEach(g => {
+                thisGroupFields = [... new Set(thisGroupFields.concat(this.getFieldsInternal(schema, entity, g, partialResult, callback)))];
             });
         }
 
@@ -180,9 +179,9 @@ export default class MetadataProvider {
             for (let i = 0; i < layout.fields.length; i++) {
 
                 let groupField = layout.fields[i];
-                let existingEntityProperty = _.find(entity.fields, field => field.name == groupField.name);
+                let existingEntityProperty = entity.fields.find(field => field.name == groupField.name);
 
-                let field = _.extend({}, existingEntityProperty || {}, groupField);
+                let field = {...existingEntityProperty || {}, ...groupField};
                 this.validateFieldMetadata(field);
 
                 thisGroupFields.push(field);
@@ -222,7 +221,7 @@ export default class MetadataProvider {
             }
         }
 
-        return _.union(partialResult, thisGroupFields);
+        return [...new Set(partialResult.concat(thisGroupFields))];
     }
 
     /**
@@ -306,7 +305,7 @@ export default class MetadataProvider {
         if (!fieldMetadata) throw Error('fieldMetadata should be truthy');
         let result = [];
 
-        _.each(fieldMetadata, f => {
+        fieldMetadata.forEach(f => {
             if (f.fields) {
                 // if a field has fields, it's either an array or a complex object
                 let fieldPrefix = f.type == 'array' ? `${f.name}[]` : f.name;

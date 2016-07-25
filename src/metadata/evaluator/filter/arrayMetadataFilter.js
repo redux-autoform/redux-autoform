@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 export default {
     filter: function(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
         
@@ -11,7 +9,7 @@ export default {
                 throw Error('when metadata is of type \'array\' and arrayType is \'entity\', it must have a fields property');
             }
 
-            if (!_.has(model, propertyMetadata.name) || model[propertyMetadata.name] === null || model[propertyMetadata.name] === undefined) {
+            if (!model.hasOwnProperty(propertyMetadata.name) || model[propertyMetadata.name] === null || model[propertyMetadata.name] === undefined) {
                 // if the property does not exist, create it
                 model[propertyMetadata.name] = [];
             } else {
@@ -24,7 +22,7 @@ export default {
             // returns the reduxProps for a particular array item
             let getReduxPropsForItem = (index) => {
                 if(!reduxProps) return undefined;
-                if(!_.has(reduxProps, propertyMetadata.name)) throw Error('reduxProps is defined but it does not have the required property metadata');
+                if(!reduxProps.hasOwnProperty(propertyMetadata.name)) throw Error('reduxProps is defined but it does not have the required property metadata');
                 return reduxProps[propertyMetadata.name][index];
             };
             
