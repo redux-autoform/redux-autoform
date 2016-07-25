@@ -66,12 +66,13 @@ export default class MetadataProvider {
     static canonizeArray(obj) {
         if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
 
-        if (_.isArray(obj))
+        if (Array.isArray(obj))
             return obj;
 
         // let's create an array
         return Object.keys(obj).map((property) => {
-            if (!_.isObject(obj[property]))
+            let isObject = obj[property] && typeof obj[property] === "object";
+            if (!isObject)
                 throw Error('cannot generate canonical array. Every field should be an object');
             return {name: property, ...obj[property]};
         });
