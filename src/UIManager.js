@@ -5,7 +5,7 @@ class UIManager {
     
     allowedUIs = [
         'bootstrap',
-        'material-ui'
+        'material'
     ];
     
     constructor() {
