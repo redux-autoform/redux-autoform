@@ -135,7 +135,7 @@ export default class MetadataProvider {
         let layout;
 
         if(layoutName)
-            layout = entity.layouts.find(l => l.name === layoutName);
+            layout = entity.layouts? entity.layouts.find(l => l.name === layoutName) : layout;
         else {
             if(entity.layouts.length != 1)
                 throw Error('When the layoutName is not specified, there must be one and only one layout');
