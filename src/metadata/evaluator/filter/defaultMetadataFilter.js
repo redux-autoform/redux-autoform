@@ -7,7 +7,7 @@ export default {
         propertyMetadata.key = keyPrefix;
         
         // set redux properties
-        if(reduxProps.hasOwnProperty(propertyMetadata.name)) {
+        if(reduxProps && reduxProps.hasOwnProperty(propertyMetadata.name)) {
             propertyMetadata.reduxFormProps = reduxProps[propertyMetadata.name];
         }
         

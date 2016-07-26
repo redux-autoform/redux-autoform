@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 export default class MetadataProvider {
 
     /**
@@ -38,22 +36,36 @@ export default class MetadataProvider {
         }
 
         schema = {...schema};
-        schema.entities = MetadataProvider.canonizeArray(schema.entities);
-        _.each(schema.entities, entity => {
-            entity.fields = MetadataProvider.canonizeArray(entity.fields);
-            entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
-            _.each(entity.layouts, layout => {
-                layout.fields = MetadataProvider.canonizeArray(layout.fields);
-                layout.groups = MetadataProvider.canonizeArray(layout.groups);
-                _.each(layout.groups, group => {
-                    group.fields = MetadataProvider.canonizeArray(group.fields);
-                })
-            });
-        });
+        this._canonizeArrays(schema, ["entities", "layouts", "groups"])
+
+        //schema.entities = MetadataProvider.canonizeArray(schema.entities);
+        //_.each(schema.entities, entity => {
+        //    entity.fields = MetadataProvider.canonizeArray(entity.fields);
+        //    entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
+        //    _.each(entity.layouts, layout => {
+        //        layout.fields = MetadataProvider.canonizeArray(layout.fields);
+        //        layout.groups = MetadataProvider.canonizeArray(layout.groups);
+        //        _.each(layout.groups, group => {
+        //            group.fields = MetadataProvider.canonizeArray(group.fields);
+        //        })
+        //    });
+        //});
+
 
         return schema;
     }
 
+    static _canonizeArrays(dataArray, keys, id = 0) {
+        dataArray[keys[id]] = MetadataProvider.canonizeArray(dataArray[keys[id]]);
+        if(dataArray[keys[id]]) {
+            dataArray[keys[id]].forEach(elem => {
+                elem.fields = MetadataProvider.canonizeArray(elem.fields);
+                if(id + 1 < keys.length)
+                    this._canonizeArrays(elem, keys, id + 1);
+            })
+        }
+
+    }
     /**
      * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
      * converts the target object into an array.
@@ -123,7 +135,7 @@ export default class MetadataProvider {
         let layout;
 
         if(layoutName)
-            layout = entity.layouts.find(l => l.name === layoutName);
+            layout = entity.layouts? entity.layouts.find(l => l.name === layoutName) : layout;
         else {
             if(entity.layouts.length != 1)
                 throw Error('When the layoutName is not specified, there must be one and only one layout');

@@ -22,7 +22,7 @@ export default {
             // returns the reduxProps for a particular array item
             let getReduxPropsForItem = (index) => {
                 if(!reduxProps) return undefined;
-                if(!reduxProps.hasOwnProperty(propertyMetadata.name)) throw Error('reduxProps is defined but it does not have the required property metadata');
+                if(reduxProps && !reduxProps.hasOwnProperty(propertyMetadata.name)) throw Error('reduxProps is defined but it does not have the required property metadata');
                 return reduxProps[propertyMetadata.name][index];
             };
             
