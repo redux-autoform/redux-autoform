@@ -36,7 +36,7 @@
     "font-awesome": "^4.6.3",
     "react": "^15.1.0",
     "react-addons-update": "^15.2.1",
-    "react-bootstrap": "0.29.5",
+    "react-bootstrap": "0.30.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
