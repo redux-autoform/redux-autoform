@@ -31,7 +31,7 @@
 Demo
 ---
 
-You can check the [online demo here](http://redux-autoform.github.io/redux-autoform/demo.html). Don't forget to check out all the **presets**.
+You can check the [online demo here](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html). Don't forget to check out all the **presets**.
 
 
 Docs
@@ -71,7 +71,7 @@ import { ComponentFactory } from 'redux-autoform';
 
 ####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))####
 
-This is a pre-populated factory, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
+This is a pre-populated factory, the same used in the [demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html).
 In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
 
 ```js
