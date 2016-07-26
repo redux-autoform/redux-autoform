@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 export default {
     filter: function(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
         
@@ -9,7 +7,7 @@ export default {
         propertyMetadata.key = keyPrefix;
         
         // set redux properties
-        if(_.has(reduxProps, propertyMetadata.name)) {
+        if(reduxProps && reduxProps.hasOwnProperty(propertyMetadata.name)) {
             propertyMetadata.reduxFormProps = reduxProps[propertyMetadata.name];
         }
         

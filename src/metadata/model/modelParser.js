@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 import dateTimeParser from './parsers/dateTimeParser';
 import numberParser from './parsers/numberParser';
 import entityParser from './parsers/entityParser';
@@ -23,7 +21,7 @@ class ModelProcessor {
 
         let result = {};
 
-        _.each(propertyMetadata, (eachPropertyMetadata) => {
+        propertyMetadata.forEach((eachPropertyMetadata) => {
             result[eachPropertyMetadata.name] = this.processProperty(eachPropertyMetadata, model);
         });
 
@@ -38,7 +36,7 @@ class ModelProcessor {
         if (!types) throw Error('\'type\' should be truthy');
         if (!(types instanceof Array)) throw Error('type should be an array');
 
-        _.each(types, type => {
+        types.forEach(type => {
             this.parsers[type] = parser;
         });
     }

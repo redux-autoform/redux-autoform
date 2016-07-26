@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 export default {
     filter: function(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
         if(!propertyMetadata) {
@@ -13,7 +11,7 @@ export default {
                 throw Error('when metadata is of type entity, it must have a fields property');
             }
 
-            if(!_.has(model, propertyMetadata.name) || model[propertyMetadata.name] === null || model[propertyMetadata.name] === undefined) {
+            if(model && !model.hasOwnProperty(propertyMetadata.name) || model[propertyMetadata.name] === null || model[propertyMetadata.name] === undefined) {
                 // if the property does not exist, create it
                 model[propertyMetadata.name] = {};
             } else {

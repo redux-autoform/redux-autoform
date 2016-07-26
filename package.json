@@ -29,7 +29,6 @@
   "homepage": "https://github.com/redux-autoform/redux-autoform#readme",
   "dependencies": {
     "bootstrap": "^3.3.5",
-    "clone": "^1.0.2",
     "font-awesome": "^4.6.3",
     "react": "^15.1.0",
     "react-addons-update": "^15.2.1",
@@ -39,8 +38,7 @@
     "redux": "^3.4.0",
     "redux-autoform-bootstrap-ui": "^1.0.1",
     "redux-autoform-utils": "^1.0.3",
-    "redux-form": "^5.2.5",
-    "underscore": "^1.8.3"
+    "redux-form": "^5.2.5"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
