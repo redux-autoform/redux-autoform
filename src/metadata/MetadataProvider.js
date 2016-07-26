@@ -60,8 +60,8 @@ export default class MetadataProvider {
         if(dataArray[keys[id]]) {
             dataArray[keys[id]].forEach(elem => {
                 elem.fields = MetadataProvider.canonizeArray(elem.fields);
-                if(++id < keys.length)
-                    this._canonizeArrays(elem, keys, id);
+                if(id + 1 < keys.length)
+                    this._canonizeArrays(elem, keys, id + 1);
             })
         }
 
