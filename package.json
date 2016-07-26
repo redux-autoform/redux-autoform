@@ -10,8 +10,7 @@
     "start-prod": "cross-env NODE_ENV=production babel-node ./demo/Server.js",
     "start": "cross-env NODE_ENV=development babel-node ./demo/Server.js",
     "test": "./node_modules/.bin/karma start --browsers PhantomJS",
-    "test-chrome": "./node_modules/.bin/karma start --browsers Chrome",
-    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha"
+    "test-karma-chrome": "./node_modules/.bin/karma start --browsers Chrome"
   },
   "repository": {
     "type": "git",
