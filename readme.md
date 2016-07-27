@@ -17,9 +17,9 @@
 - [Docs](#docs)
 - [Installing](#installing)
 - [Using](#using)
-- [Third-party components](#third-party-components)
-- [Styles](#styles)
 - [Localization](#localization)
+- [Styles](#styles)
+- [Third-party components](#third-party-components)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
 - [Contributing](#contributing)
 - [License](#license)
@@ -65,45 +65,44 @@ The main React component.
 import { AutoForm } from 'redux-autoform';
 ```
     
-The `AutoForm` props are listed [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
+The `AutoForm` props are listed [here](https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md#autoform).
+
+The 2 most important props `AutoForm` should receive is the `schema` and the `componentFactory`.
+
+The schema represents the application domain. All entities, layouts and their metadata is contained in the schema. More information [here](https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md#schema).
+
+The `ComponentFactory` is responsible for determining which React component to use for a given field metadata. `redux-autoform` doesn't have any built-in factory, for that you can use either
+[Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state) or [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (under development).
+
+Assuming Bootstrap, you can get the factories like this:
+ 
+ import { EditComponentFactory, DetailsComponentFactory } from 'redux-autoform-bootstrap-ui';
+ 
+Either one of these factories now should be passed as prop Autoform as described in the [docs](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
     
-Additionally, you need a `ComponentFactory`. The `ComponentFactory` is responsible for determining which React
-component to use for a given field metadata. `redux-autoform` comes with 3 `ComponentFactory`:
+Localization
+---
 
-####ComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/ComponentFactory.js))####
+AutoForm doesn't directly depend on localization, but both the Bootstrap and Material-UI factories do. So, if you're using these, this is what you should do:
 
-This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
-prop of the `AutoForm`.
-
+- Install [numbro](http://numbrojs.com/). This is the library used for number localization.
+- Install [moment](http://momentjs.com/). This is the library used for datetime localization.
+ 
 ```js
-import { ComponentFactory } from 'redux-autoform';
+// import moment and numbro
+import moment from 'moment';
+import numbro from 'numbro';
+ // import the localizers
+ import { momentLocalizer, numbroLocalizer } from 'redux-autoform';
+// if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
+import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
+// set up the localizers
+momentLocalizer(moment);
+numbroLocalizer(numbro);
+
+reactWidgetsMomentLocalizer(moment); // THIS IS ONLY IMPORTANT WHEN USING BOOTSTRAP
 ```
 
-####DefaultEditComponentFactory ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))####
-
-This is a pre-populated factory, the same used in the [demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html).
-In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
-
-```js
-import { DefaultEditComponentFactory } from 'redux-autoform';
-```
-    
-Third-party components
-----------------------
-
-If you are using the default factories, you need to manually install the third-party components.
-
-Components that are installed automatically:
-
-- [redux-form](https://github.com/erikras/redux-form/).
-- [react-bootstrap](http://react-bootstrap.github.io/).
-
-Components that are need to be installed manually, if you are using the default factories:
-
-- [react-select](https://github.com/JedWatson/react-select).
-- [react-widgets](https://github.com/jquense/react-widgets).
-
-    
 Styles
 ------
 
@@ -123,31 +122,23 @@ Styles
 
 Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
     
-    
-Localization
----
+   
+Third-party components
+----------------------
 
-AutoForm doesn't directly depend on localization, but the default component factories do. So, if you're using the default component factories, this is what you should do:
+If you are using the default factories, you need to manually install the third-party components.
 
-- Install [numbro](http://numbrojs.com/). This is the library used for number localization.
-- Install [moment](http://momentjs.com/). This is the library used for datetime localization.
- 
-```js
-// import moment and numbro
-import moment from 'moment';
-import numbro from 'numbro';
- // import the localizers
- import { momentLocalizer, numbroLocalizer } from 'redux-autoform';
-// if you are using react-widgets, which is used by default on the standard factories, you need to import it's localizer too:
-import reactWidgetsMomentLocalizer from 'react-widgets/lib/localizers/moment';
-// set up the localizers
-momentLocalizer(moment);
-numbroLocalizer(numbro);
-reactWidgetsMomentLocalizer(moment);
-```
+Components that are installed automatically:
+
+- [redux-form](https://github.com/erikras/redux-form/).
+- [react-bootstrap](http://react-bootstrap.github.io/).
+
+Components that are need to be installed manually, if you are using the default factories:
+
+- [react-select](https://github.com/JedWatson/react-select).
+- [react-widgets](https://github.com/jquense/react-widgets).
 
     
-The `DefaultEditComponentFactory` relies on components that rely on localization. 
 
 Building and running the demo locally
 ---
