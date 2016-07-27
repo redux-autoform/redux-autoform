@@ -7,8 +7,8 @@
 
 **Beta version disclaimer**
 
-`redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
-  any issue, please [report it](https://github.com/gearz-lab/redux-autoform/issues). I'll do my best to fix it.
+    `redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
+      any issue, please [report it](https://github.com/gearz-lab/redux-autoform/issues). We'll do my best to fix it.
   
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -28,10 +28,22 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Demo
----
+Introduction
+------------
 
-You can check the [online demo here](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html). Don't forget to check out all the **presets**.
+Redux Autoform is an UI agnostic library for dynamically generating [redux-form](https://github.com/erikras/redux-form) out of metadata.
+
+Supported UI frameworks:
+------------------------
+
+- [Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state)
+- [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (under development)
+
+Demos
+-----
+
+- [Bootstrap demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html).
+- Material-UI demo (*coming soon*).
 
 
 Docs
@@ -160,18 +172,13 @@ In order to run the `karma` tests:
     npm run test
     // OR, to run in Chrome instead of PhantomJS
     npm run test-chrome
-     
-Change log
----
 
-What has changed is stated [here](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/changeLog.md).
-   
 Contributing
 ---
 
 **Pull-requests are really really welcome**. If you don't know what to contribute with, please check the [issues](https://github.com/gearz-lab/redux-autoform/issues).
  
-I'll be more than glad to invite frequent contributors to join the organization.
+We'll be more than glad to invite frequent contributors to join the organization.
 If you need help understanding the project, please post an issue and I'll do my best to reply and make sure you understand everything
 you need.
 

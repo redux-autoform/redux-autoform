@@ -170,7 +170,7 @@ export default class MetadataProvider {
      * @param layout
      * @param partialResult
      * @param callback
-     * @return {Number}
+     * @return {*[]}
      */
     static getFieldsInternal(schema, entity, layout, partialResult, callback) {
 
