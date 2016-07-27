@@ -14,6 +14,7 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
+      'es6-shim',
       'mocha',
       'chai',
       'sinon'
@@ -21,6 +22,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      './node_modules/phantomjs-polyfill-find/find-polyfill.js',
       'test/index.js'
     ],
     
