@@ -87,7 +87,6 @@
     "moment": "^2.14.1",
     "npm": "^3.3.4",
     "numbro": "^1.8.1",
-    "phantomjs-polyfill-find": "github:ptim/phantomjs-polyfill-find",
     "phantomjs-prebuilt": "^2.1.7",
     "raw-loader": "^0.5.1",
     "react-ace": "^3.4.1",
