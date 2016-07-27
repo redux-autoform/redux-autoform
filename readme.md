@@ -2,9 +2,6 @@
 
 [![NPM](https://nodei.co/npm/redux-autoform.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redux-autoform/) [![NPM](https://nodei.co/npm-dl/redux-autoform.png?months=9&height=3)](https://nodei.co/npm/redux-autoform/)
 
-
-`Redux-autoform` is a wrapper around [redux-form](https://github.com/erikras/redux-form) for dynamically generating forms based on metadata.
-
 **Beta version disclaimer**
 
 `redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
@@ -32,7 +29,7 @@
 Introduction
 ------------
 
-Redux Autoform is an UI agnostic library for dynamically generating [redux-form](https://github.com/erikras/redux-form) out of metadata.
+Redux-Autoform is an UI agnostic library for dynamically generating [redux-form](https://github.com/erikras/redux-form) out of metadata.
 
 Supported UI frameworks:
 ------------------------
