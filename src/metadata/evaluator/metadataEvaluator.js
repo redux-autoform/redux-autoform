@@ -5,7 +5,6 @@ import arrayMetadataFilter from './filter/arrayMetadataFilter.js';
 
 // property filters
 import defaultPropertyMetadataFilter from './property-filter/defaultMetadataPropertyFilter.js';
-import _ from 'underscore';
 
 class MetadataEvaluator {
 
@@ -33,7 +32,7 @@ class MetadataEvaluator {
         if (propertyMetadata.constructor === Array) return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxFieldProps, onChange));
 
         let result = {};
-        _.each(_.keys(propertyMetadata), (fieldName) => {
+        Object.keys(propertyMetadata).forEach((fieldName) => {
             result[fieldName] = this.filterPropertyField(fieldName, propertyMetadata[fieldName], model);
         });
         let newPrefix = keyPrefix ? `${keyPrefix}.${propertyMetadata.name}` : propertyMetadata.name;

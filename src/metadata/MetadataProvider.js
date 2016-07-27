@@ -1,6 +1,3 @@
-import _ from 'underscore';
-import clone from 'clone';
-
 export default class MetadataProvider {
 
     /**
@@ -38,23 +35,37 @@ export default class MetadataProvider {
             });
         }
 
-        schema = clone(schema);
-        schema.entities = MetadataProvider.canonizeArray(schema.entities);
-        _.each(schema.entities, entity => {
-            entity.fields = MetadataProvider.canonizeArray(entity.fields);
-            entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
-            _.each(entity.layouts, layout => {
-                layout.fields = MetadataProvider.canonizeArray(layout.fields);
-                layout.groups = MetadataProvider.canonizeArray(layout.groups);
-                _.each(layout.groups, group => {
-                    group.fields = MetadataProvider.canonizeArray(group.fields);
-                })
-            });
-        });
+        schema = {...schema};
+        this._canonizeArrays(schema, ["entities", "layouts", "groups"])
+
+        //schema.entities = MetadataProvider.canonizeArray(schema.entities);
+        //_.each(schema.entities, entity => {
+        //    entity.fields = MetadataProvider.canonizeArray(entity.fields);
+        //    entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
+        //    _.each(entity.layouts, layout => {
+        //        layout.fields = MetadataProvider.canonizeArray(layout.fields);
+        //        layout.groups = MetadataProvider.canonizeArray(layout.groups);
+        //        _.each(layout.groups, group => {
+        //            group.fields = MetadataProvider.canonizeArray(group.fields);
+        //        })
+        //    });
+        //});
+
 
         return schema;
     }
 
+    static _canonizeArrays(dataArray, keys, id = 0) {
+        dataArray[keys[id]] = MetadataProvider.canonizeArray(dataArray[keys[id]]);
+        if(dataArray[keys[id]]) {
+            dataArray[keys[id]].forEach(elem => {
+                elem.fields = MetadataProvider.canonizeArray(elem.fields);
+                if(id + 1 < keys.length)
+                    this._canonizeArrays(elem, keys, id + 1);
+            })
+        }
+
+    }
     /**
      * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
      * converts the target object into an array.
@@ -67,14 +78,15 @@ export default class MetadataProvider {
     static canonizeArray(obj) {
         if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
 
-        if (_.isArray(obj))
+        if (Array.isArray(obj))
             return obj;
 
         // let's create an array
-        return _.map(_.keys(obj), (property) => {
-            if (!_.isObject(obj[property]))
+        return Object.keys(obj).map((property) => {
+            let isObject = obj[property] && typeof obj[property] === "object";
+            if (!isObject)
                 throw Error('cannot generate canonical array. Every field should be an object');
-            return _.extend({name: property}, obj[property]);
+            return {name: property, ...obj[property]};
         });
     }
 
@@ -101,7 +113,7 @@ export default class MetadataProvider {
 
         let entity;
         if(entityName)
-            entity = _.find(schema.entities, e => e.name === entityName);
+            entity = schema.entities.find(e => e.name === entityName);
         else {
             if(schema.entities.length != 1)
                 throw Error('When an entityName is not specified, there must be one and only one entity');
@@ -123,7 +135,7 @@ export default class MetadataProvider {
         let layout;
 
         if(layoutName)
-            layout = _.find(entity.layouts, l => l.name === layoutName);
+            layout = entity.layouts? entity.layouts.find(l => l.name === layoutName) : layout;
         else {
             if(entity.layouts.length != 1)
                 throw Error('When the layoutName is not specified, there must be one and only one layout');
@@ -158,7 +170,7 @@ export default class MetadataProvider {
      * @param layout
      * @param partialResult
      * @param callback
-     * @return {Number}
+     * @return {*[]}
      */
     static getFieldsInternal(schema, entity, layout, partialResult, callback) {
 
@@ -170,8 +182,8 @@ export default class MetadataProvider {
         let thisGroupFields = [];
 
         if (layout.groups) {
-            _.each(layout.groups, g => {
-                thisGroupFields = _.union(thisGroupFields, this.getFieldsInternal(schema, entity, g, partialResult, callback))
+            layout.groups.forEach(g => {
+                thisGroupFields = [... new Set(thisGroupFields.concat(this.getFieldsInternal(schema, entity, g, partialResult, callback)))];
             });
         }
 
@@ -180,9 +192,9 @@ export default class MetadataProvider {
             for (let i = 0; i < layout.fields.length; i++) {
 
                 let groupField = layout.fields[i];
-                let existingEntityProperty = _.find(entity.fields, field => field.name == groupField.name);
+                let existingEntityProperty = entity.fields.find(field => field.name == groupField.name);
 
-                let field = _.extend({}, existingEntityProperty || {}, groupField);
+                let field = {...existingEntityProperty || {}, ...groupField};
                 this.validateFieldMetadata(field);
 
                 thisGroupFields.push(field);
@@ -222,7 +234,7 @@ export default class MetadataProvider {
             }
         }
 
-        return _.union(partialResult, thisGroupFields);
+        return [...new Set(partialResult.concat(thisGroupFields))];
     }
 
     /**
@@ -306,7 +318,7 @@ export default class MetadataProvider {
         if (!fieldMetadata) throw Error('fieldMetadata should be truthy');
         let result = [];
 
-        _.each(fieldMetadata, f => {
+        fieldMetadata.forEach(f => {
             if (f.fields) {
                 // if a field has fields, it's either an array or a complex object
                 let fieldPrefix = f.type == 'array' ? `${f.name}[]` : f.name;

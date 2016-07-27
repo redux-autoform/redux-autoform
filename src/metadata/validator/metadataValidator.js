@@ -1,4 +1,3 @@
-import _ from 'underscore';
 import defaultValidator from './validators/defaultMetadataValidator';
 import arrayValidator from './validators/arrayValidator';
 import entityValidator from './validators/entityValidator';
@@ -21,7 +20,7 @@ var validator = {
         if (propertyMetadata.constructor !== Array) throw Error('ApropertyMetadata should be an array');
 
         let validationResult = {};
-        _.each(propertyMetadata, m => {
+        propertyMetadata.forEach(m => {
             let propertyValidation;
             for(let i = 0; i < this.validators.length; i++) {
                 let validate = this.validators[i];
