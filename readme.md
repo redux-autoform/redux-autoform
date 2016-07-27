@@ -7,14 +7,16 @@
 
 **Beta version disclaimer**
 
-    `redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
-      any issue, please [report it](https://github.com/gearz-lab/redux-autoform/issues). We'll do my best to fix it.
+`redux-autoform` is under active development. APIs will change and things may still not work as expected. If you find
+  any issue, please [report it](https://github.com/gearz-lab/redux-autoform/issues). We'll do my best to fix it.
   
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Demo](#demo)
+- [Introduction](#introduction)
+- [Supported UI frameworks:](#supported-ui-frameworks)
+- [Demos](#demos)
 - [Docs](#docs)
 - [Installing](#installing)
 - [Using](#using)
@@ -22,7 +24,6 @@
 - [Styles](#styles)
 - [Localization](#localization)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
-- [Change log](#change-log)
 - [Contributing](#contributing)
 - [License](#license)
 
