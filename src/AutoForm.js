@@ -27,7 +27,7 @@ class AutoForm extends Component {
         try {
             schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
 
-            let {entity, layout} =    MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
+            let {entity, layout} = MetadataProvider.getEntityAndLayout(schema, entityName, layoutName);
 
             let fieldMetadata = MetadataProvider.getFields(schema, entity, layout, f => {
                 f.componentFactory = componentFactory;
