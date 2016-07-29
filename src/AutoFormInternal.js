@@ -4,6 +4,9 @@ import metadataEvaluator from './metadata/evaluator/metadataEvaluator';
 import modelParser from './metadata/model/modelParser';
 import { Form } from 'react-bootstrap';
 import UIManager from './UIManager';
+import PropStore from './utils/PropStore';
+
+const propStore = new PropStore();
 
 class AutoFormInternal extends Component {
     static propTypes = {
@@ -16,7 +19,8 @@ class AutoFormInternal extends Component {
         entity: PropTypes.object.isRequired,
         layout: PropTypes.object,
         buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+        reduxFormProps: PropTypes.object
     };
 
     getFactory() {
@@ -46,9 +50,10 @@ class AutoFormInternal extends Component {
     }; 
     
     render() {
-        let { handleSubmit, submitting, buttonBar, fieldLayout } = this.props;
+        let { handleSubmit, submitting, buttonBar, fieldLayout, reduxFormProps } = this.props;
         let groupComponent = this.buildGroupComponent();
-
+        propStore.saveProps(reduxFormProps);
+        
         return (
             <div className="meta-form">
                 <Form onSubmit={handleSubmit} horizontal={fieldLayout == 'inline'}>
@@ -60,4 +65,4 @@ class AutoFormInternal extends Component {
     }
 }
 
-export default reduxForm()(AutoFormInternal);
+export default reduxForm(propStore.getProps())(AutoFormInternal);

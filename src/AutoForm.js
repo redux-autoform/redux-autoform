@@ -17,11 +17,12 @@ class AutoForm extends Component {
         onSubmitFail: PropTypes.func,
         form: PropTypes.string.isRequired,
         buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+        reduxFormProps: PropTypes.object
     };
 
     render() {
-        let { uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
+        let { reduxFormProps, uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
         
         try {
             schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
@@ -39,7 +40,7 @@ class AutoForm extends Component {
             };
 
             
-            let autoFormProps = { uiType, form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues }
+            let autoFormProps = { reduxFormProps, uiType, form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues }
         
             return <AutoFormInternal {...autoFormProps}/>
         } catch (ex) {
