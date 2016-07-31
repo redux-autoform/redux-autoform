@@ -16,8 +16,7 @@ class AutoFormInternal extends Component {
         entity: PropTypes.object.isRequired,
         layout: PropTypes.object,
         buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string,
-        reduxFormProps: PropTypes.object
+        fieldLayout: PropTypes.string
     };
 
     getFactory() {

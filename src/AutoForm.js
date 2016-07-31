@@ -12,18 +12,29 @@ class AutoForm extends Component {
         entityName: PropTypes.string,
         layoutName: PropTypes.string,
         errorRenderer: PropTypes.func,
+        buttonBar: PropTypes.func.isRequired,
+        fieldLayout: PropTypes.string,
+
+        // Redux-Form props
+        form: PropTypes.string.isRequired,
         onSubmit: PropTypes.func.isRequired,
         onSubmitSuccess: PropTypes.func,
         onSubmitFail: PropTypes.func,
-        form: PropTypes.string.isRequired,
-        buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string,
-        reduxFormProps: PropTypes.object
+        alwaysAsyncValidate: PropTypes.bool,
+        destroyOnUnmount: PropTypes.bool,
+        formKey: PropTypes.string,
+        initialValues: PropTypes.object,
+        overwriteOnInitialValuesChange: PropTypes.bool,
+        readonly: PropTypes.bool,
+        returnRejectedSubmitPromise: PropTypes.bool,
+        touchOnBlur: PropTypes.bool,
+        touchOnChange: PropTypes.bool
     };
 
     render() {
-        let { reduxFormProps, uiType, schema, entityName, layoutName, componentFactory, onSubmit, onSubmitFail, onSubmitSuccess, errorRenderer, form, buttonBar, fieldLayout, initialValues } = this.props;
-        
+        let {uiType, schema, entityName, layoutName, componentFactory, errorRenderer, buttonBar, fieldLayout} = this.props;
+        let {form, onSubmit, onSubmitSuccess, onSubmitFail, alwaysAsyncValidate, destroyOnUnmount, formKey, initialValues, overwriteOnInitialValuesChange, readonly, returnRejectedSubmitPromise, touchOnBlur, touchOnChange} = this.props;
+
         try {
             schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
 
@@ -39,10 +50,34 @@ class AutoForm extends Component {
                 return metadataValidator.validate(fieldMetadata, modelParsed) || {};
             };
 
-            
-            let autoFormProps = { reduxFormProps, uiType, form, fields, fieldMetadata, entity, layout, validate, componentFactory, onSubmit, onSubmitSuccess, onSubmitFail, buttonBar, fieldLayout, initialValues }
-        
-            return <AutoFormInternal {...autoFormProps}/>
+            let autoFormProps = {
+                uiType,
+                fields,
+                fieldMetadata,
+                entity,
+                layout,
+                validate,
+                componentFactory,
+                buttonBar,
+                fieldLayout
+            };
+            let reduxFormProps = {
+                form,
+                onSubmit,
+                onSubmitSuccess,
+                onSubmitFail,
+                alwaysAsyncValidate,
+                destroyOnUnmount,
+                formKey,
+                initialValues,
+                overwriteOnInitialValuesChange,
+                readonly,
+                returnRejectedSubmitPromise,
+                touchOnBlur,
+                touchOnChange
+            };
+
+            return <AutoFormInternal {...autoFormProps} {...reduxFormProps}/>
         } catch (ex) {
             return errorRenderer ? errorRenderer(ex) : <div> {ex.message} </div>;
         }
