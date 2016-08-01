@@ -61,6 +61,7 @@ class AutoForm extends Component {
                 buttonBar,
                 fieldLayout
             };
+
             let reduxFormProps = {
                 form,
                 onSubmit,
