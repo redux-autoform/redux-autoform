@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form';
 import metadataEvaluator from './metadata/evaluator/metadataEvaluator';
 import modelParser from './metadata/model/modelParser';
-import { Form } from 'react-bootstrap';
 import UIManager from './UIManager';
 
 class AutoFormInternal extends Component {
@@ -48,13 +47,17 @@ class AutoFormInternal extends Component {
     render() {
         let { handleSubmit, submitting, buttonBar, fieldLayout } = this.props;
         let groupComponent = this.buildGroupComponent();
-        
+
+        //This works only with boostrap, non material-ui or any other ui framework because 'form-horizontal' is
+        //a set of classes for boostrap.
+        let className = (fieldLayout == 'inline')? "meta-form form-horizontal" : "meta-form";
+
         return (
-            <div className="meta-form">
-                <Form onSubmit={handleSubmit} horizontal={fieldLayout == 'inline'}>
+            <div className={className}>
+                <form onSubmit={handleSubmit}>
                     { groupComponent }
                     { React.createElement(buttonBar, { submitting: submitting }) }
-                </Form>
+                </form>
             </div>
         )
     }
