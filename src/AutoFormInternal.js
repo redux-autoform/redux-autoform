@@ -48,13 +48,13 @@ class AutoFormInternal extends Component {
         let { handleSubmit, submitting, buttonBar, fieldLayout } = this.props;
         let groupComponent = this.buildGroupComponent();
 
-        //This works only with boostrap, non material-ui or any other ui framework because 'form-horizontal' is
-        //a set of classes for boostrap.
-        let className = (fieldLayout == 'inline')? "meta-form form-horizontal" : "meta-form";
+        // Setting the form class name to "form-horizontal" only affects Bootstrap.
+        // ToDo: Make the UI to provide the form class name or the entire Form component
+        let formClassName = (fieldLayout == 'inline')? "form-horizontal" : "";
 
         return (
-            <div className={className}>
-                <form onSubmit={handleSubmit}>
+            <div className="meta-form">
+                <form onSubmit={handleSubmit} className={formClassName}>
                     { groupComponent }
                     { React.createElement(buttonBar, { submitting: submitting }) }
                 </form>
