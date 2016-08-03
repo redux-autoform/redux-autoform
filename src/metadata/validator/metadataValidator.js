@@ -8,6 +8,7 @@ import floatValidator from './validators/floatValidator';
 
 var validator = {
     validators: [],
+
     /**
      * Evaluates the given metadata against the model
      * @param propertyMetadata - Can be either an object or an array of objects
