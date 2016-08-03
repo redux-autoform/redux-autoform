@@ -1,13 +1,15 @@
-import defaultValidator from './validators/defaultMetadataValidator';
-import arrayValidator from './validators/arrayValidator';
-import entityValidator from './validators/entityValidator';
-import requiredValidator from './validators/requiredValidator';
-import dateTimeValidator from './validators/dateTimeValidator';
-import intValidator from './validators/intValidator';
-import floatValidator from './validators/floatValidator';
+import Validators from './validator/Validators'
 
-var validator = {
-    validators: [],
+class MetadataValidator {
+    static validators = [];
+
+    /**
+     *
+     * @param validator
+     */
+    static add(validator) {
+        this.validators.push(validator);
+    }
 
     /**
      * Evaluates the given metadata against the model
@@ -15,7 +17,7 @@ var validator = {
      * @param model
      * @returns {{}}
      */
-    validate(propertyMetadata, model) {
+    static validate(propertyMetadata, model) {
         if (!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if (!model) throw Error('\'model\' should be truthy');
         if (propertyMetadata.constructor !== Array) throw Error('ApropertyMetadata should be an array');
@@ -30,16 +32,18 @@ var validator = {
             }
             validationResult[m.name] = propertyValidation;
         });
+
         return validationResult;
     }
-};
+}
 
-validator.validators.push(requiredValidator);
-validator.validators.push(arrayValidator);
-validator.validators.push(entityValidator);
-validator.validators.push(defaultValidator);
-validator.validators.push(dateTimeValidator);
-validator.validators.push(intValidator);
-validator.validators.push(floatValidator);
+//Adding validators..
+MetadataValidator.add(Validators.validateRequired);
+MetadataValidator.add(Validators.validateArray);
+MetadataValidator.add(Validators.validateEntity);
+MetadataValidator.add(Validators.validateDefault);
+MetadataValidator.add(Validators.validateDateTime);
+MetadataValidator.add(Validators.validateInt);
+MetadataValidator.add(Validators.validateFloat);
 
-export default validator;
+export default MetadataValidator;

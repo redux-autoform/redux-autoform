@@ -1,4 +1,4 @@
-import DemoFactory from './DemoFactory';
+import DemoFactory from './demoFactory';
 import TypeConfig from './constants/TypeConstants';
 
 export function getDemoFactory() {
