@@ -7,7 +7,7 @@ class MetadataValidator {
      *
      * @param validator
      */
-    static add(validator) {
+    static addValidator(validator) {
         this.validators.push(validator);
     }
 
@@ -42,12 +42,12 @@ class MetadataValidator {
 }
 
 //Adding validators..
-MetadataValidator.add(Validators.validateRequired);
-MetadataValidator.add(Validators.validateArray);
-MetadataValidator.add(Validators.validateEntity);
-MetadataValidator.add(Validators.validateDefault);
-MetadataValidator.add(Validators.validateDateTime);
-MetadataValidator.add(Validators.validateInt);
-MetadataValidator.add(Validators.validateFloat);
+MetadataValidator.addValidator(Validators.validateRequired);
+MetadataValidator.addValidator(Validators.validateArray);
+MetadataValidator.addValidator(Validators.validateEntity);
+MetadataValidator.addValidator(Validators.validateDefault);
+MetadataValidator.addValidator(Validators.validateDateTime);
+MetadataValidator.addValidator(Validators.validateInt);
+MetadataValidator.addValidator(Validators.validateFloat);
 
 export default MetadataValidator;
