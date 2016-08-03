@@ -1,4 +1,4 @@
-import expressionEvaluator from '../evaluator/expressionEvaluator';
+import expressionEvaluator from '../evaluator/expression/ExpressionEvaluator';
 import { getNumberLocalizer } from 'redux-autoform-utils/lib/localization/numberLocalizer';
 
 function isInt(n) {

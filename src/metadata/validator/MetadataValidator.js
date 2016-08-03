@@ -1,4 +1,4 @@
-import Validators from './validator/Validators'
+import Validators from './Validators'
 
 class MetadataValidator {
     static validators = [];
@@ -23,13 +23,17 @@ class MetadataValidator {
         if (propertyMetadata.constructor !== Array) throw Error('ApropertyMetadata should be an array');
 
         let validationResult = {};
+
         propertyMetadata.forEach(m => {
             let propertyValidation;
+
             for(let i = 0; i < this.validators.length; i++) {
                 let validate = this.validators[i];
                 propertyValidation = validate(m, model[m.name], model, this);
+
                 if(propertyValidation !== null && propertyValidation !== undefined) break;
             }
+
             validationResult[m.name] = propertyValidation;
         });
 

@@ -1,5 +1,5 @@
 const chai = require('chai');
-const metadataEvaluator = require('../src/metadata/MetadataEvaluator.js');
+const MetadataEvaluator = require('../src/metadata/evaluator/MetadataEvaluator.js');
 const log = require('./utils/log');
 const assert = chai.assert;
 
@@ -11,7 +11,7 @@ describe('MetadataEvaluator', function () {
                 name: 'name',
                 required: true
             };
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre'});
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre'});
             assert.strictEqual('name', metadataEvaluation.name);
             assert.isTrue(metadataEvaluation.required);
 
@@ -21,7 +21,7 @@ describe('MetadataEvaluator', function () {
                 name: 'Andre',
                 required: m => m.number > 500
             };
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
             assert.strictEqual('Andre', metadataEvaluation.name);
             assert.isTrue(metadataEvaluation.required);
         });
@@ -30,7 +30,7 @@ describe('MetadataEvaluator', function () {
                 name: 'Andre',
                 required: m => m.number < 500
             };
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
             assert.strictEqual('Andre', metadataEvaluation.name);
             assert.isFalse(metadataEvaluation.required);
         });
@@ -39,7 +39,7 @@ describe('MetadataEvaluator', function () {
                 name: 'Andre',
                 $required: m => m.number < 500
             };
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
             assert.strictEqual('Andre', metadataEvaluation.name);
             assert.isFunction(metadataEvaluation.$required);
         });
@@ -51,7 +51,7 @@ describe('MetadataEvaluator', function () {
                 name: 'Joseph',
                 required: m => m.number > 1000
             }];
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 3445});
             assert.strictEqual('Andre', metadataEvaluation[0].name);
             assert.isTrue(metadataEvaluation[0].required);
             assert.strictEqual('Joseph', metadataEvaluation[1].name);
@@ -68,7 +68,7 @@ describe('MetadataEvaluator', function () {
             //         }
             //     ]
             // };
-            // let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre'});
+            // let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre'});
             // assert.strictEqual('name', metadataEvaluation.name);
             // assert.isTrue(metadataEvaluation.invalid.value);
             // assert.strictEqual('Name should not be andre', metadataEvaluation.invalid.message);
@@ -88,7 +88,7 @@ describe('MetadataEvaluator', function () {
             //         }
             //     ]
             // };
-            // let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 1000});
+            // let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 1000});
             // assert.strictEqual('name', metadataEvaluation.name);
             // assert.isTrue(metadataEvaluation.invalid.value);
             // assert.strictEqual('Number should not be 1000', metadataEvaluation.invalid.message);
@@ -108,7 +108,7 @@ describe('MetadataEvaluator', function () {
             //         }
             //     ]
             // };
-            // let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre', number: 1000});
+            // let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre', number: 1000});
             // assert.strictEqual('name', metadataEvaluation.name);
             // assert.isFalse(metadataEvaluation.invalid.value);
         });
@@ -117,7 +117,7 @@ describe('MetadataEvaluator', function () {
             //     name: 'name',
             //     required: true
             // };
-            // let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: ''});
+            // let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: ''});
             // assert.strictEqual('name', metadataEvaluation.name);
             // assert.isTrue(metadataEvaluation.required);
             // assert.isTrue(metadataEvaluation.invalid.value);
@@ -128,7 +128,7 @@ describe('MetadataEvaluator', function () {
             //     name: 'name',
             //     required: true
             // };
-            // let metadataEvaluation = metadataEvaluator.evaluate(metadata, {name: 'Andre'});
+            // let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {name: 'Andre'});
             // assert.strictEqual('name', metadataEvaluation.name);
             // assert.isTrue(metadataEvaluation.required);
             // assert.isUndefined(metadataEvaluation.invalid);
@@ -146,7 +146,7 @@ describe('MetadataEvaluator', function () {
                     }
                 ]
             };
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata,
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata,
                 {
                     phone: {
                         number: '99168204',
@@ -183,7 +183,7 @@ describe('MetadataEvaluator', function () {
                 ]
             };
             let metadataIndex = {};
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata,
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata,
                 {
                     phone: {
                         number: '99168204',
@@ -213,7 +213,7 @@ describe('MetadataEvaluator', function () {
                 ]
             };
 
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata,
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata,
                 {
                     phones: [
                         {
@@ -256,7 +256,7 @@ describe('MetadataEvaluator', function () {
                 ]
             };
 
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {
                 contacts: [
                     {
                         name: 'Andre',
@@ -349,7 +349,7 @@ describe('MetadataEvaluator', function () {
                 ]
             };
             
-            let metadataEvaluation = metadataEvaluator.evaluate(metadata, {
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, {
                 phone: {
                     number: '553299168204'
                 },

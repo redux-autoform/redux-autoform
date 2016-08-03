@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { reduxForm } from 'redux-form';
-import MetadataEvaluator from './metadata/MetadataEvaluator';
+import MetadataEvaluator from './metadata/evaluator/MetadataEvaluator';
 import ModelParser from './metadata/model/ModelParser';
 // import UIManager from './UIManager';
 
