@@ -1,5 +1,5 @@
 const chai = require('chai');
-const metadataEvaluator = require('../src/metadata/evaluator/metadataEvaluator.js');
+const metadataEvaluator = require('../src/metadata/MetadataEvaluator.js');
 const log = require('./utils/log');
 const assert = chai.assert;
 
