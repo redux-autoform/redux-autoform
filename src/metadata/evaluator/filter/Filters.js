@@ -10,7 +10,7 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static filterArray(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static arrayFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
 
         if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if(!model) throw Error('Argument \'model\' should be truthy');
@@ -52,7 +52,7 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static filterDefault(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static defaultFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
 
         if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if(!model) throw Error('Argument \'model\' should be truthy');
@@ -77,7 +77,7 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static filterEntity(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static entityFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
         if (!propertyMetadata) throw new Error('metadata is required');
         if (!model) throw new Error('model is required');
 

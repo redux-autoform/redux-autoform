@@ -41,10 +41,12 @@ class MetadataEvaluator {
      * @returns {{}}
      */
     static evaluate(propertyMetadata, model, keyPrefix, reduxFieldProps, onChange) {
-        if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
+        if (!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if (!model) throw Error('\'model\' should be truthy');
-        if (propertyMetadata.constructor === Array)
+
+        if (propertyMetadata.constructor === Array) {
             return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxFieldProps, onChange));
+        }
 
         let result = {};
 
@@ -100,12 +102,12 @@ class MetadataEvaluator {
 }
 
 // register metadata filters
-MetadataEvaluator.addPropertyFilter(Filters.filterDefault); // sets redux props, key and id
-MetadataEvaluator.addPropertyFilter(Filters.filterEntity); // processes entities
-MetadataEvaluator.addPropertyFilter(Filters.filterArray); // processes arrays
+MetadataEvaluator.addPropertyFilter(Filters.defaultFilter); // sets redux props, key and id
+MetadataEvaluator.addPropertyFilter(Filters.entityFilter); // processes entities
+MetadataEvaluator.addPropertyFilter(Filters.arrayFilter); // processes arrays
 
 // register property field filters
 // evaluates functions to literals
-MetadataEvaluator.addPropertyFieldFilter(PropertyFilters.filterProperty);
+MetadataEvaluator.addPropertyFieldFilter(PropertyFilters.propertyFilter);
 
 export default MetadataEvaluator;

@@ -9,7 +9,7 @@ export default class PropertyFilters {
      * @param model
      * @returns {*}
      */
-    static filterProperty(propertyName, propertyValue, model) {
+    static propertyFilter(propertyName, propertyValue, model) {
         if(!model) {
             throw new Error('model is required');
         }
