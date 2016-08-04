@@ -38,20 +38,6 @@ export default class MetadataProvider {
         schema = {...schema};
         this._canonizeArrays(schema, ["entities", "layouts", "groups"]);
 
-        //schema.entities = MetadataProvider.canonizeArray(schema.entities);
-        //_.each(schema.entities, entity => {
-        //    entity.fields = MetadataProvider.canonizeArray(entity.fields);
-        //    entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
-        //    _.each(entity.layouts, layout => {
-        //        layout.fields = MetadataProvider.canonizeArray(layout.fields);
-        //        layout.groups = MetadataProvider.canonizeArray(layout.groups);
-        //        _.each(layout.groups, group => {
-        //            group.fields = MetadataProvider.canonizeArray(group.fields);
-        //        })
-        //    });
-        //});
-
-
         return schema;
     }
 
@@ -76,7 +62,8 @@ export default class MetadataProvider {
      * @param obj
      */
     static canonizeArray(obj) {
-        if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
+        // this is so the canonizeSchema method doesn't have to check every property for undefined
+        if (!obj) return obj;
 
         if (Array.isArray(obj))
             return obj;
@@ -178,7 +165,6 @@ export default class MetadataProvider {
      * @return {*[]}
      */
     static getFieldsInternal(schema, entity, layout, partialResult, callback) {
-
         if (!schema) throw Error('\'schema\' should be truthy');
         if (!entity) throw Error('\'entity\' should be truthy');
         if (!layout.fields && !layout.groups) throw Error('A layout should have fields or groups');
@@ -188,12 +174,12 @@ export default class MetadataProvider {
 
         if (layout.groups) {
             layout.groups.forEach(g => {
-                thisGroupFields = [... new Set(thisGroupFields.concat(this.getFieldsInternal(schema, entity, g, partialResult, callback)))];
+                let fieldsInternal = this.getFieldsInternal(schema, entity, g, partialResult, callback);
+                thisGroupFields = this.merge(thisGroupFields, fieldsInternal);
             });
         }
 
         if (layout.fields) {
-
             for (let i = 0; i < layout.fields.length; i++) {
 
                 let groupField = layout.fields[i];
@@ -239,7 +225,7 @@ export default class MetadataProvider {
             }
         }
 
-        return [...new Set(partialResult.concat(thisGroupFields))];
+        return this.merge(partialResult, thisGroupFields);
     }
 
     /**
@@ -340,5 +326,12 @@ export default class MetadataProvider {
         });
 
         return result;
+    }
+
+    static merge(from, to) {
+        if (!from) throw Error('from should be truthy');
+        if (!to) throw Error('to should be truthy');
+
+        return [...new Set(from.concat(to))];
     }
 };
