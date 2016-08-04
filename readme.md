@@ -22,6 +22,7 @@
 - [Localization](#localization)
 - [Styles](#styles)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
+- [Running the tests](#running-the-tests)
 - [Contributing](#contributing)
 - [License](#license)
 
