@@ -14,8 +14,10 @@ class ModelParser {
         if (!types) throw Error('\'type\' should be truthy');
         if (!(types instanceof Array)) throw Error('type should be an array');
 
+        let { parsers } = this;
+
         types.forEach(type => {
-            this.parsers[type] = parser;
+            parsers[type] = parser;
         });
     }
 
