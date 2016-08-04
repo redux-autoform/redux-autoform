@@ -8,7 +8,7 @@
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
     "publish": "npm run build-lib && npm publish",
     "test": "./node_modules/.bin/karma start --browsers PhantomJS",
-    "test-karma-chrome": "./node_modules/.bin/karma start --browsers Chrome",
+    "test-chrome": "./node_modules/.bin/karma start --browsers Chrome",
     "start": "cross-env NODE_ENV=development babel-node ./demo/server.js"
   },
   "repository": {

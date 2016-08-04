@@ -21,7 +21,6 @@
 - [Using](#using)
 - [Localization](#localization)
 - [Styles](#styles)
-- [Third-party components](#third-party-components)
 - [Building and running the demo locally](#building-and-running-the-demo-locally)
 - [Contributing](#contributing)
 - [License](#license)
@@ -110,61 +109,26 @@ reactWidgetsMomentLocalizer(moment); // THIS IS ONLY IMPORTANT WHEN USING BOOTST
 Styles
 ------
 
-- Import `styles.less` file. This file contains infrastructural styling.
-- If you are using the default factories, import `styles-defaultfactories.less`. This file contains styles related to the components used in the default factories.
-- If you are using the default factories, import the thid-party styles for the components used in the default factories. The example below lists what have to be imported:
+The styling will depend on the UI you're using:
 
-
-**yourstyles.less**:
-
-    @import './node_modules/bootstrap/less/bootstrap.less';
-    @import './node_modules/font-awesome/less/font-awesome.less';
-    @import './node_modules/react-widgets/dist/css/react-widgets.css';
-    @import './node_modules/react-select/dist/react-select.css';
-    @import './node_modules/redux-autoform/lib/less/styles';
-    @import './node_modules/redux-autoform/lib/less/styles-defaultfactories';
-
-Alternatively, if you're using webpack with `css-loader` and `less-loader`, which you probably are, you can just import these less files directly in your JavaScript.
-    
-   
-Third-party components
-----------------------
-
-If you are using the default factories, you need to manually install the third-party components.
-
-Components that are installed automatically:
-
-- [redux-form](https://github.com/erikras/redux-form/).
-- [react-bootstrap](http://react-bootstrap.github.io/).
-
-Components that are need to be installed manually, if you are using the default factories:
-
-- [react-select](https://github.com/JedWatson/react-select).
-- [react-widgets](https://github.com/jquense/react-widgets).
-
-    
+- [Adding styles for the Bootstrap UI](https://github.com/redux-autoform/redux-autoform-bootstrap-ui#styling)
+- Adding styles for the Material UI (under development)
 
 Building and running the demo locally
----
+-------------------------------------
 
-    git clone https://github.com/gearz-lab/redux-autoform.git
-    cd redux-autoform
-    set NODE_ENV=development
-    // OR, if you use Linux or OSX
-    $export NODE_ENV=development
-    npm install
-    
-In order to run the demo, run:
+Redux-Autoform provides a really minimalist demo. In order to run the demo, run:
 
     npm run start
     
 Now the demo should be available here: [http://localhost:4000/](http://localhost:4000/).
     
-In order to run the `karma` tests:
+Running the tests
+------------------
 
-    npm run test
-    // OR, to run in Chrome instead of PhantomJS
-    npm run test-chrome
+    npm run test // will run the Karma tests PhantomJS
+    // OR
+    npm run test-chrome // will run the Karma tests on Chrome
 
 Contributing
 ---
