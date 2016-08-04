@@ -36,7 +36,7 @@ export default class MetadataProvider {
         }
 
         schema = {...schema};
-        this._canonizeArrays(schema, ["entities", "layouts", "groups"])
+        this._canonizeArrays(schema, ["entities", "layouts", "groups"]);
 
         //schema.entities = MetadataProvider.canonizeArray(schema.entities);
         //_.each(schema.entities, entity => {
@@ -86,6 +86,7 @@ export default class MetadataProvider {
             let isObject = obj[property] && typeof obj[property] === "object";
             if (!isObject)
                 throw Error('cannot generate canonical array. Every field should be an object');
+
             return {name: property, ...obj[property]};
         });
     }
@@ -109,18 +110,21 @@ export default class MetadataProvider {
      */
     static getEntity(schema, entityName) {
         if (!schema) throw Error('\'schema\' should be truthy');
-        if (schema.entities === undefined || schema.entities === null || !schema.entities.length) throw Error('schema should have entities');
+        if (schema.entities === undefined || schema.entities === null || !schema.entities.length)
+            throw Error('schema should have entities');
 
         let entity;
-        if(entityName)
+
+        if (entityName) {
             entity = schema.entities.find(e => e.name === entityName);
-        else {
+        } else {
             if(schema.entities.length != 1)
                 throw Error('When an entityName is not specified, there must be one and only one entity');
             entity = schema.entities[0];
         }
 
         if (!entity) throw Error(`Could not find entity. Entity name: ${entityName}`);
+
         return entity;
     }
 
@@ -134,15 +138,16 @@ export default class MetadataProvider {
         if (!entity) throw Error('\'entity\' should be truthy');
         let layout;
 
-        if(layoutName)
-            layout = entity.layouts? entity.layouts.find(l => l.name === layoutName) : layout;
-        else {
+        if (layoutName) {
+            layout = entity.layouts ? entity.layouts.find(l => l.name === layoutName) : layout;
+        } else {
             if(entity.layouts.length != 1)
                 throw Error('When the layoutName is not specified, there must be one and only one layout');
             layout = entity.layouts[0];
         }
 
         if (!layout) throw Error(`Could not find layout. Layout name: ${layoutName}`);
+
         return layout;
     }
 
@@ -247,11 +252,13 @@ export default class MetadataProvider {
      */
     static getFields(schema, entity, layout, callback) {
         entity = typeof entity === 'string' ? this.getEntity(schema, entity) : entity;
+
         if (!layout) {
             layout = this.generateDefaultLayout(schema, entity);
         } else {
             layout = typeof layout === 'string' ? this.getLayout(entity, layout) : layout;
         }
+
         return this.getFieldsInternal(schema, entity, layout, undefined, callback);
     }
 
@@ -267,11 +274,14 @@ export default class MetadataProvider {
         let layoutGroupClone = {};
         if (layoutGroup.fields) {
             layoutGroupClone.fields = [];
+
             for (let i = 0; i < layoutGroup.fields.length; i++) {
                 layoutGroupClone.fields.push({name: layoutGroup.fields[i].name});
             }
+
         } else if (layoutGroup.groups) {
             layoutGroupClone.groups = [];
+
             for (let i = 0; i < layoutGroup.groups.length; i++) {
                 layoutGroupClone.groups.push(this.processLayoutGroup(layoutGroup.groups[i]));
             }

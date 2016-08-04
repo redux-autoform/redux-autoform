@@ -1,5 +1,5 @@
 const chai = require('chai');
-const modelParser = require('../src/metadata/model/modelParser');
+const modelParser = require('../src/metadata/model/ModelParser');
 const assert = chai.assert;
 
 describe('ModelProcessor', function () {
