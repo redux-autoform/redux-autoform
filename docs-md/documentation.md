@@ -26,7 +26,7 @@ Metadata
 ===
 
 Metadata is the single most important thing to understand in order to work with `redux-autoform`. Basically, you pass a
-`schema` to the `AutoForm` component and it renders itself. You can find examples of valid schema [here](https://gearz-lab.github.io/redux-autoform/tree/master/demo/presets).
+`schema` to the `Redux-Autoform` component, along with a component factory, and it renders itself.
 
 These are the most important things you should know about Metadata:
 
@@ -73,8 +73,6 @@ orientation | How the fields to should be laid out. Valid values are "vertical" 
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-[Layout demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=layouts)
-
 Group
 ---
 
@@ -86,8 +84,6 @@ name | The name of the group. Only useful when you want to render a group inside
 orientation | How the fields to should be laid out. Valid values are "vertical" and "horizontal". It defaults to "vertical". When a layout/group is "vertical", the default size for the component is 12. When it's "horizontal", the default size is 12/[number of components].
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
-
-[Group demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=layouts)
 
 Field
 ---
