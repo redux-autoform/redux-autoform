@@ -66,12 +66,13 @@ class MetadataEvaluator {
      * @param model
      */
     static filterPropertyField(fieldName, fieldValue, model) {
+        let { fieldFilters } = this;
         let processedFieldValue = fieldValue;
 
-        for (let i = 0; i < this.fieldFilters.length; i++) {
+        for (let i = 0; i < fieldFilters.length; i++) {
 
-            if (!this.fieldFilters[i].property || this.fieldFilters[i].property === fieldName) {
-                let filter = this.fieldFilters[i].filter;
+            if (!fieldFilters[i].property || fieldFilters[i].property === fieldName) {
+                let filter = fieldFilters[i].filter;
 
                 processedFieldValue = filter(fieldName, processedFieldValue, model);
             }
@@ -90,10 +91,12 @@ class MetadataEvaluator {
      * @returns {*}
      */
     static filterProperty(metadata, model, keyPrefix, metadataIndex, reduxProps) {
+        let { propertyFilters } = this;
         let processedMetadata = metadata;
 
-        for (let i = 0; i < this.propertyFilters.length; i++) {
-            let filter = this.propertyFilters[i];
+        for (let i = 0; i < propertyFilters.length; i++) {
+            let filter = propertyFilters[i];
+
             processedMetadata = filter(processedMetadata, model, keyPrefix, this, metadataIndex, reduxProps);
         }
 

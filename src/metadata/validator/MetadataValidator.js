@@ -22,16 +22,17 @@ class MetadataValidator {
         if (!model) throw Error('\'model\' should be truthy');
         if (propertyMetadata.constructor !== Array) throw Error('ApropertyMetadata should be an array');
 
+        let { validators } = this;
         let validationResult = {};
 
         propertyMetadata.forEach(m => {
             let propertyValidation;
 
-            for(let i = 0; i < this.validators.length; i++) {
-                let validate = this.validators[i];
+            for(let i = 0; i < validators.length; i++) {
+                let validate = validators[i];
                 propertyValidation = validate(m, model[m.name], model, this);
 
-                if(propertyValidation !== null && propertyValidation !== undefined) break;
+                if (propertyValidation !== null && propertyValidation !== undefined) break;
             }
 
             validationResult[m.name] = propertyValidation;

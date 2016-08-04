@@ -46,9 +46,12 @@ class ModelParser {
      * @param model
      */
     static processProperty(metadata, model) {
+        let { parsers } = this;
         let value = model[metadata.name];
-        if (value != null && value != undefined && metadata.type && this.parsers[metadata.type]) { // if there's a parser for the property type
-            return this.parsers[metadata.type](metadata, value, this);
+
+        // if there's a parser for the property type
+        if (value != null && value != undefined && metadata.type && parsers[metadata.type]) {
+            return parsers[metadata.type](metadata, value, this);
         }
 
         return value;
