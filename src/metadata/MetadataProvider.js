@@ -36,7 +36,7 @@ export default class MetadataProvider {
         }
 
         schema = {...schema};
-        this._canonizeArrays(schema, ["entities", "layouts", "groups"])
+        this._canonizeArrays(schema, ["entities", "layouts", "groups"]);
 
         //schema.entities = MetadataProvider.canonizeArray(schema.entities);
         //_.each(schema.entities, entity => {
