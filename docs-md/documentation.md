@@ -201,7 +201,7 @@ Example:
     }
 
  
-Common metadata
+Common field metadata
 ---------------
 
 Metadata that is common to most of the components.
