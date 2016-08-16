@@ -57,7 +57,6 @@ class AutoFormInternal extends Component {
         return (
             <Root {...this.props}>
                 { groupComponent }
-                { React.createElement(buttonBar, { submitting: submitting }) }
             </Root>
         )
     }
