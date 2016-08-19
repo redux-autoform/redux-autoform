@@ -1,12 +1,11 @@
 {
   "name": "redux-autoform",
-  "version": "0.10.0",
+  "version": "0.10.3-experimental",
   "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
     "build-dist": "cross-env NODE_ENV=production babel-node ./tools/build-dist.js",
     "build-lib": "cross-env NODE_ENV=production babel-node ./tools/build-lib.js",
-    "publish": "npm run build-lib && npm publish",
     "test": "./node_modules/.bin/karma start --browsers PhantomJS",
     "test-chrome": "./node_modules/.bin/karma start --browsers Chrome",
     "start": "cross-env NODE_ENV=development babel-node ./demo/server.js"
