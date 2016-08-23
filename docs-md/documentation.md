@@ -10,22 +10,11 @@
   - [Field](#field)
   - [Schema format](#schema-format)
   - [Common metadata](#common-metadata)
-  - [TextBox](#textbox)
-  - [TextArea](#textarea)
-  - [CheckBox](#checkbox)
-  - [Toogle](#toogle)
-  - [Select](#select)
-  - [Lookup](#lookup)
-  - [DateTimePicker](#datetimepicker)
 - [Lib](#lib)
   - [Component factories](#component-factories)
-  - [ComponentFactory (source)](#componentfactory-source)
-  - [DefaultEditComponentFactory (source)](#defaulteditcomponentfactory-source)
-  - [DefaultDetailsComponentFactory (source)](#defaultdetailscomponentfactory-source)
   - [Localization](#localization)
 - [Components](#components)
   - [AutoForm](#autoform)
-- [Third party](#third-party)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -37,7 +26,7 @@ Metadata
 ===
 
 Metadata is the single most important thing to understand in order to work with `redux-autoform`. Basically, you pass a
-`schema` to the `AutoForm` component and it renders itself. You can find examples of valid schema [here](https://gearz-lab.github.io/redux-autoform/tree/master/demo/presets).
+`schema` to the `Redux-Autoform` component, along with a component factory, and it renders itself.
 
 These are the most important things you should know about Metadata:
 
@@ -84,8 +73,6 @@ orientation | How the fields to should be laid out. Valid values are "vertical" 
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
 
-[Layout demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=layouts)
-
 Group
 ---
 
@@ -97,8 +84,6 @@ name | The name of the group. Only useful when you want to render a group inside
 orientation | How the fields to should be laid out. Valid values are "vertical" and "horizontal". It defaults to "vertical". When a layout/group is "vertical", the default size for the component is 12. When it's "horizontal", the default size is 12/[number of components].
 fields | An array of `field`. These `fields` are merged with the fields from the `entity` this layout belongs to. Fields are merged based on the `name` metadata.
 groups | (optional) An array of `group`.
-
-[Group demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=layouts)
 
 Field
 ---
@@ -216,7 +201,7 @@ Example:
     }
 
  
-Common metadata
+Common field metadata
 ---------------
 
 Metadata that is common to most of the components.
@@ -228,76 +213,6 @@ component | Which component to use.
 readOnly | Whether or not the component should be in read-only state.
 help | Additional help so the end-user knows what the field is about.
 
-TextBox
----
-
-Specific metadata for the `TextBox` component. Common metadata is not listed.
-
-Metadata | Description
---- | ---
-placeholder | The text that should be displayed as a hint when there's no value.
-addonBefore | The text that should be added-on before the component.
-addonAfter | The text that should be added-on after the component.
-
-[TextBox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextBox)
-
-TextArea
----
-
-Specific metadata for the `TextBox` component. Common metadata is not listed.
-
-Metadata | Description
---- | ---
-placeholder | The text that should be displayed as a hint when there's no value.
-addonBefore | The text that should be added-on before the component.
-addonAfter | The text that should be added-on after the component.
-rows | The number of rows.
-
-[TextArea demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsTextArea)
-
-CheckBox
----
-
-[Checkbox demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsCheckbox).
-
-Toogle
----
-
-[Toggle demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsToggle).
-
-Select
----
-
-Specific metadata for the `Select` component. Common metadata is not listed.
-
-Metadata | Description
---- | ---
-options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
-
-[Select demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsSelect).
-
-Lookup
----
-
-Specific metadata for the `Lookup` component. Common metadata is not listed.
-
-Metadata | Description
---- | ---
-options | The options to display. Options are an array of objects with two properties: **value**: The actual value that is stored in the model. **text**: What is displayed to the user
-
-[Lookup demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsLookup).
-
-DateTimePicker
----
-
-Specific metadata for the `DateTimePicker` component. Common metadata is not listed.
-
-Metadata | Description
---- | ---
-format | Any format supported by [Moment.js](http://momentjs.com/docs/#/parsing/string-format/). Defaults to your locale configuration. Make sure you have it properly configured.  
-
-
-[DateTimePicker demo](http://gearz-lab.github.io/redux-autoform/demo.html?preset=componentsDateTimePicker).
 
 Lib
 ===
@@ -305,34 +220,15 @@ Lib
 Component factories
 ---
 
-Component factories are how `redux-autoform` knows which component to render for a particular field or group metadata.
+The `ComponentFactory` is responsible for determining which React component to use for a given field metadata. `redux-autoform` doesn't have any built-in factory, for that you can use either
+[Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state) or [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (under development).
 
-ComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/ComponentFactory.js))
----
+Assuming Bootstrap, you can get the factories like this:
+ 
+```js
+import { EditComponentFactory, DetailsComponentFactory } from 'redux-autoform-bootstrap-ui';
+```
 
-This a *clean* factory. In order to use it, `import` it, register all your components and then pass it to the `componentFactory`
-prop of the `AutoForm`.
-
-    import { ComponentFactory } from 'redux-autoform';
-
-DefaultEditComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))
-----
-
-This is a pre-populated factory for editing, the same used in the [demo](http://gearz-lab.github.io/redux-autoform/demo.html).
-In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
-
-    import { DefaultEditComponentFactory } from 'redux-autoform';
-    
-The `DefaultEditComponentFactory` relies on [these third-party components](#third-party).
-
-DefaultDetailsComponentFactory ([source](https://gearz-lab.github.io/redux-autoform/blob/master/src/BootstrapEditComponentFactory.js))
-----
-
-This is a pre-populated factory for details. In order to use it, `import` it and just pass it to the `componentFactory` prop of the `AutoForm`.
-
-    import { DefaultDetailsComponentFactory } from 'redux-autoform';
-    
-> This feature is still under development.
 
 Localization
 ---
@@ -373,13 +269,3 @@ layoutName | The name of the `layout` in the `entity`
 bottomBar | A component for rendering the bottom bar. This component should include a submit input.
 errorRenderer | Function that should render an error component in case something goes wrong. The function should receive an `exception` and return a component.
 onSubmit | Function called when the form is successfully submitted. 
-
-Third party
-===
-
-The `DefaultComponentFactory` relies on third-party components. Here's the list:
-
- - [redux-form](https://github.com/erikras/redux-form/).
- - [react-bootstrap](http://react-bootstrap.github.io/).
- - [react-select](https://github.com/JedWatson/react-select).
- - [react-widgets](https://github.com/jquense/react-widgets).
