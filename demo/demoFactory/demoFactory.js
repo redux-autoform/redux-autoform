@@ -1,8 +1,8 @@
+import React, {Component, PropTypes} from 'react';
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 import Group from './components/groupComponents/Group';
 import TextBox from './components/fieldComponents/TextBox';
-
-import React from 'react';
+import RootComponent from './components/RootComponent';
 
 class DemoFactory extends ComponentFactory {
     constructor(config) {
@@ -22,16 +22,9 @@ class DemoFactory extends ComponentFactory {
     };
 
     getRoot = () => {
-        return ({fieldLayout, children, handleSubmit}) => (
-            <div className="meta-form">
-                <form onSubmit={handleSubmit}>
-                    { children }
-                </form>
-            </div>
-        );
+        return RootComponent;
+    };
 
-
-    }
 }
 
 export default DemoFactory;
