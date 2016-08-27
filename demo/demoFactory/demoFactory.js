@@ -22,11 +22,10 @@ class DemoFactory extends ComponentFactory {
     };
 
     getRoot = () => {
-        return ({fieldLayout, children, handleSubmit, buttonBar, submitting}) => (
+        return ({fieldLayout, children, handleSubmit}) => (
             <div className="meta-form">
                 <form onSubmit={handleSubmit}>
                     { children }
-                    { React.createElement(buttonBar, { submitting: submitting }) }
                 </form>
             </div>
         );
