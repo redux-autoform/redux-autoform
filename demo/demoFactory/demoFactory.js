@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
+import ComponentFactory from './ComponentFactory';
 import Group from './components/groupComponents/Group';
 import TextBox from './components/fieldComponents/TextBox';
 import RootComponent from './components/RootComponent';

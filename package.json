@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform",
-  "version": "0.10.5-experimental",
+  "version": "0.10.6",
   "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
@@ -35,7 +35,8 @@
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
     "redux-autoform-utils": "^1.0.4-experimental",
-    "redux-form": "^5.2.5"
+    "redux-autoform-component-factory": "^0.9.0",
+    "redux-form": "^6.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
