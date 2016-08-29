@@ -47,10 +47,10 @@ class AutoForm extends Component {
 
             let fields = MetadataProvider.getReduxFormFields(fieldMetadata);
 
-            let validate = (values) => {
-                let modelParsed = ModelParser.process(values, fieldMetadata);
-                return MetadataValidator.validate(fieldMetadata, modelParsed) || {};
-            };
+            // let validate = (values) => {
+            //     let modelParsed = ModelParser.process(values, fieldMetadata);
+            //     return MetadataValidator.validate(fieldMetadata, modelParsed) || {};
+            // };
 
             let autoFormProps = {
                 uiType,
@@ -58,7 +58,7 @@ class AutoForm extends Component {
                 fieldMetadata,
                 entity,
                 layout,
-                validate,
+
                 componentFactory,
                 buttonBar,
                 fieldLayout

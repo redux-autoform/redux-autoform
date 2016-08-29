@@ -22,7 +22,8 @@ let autoFormProps = {
     componentFactory: getDemoFactory(),
     buttonBar: ButtonToolbar,
     onSubmit: (...args) => console.log(args),
-    overwriteOnInitialValuesChange: undefined
+    overwriteOnInitialValuesChange: undefined,
+    initialValues: {}
 };
 
 render(
