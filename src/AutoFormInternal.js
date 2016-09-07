@@ -94,8 +94,6 @@ class AutoFormInternal extends Component {
 		let { buttonBar, submitting, pristine, fields } = this.props;
 		let errors = this.getErrors(fields);
 
-		console.info("This is the array => " + JSON.stringify(errors, null, 2));
-
 		let buttonBarProps = {
 			submitting: submitting,
 			pristine: pristine,
