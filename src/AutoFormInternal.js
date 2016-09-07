@@ -48,13 +48,29 @@ class AutoFormInternal extends Component {
         });
     };
 
+	getSubErrors = (fields) => {
+		return fields.map(field => {
+			let result = {};
+
+			for (let key in field) {
+				if (field.hasOwnProperty(key)) {
+					if (field[key].error) {
+						result = {[field[key].name]: field[key].error};
+					}
+				}
+			}
+
+			return result;
+		})
+	};
+
 	getErrors = (fields) => {
 		let arr = [];
 
 		for (let key in fields) {
 			if (fields.hasOwnProperty(key)) {
 				if (Array.isArray(fields[key])) {
-					let subArr = this.getErrors(fields[key]);
+					let subArr = this.getSubErrors(fields[key]);
 
 					//Merge both arrays into one to get the values up to date
 					arr = [...arr, ...subArr];
