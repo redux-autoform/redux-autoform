@@ -11,6 +11,7 @@ class AutoFormInternal extends Component {
         handleSubmit: PropTypes.func.isRequired,
         resetForm: PropTypes.func.isRequired,
         submitting: PropTypes.bool.isRequired,
+        pristine: PropTypes.bool.isRequired,
         componentFactory: PropTypes.object,
         entity: PropTypes.object.isRequired,
         layout: PropTypes.object,
@@ -47,17 +48,45 @@ class AutoFormInternal extends Component {
         });
     };
 
+	getErrors = () => {
+		//Because redux-form always force a re-render with different kinds of events,
+		//we got the errors up to date in fields object
+		const { fields } = this.props;
+		let arr = [];
+
+		for (let key in fields) {
+			if (fields.hasOwnProperty(key)) {
+				if (fields[key].error) {
+					arr.push({[fields[key].name]: fields[key].error});
+				}
+			}
+		}
+
+		return arr;
+	};
+
+	getButtonBar = () => {
+		let { buttonBar, submitting, pristine } = this.props;
+
+		let buttonBarProps = {
+			submitting: submitting,
+			pristine: pristine,
+			errors: this.getErrors()
+		};
+
+		return React.createElement(buttonBar, buttonBarProps);
+	};
+
     render() {
-        let { buttonBar, submitting } = this.props;
         let groupComponent = this.buildGroupComponent();
         let componentFactory = this.getFactory();
-
+	    let buttonBar = this.getButtonBar();
         let Root = componentFactory.getRoot();
 
         return (
             <Root {...this.props}>
                 { groupComponent }
-                { React.createElement(buttonBar, { submitting: submitting }) }
+                { buttonBar }
             </Root>
         )
     }

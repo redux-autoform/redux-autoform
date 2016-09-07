@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class Layout extends Component {
+class ButtonToolbar extends Component {
+	static propTypes = {
+		pristine: PropTypes.bool.isRequired,
+		submitting: PropTypes.bool.isRequired,
+		errors: PropTypes.array.isRequired
+	};
+
     render() {
-        return (
+	    let { pristine, submitting, errors } = this.props;
+	    let disabled = !!(pristine || errors.length > 0 || submitting);
+
+	    return (
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={disabled}>Submit</button>
             </div>
         );
     }
 }
 
-export default Layout;
+export default ButtonToolbar;

@@ -12,8 +12,14 @@ const store = configureStore();
 let schema = {
     name: {
         type: 'string',
-        displayName: 'Name'
-    }
+        displayName: 'Name',
+        required: true
+    },
+	lastName: {
+		type: 'string',
+		displayName: 'Last Name',
+		required: true
+	}
 };
 
 let autoFormProps = {
