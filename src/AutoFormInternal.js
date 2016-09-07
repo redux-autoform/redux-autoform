@@ -50,7 +50,7 @@ class AutoFormInternal extends Component {
 
 	getSubErrors = (fields) => {
 		return fields.map(field => {
-			let result = {};
+			let result = null;
 
 			for (let key in field) {
 				if (field.hasOwnProperty(key)) {
