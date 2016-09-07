@@ -50,16 +50,20 @@ class AutoFormInternal extends Component {
 
 	getSubErrors = (fields) => {
 		let arr = fields.map(field => {
+			let result = null;
+
 			for (let key in field) {
 				if (field.hasOwnProperty(key)) {
 					if (field[key].error) {
-						return {[field[key].name]: field[key].error};
+						result = {...result, ...{[field[key].name]: field[key].error}};
 					}
 				}
 			}
+
+			return result;
 		});
 
-		return arr.filter(field => field !== null);
+		return arr.map(field => field !== null);
 	};
 
 	getErrors = (fields) => {
