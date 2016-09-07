@@ -49,7 +49,7 @@ class AutoFormInternal extends Component {
     };
 
 	getSubErrors = (fields) => {
-		return fields.map(field => {
+		let arr = fields.map(field => {
 			for (let key in field) {
 				if (field.hasOwnProperty(key)) {
 					if (field[key].error) {
@@ -57,7 +57,9 @@ class AutoFormInternal extends Component {
 					}
 				}
 			}
-		})
+		});
+
+		return arr.filter(field => field !== null);
 	};
 
 	getErrors = (fields) => {
