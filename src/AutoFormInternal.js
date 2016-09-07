@@ -63,7 +63,7 @@ class AutoFormInternal extends Component {
 			return result;
 		});
 
-		return arr.map(field => field !== null);
+		return arr.filter(field => field !== null);
 	};
 
 	getErrors = (fields) => {
