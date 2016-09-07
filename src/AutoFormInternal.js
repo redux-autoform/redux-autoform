@@ -48,15 +48,18 @@ class AutoFormInternal extends Component {
         });
     };
 
-	getErrors = () => {
-		//Because redux-form always force a re-render with different kinds of events,
-		//we got the errors up to date in fields object
-		const { fields } = this.props;
+	getErrors = (fields) => {
 		let arr = [];
 
 		for (let key in fields) {
 			if (fields.hasOwnProperty(key)) {
-				if (fields[key].error) {
+				if (Array.isArray(fields[key])) {
+					let subArr = this.getErrors(fields[key]);
+
+					//Merge both arrays into one to get the values up to date
+					arr = [...arr, ...subArr];
+				}
+				else if (fields[key].error) {
 					arr.push({[fields[key].name]: fields[key].error});
 				}
 			}
@@ -66,12 +69,17 @@ class AutoFormInternal extends Component {
 	};
 
 	getButtonBar = () => {
-		let { buttonBar, submitting, pristine } = this.props;
+		//Because redux-form always force a re-render with different kinds of events,
+		//we got the errors up to date in fields object
+		let { buttonBar, submitting, pristine, fields } = this.props;
+		let errors = this.getErrors(fields);
+
+		console.info("This is the array => " + JSON.stringify(errors, null, 2));
 
 		let buttonBarProps = {
 			submitting: submitting,
 			pristine: pristine,
-			errors: this.getErrors()
+			errors: errors
 		};
 
 		return React.createElement(buttonBar, buttonBarProps);
