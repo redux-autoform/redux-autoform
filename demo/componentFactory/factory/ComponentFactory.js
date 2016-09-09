@@ -1,11 +1,18 @@
 import React from 'react';
 import {Field} from 'redux-form';
 
-const renderInput = field =>   // Define stateless component to render input and errors
-    <div>
-        <input {...field.input} type={field.type}/>
-        {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
-    </div>;
+// const renderInput = field => { // Define stateless component to render input and errors
+//     console.log(field);
+//     return <div>
+//         <input {...field.input} type={field.type}/>
+//         {field.meta.touched && field.meta.error && <span className="error">{field.meta.error}</span>}
+//     </div>;
+// }
+
+const renderInput = field => { // Define stateless component to render input and errors
+    let {componentType, input, meta} = field;
+    return React.createElement(componentType, Object.assign({}, input, meta, field));
+};
 
 // component definitions
 export default class ComponentFactory {
@@ -137,10 +144,11 @@ export default class ComponentFactory {
         if (!componentType)
             throw new Error(`Could not resolve the component for the type. Type: ${fieldComponentProps.type}`);
 
-        var component = React.createElement(componentType, Object.assign({}, fieldComponentProps, fieldComponentProps.reduxFormProps));
+        console.log(fieldComponentProps);
+
 
         // if there's a 'reduxFormProps' metadata, it should be merged with the
-        return <Field name={fieldComponentProps.name} component={renderInput}/>;
+        return <Field name={fieldComponentProps.name} component={renderInput} {...fieldComponentProps} componentType={componentType}/>;
     }
 
     /**

@@ -12,16 +12,25 @@ import '../node_modules/bootstrap/less/bootstrap.less';
 
 const store = configureStore();
 
+import moment from 'moment';
+import numbro from 'numbro';
+import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
+import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
+momentLocalizer(moment);
+numbroLocalizer(numbro);
+
 let schema = {
     name: {
         displayName: 'Name',
         type: 'string',
-        displayName: 'Name'
+        name: 'name',
+        help: (m) => m.name,
+        required: true
     },
     age: {
         displayName: 'Age',
         type: 'string',
-        displayName: 'Age'
+        name: 'age'
     }
 };
 
