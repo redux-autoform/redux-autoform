@@ -29,13 +29,15 @@
   },
   "homepage": "https://github.com/redux-autoform/redux-autoform#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "react": "^15.1.0",
     "react-addons-update": "^15.2.1",
+    "react-bootstrap": "^0.30.3",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
-    "redux-autoform-utils": "^1.0.4-experimental",
     "redux-autoform-component-factory": "^0.9.0",
+    "redux-autoform-utils": "^1.0.4-experimental",
     "redux-form": "^6.0.1"
   },
   "devDependencies": {

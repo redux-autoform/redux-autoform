@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import Input from  '../common/Input';
 
-class TextBox extends Component {
+class TextArea extends Component {
     static propTypes = {
         value: PropTypes.any,
         onChange: PropTypes.func.isRequired,
@@ -10,16 +11,12 @@ class TextBox extends Component {
         error: PropTypes.string,
         addonBefore: PropTypes.string,
         addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        rows: PropTypes.number
     };
 
     render() {
-
-        let { value, onChange } = this.props;
-        let inputProps = { value, onChange };
-
-        return <input type="text" {...inputProps}/>;
+        return <Input componentClass="textarea" {...this.props}/>;
     }
 }
 
-export default TextBox;
+export default TextArea;
