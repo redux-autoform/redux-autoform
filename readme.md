@@ -43,7 +43,7 @@ Demos
 -----
 
 - [Bootstrap demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html).
-- [Material-UI demo] ( https://redux-autoform.github.io/redux-autoform-material-ui).
+- [Material-UI demo] (https://redux-autoform.github.io/redux-autoform-material-ui).
 
 
 Docs
