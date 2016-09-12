@@ -14,7 +14,7 @@
 
 
 - [Introduction](#introduction)
-- [Supported UI frameworks:](#supported-ui-frameworks)
+- [Supported UI frameworks](#supported-ui-frameworks)
 - [Demos](#demos)
 - [Docs](#docs)
 - [Installing](#installing)
@@ -33,17 +33,17 @@ Introduction
 
 Redux-Autoform is an UI agnostic library for dynamically generating [redux-form](https://github.com/erikras/redux-form) out of metadata.
 
-Supported UI frameworks:
+Supported UI frameworks
 ------------------------
 
 - [Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state)
-- [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (under development)
+- [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (alpha state)
 
 Demos
 -----
 
 - [Bootstrap demo](https://redux-autoform.github.io/redux-autoform-bootstrap-ui/demo.html).
-- Material-UI demo (*coming soon*).
+- [Material-UI demo] (https://redux-autoform.github.io/redux-autoform-bootstrap-ui/).
 
 
 Docs
