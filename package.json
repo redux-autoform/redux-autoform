@@ -34,7 +34,7 @@
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
-    "redux-autoform-utils": "^1.0.4-experimental",
+    "redux-autoform-utils": "git://github.com/redux-autoform/redux-autoform-utils.git#8f0d2efe8e95971ee449fa27dd00fc2e8f522455",
     "redux-form": "^5.2.5"
   },
   "devDependencies": {
