@@ -1,6 +1,6 @@
 {
   "name": "redux-autoform",
-  "version": "0.10.15-experimental",
+  "version": "0.10.16-experimental",
   "description": "A library for dynamically generating redux-forms out of metadata",
   "main": "./lib/index.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
-    "redux-autoform-utils": "^1.0.4-experimental",
+    "redux-autoform-utils": "1.0.5-experimental",
     "redux-form": "^5.2.5"
   },
   "devDependencies": {
