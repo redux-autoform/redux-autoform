@@ -82,7 +82,7 @@ Assuming Bootstrap, you can get the factories like this:
 import { EditComponentFactory, DetailsComponentFactory } from 'redux-autoform-bootstrap-ui';
 ```
 
-Either one of these factories now should be passed as prop Autoform as described in the [docs](https://github.com/gearz-lab/redux-autoform/blob/master/docs-md/documentation.md).
+Either one of these factories now should be passed as prop Autoform as described in the [docs](https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md#autoform).
     
 Localization
 ---

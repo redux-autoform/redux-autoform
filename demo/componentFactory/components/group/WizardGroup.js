@@ -58,8 +58,6 @@ class WizardGroup extends BaseGroup {
         });
 
         this.setState({stepFlow});
-
-        console.log(JSON.stringify(stepFlow));
     };
 
     // Get the last flow and set the step position to the step that initiated the flow to the current step position.

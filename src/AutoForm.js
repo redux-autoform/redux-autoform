@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import AutoFormInternal from './AutoFormInternal';
 import MetadataProvider from './metadata/MetadataProvider';
-import MetadataValidator from './metadata/validator/MetadataValidator';
-import ModelParser from './metadata/model/ModelParser';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { connect } from 'react-redux'
 
 class AutoForm extends Component {
     static propTypes = {
@@ -91,7 +91,18 @@ class AutoForm extends Component {
                 }
             }
 
-            return <AutoFormInternal {...autoFormProps} {...reduxFormProps}/>
+            const selector = formValueSelector(form);
+
+            let afi = AutoFormInternal;
+            afi = connect(state=> {
+                console.log(state);
+                return {};
+            })(afi);
+
+            return React.createElement(afi, Object.assign({}, autoFormProps, reduxFormProps ));
+
+            //return <afi {...autoFormProps} {...reduxFormProps}/>;
+
         } catch (ex) {
             return errorRenderer ? errorRenderer(ex) : <div> {ex.message} </div>;
         }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class Layout extends Component {
     render() {
         return (
             <div>
-                <button type="submit">Submit</button>
+                <Button bsStyle="primary" type="submit">Submit</Button>
             </div>
         );
     }

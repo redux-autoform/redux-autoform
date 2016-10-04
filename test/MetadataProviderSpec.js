@@ -63,6 +63,7 @@ describe('MetadataProvider', function () {
             };
 
             let fields = metadataProvider.getFields(schema, 'contact', 'contact-edit');
+
         });
 
         it('Text expressions', function () {

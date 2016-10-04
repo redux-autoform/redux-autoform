@@ -144,9 +144,6 @@ export default class ComponentFactory {
         if (!componentType)
             throw new Error(`Could not resolve the component for the type. Type: ${fieldComponentProps.type}`);
 
-        console.log(fieldComponentProps);
-
-
         // if there's a 'reduxFormProps' metadata, it should be merged with the
         return <Field name={fieldComponentProps.name} component={renderInput} {...fieldComponentProps} componentType={componentType}/>;
     }

@@ -193,8 +193,10 @@ describe('MetadataEvaluator', function () {
                         }
                     }
                 }, '', metadataIndex );
-            
-            
+
+            console.log(JSON.stringify(metadataEvaluation, null, 4));
+
+
         });
         it('Should work with of arrays', function () {
             let metadata = {
