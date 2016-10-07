@@ -52,7 +52,7 @@
     "child-process-promise": "^2.0.3",
     "colors": "^1.1.2",
     "coveralls": "^2.11.11",
-    "cross-env": "^2.0.0",
+    "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "es5-shim": "^4.1.11",
     "express": "^4.13.3",
