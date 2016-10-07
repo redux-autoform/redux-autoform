@@ -37,7 +37,7 @@ Supported UI frameworks
 ------------------------
 
 - [Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state)
-- [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (alpha state)
+- [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (beta state)
 
 Demos
 -----
@@ -74,7 +74,7 @@ The 2 most important props `AutoForm` should receive is the `schema` and the `co
 The schema represents the application domain. All entities, layouts and their metadata is contained in the schema. More information [here](https://github.com/redux-autoform/redux-autoform/blob/master/docs-md/documentation.md#schema).
 
 The `ComponentFactory` is responsible for determining which React component to use for a given field metadata. `redux-autoform` doesn't have any built-in factory, for that you can use either
-[Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state) or [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (under development).
+[Bootstrap](https://github.com/redux-autoform/redux-autoform-bootstrap-ui) (beta state) or [Material-UI](https://github.com/redux-autoform/redux-autoform-material-ui) (beta state).
 
 Assuming Bootstrap, you can get the factories like this:
  
