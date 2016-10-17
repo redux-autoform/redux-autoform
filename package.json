@@ -35,7 +35,7 @@
     "react-redux": "^4.4.2",
     "redux": "^3.4.0",
     "redux-autoform-utils": "1.0.5-experimental",
-    "redux-form": "^5.2.5"
+    "redux-form": "^6.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
