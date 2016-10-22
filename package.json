@@ -11,8 +11,8 @@
     "start": "cross-env NODE_ENV=development babel-node ./demo/server.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/redux-autoform/redux-autoform.git"
+    "url": "git+https://github.com/redux-autoform/redux-autoform.git",
+    "type": "git"
   },
   "keywords": [
     "react",
