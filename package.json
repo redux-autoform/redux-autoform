@@ -82,7 +82,7 @@
     "lolex": "^1.4.0",
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
-    "npm": "^3.3.4",
+    "npm": "^4.0.2",
     "numbro": "^1.8.1",
     "phantomjs-prebuilt": "^2.1.8",
     "raw-loader": "^0.5.1",
