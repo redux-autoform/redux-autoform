@@ -40,23 +40,23 @@ class MetadataEvaluator {
      * @param onChange
      * @returns {{}}
      */
-    static evaluate(propertyMetadata, model, keyPrefix, reduxFieldProps, onChange) {
+    static evaluate(propertyMetadata, model, keyPrefix, reduxFieldProps, onChange, globalScope) {
         if (!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if (!model) throw Error('\'model\' should be truthy');
 
         if (propertyMetadata.constructor === Array) {
-            return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxFieldProps, onChange));
+            return propertyMetadata.map(i => this.evaluate(i, model, keyPrefix, reduxFieldProps, onChange, globalScope));
         }
 
         let result = {};
 
         Object.keys(propertyMetadata).forEach((fieldName) => {
-            result[fieldName] = this.filterPropertyField(fieldName, propertyMetadata[fieldName], model);
+            result[fieldName] = this.filterPropertyField(fieldName, propertyMetadata[fieldName], model, globalScope);
         });
 
         let newPrefix = keyPrefix ? `${keyPrefix}.${propertyMetadata.name}` : propertyMetadata.name;
 
-        return this.filterProperty(result, model, newPrefix, reduxFieldProps, onChange);
+        return this.filterProperty(result, model, newPrefix, reduxFieldProps, onChange, globalScope);
     }
 
     /**
@@ -65,7 +65,7 @@ class MetadataEvaluator {
      * @param fieldValue
      * @param model
      */
-    static filterPropertyField(fieldName, fieldValue, model) {
+    static filterPropertyField(fieldName, fieldValue, model, globalScope) {
         let { fieldFilters } = this;
         let processedFieldValue = fieldValue;
 
@@ -74,7 +74,7 @@ class MetadataEvaluator {
             if (!fieldFilters[i].property || fieldFilters[i].property === fieldName) {
                 let filter = fieldFilters[i].filter;
 
-                processedFieldValue = filter(fieldName, processedFieldValue, model);
+                processedFieldValue = filter(fieldName, processedFieldValue, model, globalScope);
             }
         }
 
@@ -90,14 +90,14 @@ class MetadataEvaluator {
      * @param reduxProps
      * @returns {*}
      */
-    static filterProperty(metadata, model, keyPrefix, metadataIndex, reduxProps) {
+    static filterProperty(metadata, model, keyPrefix, metadataIndex, reduxProps, globalScope) {
         let { propertyFilters } = this;
         let processedMetadata = metadata;
 
         for (let i = 0; i < propertyFilters.length; i++) {
             let filter = propertyFilters[i];
 
-            processedMetadata = filter(processedMetadata, model, keyPrefix, this, metadataIndex, reduxProps);
+            processedMetadata = filter(processedMetadata, model, keyPrefix, this, metadataIndex, reduxProps, globalScope);
         }
 
         return processedMetadata;
