@@ -364,5 +364,69 @@ describe('MetadataEvaluator', function () {
                 ]
             }, '', reduxProps);
         });
+
+        it('Should have globalScope/rootModel as third param', function () {
+
+            let rootModel = {
+                person_address: {
+                    active: 'home',
+                    home: {
+                        city: "Nagpur"
+                    },
+                    office: {
+                        city: "Banglore"
+                    }
+                }
+            }
+
+            let rootScope_in_home_field,
+                rootScope_in_office_field;
+
+            let metadata = {
+                name: 'person_address',
+                type: 'entity',
+                fields: [
+                    {
+                        name: 'active'
+                    },
+                    {
+                        name: 'home',
+                        type: 'entity',
+                        entityName: 'address',
+                        visible: (model, formatter, globalScope)=>{
+                            rootScope_in_home_field = globalScope;
+                            return globalScope.person_address.active === 'home'
+                        },
+                        fields: [
+                            {
+                                name: 'city',
+                                type: 'string'
+                            },
+                        ]
+                    },
+                    {
+                        name: 'office',
+                        type: 'entity',
+                        entityName: 'address',
+                        visible: (model, formatter, globalScope)=>{
+                            rootScope_in_office_field = globalScope;
+                            return globalScope.person_address.active === 'office'
+                        },
+                        fields: [
+                            {
+                                name: 'city',
+                                type: 'string'
+                            }
+                        ]
+                    }
+                ]
+            };
+            let metadataIndex = {};
+            let metadataEvaluation = MetadataEvaluator.evaluate(metadata, rootModel, '', metadataIndex );
+
+            assert.equal( rootModel, rootScope_in_home_field );
+            assert.equal( rootModel, rootScope_in_office_field );
+
+        });
     });
 });
