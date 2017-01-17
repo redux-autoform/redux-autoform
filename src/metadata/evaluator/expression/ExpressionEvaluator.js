@@ -8,9 +8,8 @@ export default class ExpressionEvaluator {
      * @param data - the data scope in which the expression will be executed
      * @returns {Object}
      */
-    static evaluate(expression, data) {
+    static evaluate(expression, data, globalScope) {
         var _expressionHelper;
-
         switch (typeof expression) {
             case 'function':
                 try {
@@ -18,7 +17,7 @@ export default class ExpressionEvaluator {
                         _expressionHelper = getExpressionHelper();
                     }
 
-                    let evaluation = expression(data, _expressionHelper);
+                    let evaluation = expression(data, _expressionHelper, globalScope);
 
                     if (typeof evaluation === 'object' && evaluation != null) {
                         // React cannot render objects. Because of that, objects are converted to strings

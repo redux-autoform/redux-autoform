@@ -10,10 +10,11 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static arrayFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static arrayFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange, globalScope) {
 
         if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if(!model) throw Error('Argument \'model\' should be truthy');
+        if( !globalScope ) globalScope = model
 
         if (propertyMetadata.type == 'array' && propertyMetadata.arrayType == 'entity') {
             if (!propertyMetadata.fields) {
@@ -37,7 +38,7 @@ export default class Filters {
                 return reduxProps[propertyMetadata.name][index];
             };
 
-            propertyMetadata.fields = model[propertyMetadata.name].map((item, index) =>  metadataEvaluator.evaluate(propertyMetadata.fields, item, `${keyPrefix}.${index}`, getReduxPropsForItem(index), onChange));
+            propertyMetadata.fields = model[propertyMetadata.name].map((item, index) =>  metadataEvaluator.evaluate(propertyMetadata.fields, item, `${keyPrefix}.${index}`, getReduxPropsForItem(index), onChange, globalScope));
         }
         return propertyMetadata;
     }
@@ -52,7 +53,7 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static defaultFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static defaultFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange, globalScope) {
 
         if(!propertyMetadata) throw Error('Argument \'propertyMetadata\' should be truthy');
         if(!model) throw Error('Argument \'model\' should be truthy');
@@ -77,9 +78,10 @@ export default class Filters {
      * @param onChange
      * @returns {*}
      */
-    static entityFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange) {
+    static entityFilter(propertyMetadata, model, keyPrefix, metadataEvaluator, reduxProps, onChange, globalScope) {
         if (!propertyMetadata) throw new Error('metadata is required');
         if (!model) throw new Error('model is required');
+        if( !globalScope ) globalScope = model
 
         if (propertyMetadata.type == 'entity') {
 
@@ -98,7 +100,7 @@ export default class Filters {
             }
 
             let itemReduxProps = reduxProps ? reduxProps[propertyMetadata.name] : undefined;
-            propertyMetadata.fields = metadataEvaluator.evaluate(propertyMetadata.fields, model[propertyMetadata.name], keyPrefix, itemReduxProps, onChange);
+            propertyMetadata.fields = metadataEvaluator.evaluate(propertyMetadata.fields, model[propertyMetadata.name], keyPrefix, itemReduxProps, onChange, globalScope);
         }
 
         return propertyMetadata;
