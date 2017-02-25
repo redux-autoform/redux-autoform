@@ -79,7 +79,7 @@
     "karma-webpack": "^1.6.0",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
-    "lolex": "^1.4.0",
+    "lolex": "^1.6.0",
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
     "npm": "^4.0.3",
