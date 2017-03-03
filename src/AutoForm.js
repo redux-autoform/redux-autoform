@@ -33,7 +33,26 @@ class AutoForm extends Component {
 
     render() {
         let {uiType, schema, entityName, layoutName, componentFactory, errorRenderer, buttonBar, fieldLayout} = this.props;
-        let {form, onSubmit, onSubmitSuccess, onSubmitFail, alwaysAsyncValidate, destroyOnUnmount, formKey, initialValues, overwriteOnInitialValuesChange, readonly, returnRejectedSubmitPromise, touchOnBlur, touchOnChange} = this.props;
+        let {
+            form,
+            onSubmit,
+            onSubmitSuccess,
+            onSubmitFail,
+            alwaysAsyncValidate,
+            destroyOnUnmount,
+            formKey,
+            initialValues,
+            overwriteOnInitialValuesChange,
+            readonly,
+            returnRejectedSubmitPromise,
+            touchOnBlur,
+            touchOnChange,
+            dirty,
+            pristine,
+            submitting,
+            valid,
+            values
+        } = this.props;
 
         try {
             schema = MetadataProvider.canonizeSchema(schema); // This will allow for flexible schema definition (arrays vs. objects)
@@ -77,15 +96,20 @@ class AutoForm extends Component {
                 readonly,
                 returnRejectedSubmitPromise,
                 touchOnBlur,
-                touchOnChange
+                touchOnChange,
+                dirty,
+                pristine,
+                submitting,
+                valid,
+                values
             };
 
             // we need to delete all undefined reduxFormProps specifically because overwriteOnInitialValuesChange cannot
             // be undefined, otherwise it triggers this errors:
             //  Failed prop type: Required prop `overwriteOnInitialValuesChange` was not specified in `ReduxForm(AutoFormInternal)`.
-            for (var property in reduxFormProps) {
+            for (let property in reduxFormProps) {
                 if (reduxFormProps.hasOwnProperty(property)) {
-                    if(reduxFormProps[property] === undefined) {
+                    if (reduxFormProps[property] === undefined) {
                         delete(reduxFormProps[property]);
                     }
                 }
