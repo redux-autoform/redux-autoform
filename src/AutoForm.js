@@ -83,7 +83,7 @@ class AutoForm extends Component {
             // we need to delete all undefined reduxFormProps specifically because overwriteOnInitialValuesChange cannot
             // be undefined, otherwise it triggers this errors:
             //  Failed prop type: Required prop `overwriteOnInitialValuesChange` was not specified in `ReduxForm(AutoFormInternal)`.
-            for (var property in reduxFormProps) {
+            for (let property in reduxFormProps) {
                 if (reduxFormProps.hasOwnProperty(property)) {
                     if(reduxFormProps[property] === undefined) {
                         delete(reduxFormProps[property]);

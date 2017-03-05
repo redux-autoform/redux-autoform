@@ -10,12 +10,15 @@ import './componentFactory/styles/styles.less';
 import './componentFactory/styles/styles-defaultfactories.less';
 import '../node_modules/bootstrap/less/bootstrap.less';
 
+import persons from './schemas/PersonSchema'
+
 const store = configureStore();
 
 import moment from 'moment';
 import numbro from 'numbro';
 import momentLocalizer from 'redux-autoform-utils/lib/localization/momentLocalizer';
 import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocalizer';
+
 momentLocalizer(moment);
 numbroLocalizer(numbro);
 
@@ -25,7 +28,10 @@ let schema = {
         type: 'string',
         name: 'name',
         help: (m) => m.name,
-        required: true
+        required: true,
+	    styles: {
+		    bleh: "bleh"
+	    }
     },
     age: {
         displayName: 'Age',
@@ -35,17 +41,26 @@ let schema = {
 	email: {
 		displayName: 'Email',
 		type: 'string',
-		name: 'email'
+		name: 'email',
+		styles: {
+			bleh: "bleh"
+		}
 	},
 	address: {
 		displayName: 'Address',
 		type: 'string',
-		name: 'address'
+		name: 'address',
+		styles: {
+			bleh: "bleh"
+		}
 	},
 	city: {
 		displayName: 'City',
 		type: 'string',
-		name: 'city'
+		name: 'city',
+		styles: {
+			bleh: "bleh"
+		}
 	}
 };
 
