@@ -14,6 +14,10 @@ class TextArea extends Component {
         rows: PropTypes.number
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     render() {
         return <Input componentClass="textarea" {...this.props}/>;
     }

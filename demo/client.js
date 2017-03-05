@@ -31,7 +31,22 @@ let schema = {
         displayName: 'Age',
         type: 'string',
         name: 'age'
-    }
+    },
+	email: {
+		displayName: 'Email',
+		type: 'string',
+		name: 'email'
+	},
+	address: {
+		displayName: 'Address',
+		type: 'string',
+		name: 'address'
+	},
+	city: {
+		displayName: 'City',
+		type: 'string',
+		name: 'city'
+	}
 };
 
 let autoFormProps = {
@@ -39,7 +54,7 @@ let autoFormProps = {
     schema:  schema,
     componentFactory: EditComponentFactory,
     buttonBar: ButtonToolbar,
-    onSubmit: (...args) => console.log(args),
+    onSubmit: form => console.log(JSON.stringify(form, null, 2)),
     overwriteOnInitialValuesChange: undefined,
     initialValues: {}
 };

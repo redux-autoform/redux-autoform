@@ -14,6 +14,10 @@ class Password extends Component {
         fieldLayout: PropTypes.string
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     render() {
         return <Input componentClass="input" inputType="password" {...this.props}/>;
     }

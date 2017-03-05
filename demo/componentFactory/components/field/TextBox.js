@@ -14,6 +14,10 @@ class TextBox extends Component {
         fieldLayout: PropTypes.string
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     render() {
         return <Input componentClass="input" inputType="text" {...this.props}/>;
     }

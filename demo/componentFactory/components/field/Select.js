@@ -13,6 +13,10 @@ class Select extends Component {
         addonAfter: PropTypes.string
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     getOptions = () => {
         let {options} = this.props;
 

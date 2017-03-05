@@ -16,6 +16,10 @@ class Checkbox extends Component {
         )
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     render() {
         let { fieldLayout } = this.props;
         let content = this.getContent();

@@ -91,18 +91,16 @@ class AutoForm extends Component {
                 }
             }
 
-            const selector = formValueSelector(form);
+            //TODO review commented code
+            //const selector = formValueSelector(form);
 
-            let afi = AutoFormInternal;
-            afi = connect(state=> {
-                console.log(state);
-                return {};
-            })(afi);
+            //let afi = AutoFormInternal;
+            //afi = connect(state=> {
+            //    console.log(state);
+            //    return {};
+            //})(afi);
 
-            return React.createElement(afi, Object.assign({}, autoFormProps, reduxFormProps ));
-
-            //return <afi {...autoFormProps} {...reduxFormProps}/>;
-
+            return <AutoFormInternal {...autoFormProps} {...reduxFormProps}/>;
         } catch (ex) {
             return errorRenderer ? errorRenderer(ex) : <div> {ex.message} </div>;
         }

@@ -14,6 +14,10 @@ class FieldGroup extends Component {
         fieldLayout: React.PropTypes.string
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     getGroupContent = () => {
         let { componentFactory, _extra: { layout, fields }, group: groupName } = this.props;
         let group = layout.groups.find(g => g.name == groupName);

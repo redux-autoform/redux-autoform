@@ -8,6 +8,10 @@ class Radio extends Component {
         onChange(event.target.value);
     };
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextProps.value !== this.props.value
+	}
+
     getOptions = (value) => {
         let { options, name, fieldLayout } = this.props;
 
