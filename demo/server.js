@@ -17,7 +17,7 @@ app.use(webpackMiddleware(webpackCompiler));
 app.use(webpackHotMiddleware(webpackCompiler));
 app.use((req, res) => res.status(200).send(require('./index.html')));
 
-app.listen(4000, '10.0.0.187', err => {
+app.listen(4000, err => {
     if (!err) {
         console.log(colors.green(`Redux-autoform started at http://localhost:4000/`));
     }
