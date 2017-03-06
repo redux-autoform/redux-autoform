@@ -8,9 +8,11 @@ import { EditComponentFactory } from './componentFactory/index';
 import ButtonToolbar from './components/ButtonToolbar';
 import './componentFactory/styles/styles.less';
 import './componentFactory/styles/styles-defaultfactories.less';
-import '../node_modules/bootstrap/less/bootstrap.less';
+import 'bootstrap/less/bootstrap.less';
 
 import persons from './schemas/PersonSchema'
+
+console.info(JSON.stringify(persons, null, 2));
 
 const store = configureStore();
 
@@ -21,6 +23,116 @@ import numbroLocalizer from 'redux-autoform-utils/lib/localization/numbroLocaliz
 
 momentLocalizer(moment);
 numbroLocalizer(numbro);
+
+const schema1 = {
+	entities: [
+		{
+			name: "contact",
+			fields: [
+				{ name: "f1", type: "string" },
+				{ name: "f2", type: "string" },
+				{ name: "f3", type: "string" },
+				{ name: "f4", type: "string" },
+				{ name: "f5", type: "string" },
+				{ name: "f6", type: "string" },
+				{ name: "f7", type: "string" },
+				{ name: "f8", type: "string" },
+			],
+			layouts: [
+				{
+					name: 'edit',
+					groups: [
+						{
+							title: 'Vertical layout (default)',
+							fields: [
+								{
+									name: 'f1',
+									displayName: "Field 1",
+									styles: {
+										bleh: "bleh"
+									}
+								},
+								{
+									name: 'f2',
+									displayName: "Field 2",
+									size: 8,
+									styles: {
+										bleh: "bleh"
+									}
+								}
+							]
+						},
+						{
+							title: 'Horizontal layout',
+							orientation: 'horizontal',
+							fields: [
+								{
+									name: 'f3',
+									displayName: "Field 3",
+									styles: {
+										bleh: "bleh"
+									}
+								},
+								{
+									name: 'f4',
+									displayName: "Field 4",
+									styles: {
+										bleh: "bleh"
+									}
+								}
+							]
+						},
+						{
+							title: 'Horizontal layout with custom sizes',
+							orientation: 'horizontal',
+							fields: [
+								{
+									name: 'f5',
+									displayName: "Field 5",
+									size: 4,
+									styles: {
+										bleh: "bleh"
+									}
+								},
+								{
+									name: 'f6',
+									displayName: "Field 6",
+									size: 8,
+									styles: {
+										bleh: "bleh"
+									}
+								}
+							]
+						},
+						{
+							title: 'Horizontal layout with custom inner sizes',
+							orientation: 'horizontal',
+							fields: [
+								{
+									name: 'f7',
+									displayName: "Field 7",
+									innerSize: 3,
+									styles: {
+										bleh: "bleh"
+									}
+								},
+								{
+									name: 'f8',
+									displayName: "Field 8",
+									innerSize: 3,
+									styles: {
+										bleh: "bleh"
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
+
 
 let schema = {
     name: {
@@ -36,7 +148,10 @@ let schema = {
     age: {
         displayName: 'Age',
         type: 'string',
-        name: 'age'
+        name: 'age',
+	    styles: {
+		    bleh: "bleh"
+	    }
     },
 	email: {
 		displayName: 'Email',
@@ -66,7 +181,8 @@ let schema = {
 
 let autoFormProps = {
     form: 'demo',
-    schema:  schema,
+	layoutName: 'edit',
+    schema:  schema1,
     componentFactory: EditComponentFactory,
     buttonBar: ButtonToolbar,
     onSubmit: form => console.log(JSON.stringify(form, null, 2)),

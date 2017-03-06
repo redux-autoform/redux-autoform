@@ -15,7 +15,20 @@ class AutoFormInternal extends Component {
         entity: PropTypes.object.isRequired,
         layout: PropTypes.object,
         buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string
+        fieldLayout: PropTypes.string,
+	    form: PropTypes.string.isRequired,
+	    onSubmit: PropTypes.func.isRequired,
+	    onSubmitSuccess: PropTypes.func,
+	    onSubmitFail: PropTypes.func,
+	    alwaysAsyncValidate: PropTypes.bool,
+	    destroyOnUnmount: PropTypes.bool,
+	    formKey: PropTypes.string,
+	    initialValues: PropTypes.object,
+	    overwriteOnInitialValuesChange: PropTypes.bool,
+	    readonly: PropTypes.bool,
+	    returnRejectedSubmitPromise: PropTypes.bool,
+	    touchOnBlur: PropTypes.bool,
+	    touchOnChange: PropTypes.bool
     };
 
     //TODO JS: make this work

@@ -9,7 +9,7 @@ export default class MetadataProvider {
     static canonizeSchema(schema) {
         if (!schema) throw Error('\'schema\' should be truthy');
 
-        if(!schema.entities) {
+        if (!schema.entities) {
             // when no entities are specified in the schema, the schema is considered to be in the SIMPLEST form, example:
             // {
             //     name: {
@@ -26,32 +26,63 @@ export default class MetadataProvider {
             // ]
             // In this case, I'm just creating a 'default' entity
             return MetadataProvider.canonizeSchema({
-                entities: [
-                    {
-                        name: 'default',
-                        fields: schema
-                    }
-                ]
+                entities: [{
+                    name: 'default',
+                    fields: schema
+                }]
             });
+        } else {
+	        schema = {...schema};
+	        schema.entities = MetadataProvider.canonizeArray(schema.entities);
+
+	        schema.entities.forEach(entity => {
+		        entity.fields = MetadataProvider.canonizeArray(entity.fields);
+		        entity.layouts = MetadataProvider.canonizeArray(entity.layouts);
+
+		        if (entity.layouts) {
+			        entity.layouts.forEach(layout => {
+				        layout.fields = MetadataProvider.canonizeArray(layout.fields);
+				        layout.groups = MetadataProvider.canonizeArray(layout.groups);
+
+				        if (layout.groups) {
+					        layout.groups.forEach(group => {
+						        group.fields = MetadataProvider.canonizeArray(group.fields);
+					        });
+				        }
+			        });
+		        }
+	        });
         }
 
-        schema = {...schema};
-        this._canonizeArrays(schema, ["entities", "layouts", "groups"]);
-
-        return schema;
+	    return schema;
     }
 
-    static _canonizeArrays(dataArray, keys, id = 0) {
-        dataArray[keys[id]] = MetadataProvider.canonizeArray(dataArray[keys[id]]);
-        if(dataArray[keys[id]]) {
-            dataArray[keys[id]].forEach(elem => {
-                elem.fields = MetadataProvider.canonizeArray(elem.fields);
-                if(id + 1 < keys.length)
-                    this._canonizeArrays(elem, keys, id + 1);
-            })
-        }
+	/**
+	 * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
+	 * converts the target object into an array.
+	 * This is important to convert this:
+	 *     { fields: { dateOfBirth: { type: 'string' } } // this should be acceptable as a fields definition
+     * into this:
+     *     { fields: [{ name: 'dateOfBirth', type: 'string' }] } // this is the canonical field definition
+	 * @param obj
+	 */
+	static canonizeArray(obj) {
+		if (!obj) return obj; // this is so the canonizeSchema method doesn't have to check every property for undefined
 
-    }
+		if (Array.isArray(obj)) return obj;
+
+		// let's create an array
+		return Object.keys(obj).map(key => {
+			if (typeof obj[key] === 'object')
+			    throw Error('cannot generate canonical array. Every field should be an object');
+
+			return {
+                ...obj[key],
+                name: key
+            }
+		});
+	}
+
     /**
      * Ensures the object passed in is an array. If it is, it is returned, otherwise, this function
      * converts the target object into an array.

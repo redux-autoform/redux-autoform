@@ -45,7 +45,7 @@ class AutoForm extends Component {
                 f.fieldLayout = fieldLayout;
             });
 
-            let fields = MetadataProvider.getReduxFormFields(fieldMetadata);
+	        let fields = MetadataProvider.getReduxFormFields(fieldMetadata);
 
             // let validate = (values) => {
             //     let modelParsed = ModelParser.process(values, fieldMetadata);
