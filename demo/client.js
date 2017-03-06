@@ -10,9 +10,10 @@ import './componentFactory/styles/styles.less';
 import './componentFactory/styles/styles-defaultfactories.less';
 import 'bootstrap/less/bootstrap.less';
 
-import persons from './schemas/PersonSchema'
+//import persons from './schemas/PersonSchema'
+//import Form from '../src/model/Form';
 
-console.info(JSON.stringify(persons, null, 2));
+//console.info(JSON.stringify(persons, null, 2));
 
 const store = configureStore();
 
@@ -37,6 +38,38 @@ const schema1 = {
 				{ name: "f6", type: "string" },
 				{ name: "f7", type: "string" },
 				{ name: "f8", type: "string" },
+                { name: "f9", type: "string" },
+                { name: "f10", type: "string" },
+                { name: "f11", type: "string" },
+                { name: "f12", type: "string" },
+                { name: "f13", type: "string" },
+                { name: "f14", type: "string" },
+                { name: "f15", type: "string" },
+                { name: "f16", type: "string" },
+                { name: "f17", type: "string" },
+                { name: "f18", type: "string" },
+                { name: "f19", type: "string" },
+                { name: "f20", type: "string" },
+                { name: "f21", type: "string" },
+                { name: "f22", type: "string" },
+                { name: "f23", type: "string" },
+                { name: "f24", type: "string" },
+                { name: "f25", type: "string" },
+                { name: "f26", type: "string" },
+                { name: "f27", type: "string" },
+                { name: "f28", type: "string" },
+                { name: "f29", type: "string" },
+                { name: "f30", type: "string" },
+                { name: "f31", type: "string" },
+                { name: "f32", type: "string" },
+                { name: "f33", type: "string" },
+                { name: "f34", type: "string" },
+                { name: "f35", type: "string" },
+                { name: "f36", type: "string" },
+                { name: "f37", type: "string" },
+                { name: "f38", type: "string" },
+                { name: "f39", type: "string" },
+                { name: "f40", type: "string" }
 			],
 			layouts: [
 				{
@@ -111,7 +144,7 @@ const schema1 = {
 								{
 									name: 'f7',
 									displayName: "Field 7",
-									innerSize: 3,
+									size: 8,
 									styles: {
 										bleh: "bleh"
 									}
@@ -119,13 +152,355 @@ const schema1 = {
 								{
 									name: 'f8',
 									displayName: "Field 8",
-									innerSize: 3,
+									size: 8,
 									styles: {
 										bleh: "bleh"
 									}
 								}
 							]
-						}
+						},
+                        {
+                            title: 'Horizontal layout',
+                            orientation: 'horizontal',
+                            fields: [
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f11',
+                                    displayName: "Field 11",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f12',
+                                    displayName: "Field 12",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f13',
+                                    displayName: "Field 13",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f14',
+                                    displayName: "Field 14",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f15',
+                                    displayName: "Field 15",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f16',
+                                    displayName: "Field 16",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                }
+                                ,{
+                                    name: 'f17',
+                                    displayName: "Field 17",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f18',
+                                    displayName: "Field 18",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                }
+                                ,{
+                                    name: 'f19',
+                                    displayName: "Field 19",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f20',
+                                    displayName: "Field 20",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f21',
+                                    displayName: "Field 21",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f22',
+                                    displayName: "Field 22",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f23',
+                                    displayName: "Field 23",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f24',
+                                    displayName: "Field 24",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f25',
+                                    displayName: "Field 25",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f26',
+                                    displayName: "Field 26",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f27',
+                                    displayName: "Field 27",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f28',
+                                    displayName: "Field 28",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f29',
+                                    displayName: "Field 29",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f30',
+                                    displayName: "Field 30",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f31',
+                                    displayName: "Field 31",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f32',
+                                    displayName: "Field 32",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f33',
+                                    displayName: "Field 33",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f34',
+                                    displayName: "Field 34",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f35',
+                                    displayName: "Field 35",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f36',
+                                    displayName: "Field 36",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f37',
+                                    displayName: "Field 37",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f38',
+                                    displayName: "Field 38",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f39',
+                                    displayName: "Field 39",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f40',
+                                    displayName: "Field 40",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f9',
+                                    displayName: "Field 9",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                },
+                                {
+                                    name: 'f10',
+                                    displayName: "Field 10",
+                                    size: 8,
+                                    styles: {
+                                        bleh: "bleh"
+                                    }
+                                }
+                            ]
+                        }
 					]
 				}
 			]
@@ -178,6 +553,108 @@ let schema = {
 		}
 	}
 };
+
+const personSchema = {
+    "entities": [
+        {
+            "name": "person",
+            "fields": [
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "lastName",
+                    "type": "string"
+                },
+                {
+                    "name": "location",
+                    "type": "string"
+                },
+                {
+                    "name": "email",
+                    "type": "string"
+                },
+                {
+                    "name": "phoneNumber",
+                    "type": "string"
+                },
+                {
+                    "name": "age",
+                    "type": "string"
+                }
+            ],
+            "layouts": [
+                {
+                    "name": "edit",
+                    "component": "Group",
+                    "groups": [
+                        {
+                            "title": "Person",
+                            "orientation": "horizontal",
+                            "fields": [
+                                {
+                                    "name": "name",
+                                    "displayName": "Name",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                },
+                                {
+                                    "name": "lastName",
+                                    "displayName": "Last Name",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                },
+                                {
+                                    "name": "location",
+                                    "displayName": "Location",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                },
+                                {
+                                    "name": "email",
+                                    "displayName": "Email",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                },
+                                {
+                                    "name": "phoneNumber",
+                                    "displayName": "Phone Number",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                },
+                                {
+                                    "name": "age",
+                                    "displayName": "Age",
+                                    "styles": {
+                                        "containerClassName": "form-group row",
+                                        "labelClassName": "col-4 col-form-label",
+                                        "inputClassName": "col-8 form-control"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
 
 let autoFormProps = {
     form: 'demo',

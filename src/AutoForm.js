@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import AutoFormInternal from './AutoFormInternal';
 import MetadataProvider from './metadata/MetadataProvider';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
-import { connect } from 'react-redux'
 
 class AutoForm extends Component {
     static propTypes = {
@@ -48,8 +46,8 @@ class AutoForm extends Component {
 	        let fields = MetadataProvider.getReduxFormFields(fieldMetadata);
 
             // let validate = (values) => {
-            //     let modelParsed = ModelParser.process(values, fieldMetadata);
-            //     return MetadataValidator.validate(fieldMetadata, modelParsed) || {};
+            //      let modelParsed = ModelParser.process(values, fieldMetadata);
+            //      return MetadataValidator.validate(fieldMetadata, modelParsed) || {};
             // };
 
             let autoFormProps = {
@@ -58,7 +56,6 @@ class AutoForm extends Component {
                 fieldMetadata,
                 entity,
                 layout,
-
                 componentFactory,
                 buttonBar,
                 fieldLayout
@@ -83,13 +80,13 @@ class AutoForm extends Component {
             // we need to delete all undefined reduxFormProps specifically because overwriteOnInitialValuesChange cannot
             // be undefined, otherwise it triggers this errors:
             //  Failed prop type: Required prop `overwriteOnInitialValuesChange` was not specified in `ReduxForm(AutoFormInternal)`.
-            for (let property in reduxFormProps) {
-                if (reduxFormProps.hasOwnProperty(property)) {
-                    if(reduxFormProps[property] === undefined) {
-                        delete(reduxFormProps[property]);
-                    }
+            Object.keys(reduxFormProps).forEach(key => {
+                const property = reduxFormProps[key];
+
+                if (reduxFormProps.hasOwnProperty(property) && property === undefined) {
+                    delete reduxFormProps[key];
                 }
-            }
+            });
 
             //TODO review commented code
             //const selector = formValueSelector(form);

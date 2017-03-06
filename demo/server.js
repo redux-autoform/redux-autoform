@@ -9,16 +9,16 @@ import webpack from 'webpack';
 
 const webpackCompiler = webpack(webpackConfig);
 
-require.extensions['.html'] = function (module, filename) {
-    module.exports = fs.readFileSync(filename, 'utf8');
-};
+require.extensions['.html'] =  (module, filename) => module.exports = fs.readFileSync(filename, 'utf8');
 
-let app = express();
+const app = express();
 
 app.use(webpackMiddleware(webpackCompiler));
 app.use(webpackHotMiddleware(webpackCompiler));
 app.use((req, res) => res.status(200).send(require('./index.html')));
 
-app.listen(4000, '0.0.0.0', function () {
-    console.log(colors.green(`Redux-autoform started at http://localhost:4000/`));
+app.listen(4000, '10.0.0.187', err => {
+    if (!err) {
+        console.log(colors.green(`Redux-autoform started at http://localhost:4000/`));
+    }
 });

@@ -19,9 +19,6 @@ class TextBox extends Component {
 	}
 
     render() {
-	    console.info("This is the displayName ->> " + this.props.displayName);
-	    console.info("This is the styles value ->> " + JSON.stringify(this.props.styles, null, 2));
-
         return <Input componentClass="input" inputType="text" {...this.props}/>;
     }
 }
