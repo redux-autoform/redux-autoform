@@ -72,7 +72,7 @@
     "karma-coverage": "^1.1.0",
     "karma-es6-shim": "^1.0.0",
     "karma-mocha": "^1.1.1",
-    "karma-phantomjs-launcher": "~1.0.1",
+    "karma-phantomjs-launcher": "~1.0.4",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.0.0",
     "karma-sourcemap-loader": "~0.3.5",
