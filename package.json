@@ -101,7 +101,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
     "rimraf-promise": "^2.0.0",
-    "sinon": "^1.15.3",
+    "sinon": "^2.0.0",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0",
