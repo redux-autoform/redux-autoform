@@ -35,7 +35,7 @@
     "react": ">= 15.x.x",
     "react-dom": ">= 15.x.x",
     "react-redux": "^5.x.x",
-    "redux-form": ">= 5.3.4 < 6"
+    "redux-form": ">=6.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
