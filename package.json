@@ -51,7 +51,7 @@
     "chai": "^3.2.0",
     "child-process-promise": "^2.0.3",
     "colors": "^1.1.2",
-    "coveralls": "^2.11.11",
+    "coveralls": "^2.13.0",
     "cross-env": "^3.1.0",
     "css-loader": "^0.26.1",
     "es5-shim": "^4.1.11",
