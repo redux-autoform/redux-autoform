@@ -32,7 +32,7 @@ class AutoForm extends Component {
     };
 
     render() {
-        let {uiType, schema, entityName, layoutName, componentFactory, errorRenderer, buttonBar, fieldLayout} = this.props;
+        let {uiType, schema, entityName, layoutName, componentFactory, errorRenderer, buttonBar, messagePanel, fieldLayout} = this.props;
         let {form, onSubmit, onSubmitSuccess, onSubmitFail, alwaysAsyncValidate, destroyOnUnmount, formKey, initialValues, overwriteOnInitialValuesChange, readonly, returnRejectedSubmitPromise, touchOnBlur, touchOnChange} = this.props;
 
         try {
@@ -61,6 +61,7 @@ class AutoForm extends Component {
                 validate,
                 componentFactory,
                 buttonBar,
+                messagePanel,
                 fieldLayout
             };
 
