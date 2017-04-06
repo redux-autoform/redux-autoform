@@ -16,6 +16,7 @@ class AutoFormInternal extends Component {
         entity: PropTypes.object.isRequired,
         layout: PropTypes.object,
         buttonBar: PropTypes.func.isRequired,
+        messagePanel: PropTypes.object,
         fieldLayout: PropTypes.string
     };
 
@@ -103,16 +104,29 @@ class AutoFormInternal extends Component {
 		return React.createElement(buttonBar, buttonBarProps);
 	};
 
+	getMessagePanel = () => {
+	    let { messagePanel, errors, error } = this.props;
+
+	    if ( messagePanel ) {
+	        let messagePanelProps = { error, errors };
+	        return React.createElement( messagePanel, messagePanelProps );
+        } else {
+	        return null;
+        }
+    }
+
     render() {
         let groupComponent = this.buildGroupComponent();
         let componentFactory = this.getFactory();
 	    let buttonBar = this.getButtonBar();
+	    let messagePanel = this.getMessagePanel();
         let Root = componentFactory.getRoot();
 
         return (
             <Root {...this.props}>
                 { groupComponent }
                 { buttonBar }
+                { messagePanel }
             </Root>
         )
     }
