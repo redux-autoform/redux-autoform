@@ -97,7 +97,7 @@
     "redux-devtools": "^3.2.0",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.9",
-    "redux-form": "^5.3.4",
+    "redux-form": "^6.6.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
     "rimraf-promise": "^2.0.0",
