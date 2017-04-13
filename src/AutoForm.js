@@ -1,34 +1,35 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react';
+import { object, string, func, bool } from 'prop-types';
+
 import AutoFormInternal from './AutoFormInternal';
 import MetadataProvider from './metadata/MetadataProvider';
 import MetadataValidator from './metadata/validator/MetadataValidator';
 import ModelParser from './metadata/model/ModelParser';
 
-class AutoForm extends Component {
+export default class AutoForm extends React.Component {
     static propTypes = {
-        uiType: PropTypes.string,
-        componentFactory: PropTypes.object,
-        schema: PropTypes.object.isRequired,
-        entityName: PropTypes.string,
-        layoutName: PropTypes.string,
-        errorRenderer: PropTypes.func,
-        buttonBar: PropTypes.func.isRequired,
-        fieldLayout: PropTypes.string,
+        componentFactory: object,
+        schema: object.isRequired,
+        entityName: string,
+        layoutName: string,
+        errorRenderer: func,
+        buttonBar: func.isRequired,
+        fieldLayout: string,
 
         // Redux-Form props
-        form: PropTypes.string.isRequired,
-        onSubmit: PropTypes.func.isRequired,
-        onSubmitSuccess: PropTypes.func,
-        onSubmitFail: PropTypes.func,
-        alwaysAsyncValidate: PropTypes.bool,
-        destroyOnUnmount: PropTypes.bool,
-        formKey: PropTypes.string,
-        initialValues: PropTypes.object,
-        overwriteOnInitialValuesChange: PropTypes.bool,
-        readonly: PropTypes.bool,
-        returnRejectedSubmitPromise: PropTypes.bool,
-        touchOnBlur: PropTypes.bool,
-        touchOnChange: PropTypes.bool
+        form: string.isRequired,
+        onSubmit: func.isRequired,
+        onSubmitSuccess: func,
+        onSubmitFail: func,
+        alwaysAsyncValidate: bool,
+        destroyOnUnmount: bool,
+        formKey: string,
+        initialValues: object,
+        overwriteOnInitialValuesChange: bool,
+        readonly: bool,
+        returnRejectedSubmitPromise: bool,
+        touchOnBlur: bool,
+        touchOnChange: bool
     };
 
     render() {
@@ -121,5 +122,3 @@ class AutoForm extends Component {
         }
     }
 }
-
-export default AutoForm;

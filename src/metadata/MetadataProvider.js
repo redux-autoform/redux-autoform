@@ -240,6 +240,7 @@ export default class MetadataProvider {
         entity = typeof entity === 'string' ? this.getEntity(schema, entity) : entity;
 
         if (!layout) {
+            //TODO evaluate if this should throw an error
             layout = this.generateDefaultLayout(schema, entity);
         } else {
             layout = typeof layout === 'string' ? this.getLayout(entity, layout) : layout;
