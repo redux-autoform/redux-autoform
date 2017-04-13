@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
 import ComponentFactory from 'redux-autoform-utils/lib/factory/ComponentFactory';
 import Group from './components/groupComponents/Group';
 import TextBox from './components/fieldComponents/TextBox';

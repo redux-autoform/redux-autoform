@@ -1,25 +1,23 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import { any, func, string } from 'prop-types';
 
-class TextBox extends Component {
+export default class TextBox extends React.Component {
     static propTypes = {
-        value: PropTypes.any,
-        onChange: PropTypes.func.isRequired,
-        placeholder: PropTypes.string,
-        displayName: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        error: PropTypes.string,
-        addonBefore: PropTypes.string,
-        addonAfter: PropTypes.string,
-        fieldLayout: PropTypes.string
+        value: any,
+        onChange: func.isRequired,
+        placeholder: string,
+        displayName: string,
+        name: string.isRequired,
+        error: string,
+        addonBefore: string,
+        addonAfter: string,
+        fieldLayout: string
     };
 
     render() {
-
-        let { value, onChange } = this.props;
-        let inputProps = { value, onChange };
+        const { value, onChange } = this.props;
+        const inputProps = { value, onChange };
 
         return <input type="text" {...inputProps}/>;
     }
 }
-
-export default TextBox;

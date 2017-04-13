@@ -1,11 +1,12 @@
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
+import { array, object, string } from 'prop-types';
 
-class Group extends Component {
+export default class Group extends React.Component {
     static propTypes = {
-        component: PropTypes.string,
-        fields: PropTypes.array.isRequired,
-        layout: PropTypes.object.isRequired,
-        componentFactory: PropTypes.object.isRequired
+        component: string,
+        fields: array.isRequired,
+        layout: object.isRequired,
+        componentFactory: object.isRequired
     };
 
     getComponents = () => {
@@ -126,5 +127,3 @@ class Group extends Component {
         }
     }
 }
-
-export default Group;

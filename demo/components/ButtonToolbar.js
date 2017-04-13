@@ -1,15 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import { bool, array } from 'prop-types';
 
-class ButtonToolbar extends Component {
+export default class ButtonToolbar extends React.Component {
 	static propTypes = {
-		pristine: PropTypes.bool.isRequired,
-		submitting: PropTypes.bool.isRequired,
-		errors: PropTypes.array.isRequired
+		pristine: bool.isRequired,
+		submitting: bool.isRequired,
+		errors: array.isRequired
 	};
 
     render() {
-	    let { pristine, submitting, errors } = this.props;
-	    let disabled = !!(pristine || errors.length > 0 || submitting);
+	    const { pristine, submitting, errors } = this.props;
+	    const disabled = !!(pristine || errors.length > 0 || submitting);
 
 	    return (
             <div>
@@ -18,5 +19,3 @@ class ButtonToolbar extends Component {
         );
     }
 }
-
-export default ButtonToolbar;
