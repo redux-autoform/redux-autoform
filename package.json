@@ -66,7 +66,7 @@
     "install": "^0.8.1",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
-    "js-beautify": "^1.5.10",
+    "js-beautify": "^1.6.9",
     "json-loader": "^0.5.3",
     "karma": "^1.1.2",
     "karma-babel-preprocessor": "^6.0.1",
