@@ -68,7 +68,7 @@
     "istanbul": "^0.4.4",
     "js-beautify": "^1.5.10",
     "json-loader": "^0.5.3",
-    "karma": "^1.1.2",
+    "karma": "^1.4.0",
     "karma-babel-preprocessor": "^6.0.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^2.0.0",
