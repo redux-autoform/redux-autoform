@@ -81,7 +81,7 @@
     "karma-sourcemap-loader": "~0.3.5",
     "karma-webpack": "^1.6.0",
     "less": "^2.5.3",
-    "less-loader": "^2.2.1",
+    "less-loader": "^4.0.1",
     "lolex": "^1.4.0",
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
