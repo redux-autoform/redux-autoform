@@ -40,7 +40,7 @@
     "redux-form": ">= 5.3.4 < 6"
   },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.7.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-add-module-exports": "^0.2.1",
