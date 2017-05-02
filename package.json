@@ -86,7 +86,7 @@
     "mocha": "^3.0.0",
     "moment": "^2.14.1",
     "npm": "^4.0.3",
-    "numbro": "^1.8.1",
+    "numbro": "^1.11.0",
     "phantomjs-prebuilt": "^2.1.8",
     "raw-loader": "^0.5.1",
     "react-ace": "^4.0.0",
