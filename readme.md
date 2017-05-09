@@ -59,7 +59,7 @@ Installing
 Using
 ---
 
-####AutoForm ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/AutoForm.js))####
+#### AutoForm ([source](https://github.com/gearz-lab/redux-autoform/blob/master/src/AutoForm.js))
 
 The main React component.
 
